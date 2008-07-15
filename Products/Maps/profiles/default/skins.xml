@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_type="Plone Skins Tool">
+  <object name="Maps"
+          meta_type="Filesystem Directory View"
+          directory="Maps/skins/Maps"/>
+  <skin-path name="*">
+    <layer name="Maps" insert-after="custom"/>
+  </skin-path>
+</object>

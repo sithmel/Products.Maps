@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+ <javascript cacheable="True" compression="full" cookable="True"
+    enabled="True" id="maps-config.js" inline="False"
+    expression="object/@@maps_googlemaps_enabled_view/enabled | nothing" />
+ <javascript cacheable="True" compression="full" cookable="True"
+    enabled="True" id="maps-googlemaps.js" inline="False"
+    expression="object/@@maps_googlemaps_enabled_view/enabled | nothing" />
+</object>

@@ -1,0 +1,88 @@
+Changelog for Maps
+
+    (name of developer listed in brackets)
+
+Maps 1.2 - July 3, 2008
+
+    - Added greek translation.
+      [ggozad]
+
+    - Updated templates for Plone 3.0.
+      [fschulze]
+
+    - Dropped compatibility with Plone 2.5.
+      [fschulze]
+
+Maps 1.1 - September 05, 2007
+
+    - Fixed the logic when to show layers.
+      [fschulze]
+
+    - Fixed viewing of maps if the workflow state was 'private'. There is a
+      new interface and view which only has the 'enabled' attribute and which
+      is accessible without restriction. This is now used as the condition in
+      portal_javascripts.
+      [fschulze]
+
+    - The coordinates field now uses a tuple with two floats everywhere. The
+      widget for it now uses two input fields.
+      [fschulze]
+
+    - Made LinguaPlone aware.
+      [fschulze]
+
+    - Added custom view for locations. The map is smaller at the upper right
+      and the rich text is shown besides it.
+      [fschulze]
+
+Maps 1.1rc1 - May 17, 2007
+
+    - Added configlet for Plone 3.0.
+      [fschulze]
+
+    - Fixed scrolling of map when clicking on pin. This only happend when
+      there were no layers.
+      [fschulze]
+
+    - Fixed functionality of layer checkboxes for IE6/7.
+      [fschulze]
+
+    - Fixed key lookup when the URL has a trailing slash.
+      [fschulze]
+
+    - Added fallback to Google AJAX Search if the Google Maps geocoding did
+      not return any results. This allows you to search for cities i.e. the
+      UK and China.
+      [fschulze]
+
+Maps 1.0 - May 03, 2007
+
+    - Changed the markup. All markers are in one definition list instead of
+      one marker in one list. A dt with class="title" marks the beginning of
+      a new marker.
+      [fschulze]
+
+    - Added support for layers. The default is to take keywords as the name
+      of the layer in which a marker is visible. Then you get a map control
+      with checkboxes for each keyword and you can view/hide the markers with
+      that.
+      [fschulze]
+
+    - Using GenericSetup for installation.
+      [fschulze]
+
+    - Added support for existing qPloneGoogleMaps markers.
+      Added support of content with location from the geolocation product.
+      [fschulze]
+
+    - Added RichText field to Location objects.
+      [fschulze]
+
+    - Added support for tabbed info windows.
+      [fschulze]
+
+
+Maps 0.5 - April 02, 2007
+
+    - Initial public release.
+      [fschulze]

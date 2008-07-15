@@ -1,0 +1,25 @@
+<tal:block define="_dummy python:request.response.setHeader('content-type','text/javascript;;charset=utf-8')" />
+<metal:block i18n:domain="maps"
+             tal:define="config context/@@maps_configuration">
+
+/*
+ <span tal:omit-tag="" i18n:translate="">Dummy to get i18ndude working</span>
+*/
+
+var mapsConfig = {
+  google: {
+    apikey: '<tal:block tal:replace="config/googlemaps_key" />',
+    ajaxsearchkey: '<tal:block tal:replace="config/googleajaxsearch_key" />',
+    maxinfowidth: 400,
+    locationnotfound: '<tal:block tal:replace="python: here.translate('text_googlemaps_location_not_found', default='The location \'[LOCATION]\' couldn\'t be found.', domain='maps', escape_for_js=True)" />',
+    selectablemaptypes: true,
+    defaultmaptype: '<tal:block tal:replace="config/default_maptype" />',
+
+    maxzoomlevel: 13,
+    initialzoomlevel: 12,
+
+    markericons: <tal:block tal:replace="structure config/marker_icons" />
+  }
+};
+
+</metal:block>

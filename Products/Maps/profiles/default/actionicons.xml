@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<action-icons>
+ <action-icon category="controlpanel"
+              action_id="Maps"
+              title="Maps settings" priority="0"
+              icon_expr="location_icon.gif" />
+</action-icons>

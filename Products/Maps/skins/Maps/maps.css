@@ -1,0 +1,19 @@
+.mapsMarker {
+  margin: 0;
+  padding: 0;
+}
+
+.googleMapView.googleMapActive,
+.googleMapPane {
+    height: 40em;
+}
+
+.googleMapActive.googleMapLocation {
+    float: right;
+    width: 50%;
+    min-width: 20em;
+    height: 25em;
+}
+.googleMapLocation .googleMapPane {
+    height: 25em;
+}

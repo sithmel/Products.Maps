@@ -1,0 +1,180 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    >
+
+  <i18n:registerTranslations directory="locales" />
+
+  <adapter
+      factory=".adapters.RichMarker"
+      />
+
+  <class class=".adapters.RichMarker">
+    <allow interface=".interfaces.marker.IRichMarker" />
+  </class>
+
+  <adapter
+      for="Products.Maps.content.Location.Location"
+      provides=".interfaces.marker.IMarker"
+      factory=".content.Location.LocationMarker"
+      />
+
+  <adapter
+      for="Products.Maps.content.Location.Location"
+      provides=".interfaces.marker.IRichMarker"
+      factory=".content.Location.LocationMarker"
+      />
+
+  <class class=".content.Location.LocationMarker">
+    <allow interface=".interfaces.marker.IRichMarker" />
+  </class>
+
+  <adapter
+      for="Products.Maps.content.Location.Location"
+      provides=".interfaces.map.IMap"
+      factory=".content.Location.LocationMap"
+      />
+
+  <adapter
+      for="Products.ATContentTypes.interface.IATTopic"
+      provides=".interfaces.map.IMap"
+      factory=".adapters.SmartFolderMap"
+      />
+
+  <adapter
+      for="Products.ATContentTypes.interface.IATFolder"
+      provides=".interfaces.map.IMap"
+      factory=".adapters.FolderMap"
+      />
+
+  <browser:page
+      for="*"
+      name="maps_configuration"
+      class=".browser.config.MapsConfig"
+      permission="zope2.View"
+      allowed_interface=".interfaces.config.IMapsConfig"
+      />
+
+  <browser:page
+      for="Products.Maps.content.Location.Location"
+      name="maps_googlemaps_enabled_view"
+      class=".browser.map.LocationMapView"
+      permission="zope.Public"
+      allowed_interface=".interfaces.map.IMapEnabledView"
+      />
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATTopic"
+      name="maps_googlemaps_enabled_view"
+      class=".browser.map.FolderMapView"
+      permission="zope.Public"
+      allowed_interface=".interfaces.map.IMapEnabledView"
+      />
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATFolder"
+      name="maps_googlemaps_enabled_view"
+      class=".browser.map.FolderMapView"
+      permission="zope.Public"
+      allowed_interface=".interfaces.map.IMapEnabledView"
+      />
+
+  <browser:page
+      for="Products.Maps.content.Location.Location"
+      name="maps_googlemaps_view"
+      class=".browser.map.LocationMapView"
+      permission="zope2.View"
+      allowed_interface=".interfaces.map.IMapView"
+      />
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATTopic"
+      name="maps_googlemaps_view"
+      class=".browser.map.FolderMapView"
+      permission="zope2.View"
+      allowed_interface=".interfaces.map.IMapView"
+      />
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATFolder"
+      name="maps_googlemaps_view"
+      class=".browser.map.FolderMapView"
+      permission="zope2.View"
+      allowed_interface=".interfaces.map.IMapView"
+      />
+
+  <!-- widgets -->
+
+  <view
+      type="zope.publisher.interfaces.browser.IBrowserRequest"
+      for=".interfaces.IGoogleAPIKey"
+      provides="zope.app.form.interfaces.IInputWidget"
+      factory=".browser.widgets.GoogleAPIKey"
+      permission="zope.Public"
+      />
+
+  <!-- configlet -->
+
+  <adapter
+      zcml:condition="installed plone.app.controlpanel"
+      factory=".browser.controlpanel.MapsControlPanelAdapter" />
+
+  <browser:page
+      zcml:condition="installed plone.app.controlpanel"
+      name="maps-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".browser.controlpanel.MapsControlPanel"
+      permission="cmf.ManagePortal"
+      />
+
+  <!-- geolocation -->
+
+  <adapter
+      zcml:condition="installed Products.geolocation"
+      for="Products.ATContentTypes.interface.document.IATDocument"
+      provides=".interfaces.marker.IMarker"
+      factory=".adapters.GEOLocatedMarker"
+      />
+  <adapter
+      zcml:condition="installed Products.geolocation"
+      for="Products.ATContentTypes.interface.event.IATEvent"
+      provides=".interfaces.marker.IMarker"
+      factory=".adapters.GEOLocatedMarker"
+      />
+  <adapter
+      zcml:condition="installed Products.geolocation"
+      for="Products.ATContentTypes.interface.link.IATLink"
+      provides=".interfaces.marker.IMarker"
+      factory=".adapters.GEOLocatedMarker"
+      />
+  <adapter
+      zcml:condition="installed Products.geolocation"
+      for="Products.ATContentTypes.interface.image.IATImage"
+      provides=".interfaces.marker.IMarker"
+      factory=".adapters.GEOLocatedMarker"
+      />
+  <adapter
+      zcml:condition="installed Products.geolocation"
+      for="Products.ATContentTypes.interface.news.IATNewsItem"
+      provides=".interfaces.marker.IMarker"
+      factory=".adapters.GEOLocatedMarker"
+      />
+
+  <!-- qPloneGoogleMaps -->
+  <class
+      zcml:condition="installed Products.qPloneGoogleMaps"
+      class=".adapters.qPloneGoogleMapsMarker">
+    <allow interface=".interfaces.marker.IMarker" />
+  </class>
+
+  <adapter
+      zcml:condition="installed Products.qPloneGoogleMaps"
+      for="Products.qPloneGoogleMaps.content.Marker.Marker"
+      provides=".interfaces.marker.IMarker"
+      factory=".adapters.qPloneGoogleMapsMarker"
+      />
+
+</configure>

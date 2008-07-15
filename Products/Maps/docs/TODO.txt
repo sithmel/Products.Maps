@@ -1,0 +1,1 @@
+- Add "Test API Key button" - how to handle different admin/public domains? (Link to test page)
