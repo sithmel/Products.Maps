@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head></head>
+
+<body>
+  <metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+                    define="view context/@@maps_googlemaps_view">
+
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+      <h1 class="documentFirstHeading">
+        <metal:field use-macro="python:here.widget('title', mode='view')" />
+      </h1>
+
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+      <p class="documentDescription"
+         tal:condition="here/Description">
+        <metal:field use-macro="python:here.widget('description', mode='view')" />
+      </p>
+
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+
+      <div class="googleMapView">
+        <dl metal:define-macro="markers">
+        <tal:markers tal:repeat="marker view/getMarkers">
+          <dt class="title">
+            <img src="" tal:replace="structure python:view.iconTagForMarker(marker)" />
+            <a href=""
+               tal:attributes="href marker/url"
+               tal:content="marker/title"> Title </a>
+          </dt>
+          <dd class="tab"
+              title="Description"
+              tal:condition="marker/description"
+              i18n:attributes="title label_description;">
+            <div tal:content="marker/description" />
+          </dd>
+          <dd class="tab"
+              tal:condition="marker/contents | nothing"
+              tal:repeat="content marker/contents"
+              tal:attributes="title content/title">
+            <div tal:replace="structure content/text" />
+            <div class="visualClear"><!-- --></div>
+          </dd>
+          <dd class="geo">
+            <span class="latitude" tal:content="marker/latitude" />
+            <span class="longitude" tal:content="marker/longitude" />
+          </dd>
+          <dd class="layers"
+              tal:condition="marker/layers | nothing">
+            <ul>
+              <li tal:repeat="layer marker/layers"
+                  tal:content="layer">Layer</li>
+            </ul>
+          </dd>
+          <tal:block tal:condition="marker/related_items | nothing">
+            <dt i18n:translate="label_related_items">Related Items</dt>
+            <dd>
+              <tal:related tal:repeat="related marker/related_items">
+                <a href=""
+                   tal:attributes="href related/url;
+                                   title related/description | nothing"
+                   tal:content="related/title" />
+              </tal:related>
+            </dd>
+          </tal:block>
+        </tal:markers>
+        </dl>
+      </div>
+
+      <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+  </metal:main>
+</body>
+
+</html>
