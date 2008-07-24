@@ -6,6 +6,9 @@ Changelog for Maps
 Maps 2.0 - unreleased
 ---------------------
 
+- Add a metadata.xml to the GenericSetup profile.
+  [wichert]
+
 - Refactored to make it easier to use Maps in custom content types. If you
   write a content type and use a field named 'geolocation', then you can use
   default implementations of adapters now instead of writing three on your
