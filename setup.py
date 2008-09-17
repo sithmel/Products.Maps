@@ -7,7 +7,7 @@ history = open(os.path.join('docs', 'HISTORY.txt')).read()
 
 setup(name='Products.Maps',
       version=version,
-      description="A simple, easy to use Plone integration with Google Maps by Plone Solutions.",
+      description="A simple, easy to use Plone integration with Google Maps by Jarn AS.",
       long_description=readme[readme.find('\n\n'):] + '\n' + history,
       classifiers=[
         "Framework :: Zope2",

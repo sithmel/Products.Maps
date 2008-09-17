@@ -3,16 +3,15 @@ Changelog for Maps
 
 (name of developer listed in brackets)
 
-Maps 2.0 - unreleased
----------------------
+2.0 - 2008-09-17
+----------------
 
 - Add a metadata.xml to the GenericSetup profile.
   [wichert]
 
 - Refactored to make it easier to use Maps in custom content types. If you
   write a content type and use a field named 'geolocation', then you can use
-  default implementations of adapters now instead of writing three on your
-  own.
+  default implementations of adapters now instead of writing three on your own.
   [fschulze]
 
 - Moved to common egg file layout. This means there will be no more
@@ -26,8 +25,8 @@ Maps 2.0 - unreleased
   develop and test it on its own.
   [hannosch]
 
-Maps 1.2 - July 3, 2008
------------------------
+1.2 - July 3, 2008
+------------------
 
 - Added greek translation.
   [ggozad]
@@ -38,8 +37,8 @@ Maps 1.2 - July 3, 2008
 - Dropped compatibility with Plone 2.5.
   [fschulze]
 
-Maps 1.1 - September 05, 2007
------------------------------
+1.1 - September 05, 2007
+------------------------
 
 - Fixed the logic when to show layers.
   [fschulze]
@@ -61,8 +60,8 @@ Maps 1.1 - September 05, 2007
   and the rich text is shown besides it.
   [fschulze]
 
-Maps 1.1rc1 - May 17, 2007
---------------------------
+1.1rc1 - May 17, 2007
+---------------------
 
 - Added configlet for Plone 3.0.
   [fschulze]
@@ -82,8 +81,8 @@ Maps 1.1rc1 - May 17, 2007
   UK and China.
   [fschulze]
 
-Maps 1.0 - May 03, 2007
------------------------
+1.0 - May 03, 2007
+------------------
 
 - Changed the markup. All markers are in one definition list instead of
   one marker in one list. A dt with class="title" marks the beginning of
@@ -110,8 +109,8 @@ Maps 1.0 - May 03, 2007
   [fschulze]
 
 
-Maps 0.5 - April 02, 2007
--------------------------
+0.5 - April 02, 2007
+--------------------
 
 - Initial public release.
   [fschulze]
