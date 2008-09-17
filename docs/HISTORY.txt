@@ -3,6 +3,10 @@ Changelog for Maps
 
 (name of developer listed in brackets)
 
+2.0.1
+-----
+
+
 2.0 - 2008-09-17
 ----------------
 
