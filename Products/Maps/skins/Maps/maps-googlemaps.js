@@ -111,6 +111,8 @@ var mapsGoogleMaps = function() {
                 _defaultmaptype = G_SATELLITE_MAP;
             } else if ($$defaults.defaultmaptype == 'hybrid') {
                 _defaultmaptype = G_HYBRID_MAP;
+            } else if ($$defaults.defaultmaptype == 'physical') {
+                _defaultmaptype = G_PHYSICAL_MAP;
             } else {
                 _defaultmaptype = G_NORMAL_MAP;
             }
@@ -297,6 +299,7 @@ var mapsGoogleMaps = function() {
         addClassName($$map_node, 'googleMapPane');
         $node.appendChild($$map_node);
         var $map = new GMap2($$map_node);
+        $map.addMapType(G_PHYSICAL_MAP);
         var $zoom_level = $map.getBoundsZoomLevel($bounds);
         if ($zoom_level > _mapsConfig_google.maxzoomlevel)
             $zoom_level = _mapsConfig_google.maxzoomlevel;
