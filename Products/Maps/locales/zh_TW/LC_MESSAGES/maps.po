@@ -22,7 +22,7 @@ msgstr ""
 
 #: ./content/Location.py:158
 msgid "Info"
-msgstr ""
+msgstr "資訊"
 
 #: ./browser/controlpanel.py:51
 msgid "Key"
@@ -59,7 +59,7 @@ msgid "help_google_maps_api_keys"
 msgstr "新增 Google Maps API 鍵值。你必須使用網站看得到的客戶端網址。"
 
 msgid "help_markericon"
-msgstr "依類別選定標示符號。"
+msgstr "依類別選定標示圖案。"
 
 #. Default: "Default coordinates"
 #: ./browser/controlpanel.py:84
@@ -72,7 +72,7 @@ msgid "label_default_map_type"
 msgstr "預設地圖類型"
 
 msgid "label_geolocation"
-msgstr "公司店家資料"
+msgstr "位置"
 
 #. Default: "Google AJAX Search API Keys"
 #: ./browser/controlpanel.py:56
@@ -85,7 +85,7 @@ msgid "label_google_maps_api_keys"
 msgstr "Google Maps API Keys"
 
 msgid "label_markericon"
-msgstr "標示符號"
+msgstr "標示圖案"
 
 #. Default: "Satellite images"
 #: ./browser/controlpanel.py:32
