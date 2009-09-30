@@ -1,0 +1,109 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Maps\n"
+"POT-Creation-Date: 2007-05-17 14:08+0000\n"
+"PO-Revision-Date: 2009-02-12 17:21+0000\n"
+"Last-Translator: marr <marr.tw@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh-tw\n"
+"Language-Name: 正體中文\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: maps\n"
+"X-Is-Fallback-For: zh\n"
+
+#. Default: "Dummy to get i18ndude working"
+#: ./skins/Maps/maps-config.js.pt:6
+msgid "Dummy to get i18ndude working"
+msgstr ""
+
+#: ./content/Location.py:158
+msgid "Info"
+msgstr ""
+
+#: ./browser/controlpanel.py:51
+msgid "Key"
+msgstr "Key"
+
+msgid "Map view"
+msgstr "地圖檢視"
+
+#: ./browser/controlpanel.py:145
+msgid "Maps settings"
+msgstr "地圖設定"
+
+#. Default: "Specify the default coordinates for new locations."
+#: ./browser/controlpanel.py:86
+msgid "help_default_coordinated"
+msgstr "新增位置時的預設經緯度。"
+
+#. Default: "Select the default map type initially used on maps."
+#: ./browser/controlpanel.py:76
+msgid "help_default_map_type"
+msgstr "選擇預設使用的地圖類型。"
+
+msgid "help_geolocation"
+msgstr "可以輸入「台北市忠孝東路」之類的地址來搜尋，也可以輸入經緯度 (24.0, 121.0) 的方式來搜尋。"
+
+#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
+#: ./browser/controlpanel.py:58
+msgid "help_google_ajax_search_api_keys"
+msgstr "新增 Google AJAX Search API 鍵值。你必須使用網站看得到的客戶端網址，這個鍵值會用來搜尋預設沒找到的位置。"
+
+#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
+#: ./browser/controlpanel.py:44
+msgid "help_google_maps_api_keys"
+msgstr "新增 Google Maps API 鍵值。你必須使用網站看得到的客戶端網址。"
+
+msgid "help_markericon"
+msgstr "依類別選定標示符號。"
+
+#. Default: "Default coordinates"
+#: ./browser/controlpanel.py:84
+msgid "label_default_coordinates"
+msgstr "預設經緯度"
+
+#. Default: "Default map type"
+#: ./browser/controlpanel.py:74
+msgid "label_default_map_type"
+msgstr "預設地圖類型"
+
+msgid "label_geolocation"
+msgstr "公司店家資料"
+
+#. Default: "Google AJAX Search API Keys"
+#: ./browser/controlpanel.py:56
+msgid "label_google_ajax_search_api_keys"
+msgstr "Google AJAX Search API Keys"
+
+#. Default: "Google Maps API Keys"
+#: ./browser/controlpanel.py:42
+msgid "label_google_maps_api_keys"
+msgstr "Google Maps API Keys"
+
+msgid "label_markericon"
+msgstr "標示符號"
+
+#. Default: "Satellite images"
+#: ./browser/controlpanel.py:32
+msgid "label_satellite_map"
+msgstr "衛星影像"
+
+#. Default: "Satellite images with schematic overlay"
+#: ./browser/controlpanel.py:35
+msgid "label_satellite_schematic_map"
+msgstr "綜合影像"
+
+#. Default: "Schematic map"
+#: ./browser/controlpanel.py:29
+msgid "label_schematic_map"
+msgstr "簡明地圖"
+
+#. Default: "The location '[LOCATION]' couldn't be found."
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "text_googlemaps_location_not_found"
+msgstr "這個地址 '[LOCATION]' 搜尋不到。"
+
