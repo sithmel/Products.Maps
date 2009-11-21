@@ -11,11 +11,6 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Maps import config
 from Products.Maps import permissions
 
-from Products.validation import validation
-
-from Products.Maps.validator import LocationFieldValidator
-
-validation.register(LocationFieldValidator('isGeoLocation'))
 
 registerDirectory(config.SKINS_DIR, config.GLOBALS)
 
