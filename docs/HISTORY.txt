@@ -1,10 +1,8 @@
 Changelog for Maps
 ==================
 
-(name of developer listed in brackets)
-
-2.0.1
------
+2.0.1 - 2010-01-19
+------------------
 
 - Updated LocationFieldValidator to be compatible with both Plone 3 and 4.
   [hannosch]
