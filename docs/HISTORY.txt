@@ -4,6 +4,17 @@ Changelog for Maps
 2.0.2 - unreleased
 ------------------
 
+- Improve map initialization when the location field is displayed in an other 
+  schemata (hidden when the page is loaded). 
+  Indeed, there is a problem in the Google Maps API with loading a GMap2 in a 
+  hidden div when the GMap2 has not been created with a size.
+  Width and height must be define in the theme's styles, for example: 
+  div.googleMapEdit {
+      width:756px; /* must be in pixels */
+      height:455px; /* must be in pixels */
+      padding-bottom:30px;
+  }
+  [sylvainb]
 
 2.0.1 - 2010-01-19
 ------------------
