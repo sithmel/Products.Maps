@@ -4,6 +4,9 @@ Changelog for Maps
 2.0.2 - unreleased
 ------------------
 
+- Add an add permission for GeoLocations to suppoer fine grained
+  control of where the content type can be added.
+  [rossp]
 
 2.0.1 - 2010-01-19
 ------------------

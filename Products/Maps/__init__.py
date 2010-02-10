@@ -9,14 +9,13 @@ from Products.GenericSetup import profile_registry
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from Products.Maps import config
-from Products.Maps import permissions
-
 
 registerDirectory(config.SKINS_DIR, config.GLOBALS)
 
 def initialize(context):
 
     from Products.Maps import content
+    content # pyflakes
 
     content_types, constructors, ftis = process_types(
         listTypes(config.PROJECTNAME), config.PROJECTNAME)
@@ -24,7 +23,7 @@ def initialize(context):
     ContentInit(
         config.PROJECTNAME + ' Content',
         content_types = content_types,
-        permission = permissions.ADD_CONTENT_PERMISSION,
+        permission = 'Maps: Add GeoLocation',
         extra_constructors = constructors,
         fti = ftis,
     ).initialize(context)

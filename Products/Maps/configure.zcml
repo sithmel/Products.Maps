@@ -8,6 +8,11 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <permission
+     id="Products.Maps.AddGeoLocation"
+     title="Maps: Add GeoLocation"
+     />
+
   <adapter factory=".adapters.RichMarker" />
 
   <class class=".adapters.RichMarker">
