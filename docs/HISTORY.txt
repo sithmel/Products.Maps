@@ -1,7 +1,7 @@
 Changelog for Maps
 ==================
 
-2.0.2 - unreleased
+2.0.2 - 2010-02-10
 ------------------
 
 - Add an add permission for GeoLocations to suppoer fine grained
