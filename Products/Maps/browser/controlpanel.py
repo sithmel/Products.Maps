@@ -145,3 +145,7 @@ class MapsControlPanel(ControlPanelForm):
     label = _("Maps settings")
     description = None
     form_name = _("Maps settings")
+    def _on_save(self, data):
+        # This ensures the change is reflected on the served javascripts
+        jstool = getToolByName(self.context, 'portal_javascripts')
+        jstool.cookResources()

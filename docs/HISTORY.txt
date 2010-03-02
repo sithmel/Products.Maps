@@ -3,6 +3,8 @@ Changelog for Maps
 
 2.0.3 - Unreleased
 ------------------
+- cook javascript resources after control panel submissions
+  [silviot]
 
 2.0.2 - 2010-02-10
 ------------------

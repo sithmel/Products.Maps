@@ -11,3 +11,6 @@ PloneTestCase.setupPloneSite(extension_profiles=EXTENSION_PROFILES)
 
 class MapsTestCase(PloneTestCase.PloneTestCase):
     pass
+
+class MapsFunctionalTestCase(PloneTestCase.FunctionalTestCase):
+    pass
