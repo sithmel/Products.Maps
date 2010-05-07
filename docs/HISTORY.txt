@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.3 - Unreleased
+2.0.3 - 2010-05-07
 ------------------
 
 - Added missing i18n_domain to the configure.zcml.
@@ -13,8 +13,8 @@ Changelog
 2.0.2 - 2010-02-10
 ------------------
 
-- Add an add permission for GeoLocations to suppoer fine grained
-  control of where the content type can be added.
+- Added an add permission for GeoLocations to support fine grained control of
+  where the content type can be added.
   [rossp]
 
 2.0.1 - 2010-01-19

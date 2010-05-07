@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-import sys, os
+import os
 
 version = open(os.path.join('Products', 'Maps', 'version.txt')).read().strip()
 readme = open("README.txt").read()
