@@ -4,6 +4,16 @@ Changelog
 2.0.4 - unreleased
 ------------------
 
+- Improve map initialization when the location field is displayed in an other 
+  schemata. Merged from branches/map-in-another-schemata.
+  Notes: Width and height must be define in the theme's styles, if you put the 
+  field in an other schemata: 
+  div.googleMapEdit {
+      width:756px; /* must be in pixels */
+      height:455px; /* must be in pixels */
+      padding-bottom:30px;
+  }
+  [sylvainb] [toutpt]
 
 2.0.3 - 2010-05-07
 ------------------

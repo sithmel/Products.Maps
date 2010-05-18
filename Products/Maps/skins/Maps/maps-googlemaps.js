@@ -432,7 +432,14 @@ var mapsGoogleMaps = function() {
         $node.appendChild($$map_node);
         $node.appendChild($location);
 
-        var $map = new GMap2($$map_node);
+        $map_width = parseInt(jq($node).css('width'));
+        $map_height = parseInt(jq($node).css('height'));
+        if (isNaN($map_width) || isNaN($map_height)) {
+            var $map = new GMap2($$map_node);
+        } else {
+            var $map = new GMap2($$map_node, {size:new GSize($map_width,$map_height)});
+        }
+
         $location.innerHTML = $input[0].value + "," + $input[1].value;
         var $center = new GLatLng(_parseFloat($input[0].value),
                                   _parseFloat($input[1].value));
