@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: plone-fr\n"
-"POT-Creation-Date: 2007-11-24 14:02+0000\n"
+"Project-Id-Version: Products.Maps\n"
+"POT-Creation-Date: 2010-07-10 13:26+0000\n"
 "PO-Revision-Date: 2007-10-19 19:01+0200\n"
 "Last-Translator: Stéphan Geulette <stephan.geulette@uvcw.be>\n"
 "Language-Team: CommunesPlone i18n <support@communesplone.be>\n"
@@ -15,8 +15,77 @@ msgstr ""
 "Domain: plone\n"
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
-msgid "Map view"
-msgstr "Vue cartographique"
+#. Default: "Blue Marker"
+#: ../skins/Maps/marker-blue.png.metadata:2
+msgid "Blue Marker"
+msgstr ""
 
+#: ../profiles/default/types/GeoLocation.xml
+msgid "Edit"
+msgstr ""
+
+#. Default: "Green Marker"
+#: ../skins/Maps/marker-green.png.metadata:2
+msgid "Green Marker"
+msgstr ""
+
+#: ../profiles/default/types/GeoLocation.xml
+msgid "History"
+msgstr ""
+
+#: ../profiles/default/types/GeoLocation.xml
+msgid "Location"
+msgstr ""
+
+#. Default: "Location Icon"
+#: ../skins/Maps/location_icon.gif.metadata:2
+msgid "Location Icon"
+msgstr ""
+
+#: ../profiles/default/types/GeoLocation.xml
+msgid "Location content type."
+msgstr ""
+
+#. Default: "Location view"
+#: ../skins/Maps/maps_location.pt.metadata:2
 msgid "Location view"
-msgstr "Vue localisation"
+msgstr ""
+
+#. Default: "Magenta Marker"
+#: ../skins/Maps/marker-magenta.png.metadata:2
+msgid "Magenta Marker"
+msgstr ""
+
+#. Default: "Map view"
+#: ../skins/Maps/maps_map.pt.metadata:2
+msgid "Map view"
+msgstr ""
+
+#. Default: "Maps"
+#: ../profiles/default/actionicons.xml
+msgid "Maps"
+msgstr ""
+
+#: ../profiles/default/actionicons.xml
+msgid "Maps settings"
+msgstr ""
+
+#. Default: "Marker shadow"
+#: ../skins/Maps/shadow50.png.metadata:2
+msgid "Marker shadow"
+msgstr ""
+
+#. Default: "Red Marker"
+#: ../skins/Maps/marker-red.png.metadata:2
+msgid "Red Marker"
+msgstr ""
+
+#: ../profiles/default/types/GeoLocation.xml
+msgid "View"
+msgstr ""
+
+#. Default: "Yellow Marker"
+#: ../skins/Maps/marker-yellow.png.metadata:2
+msgid "Yellow Marker"
+msgstr ""
+
