@@ -3,8 +3,6 @@ from zope.component import adapts
 from zope.interface import implements
 from zope.formlib.form import FormFields
 
-from zope.i18nmessageid import MessageFactory
-
 from zope.schema import Choice
 from zope.schema import Tuple
 from zope.schema import TextLine
@@ -17,12 +15,9 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFDefault.formlib.schema import SchemaAdapterBase
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 
+from Products.Maps import MapsMessageFactory as _
 from Products.Maps.config import *
 from Products.Maps.field import GoogleAPIKey
-
-
-_ = MessageFactory('maps')
-
 
 DEFAULT_MAPTYPE_CHOICES = SimpleVocabulary((
     SimpleTerm('normal', 'normal',

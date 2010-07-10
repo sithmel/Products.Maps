@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2007-05-17 14:08+0000\n"
+"POT-Creation-Date: 2010-07-10 13:16+0000\n"
 "PO-Revision-Date: 2007-05-17 11:12+0100\n"
 "Last-Translator: Thor Arne Johansen <thora@plonesolutions.com>\n"
 "Language-Team: \n"
@@ -15,91 +15,103 @@ msgstr ""
 "Domain: maps\n"
 "X-Is-Fallback-For: nb nb-no no-bok\n"
 
-#. Default: "Dummy to get i18ndude working"
-#: ./skins/Maps/maps-config.js.pt:6
-msgid "Dummy to get i18ndude working"
+#: ../validator.py:34
+msgid " Validation failed. Coordinates must be an decimal numbers. "
 msgstr ""
 
-#: ./content/Location.py:158
+#: ../validator.py:36
+msgid " Validation failed. Latitude not in bounds [-90, 90]. "
+msgstr ""
+
+#: ../validator.py:38
+msgid " Validation failed. Longitude not in bounds [-180, 180]. "
+msgstr ""
+
+#: ../content/Location.py:149
 msgid "Info"
 msgstr "Informasjon"
 
-#: ./browser/controlpanel.py:51
+#: ../browser/controlpanel.py:46
 msgid "Key"
 msgstr "Nøkkel"
 
-msgid "Map view"
-msgstr ""
-
-#: ./browser/controlpanel.py:145
+#: ../browser/controlpanel.py:140
 msgid "Maps settings"
 msgstr "Maps instillinger "
 
 #. Default: "Specify the default coordinates for new locations."
-#: ./browser/controlpanel.py:86
+#: ../browser/controlpanel.py:81
 msgid "help_default_coordinated"
 msgstr "Spesifiser de initielle koordinatene for nye lokasjoner"
 
 #. Default: "Select the default map type initially used on maps."
-#: ./browser/controlpanel.py:76
+#: ../browser/controlpanel.py:71
 msgid "help_default_map_type"
 msgstr "Velg karttypen som benyttes som utgangspunkt for nye kart"
 
+#. Default: ""
+#: Content Type: Location, Field: geolocation
 msgid "help_geolocation"
 msgstr "Du kan søke etter en adresse hvor hver del er skilt med et komma (gate 123, by). Det kan hende du må legge til landsnavnet etter adressen for å få treff. Du kan også oppgi 'lengdegrad, breddegrad' koordinater."
 
 #. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ./browser/controlpanel.py:58
+#: ../browser/controlpanel.py:53
 #, fuzzy
 msgid "help_google_ajax_search_api_keys"
 msgstr "Legg til Google AJAX Search API nøkler. Du må benytte klientside url'en hvor nettstedet kan nås. Denne nøkkelen brukes for å søke etter lokasjoner som ikke ble funnet med standard geokoding fra Google Maps."
 
 #. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ./browser/controlpanel.py:44
+#: ../browser/controlpanel.py:39
 msgid "help_google_maps_api_keys"
 msgstr "Legg til Google Maps API nøkler. Du må benytte klientside url'en hvor nettstedet kan nås."
 
+#. Default: ""
+#: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
 msgstr "Velg det ikonet som skal brukes som markør på kartet."
 
 #. Default: "Default coordinates"
-#: ./browser/controlpanel.py:84
+#: ../browser/controlpanel.py:79
 msgid "label_default_coordinates"
 msgstr "Initielle koordinater"
 
 #. Default: "Default map type"
-#: ./browser/controlpanel.py:74
+#: ../browser/controlpanel.py:69
 msgid "label_default_map_type"
 msgstr "Initiell karttype"
 
+#. Default: "Location"
+#: Content Type: Location, Field: geolocation
 msgid "label_geolocation"
 msgstr "Lokasjon"
 
 #. Default: "Google AJAX Search API Keys"
-#: ./browser/controlpanel.py:56
+#: ../browser/controlpanel.py:51
 msgid "label_google_ajax_search_api_keys"
 msgstr "Google AJAX Search API Nøkler"
 
 #. Default: "Google Maps API Keys"
-#: ./browser/controlpanel.py:42
+#: ../browser/controlpanel.py:37
 msgid "label_google_maps_api_keys"
 msgstr "Google Maps API Nøkler"
 
+#. Default: "Marker icon"
+#: Content Type: Location, Field: markerIcon
 msgid "label_markericon"
 msgstr "Markørikon"
 
 #. Default: "Satellite images"
-#: ./browser/controlpanel.py:32
+#: ../browser/controlpanel.py:27
 msgid "label_satellite_map"
 msgstr "Satellittbilder"
 
 #. Default: "Satellite images with schematic overlay"
-#: ./browser/controlpanel.py:35
+#: ../browser/controlpanel.py:30
 msgid "label_satellite_schematic_map"
 msgstr "Satellittbilder med skjematisk overlagring"
 
 #. Default: "Schematic map"
-#: ./browser/controlpanel.py:29
+#: ../browser/controlpanel.py:24
 msgid "label_schematic_map"
 msgstr "Skjematisk kart"
 

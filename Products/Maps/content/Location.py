@@ -11,7 +11,7 @@ from Products.Maps.config import *
 from Products.ATContentTypes.atct import *
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.ATContentTypes.configuration import zconf
-from Products.CMFPlone import PloneMessageFactory as _
+from Products.Maps import MapsMessageFactory as _
 
 from Products.Maps.adapters import GeoLocation
 from Products.Maps.field import LocationWidget, LocationField

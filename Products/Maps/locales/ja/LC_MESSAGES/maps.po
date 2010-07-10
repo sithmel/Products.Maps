@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2009-09-30 14:08+0000\n"
+"POT-Creation-Date: 2010-07-10 13:16+0000\n"
 "PO-Revision-Date: 2007-09-30 17:21+0000\n"
 "Last-Translator: Jay Hotta <naotaka@we.care.jp>\n"
 "Language-Team: \n"
@@ -14,93 +14,102 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: maps\n"
 
-
-#. Default: "Dummy to get i18ndude working"
-#: ./skins/Maps/maps-config.js.pt:6
-msgid "Dummy to get i18ndude working"
+#: ../validator.py:34
+msgid " Validation failed. Coordinates must be an decimal numbers. "
 msgstr ""
 
-#: ./content/Location.py:158
+#: ../validator.py:36
+msgid " Validation failed. Latitude not in bounds [-90, 90]. "
+msgstr ""
+
+#: ../validator.py:38
+msgid " Validation failed. Longitude not in bounds [-180, 180]. "
+msgstr ""
+
+#: ../content/Location.py:149
 msgid "Info"
 msgstr ""
 
-#: ./browser/controlpanel.py:51
+#: ../browser/controlpanel.py:46
 msgid "Key"
 msgstr ""
 
-msgid "Map view"
-msgstr ""
-
-#: ./browser/controlpanel.py:145
+#: ../browser/controlpanel.py:140
 msgid "Maps settings"
 msgstr "Maps設定"
 
 #. Default: "Specify the default coordinates for new locations."
-#: ./browser/controlpanel.py:86
+#: ../browser/controlpanel.py:81
 msgid "help_default_coordinated"
 msgstr "地図の基本となる位置情報を指定してください。"
 
 #. Default: "Select the default map type initially used on maps."
-#: ./browser/controlpanel.py:76
+#: ../browser/controlpanel.py:71
 msgid "help_default_map_type"
 msgstr "初期値となるマップの種類を指定してください。"
 
+#. Default: ""
+#: Content Type: Location, Field: geolocation
 msgid "help_geolocation"
 msgstr "住所を入力して地図を表示することができます（東京都千代田区永田町１−１）。国の名前は住所の後にコンマで区切って追加して検索してください。 又、経度、緯度を入力して地図を表示することもできます。"
 
 #. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ./browser/controlpanel.py:58
+#: ../browser/controlpanel.py:53
 msgid "help_google_ajax_search_api_keys"
 msgstr "サイトを表示するために使われてているURLによって取得したGoogle AJAX Search API keyを追加してください。Google Mapsのgeocodingでは探すことのできない位置を探すために使います。"
 
 #. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ./browser/controlpanel.py:44
+#: ../browser/controlpanel.py:39
 msgid "help_google_maps_api_keys"
 msgstr "サイトを表示するために使われてているURLによって取得したGoogle Maps API keyを追加してください。（ドメインごとに必要です）"
 
+#. Default: ""
+#: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
 msgstr "地図の中でポイントの位置を示すアイコンを選んでください。"
 
-
-
 #. Default: "Default coordinates"
-#: ./browser/controlpanel.py:84
+#: ../browser/controlpanel.py:79
 msgid "label_default_coordinates"
 msgstr "基本の位置（住所または、経度緯度）"
 
 #. Default: "Default map type"
-#: ./browser/controlpanel.py:74
+#: ../browser/controlpanel.py:69
 msgid "label_default_map_type"
 msgstr "基本地図の選択"
 
+#. Default: "Location"
+#: Content Type: Location, Field: geolocation
 msgid "label_geolocation"
 msgstr "ロケーション地図"
 
 #. Default: "Google AJAX Search API Keys"
-#: ./browser/controlpanel.py:56
+#: ../browser/controlpanel.py:51
 msgid "label_google_ajax_search_api_keys"
 msgstr ""
 
 #. Default: "Google Maps API Keys"
-#: ./browser/controlpanel.py:42
+#: ../browser/controlpanel.py:37
 msgid "label_google_maps_api_keys"
 msgstr ""
 
+#. Default: "Marker icon"
+#: Content Type: Location, Field: markerIcon
 msgid "label_markericon"
 msgstr "Marker icon（位置アイコン）"
 
 #. Default: "Satellite images"
-#: ./browser/controlpanel.py:32
+#: ../browser/controlpanel.py:27
 msgid "label_satellite_map"
 msgstr "航空写真"
 
 #. Default: "Satellite images with schematic overlay"
-#: ./browser/controlpanel.py:35
+#: ../browser/controlpanel.py:30
 msgid "label_satellite_schematic_map"
 msgstr "地図＋写真"
 
 #. Default: "Schematic map"
-#: ./browser/controlpanel.py:29
+#: ../browser/controlpanel.py:24
 msgid "label_schematic_map"
 msgstr "地図"
 
@@ -108,3 +117,4 @@ msgstr "地図"
 #: ./skins/Maps/maps-config.js.pt:15
 msgid "text_googlemaps_location_not_found"
 msgstr "'[LOCATION]'は、見つけられませんでした。"
+

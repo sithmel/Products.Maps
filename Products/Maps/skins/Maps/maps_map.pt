@@ -34,7 +34,7 @@
             <img src="" tal:replace="structure python:view.iconTagForMarker(marker)" />
             <a href=""
                tal:attributes="href marker/url"
-               tal:content="marker/title"> Title </a>
+               tal:content="marker/title"> <tal:comment replace="nothing">Title</tal:comment> </a>
           </dt>
           <dd class="tab"
               title="Description"
@@ -57,7 +57,7 @@
               tal:condition="marker/layers | nothing">
             <ul>
               <li tal:repeat="layer marker/layers"
-                  tal:content="layer">Layer</li>
+                  tal:content="layer"><tal:comment replace="nothing">Layer</tal:comment></li>
             </ul>
           </dd>
           <tal:block tal:condition="marker/related_items | nothing">

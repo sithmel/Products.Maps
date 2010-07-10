@@ -1,3 +1,5 @@
+from zope.i18nmessageid import MessageFactory
+
 from Products.CMFCore.utils import ContentInit
 from Products.CMFCore.DirectoryView import registerDirectory
 
@@ -9,6 +11,8 @@ from Products.GenericSetup import profile_registry
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from Products.Maps import config
+
+MapsMessageFactory = MessageFactory('maps')
 
 registerDirectory(config.SKINS_DIR, config.GLOBALS)
 

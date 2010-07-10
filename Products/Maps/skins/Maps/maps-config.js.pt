@@ -3,7 +3,7 @@
              tal:define="config context/@@maps_configuration">
 
 /*
- <span tal:omit-tag="" i18n:translate="">Dummy to get i18ndude working</span>
+ <span tal:omit-tag="" i18n:translate=""><tal:comment replace="nothing">Dummy to get i18ndude working</tal:comment></span>
 */
 
 var mapsConfig = {
