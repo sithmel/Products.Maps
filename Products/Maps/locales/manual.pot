@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2007-01-23 18:17+0200\n"
+"POT-Creation-Date: 2010-07-10 13:16+0000\n"
 "PO-Revision-Date: 2007-01-23 18:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -15,22 +15,28 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: maps\n"
 
+#. Default: ""
+#: Content Type: Location, Field: geolocation
+msgid "help_geolocation"
+msgstr ""
+
+#. Default: ""
+#: Content Type: Location, Field: markerIcon
+msgid "help_markericon"
+msgstr ""
+
+#. Default: "Location"
+#: Content Type: Location, Field: geolocation
+msgid "label_geolocation"
+msgstr ""
+
+#. Default: "Marker icon"
+#: Content Type: Location, Field: markerIcon
+msgid "label_markericon"
+msgstr ""
+
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
 msgid "text_googlemaps_location_not_found"
 msgstr ""
 
-msgid "label_geolocation"
-msgstr ""
-
-msgid "help_geolocation"
-msgstr ""
-
-msgid "label_markericon"
-msgstr ""
-
-msgid "help_markericon"
-msgstr ""
-
-msgid "Map view"
-msgstr ""
