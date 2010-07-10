@@ -4,6 +4,11 @@ Changelog
 2.0.4 - unreleased
 ------------------
 
+- Added support missing plone domain on i18n directory.
+- Added Spanish translation.
+- Updated full support for i18n and generate new template for l10n.
+  [macagua]
+
 - Improve map initialization when the location field is displayed in an other 
   schemata. Merged from branches/map-in-another-schemata.
   Notes: Width and height must be define in the theme's styles, if you put the 
