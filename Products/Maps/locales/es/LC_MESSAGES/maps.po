@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
 "POT-Creation-Date: 2010-07-10 13:16+0000\n"
-"PO-Revision-Date: 2010-07-10 11:25-0400\n"
+"PO-Revision-Date: 2010-07-11 00:37-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: Spanish <plone-conosur@lists.plone.org>\n"
 "MIME-Version: 1.0\n"
@@ -58,19 +58,13 @@ msgstr "Usted puede encontrar una dirección o una parte cada uno de estas separ
 
 #. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
 #: ../browser/controlpanel.py:53
-#, fuzzy
 msgid "help_google_ajax_search_api_keys"
-msgstr ""
-"Las claves del API de Google AJAX Search para la dirección que utilizaran los visitantes para acceder a su sitio. Obtenga las claves en el sitio http://code.google.com/apis/ajaxsearch/signup.html\n"
-"Las claves del API de Google AJAX Search. Usted tiene que usar la url del lado del cliente en el que su sitio sea visible. Esta clave se utiliza para buscar lugares que no fueron encontrados con el valor predeterminado de geocodificación de Google Maps.\"Google AJAX Search API llaves. Usted tiene que usar la url del lado del cliente en el que su sitio sea visible. Esta clave se utiliza para buscar lugares que no fueron encontrados con el valor predeterminado de geocodificación de Google Maps."
+msgstr "Agregar las claves del API de Google AJAX Search para la dirección que utilizaran los visitantes para acceder a su sitio. Esta clave se utiliza para buscar lugares que no fueron encontrados con el valor predeterminado de geocodificación de Google Maps. Obtenga las claves en el sitio http://code.google.com/apis/ajaxsearch/signup.html"
 
 #. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
 #: ../browser/controlpanel.py:39
-#, fuzzy
 msgid "help_google_maps_api_keys"
-msgstr ""
-"Agregue la clave de la API de Google Maps para la dirección (s) que utilizan los visitantes para acceder a su sitio. Consigue las llaves en el sitio http://www.google.com/apis/maps/signup.html\n"
-"Google Maps API llaves. Usted tiene que usar la url del lado del cliente en el que su sitio sea visible."
+msgstr "Agregar las claves de la API de Google Maps para la dirección que utilizan los visitantes para acceder a su sitio. Obtenga las llaves en el sitio http://www.google.com/apis/maps/signup.html"
 
 #. Default: ""
 #: Content Type:
@@ -116,7 +110,7 @@ msgstr "Marca de icono"
 #. Default: "Satellite images"
 #: ../browser/controlpanel.py:27
 msgid "label_satellite_map"
-msgstr "Imagenes satelital"
+msgstr "Imágenes satelital"
 
 #. Default: "Satellite images with schematic overlay"
 #: ../browser/controlpanel.py:30
@@ -126,7 +120,7 @@ msgstr "Imágenes de satélite con superposición esquemática"
 #. Default: "Schematic map"
 #: ../browser/controlpanel.py:24
 msgid "label_schematic_map"
-msgstr "Mapa esquematico"
+msgstr "Mapa esquemático"
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
