@@ -17,15 +17,15 @@ msgstr ""
 
 #: ../validator.py:34
 msgid " Validation failed. Coordinates must be an decimal numbers. "
-msgstr ""
+msgstr "Echec de validation: les coordonnées doivent être des nombres décimaux."
 
 #: ../validator.py:36
 msgid " Validation failed. Latitude not in bounds [-90, 90]. "
-msgstr ""
+msgstr "Echec de validation: la latitude doit être comprise entre -90 et 90."
 
 #: ../validator.py:38
 msgid " Validation failed. Longitude not in bounds [-180, 180]. "
-msgstr ""
+msgstr "Echec de validation: la longitude doit être comprise entre -180 et 180."
 
 #: ../content/Location.py:149
 msgid "Info"

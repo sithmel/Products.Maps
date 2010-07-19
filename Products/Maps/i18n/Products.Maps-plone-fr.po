@@ -18,7 +18,7 @@ msgstr ""
 #. Default: "Blue Marker"
 #: ../skins/Maps/marker-blue.png.metadata:2
 msgid "Blue Marker"
-msgstr ""
+msgstr "Marqueur bleu"
 
 #: ../profiles/default/types/GeoLocation.xml
 msgid "Edit"
@@ -27,7 +27,7 @@ msgstr ""
 #. Default: "Green Marker"
 #: ../skins/Maps/marker-green.png.metadata:2
 msgid "Green Marker"
-msgstr ""
+msgstr "Marqueur vert"
 
 #: ../profiles/default/types/GeoLocation.xml
 msgid "History"
@@ -35,31 +35,31 @@ msgstr ""
 
 #: ../profiles/default/types/GeoLocation.xml
 msgid "Location"
-msgstr ""
+msgstr "Localisation"
 
 #. Default: "Location Icon"
 #: ../skins/Maps/location_icon.gif.metadata:2
 msgid "Location Icon"
-msgstr ""
+msgstr "Icône de localisation"
 
 #: ../profiles/default/types/GeoLocation.xml
 msgid "Location content type."
-msgstr ""
+msgstr "Type de contenu Localisation"
 
 #. Default: "Location view"
 #: ../skins/Maps/maps_location.pt.metadata:2
 msgid "Location view"
-msgstr ""
+msgstr "Vue localisation"
 
 #. Default: "Magenta Marker"
 #: ../skins/Maps/marker-magenta.png.metadata:2
 msgid "Magenta Marker"
-msgstr ""
+msgstr "Marqueur magenta"
 
 #. Default: "Map view"
 #: ../skins/Maps/maps_map.pt.metadata:2
 msgid "Map view"
-msgstr ""
+msgstr "Vue cartographique"
 
 #. Default: "Maps"
 #: ../profiles/default/actionicons.xml
@@ -68,17 +68,17 @@ msgstr ""
 
 #: ../profiles/default/actionicons.xml
 msgid "Maps settings"
-msgstr ""
+msgstr "Configuration de Maps"
 
 #. Default: "Marker shadow"
 #: ../skins/Maps/shadow50.png.metadata:2
 msgid "Marker shadow"
-msgstr ""
+msgstr "Marqueur ombré"
 
 #. Default: "Red Marker"
 #: ../skins/Maps/marker-red.png.metadata:2
 msgid "Red Marker"
-msgstr ""
+msgstr "Marqueur rouge"
 
 #: ../profiles/default/types/GeoLocation.xml
 msgid "View"
@@ -87,5 +87,5 @@ msgstr ""
 #. Default: "Yellow Marker"
 #: ../skins/Maps/marker-yellow.png.metadata:2
 msgid "Yellow Marker"
-msgstr ""
+msgstr "Marqueur jaune"
 
