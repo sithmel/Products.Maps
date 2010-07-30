@@ -499,8 +499,8 @@ var mapsGoogleMaps = function() {
 // end namespace
 }();
 
-mapsGoogleMaps.loadJS("http://maps.google.com/maps?file=api&v=2&key="+mapsConfig.google.apikey);
+mapsGoogleMaps.loadJS("http://maps.google.com/maps?file=api&v=2&hl="+mapsConfig.google.locale+"&key="+mapsConfig.google.apikey);
 if (mapsConfig.google.ajaxsearchkey) {
-    mapsGoogleMaps.loadJS("http://www.google.com/uds/api?file=uds.js&amp;v=1.0&key="+mapsConfig.google.ajaxsearchkey);
+    mapsGoogleMaps.loadJS("http://www.google.com/uds/api?file=uds.js&amp;v=1.0&hl="+mapsConfig.google.locale+"&key="+mapsConfig.google.ajaxsearchkey);
 }
 registerEventListener(window, 'load', mapsGoogleMaps.init);

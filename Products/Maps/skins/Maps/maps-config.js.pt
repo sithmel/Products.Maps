@@ -18,7 +18,8 @@ var mapsConfig = {
     maxzoomlevel: 13,
     initialzoomlevel: 12,
 
-    markericons: <tal:block tal:replace="structure config/marker_icons" />
+    markericons: <tal:block tal:replace="structure config/marker_icons" />,
+    locale: '<tal:block tal:replace="request/LANGUAGE" />'
   }
 };
 
