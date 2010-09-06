@@ -27,9 +27,7 @@
     <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
         <metal:fill fill-slot="widget_body">
           <div class="googleMapEdit"
-               tal:define="value accessor;
-                           Iterator python:modules['Products.CMFPlone'].IndexIterator;
-                           tabindex python:Iterator(mainSlot=False)">
+               tal:define="value accessor">
             <input type="text"
                    name=""
                    id=""
@@ -38,8 +36,7 @@
                    tabindex="#"
                    tal:attributes="name string:${fieldName}:tuple;
                                    id string:${fieldName}_latitude;
-                                   value python:value[0];
-                                   tabindex tabindex/next;"
+                                   value python:value[0]"
             />
             <input type="text"
                    name=""
@@ -49,8 +46,7 @@
                    tabindex="#"
                    tal:attributes="name string:${fieldName}:tuple;
                                    id string:${fieldName}_longitude;
-                                   value python:value[1];
-                                   tabindex tabindex/next;"
+                                   value python:value[1]"
             />
           </div>
         </metal:fill>
