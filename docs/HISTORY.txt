@@ -4,6 +4,9 @@ Changelog
 2.0.4 - unreleased
 ------------------
 
+- Removed IndexIterator since it was removed in Plone 4.0
+  [pbauer] 
+
 - Added support missing plone domain on i18n directory.
 - Added Spanish translation.
 - Updated full support for i18n and generate new template for l10n.
