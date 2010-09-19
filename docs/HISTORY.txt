@@ -5,17 +5,17 @@ Changelog
 ------------------
 
 - Removed IndexIterator since it was removed in Plone 4.0
-  [pbauer] 
+  [pbauer]
 
 - Added support missing plone domain on i18n directory.
 - Added Spanish translation.
 - Updated full support for i18n and generate new template for l10n.
   [macagua]
 
-- Improve map initialization when the location field is displayed in an other 
+- Improve map initialization when the location field is displayed in an other
   schemata. Merged from branches/map-in-another-schemata.
-  Notes: Width and height must be define in the theme's styles, if you put the 
-  field in an other schemata: 
+  Notes: Width and height must be define in the theme's styles, if you put the
+  field in an other schemata:
   div.googleMapEdit {
       width:756px; /* must be in pixels */
       height:455px; /* must be in pixels */
