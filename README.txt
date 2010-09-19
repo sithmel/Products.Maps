@@ -23,13 +23,12 @@ Additionally Maps has the following features:
 Installation
 ------------
 
-In Plone 3.0 Maps shows up in the "Add-ons" configuration panel.
+Maps shows up in the "Add-ons" configuration panel.
 
 To use Google Maps you need an "Google Maps API key from
 Google":http://www.google.com/apis/maps/signup.html.
 
-In Plone 3.0 you can use the "Maps settings" configuration panel to add
-keys.
+You can use the "Maps settings" configuration panel to add keys.
 
 You need to use the URL at which your site is normally available from the
 outside (most likely your own domain). You can just use the root of your site
@@ -58,16 +57,13 @@ regions.
 To use the Google AJAX Search fallback, you need an "Google AJAX Search API
 key from Google":http://code.google.com/apis/ajaxsearch/signup.html.
 
-In Plone 3.0 you can use the "Maps settings" configuration panel to add
-keys.
-
 The same rules as for the map key apply, see above.
 
 
 Dependencies
 ------------
 
-- Plone 3.0.x or Plone 3.1.x on Zope 2.10.x
+- Plone 4.x
 
 
 Credits

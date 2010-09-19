@@ -4,6 +4,9 @@ Changelog
 2.1.0 - unreleased
 ------------------
 
+- Update documentation to require Plone 4.x.
+  [hannosch]
+
 - Update license to GPL version 2 only.
   [hannosch]
 
