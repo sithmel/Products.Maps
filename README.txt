@@ -23,7 +23,7 @@ Additionally Maps has the following features:
 Installation
 ------------
 
-In Plone 3.0 Maps shows up in the "Add-on Products" configuration panel.
+In Plone 3.0 Maps shows up in the "Add-ons" configuration panel.
 
 To use Google Maps you need an "Google Maps API key from
 Google":http://www.google.com/apis/maps/signup.html.
@@ -88,7 +88,6 @@ Development sponsored by
 The "Student Services of Bergen, Norway":http://sib.no
 
 "University of Oxford":http://medsci.ox.ac.uk (Medical Sciences Division)
-
 
 
 A Jarn AS product
