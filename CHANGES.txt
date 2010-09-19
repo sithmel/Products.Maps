@@ -4,6 +4,9 @@ Changelog
 2.1.0 - unreleased
 ------------------
 
+- Update license to GPL version 2 only.
+  [hannosch]
+
 - Removed IndexIterator since it was removed in Plone 4.0.
   [pbauer]
 
