@@ -59,6 +59,47 @@ key from Google":http://code.google.com/apis/ajaxsearch/signup.html.
 
 The same rules as for the map key apply, see above.
 
+Implementing custom content with map field
+------------------------------------------
+
+If you want to add location foeld to your custom content type, you should
+implement the following steps:
+
+Add GeoLocation field::
+
+    from Products.Maps.field import LocationWidget, LocationField
+    from Products.Maps.interfaces import IMapEnabled, ILocation
+
+    MyContentSchema = ...
+
+        LocationField('geolocation',
+                  required=False,
+                  searchable=False,
+                  validators=('isGeoLocation',),
+                  widget = LocationWidget(label = u'Event location'),
+        ),
+        ... 
+
+Update your class definition::
+
+    class MyContent(ATCTContent):
+        """ my content description """
+        implements(IMyContent, IMapEnabled, ILocation)
+    
+        ... 
+
+        def getMarkerIcon(self):
+            """ Can be implemented as select field. See Maps.Location content """
+            return "Red Marker"
+
+Add following snippet to custom content view/template::
+
+    <div class="googleMapView googleMapLocation"
+         tal:define="view context/@@maps_googlemaps_view">
+        <dl metal:use-macro="here/maps_map/macros/markers">
+        </dl>
+    </div>
+
 
 Dependencies
 ------------
