@@ -11,6 +11,10 @@ Changelog
 - added notes about implementation geolocation field to custom content type.
   [naro]
 
+- Allow maps_map to be used as view template without being the default view
+  (http://plone.org/products/maps/issues/32)
+  [khink]
+
 2.1.0 - 2010-09-19
 ------------------
 
