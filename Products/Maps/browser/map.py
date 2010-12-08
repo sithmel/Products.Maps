@@ -58,6 +58,4 @@ class FolderMapView(BaseMapView):
     def enabled(self):
         if self.map is None:
             return False
-        if self.context.getLayout() == "maps_map":
-            return True
-        return False
+        return True
