@@ -8,6 +8,12 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <include file="profiles.zcml" />
+
+  <!-- catalog indexes-->
+  <adapter name="latitude" factory=".indexers.getLatitude" />
+  <adapter name="longitude" factory=".indexers.getLongitude" />
+
   <permission
      id="Products.Maps.AddGeoLocation"
      title="Maps: Add GeoLocation"
