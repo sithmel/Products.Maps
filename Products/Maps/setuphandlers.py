@@ -1,7 +1,7 @@
 import logging
 from Products.CMFCore.utils import getToolByName
 # The profile id of your package:
-PROFILE_ID = 'profile-Maps:default'
+PROFILE_ID = 'profile-Products.Maps:default'
 
 
 def add_catalog_indexes(context, logger=None):

@@ -32,11 +32,4 @@ def initialize(context):
         fti = ftis,
     ).initialize(context)
 
-    # Register the extension profile
-    profile_registry.registerProfile('default',
-                                     'Maps',
-                                     'maps',
-                                     'profiles/default',
-                                     'Maps',
-                                     EXTENSION,
-                                     IPloneSiteRoot)
+
