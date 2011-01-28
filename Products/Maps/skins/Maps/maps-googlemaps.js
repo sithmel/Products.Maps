@@ -1,6 +1,6 @@
 
 // start namespace
-var mapsGoogleMaps = function() {
+var mapsGoogleMaps = function($) {
     // local shadows for improved packing
 
     var _mapsConfig = mapsConfig;
@@ -180,6 +180,7 @@ var mapsGoogleMaps = function() {
                     $alt = $icon.alt;
                     $icon = _markericons[$alt];
                     $data['icon'] = $icon;
+                    $data['type'] = $alt;
                 }
                 continue;
             }
@@ -288,6 +289,144 @@ var mapsGoogleMaps = function() {
 
         return $data;
     };
+
+    function _initMapSearchNearest($node) {
+        var $geocoder = new GClientGeocoder();
+        $($node).addClass('googleMapActive');
+        var $searchbox = $('<div class="googleMapSearch"></div>').insertBefore($node);
+        var $inputbox = $('<input class="googleMapImHere" type="text" value="">').appendTo($searchbox);
+        var $maxlocations = $('<select class="googleMapSearchMaxLocations"></select>').appendTo($searchbox);
+        for(var i = 1;i < 11;i++){
+             $maxlocations.append('<option value="' + i.toString() + '">' + i.toString() + '</option>');
+        }
+
+
+        var $map_node = $('<div />').addClass('googleMapPane').appendTo($node);
+        var $legend = $('<div />').addClass('googleMapLegend').insertAfter($node);
+        var $results = $('<div />').addClass('googleMapSearchResults').insertAfter($node);
+
+
+
+        var $locations = _getLocations($node);
+        var $$layers = _getLayers($locations);
+        var $bounds = _getBounds($locations);
+        var $center = $bounds.getCenter();
+
+        var $map = new GMap2($map_node[0]);
+
+        $map.addMapType(G_PHYSICAL_MAP);
+//        var $zoom_level = $map.getBoundsZoomLevel($bounds);
+//        $map.setCenter($center, $zoom_level, _defaultmaptype);
+        $map.addControl(new GLargeMapControl());
+        if (($$layers['enabled_names'].length > 0) && ($locations.length > 1)) {
+            $map.addControl(new _LayerControl($locations, $$layers));
+        }
+        if (_mapsConfig_google.selectablemaptypes) {
+            $map.addControl(new GMapTypeControl());
+        }
+
+        
+        var load = function (center,markers){
+            //TODO filter on markers ()
+            // add to $locations the distance from the center:
+            $.each($locations,function (){
+                this['distance_from_center'] = center.distanceFrom(this.point);
+            });
+
+            $locations.sort(function (a,b){
+                if (a.distance_from_center > b.distance_from_center){
+                    return 1
+                }
+                else {
+                    return -1
+                }
+            });
+            // filter by distance to center
+            var newlocations = $locations.slice(0, $maxlocations.val());
+            // draw new overlays
+            // first get an "I'm here" pointer
+            var $data = {
+                icon: _markericons['Yellow Marker'],
+                point: center,
+                tabs: [{title:'Here',node:$('<dl class="mapsMarker"><dd class="title">You are here!</dd><dt class="tab">xxx</dt></dl>')[0]}]
+            }
+            _createMarker($data)
+            //newlocations.push($data);
+            newlocations.unshift($data);
+            //calculate bounds and center
+            $bounds = _getBounds(newlocations);
+            var $mapcenter = $bounds.getCenter();
+
+            $zoom_level = $map.getBoundsZoomLevel($bounds);
+
+//            $map.setCenter($mapcenter, $zoom_level, _defaultmaptype);
+            $map.setCenter($mapcenter, $zoom_level);
+            // add overlays
+            $map.clearOverlays();//empty the map
+            $results.empty();// empty the results
+            var newlocations_len = newlocations.length
+            for (var i = 0; i < newlocations_len; i++) { 
+                $map.addOverlay(newlocations[i]['marker']);
+                // add results
+                (function (l){
+                    var node = $(l.tabs[0].node);
+                    var title = node.children('.title').html();
+                    var description = node.children('.tab').html();
+                    var distance = l.distance_from_center && parseInt(l.distance_from_center) + " m" || '';
+                    
+                    var imageurl = l.icon.image
+                    $('<div class="googleMapResult">\
+                    <span class="googleMapResultImg">\
+                    <img src="' + imageurl +'" />\
+                    </span>\
+                    <span class="googleMapResultTitle">' + title + '</span>\
+                    <span class="googleMapResultDesc">' + description + '</span>\
+                    <span class="googleMapResultDistance">' + distance + '</span>\
+                    </div>')
+                    .appendTo($results)
+                    .find('.googleMapResultImg')
+                    .click(function (){
+                        $map.panTo(l['point']);
+                        l['marker'].openInfoWindow(l.info_windows);
+                    });
+                    
+                })(newlocations[i])
+
+            }
+            
+        };
+
+
+
+
+        var $button = $('<input type="button" value="search" />').appendTo($searchbox)
+        .click(function (){
+            var $this = $(this);
+            var $input = $this.parent().find('.googleMapImHere');
+            $geocoder.getLatLng($input.val(),function (latlng){
+                if(!latlng){
+                    return ; // log error ???
+                }
+                load(latlng);
+            });
+        });
+        // TODO: activate geolocation 
+        (function (){
+            var success = function (position){
+//                var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                $inputbox.val(position.coords.latitude + " " + position.coords.longitude);
+                $button.click();
+            }
+            var error = function (msg){
+            }
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(success, error);
+            }
+        })()
+
+    };
+
 
     function _initMap($node) {
         var $locations = _getLocations($node);
@@ -432,8 +571,8 @@ var mapsGoogleMaps = function() {
         $node.appendChild($$map_node);
         $node.appendChild($location);
 
-        $map_width = parseInt(jq($node).css('width'));
-        $map_height = parseInt(jq($node).css('height'));
+        $map_width = parseInt($($node).css('width'));
+        $map_height = parseInt($($node).css('height'));
         if (isNaN($map_width) || isNaN($map_height)) {
             var $map = new GMap2($$map_node);
         } else {
@@ -482,7 +621,8 @@ var mapsGoogleMaps = function() {
 
                 var $maps = _cssQuery("div.googleMapView");
                 for (var i=0; i < $maps.length; i++) {
-                    _initMap($maps[i]);
+                    _initMapSearchNearest($maps[i]);
+    //                _initMap($maps[i]);
                 }
                 var $maps = _cssQuery("div.googleMapEdit");
                 for (var i=0; i < $maps.length; i++) {
@@ -497,7 +637,7 @@ var mapsGoogleMaps = function() {
 
     };
 // end namespace
-}();
+}(jQuery);
 
 mapsGoogleMaps.loadJS("http://maps.google.com/maps?file=api&v=2&key="+mapsConfig.google.apikey);
 if (mapsConfig.google.ajaxsearchkey) {
