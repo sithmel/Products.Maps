@@ -97,6 +97,8 @@ class Location(ATCTContent):
         marker_icons = config.marker_icons
         result = DisplayList()
         for icon in marker_icons:
+            if icon['name'].startswith('_'):
+                continue
             result.add(icon['name'], icon['name'])
         return result
 

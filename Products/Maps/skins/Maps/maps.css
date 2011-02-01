@@ -17,3 +17,53 @@
 .googleMapLocation .googleMapPane {
     height: 25em;
 }
+
+.googleMapSearch{
+     float:left;
+     width:20%;
+}
+.googleMapSearchNearest{
+    float:left;
+    width:80%;
+}
+
+.googleMapAdvancedSearch{
+    border:thin solid #75AD0A;
+    padding:5px;
+    margin-right:8px;
+}
+
+.googleMapSearch  h3{
+    margin-top:1em;
+    background-color:#75AD0A;
+    margin-right:8px;
+    color:white;
+    padding:2px;
+    text-align:center;
+}
+
+.googleMapMaxLocation, .googleMapLegend{
+    padding:3px;
+}
+.googleMapResult{
+    margin-right:8px;
+    padding:2px;
+}
+
+.googleMapSearchResults .googleMapResult.resultSelected {
+    background-color:yellow;
+}
+
+.googleMapSearchResults .googleMapResultDir{
+    text-align:right;
+}
+
+.googleMapHere{
+    padding:5px;
+}
+
+.googleMapSearchResults .googleMapResultNumber{
+    font-size:2em;
+    font-weight:bold;
+    color:#444444;
+}
