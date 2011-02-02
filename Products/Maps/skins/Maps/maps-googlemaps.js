@@ -299,36 +299,42 @@ var mapsGoogleMaps = function($) {
         var $searchbox = (function (){
 
             var $search = $('<div class="googleMapSearch">\
+            <h4>' + _mapsConfig_google.label_search + '</h4>\
             <input class="googleMapImHere inputLabel" name="searchtxt" title="Search near to ..." type="text" value="">\
-            <input type="submit" value="Search" />\
+            <input type="submit" value="' + _mapsConfig_google.label_search + '" />\
             </div>').insertBefore($node);
 
             if (navigator.geolocation) {
-                $('<input id="googleMapAskTheBrowser" value="ask" type="checkbox" />')
+                $('<br />').appendTo($search);
+                $('<input id="googleMapAskTheBrowser" name="autogeolocation" value="ask" type="checkbox" />')
                 .appendTo($search)
                 .click(function (){
                     var $this = $(this);
                     if ($this.is(':checked')){
                        $this.prevAll('[type=text]').attr('disabled','disabled');
-                       
-//                       hide();
                    }
                    else{
                        $this.prevAll('[type=text]').attr('disabled','');
-//                       $this.prev().show();
                    }
                 });
-                $('<label for="askTheBrowser">My position</label>').appendTo($search);
+                $('<label for="googleMapAskTheBrowser">' + _mapsConfig_google.label_my_position +'</label>').appendTo($search);
             }
-    
+            $search.wrap('<div class="googleMapSearchWrapper" />')
             return $search;
             
         })();
 
-        var $advancedsearchtitle = $('<h3>Advanced Search</h3>')
+        var $advancedsearchtitle = $('<h3><div class="openclosearrow">+</div>' + _mapsConfig_google.label_advanced_search + '</h3>')
         .appendTo($searchbox)
         .click(function (){
-            $(this).toggleClass('open').next().slideToggle();
+            var $this = $(this);
+            $this.toggleClass('open').next().slideToggle();
+            if ($this.hasClass('open')){
+                $this.find('.openclosearrow').text('-');
+            }
+            else{
+                $this.find('.openclosearrow').text('+');
+            }
             
         });
         var $advancedsearch = $('<div class="googleMapAdvancedSearch" />')
@@ -336,7 +342,7 @@ var mapsGoogleMaps = function($) {
         .hide();
 
         var $maxlocations = (function (){
-            var $ml = $('<div class="googleMapMaxLocation"><h4>Max results</h4> \
+            var $ml = $('<div class="googleMapMaxLocation"><h5>' + _mapsConfig_google.label_max_results + '</h5> \
             <select name="maxlocations" class="googleMapSearchMaxLocations">\
             </select>\
             </div>')
@@ -355,18 +361,18 @@ var mapsGoogleMaps = function($) {
         })();
         
         var $legend = (function (){
-            var legend = $('<div class="googleMapLegend"><h4>Places</h4></div>')
+            var legend = $('<div class="googleMapLegend"><h5>' + _mapsConfig_google.label_places + '</h5></div>')
             .appendTo($advancedsearch)
             // populate legend
             var i = 0;
-            for (prop in _markericons){
+            for (var prop in _markericons){
                 if(prop === '_YAH'){
                     continue;
                 }
                 i++;
                 if (_markericons.hasOwnProperty(prop)){
                     $('<div class="marker">\
-                    <input checked="checked" id="marker' + i.toString() +  '" type="checkbox" value="' + prop + '" />\
+                    <input checked="checked" name="marker' + i.toString() + '" id="marker' + i.toString() +  '" type="checkbox" value="' + prop + '" />\
                     <label for="marker' + i.toString() +  '" >\
                     <img src="' + _markericons[prop].image + '" alt="' + prop + '"/>' + prop + '\
                     </label>\
@@ -377,7 +383,31 @@ var mapsGoogleMaps = function($) {
 
         })();
 
+        var $hideshow = $('<div>&laquo;</div>')
+        .addClass('googleMapSearchHide')
+        .appendTo($node)
+        .click(function (){
+            var $this = $(this).toggleClass('hide');
+            var $context = $this.closest('#googleMapForm');
+            var $search = $context.find('.googleMapSearchWrapper');
+            var $map = $context.find('.googleMapSearchNearest');
+            if($this.hasClass('hide')){
+                $search.animate({marginLeft:'-500px'},'fast',function (){
+                    $map.animate({width:'100%'},'fast');
+                    $this.html('&raquo;')
+                });
+
+            }
+            else{
+                $map.animate({width:'80%'},'fast',function (){
+                    $search.animate({marginLeft:'0px'},'fast');
+                    $this.html('&laquo;')
+                });
+            }
+            
+        });
         var $map_node = $('<div />').addClass('googleMapPane').appendTo($node);
+        var $directions_title = $('<div>' + _mapsConfig_google.label_directions + ': <span>place</span></div>').addClass('googleMapSearchDirsTitle').appendTo($node).hide();
         var $directions = $('<div />').addClass('googleMapSearchDirs').appendTo($node);
         var $results = $('<div />').addClass('googleMapSearchResults').appendTo($searchbox);
 
@@ -426,6 +456,7 @@ var mapsGoogleMaps = function($) {
                     return -1
                 }
             });
+            
             // filter by distance to center
             var newlocations = locations.slice(0, maxlocations);
             // draw new overlays
@@ -470,6 +501,7 @@ var mapsGoogleMaps = function($) {
                         </div>')
                         .appendTo($results)
                         .find('.googleMapHereImg').click(function (){
+                           $directions_title.hide();
                            $(this).parent()
                            .siblings('.googleMapResult')
                            .removeClass('resultSelected');
@@ -479,7 +511,9 @@ var mapsGoogleMaps = function($) {
                             $map.setCenter($mapcenter, $zoom_level);                        
                             return false;
                         });
-                        $('<h4>Results</h4>').appendTo($results);
+                        $('<h4>' + _mapsConfig_google.label_distance_from + '</h4>').prependTo($results);
+
+                        $('<h4>' + _mapsConfig_google.label_results + '</h4>').appendTo($results);
                         return false;
                     }
 
@@ -492,7 +526,7 @@ var mapsGoogleMaps = function($) {
                     <span class="googleMapResultDesc">' + description + '</span>\
                     </div>') //<span class="googleMapResultDistance">' + distance + '</span>
                     .appendTo($results);
-                    $res.append('<div class="googleMapResultDir">directions &gt;&gt;&gt;</div>');
+                    $res.append('<div class="googleMapResultDir">' + _mapsConfig_google.label_directions + ' &raquo;&nbsp;</div>');
 
                     $res.find('.googleMapResultImg').click(function (){
                         $(this).parent()
@@ -500,6 +534,7 @@ var mapsGoogleMaps = function($) {
                         .siblings('.googleMapResult')
                         .removeClass('resultSelected');
                         gdir.clear();
+                        $directions_title.hide();
                         $map.panTo(l['point']);
                         l['marker'].openInfoWindow(l.info_windows);
                         return false;
@@ -508,6 +543,8 @@ var mapsGoogleMaps = function($) {
 
                     $res.find('.googleMapResultDir')
                     .click(function (){
+                        $directions_title.show();
+                        $directions_title.children('span').html(title);
                         $(this).parent()
                         .addClass('resultSelected')
                         .siblings('.googleMapResult')
@@ -517,19 +554,20 @@ var mapsGoogleMaps = function($) {
                         gdir.clear();
 
                         function handleErrors(){
-                            if (gdir.getStatus().code == G_GEO_UNKNOWN_ADDRESS)
-                                alert("No corresponding geographic location could be found for one of the specified addresses. This may be due to the fact that the address is relatively new, or it may be incorrect.\nError code: " + gdir.getStatus().code);
-                            else if (gdir.getStatus().code == G_GEO_SERVER_ERROR)
-                                alert("A geocoding or directions request could not be successfully processed, yet the exact reason for the failure is not known.\n Error code: " + gdir.getStatus().code);
-                            else if (gdir.getStatus().code == G_GEO_MISSING_QUERY)
-                                alert("The HTTP q parameter was either missing or had no value. For geocoder requests, this means that an empty address was specified as input. For directions requests, this means that no query was specified in the input.\n Error code: " + gdir.getStatus().code);
-                            else if (gdir.getStatus().code == G_GEO_BAD_KEY)
-                                alert("The given key is either invalid or does not match the domain for which it was given. \n Error code: " + gdir.getStatus().code);
-                            else if (gdir.getStatus().code == G_GEO_BAD_REQUEST)
-                                alert("A directions request could not be successfully parsed.\n Error code: " + gdir.getStatus().code);
-                            else if (gdir.getStatus().code == G_GEO_UNKNOWN_DIRECTIONS)
-                                alert("It's impossible to get directions");
-                            else alert("An unknown error occurred.");
+                            alert(_mapsConfig_google.label_error_directions_not_found);
+//                            if (gdir.getStatus().code == G_GEO_UNKNOWN_ADDRESS)
+//                                alert("No corresponding geographic location could be found for one of the specified addresses. This may be due to the fact that the address is relatively new, or it may be incorrect.\nError code: " + gdir.getStatus().code);
+//                            else if (gdir.getStatus().code == G_GEO_SERVER_ERROR)
+//                                alert("A geocoding or directions request could not be successfully processed, yet the exact reason for the failure is not known.\n Error code: " + gdir.getStatus().code);
+//                            else if (gdir.getStatus().code == G_GEO_MISSING_QUERY)
+//                                alert("The HTTP q parameter was either missing or had no value. For geocoder requests, this means that an empty address was specified as input. For directions requests, this means that no query was specified in the input.\n Error code: " + gdir.getStatus().code);
+//                            else if (gdir.getStatus().code == G_GEO_BAD_KEY)
+//                                alert("The given key is either invalid or does not match the domain for which it was given. \n Error code: " + gdir.getStatus().code);
+//                            else if (gdir.getStatus().code == G_GEO_BAD_REQUEST)
+//                                alert("A directions request could not be successfully parsed.\n Error code: " + gdir.getStatus().code);
+//                            else if (gdir.getStatus().code == G_GEO_UNKNOWN_DIRECTIONS)
+//                                alert("It's impossible to get directions");
+//                            else alert("An unknown error occurred.");
                         }
  
                         function onGDirectionsLoad(){ 
@@ -539,7 +577,6 @@ var mapsGoogleMaps = function($) {
 //                                return;
 //                            }
                         }
-//
                         GEvent.addListener(gdir, "addoverlay", onGDirectionsLoad);
                         GEvent.addListener(gdir, "error", handleErrors);
 
@@ -557,6 +594,7 @@ var mapsGoogleMaps = function($) {
         // start search
         $('#googleMapForm').submit(function (){
             var $this = $(this);
+            window.location.hash = $this.serialize();
             
             var searchstring = $this.find('.googleMapImHere').val();
             var geolocation = $this.find('#googleMapAskTheBrowser');
@@ -576,13 +614,13 @@ var mapsGoogleMaps = function($) {
             if (geolocation.is(':checked')){
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var myLatlng = new GLatLng(position.coords.latitude, position.coords.longitude);
-                    load(myLatlng, markers, maxlocations, "My position");
+                    load(myLatlng, markers, maxlocations, _mapsConfig_google.label_my_position);
                 });
             }
             else{
                 $geocoder.getLatLng(searchstring,function (latlng){
                     if(!latlng){
-                        alert('Position not found!')
+                        alert(_mapsConfig_google.label_error_position_not_found)
                         return false;
                     }
                     
@@ -597,6 +635,45 @@ var mapsGoogleMaps = function($) {
         .bind('focus.ploneInputLabel', ploneInputLabel.focus)
         .bind('blur.ploneInputLabel', ploneInputLabel.blur)
         .trigger('blur.ploneInputLabel'); // Apply the title
+
+        // function unserializing params
+        var unserialize = function (p){
+            var str = decodeURIComponent(p).replace(/\+/g,' ');
+            var ret = {},
+                seg = str.replace(/^\?/,'').split('&'),
+                len = seg.length, i = 0, s;
+            for (;i<len;i++) {
+                if (!seg[i]) { continue; }
+                s = seg[i].split('=');
+                ret[s[0]] = s[1];
+            }
+            return ret;
+        };
+
+
+        if(window.location.hash){
+            (function (){
+                var $context = $('#googleMapForm');
+                var data = unserialize(window.location.hash.slice(1));
+                var $input;
+
+                $context.find(':checkbox, radio').attr('checked','');
+
+                for(var prop in data){
+                    if (data.hasOwnProperty(prop)){
+                        $input = $context.find('[name=' + prop + ']');
+                        if($input.is(':checkbox, :radio')){
+                            $input.attr('checked','checked');
+                        }
+                        else{
+                            $input.val(data[prop]);
+                        } 
+                    }
+                }
+                $context.submit();
+
+            })();
+        }
 
     };
 

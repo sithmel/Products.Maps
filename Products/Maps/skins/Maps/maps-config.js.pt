@@ -18,7 +18,18 @@ var mapsConfig = {
     maxzoomlevel: 13,
     initialzoomlevel: 12,
 
-    markericons: <tal:block tal:replace="structure config/marker_icons" />
+    markericons: <tal:block tal:replace="structure config/marker_icons" />,
+
+    label_search: '<tal:block tal:replace="python: here.translate('label_search', default='Search', domain='maps', escape_for_js=True)" />',
+    label_advanced_search: '<tal:block tal:replace="python: here.translate('label_advanced_search', default='Advanced', domain='maps', escape_for_js=True)" />',
+    label_my_position: '<tal:block tal:replace="python: here.translate('label_my_position', default='My position', domain='maps', escape_for_js=True)" />',
+    label_max_results:'<tal:block tal:replace="python: here.translate('label_max_results', default='Max results', domain='maps', escape_for_js=True)" />',
+    label_places:'<tal:block tal:replace="python: here.translate('label_places', default='Places', domain='maps', escape_for_js=True)" />',
+    label_directions:'<tal:block tal:replace="python: here.translate('label_directions', default='Directions', domain='maps', escape_for_js=True)" />',
+    label_distance_from:'<tal:block tal:replace="python: here.translate('label_distance_from', default='Places near to', domain='maps', escape_for_js=True)" />',
+    label_results:'<tal:block tal:replace="python: here.translate('label_results', default='Results', domain='maps', escape_for_js=True)" />',
+    label_error_position_not_found:'<tal:block tal:replace="python: here.translate('label_error_position_not_found', default='Position not found!', domain='maps', escape_for_js=True)" />',
+    label_error_directions_not_found:'<tal:block tal:replace="python: here.translate('label_error_directions_not_found', default='Directions not found', domain='maps', escape_for_js=True)" />'
   }
 };
 

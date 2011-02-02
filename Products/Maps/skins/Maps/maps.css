@@ -18,40 +18,31 @@
     height: 25em;
 }
 
-.googleMapSearch{
-     float:left;
-     width:20%;
-}
+/*search nearest*/
+
 .googleMapSearchNearest{
     float:left;
     width:80%;
 }
 
 .googleMapAdvancedSearch{
-    border:thin solid #75AD0A;
     padding:5px;
-    margin-right:8px;
 }
 
 .googleMapSearch  h3{
-    margin-top:1em;
-    background-color:#75AD0A;
-    margin-right:8px;
-    color:white;
     padding:2px;
-    text-align:center;
+    cursor:pointer;
 }
 
 .googleMapMaxLocation, .googleMapLegend{
     padding:3px;
 }
 .googleMapResult{
-    margin-right:8px;
     padding:2px;
 }
 
 .googleMapSearchResults .googleMapResult.resultSelected {
-    background-color:yellow;
+    background-color:#FEFFAF;
 }
 
 .googleMapSearchResults .googleMapResultDir{
@@ -66,4 +57,72 @@
     font-size:2em;
     font-weight:bold;
     color:#444444;
+}
+
+.googleMapSearchResults{
+    border:thin solid #75AD0A;
+
+}
+
+.googleMapSearch h4{
+    background-color: #75AD0A;
+    color: white;
+    padding: 2px;
+    text-align: center;
+    margin-bottom:10px;
+}
+
+.googleMapSearchWrapper{
+     float:left;
+     width:20%;
+     overflow:hidden;
+}
+
+.googleMapSearch{
+     margin-right:8px;
+}
+
+.googleMapSearchHide{
+    position:absolute;
+    margin-left:-30px;    
+    width:20px;
+    z-index: 10000;
+    font-size: 20px;
+    color:white;
+    margin-top:3px;
+    margin-bottom:3px;
+    text-align:center;
+    padding-bottom:3px;
+}
+.googleMapSearchHide.hide{
+    margin-left:0px;    
+    background-color:#75AD0A;
+
+}
+.googleMapSearch .openclosearrow{
+    float:left;
+    margin-right: 5px;
+    width: 13px;
+}
+
+.googleMapSearch h5{
+    border-bottom: thin solid #75AD0A;
+    margin-bottom:3px;
+    padding-left:1em;
+}
+.googleMapSearchDirsTitle{
+    font-size:20px;
+    background-color: #75AD0A;
+    color: white;
+    text-align:center;
+    padding: 7px;
+    margin-top:6px;
+}
+
+.googleMapSearch input{
+    margin-bottom:10px;
+}
+
+.googleMapResultImg, .googleMapHereImg, .googleMapResultDir{
+cursor:pointer;
 }
