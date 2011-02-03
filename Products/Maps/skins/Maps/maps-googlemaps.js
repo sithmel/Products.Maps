@@ -300,7 +300,7 @@ var mapsGoogleMaps = function($) {
 
             var $search = $('<div class="googleMapSearch">\
             <h4>' + _mapsConfig_google.label_search + '</h4>\
-            <input class="googleMapImHere inputLabel" name="searchtxt" title="Search near to ..." type="text" value="">\
+            <input class="googleMapImHere inputLabel" name="searchtxt" title="' + _mapsConfig_google.label_search_neart_to + '" type="text" value="">\
             <input type="submit" value="' + _mapsConfig_google.label_search + '" />\
             </div>').insertBefore($node);
 

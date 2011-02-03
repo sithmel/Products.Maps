@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2010-07-10 13:16+0000\n"
+"POT-Creation-Date: 2011-02-03 14:30+0000\n"
 "PO-Revision-Date: 2007-04-12 17:21+0000\n"
 "Last-Translator: Florian Schulze <florian.schulze@gmx.net>\n"
 "Language-Team: \n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid " Validation failed. Longitude not in bounds [-180, 180]. "
 msgstr ""
 
-#: ../content/Location.py:149
+#: ../content/Location.py:151
 msgid "Info"
 msgstr ""
 
@@ -69,6 +69,11 @@ msgstr ""
 msgid "help_markericon"
 msgstr "Wählen Sie ein Symbol als Markierung auf der Karte."
 
+#. Default: "Advanced"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_advanced_search"
+msgstr ""
+
 #. Default: "Default coordinates"
 #: ../browser/controlpanel.py:79
 msgid "label_default_coordinates"
@@ -78,6 +83,26 @@ msgstr "Standard-Koordinaten"
 #: ../browser/controlpanel.py:69
 msgid "label_default_map_type"
 msgstr "Standard-Kartensicht"
+
+#. Default: "Directions"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_directions"
+msgstr ""
+
+#. Default: "Places near to"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_distance_from"
+msgstr ""
+
+#. Default: "Directions not found"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_error_directions_not_found"
+msgstr ""
+
+#. Default: "Position not found!"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_error_position_not_found"
+msgstr ""
 
 #. Default: "Location"
 #: Content Type: Location, Field: geolocation
@@ -99,6 +124,26 @@ msgstr "Google Maps API Schlüssel"
 msgid "label_markericon"
 msgstr "Markierungssymbol"
 
+#. Default: "Max results"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_max_results"
+msgstr ""
+
+#. Default: "My position"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_my_position"
+msgstr ""
+
+#. Default: "Places"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_places"
+msgstr ""
+
+#. Default: "Results"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_results"
+msgstr ""
+
 #. Default: "Satellite images"
 #: ../browser/controlpanel.py:27
 msgid "label_satellite_map"
@@ -113,6 +158,16 @@ msgstr "Satellitenbilder mit schematischer Überlagerung"
 #: ../browser/controlpanel.py:24
 msgid "label_schematic_map"
 msgstr "Schematische Karte"
+
+#. Default: "Search"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_search"
+msgstr ""
+
+#. Default: "Search near to ..."
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_search_near_to"
+msgstr ""
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15

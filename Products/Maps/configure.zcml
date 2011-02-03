@@ -10,9 +10,10 @@
 
   <include file="profiles.zcml" />
 
-  <!-- catalog indexes-->
+  <!-- catalog indexes (not useful now)
   <adapter name="latitude" factory=".indexers.getLatitude" />
   <adapter name="longitude" factory=".indexers.getLongitude" />
+-->
 
   <permission
      id="Products.Maps.AddGeoLocation"

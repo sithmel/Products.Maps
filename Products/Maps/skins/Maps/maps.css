@@ -123,6 +123,6 @@
     margin-bottom:10px;
 }
 
-.googleMapResultImg, .googleMapHereImg, .googleMapResultDir{
+.googleMapResultImg, .googleMapHereImg, .googleMapResultDir, .googleMapSearchHide{
 cursor:pointer;
 }
