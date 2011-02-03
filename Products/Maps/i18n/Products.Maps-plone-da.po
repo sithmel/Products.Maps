@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Products.Maps\n"
-"POT-Creation-Date: 2011-02-03 14:30+0000\n"
+"POT-Creation-Date: 2011-02-03 14:43+0000\n"
 "PO-Revision-Date: 2010-07-10 17:43-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,6 +77,11 @@ msgstr ""
 #. Default: "Red Marker"
 #: ../skins/Maps/marker-red.png.metadata:2
 msgid "Red Marker"
+msgstr ""
+
+#. Default: "Search Nearest Places view"
+#: ../skins/Maps/mapssearch_nearest.pt.metadata:2
+msgid "Search Nearest Places view"
 msgstr ""
 
 #: ../profiles/default/types/GeoLocation.xml

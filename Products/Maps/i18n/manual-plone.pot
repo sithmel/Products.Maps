@@ -24,6 +24,11 @@ msgstr ""
 msgid "Map view"
 msgstr ""
 
+#. Default: "Search Nearest Places view"
+#: ../skins/Maps/mapssearch_nearest.pt.metadata:2
+msgid "Search Nearest Places view"
+msgstr ""
+
 #. Default: "Location view"
 #: ../skins/Maps/maps_location.pt.metadata:2
 msgid "Location view"
