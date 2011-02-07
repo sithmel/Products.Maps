@@ -20,7 +20,7 @@ var mapsConfig = {
 
     markericons: <tal:block tal:replace="structure config/marker_icons" />,
 
-    label_search_neart_to: '<tal:block tal:replace="python: here.translate('label_search_near_to', default='Search near to ...', domain='maps', escape_for_js=True)" />',
+    label_search_near_to: '<tal:block tal:replace="python: here.translate('label_search_near_to', default='Search near to ...', domain='maps', escape_for_js=True)" />',
     label_search: '<tal:block tal:replace="python: here.translate('label_search', default='Search', domain='maps', escape_for_js=True)" />',
     label_advanced_search: '<tal:block tal:replace="python: here.translate('label_advanced_search', default='Advanced', domain='maps', escape_for_js=True)" />',
     label_my_position: '<tal:block tal:replace="python: here.translate('label_my_position', default='My position', domain='maps', escape_for_js=True)" />',
