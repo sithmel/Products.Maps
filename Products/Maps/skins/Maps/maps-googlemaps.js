@@ -306,7 +306,7 @@ var mapsGoogleMaps = (function ($) {
 
         var $searchbox = (function (){
 
-            var $search = $('<div class="googleMapSearch"><h4>' + _mapsConfig_google.label_search + '</h4><input class="googleMapImHere inputLabel" name="searchtxt" title="' + _mapsConfig_google.label_search_near_to + '" type="text" value=""><input type="submit" value="' + _mapsConfig_google.label_search + '" /></div>').insertBefore($node);
+            var $search = $('<div class="googleMapSearch"><h4 class="label_search">' + _mapsConfig_google.label_search + '</h4><input class="googleMapImHere inputLabel" name="searchtxt" title="' + _mapsConfig_google.label_search_near_to + '" type="text" value=""><input type="submit" value="' + _mapsConfig_google.label_search + '" /></div>').insertBefore($node);
 
             if (navigator.geolocation) {
                 $('<br />').appendTo($search);
@@ -517,9 +517,9 @@ var mapsGoogleMaps = (function ($) {
                             gmap.setCenter($mapcenter, $zoom_level);                        
                             return false;
                         });
-                        $('<h4>' + _mapsConfig_google.label_distance_from + '</h4>').prependTo(jqresults);
+                        $('<h4 class="label_distance_from">' + _mapsConfig_google.label_distance_from + '</h4>').prependTo(jqresults);
 
-                        $('<h4>' + _mapsConfig_google.label_results + '</h4>').appendTo(jqresults);
+                        $('<h4 class="label_results">' + _mapsConfig_google.label_results + '</h4>').appendTo(jqresults);
                         return false;
                     }
 
