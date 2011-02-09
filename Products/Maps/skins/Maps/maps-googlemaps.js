@@ -525,7 +525,7 @@ var mapsGoogleMaps = (function ($) {
 
                     var $res = $('<div class="googleMapResult"><span class="googleMapResultNumber">' + index.toString() + '</span><span class="googleMapResultImg"><img src="' + imageurl +'" /></span><span class="googleMapResultTitle">' + title + '</span><span class="googleMapResultDesc">' + description + '</span></div>')
                     .appendTo(jqresults);
-                    $res.append('<div class="googleMapResultDir">' + _mapsConfig_google.label_directions + ' &raquo;&nbsp;</div>');
+                    $res.append('<div class="googleMapResultDir">' + _mapsConfig_google.label_directions + ' <span>&raquo;</span></div>');
 
                     $res.find('.googleMapResultImg').click(function (){
                         $(this).parent()
