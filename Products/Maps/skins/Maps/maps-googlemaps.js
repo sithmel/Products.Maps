@@ -385,11 +385,11 @@ var mapsGoogleMaps = (function ($) {
         .addClass('googleMapSearchHide')
         .appendTo($node)
         .click(function (){
-            var $this = $(this).toggleClass('hide');
+            var $this = $(this).toggleClass('hidden');
             var $context = $this.closest('#googleMapForm');
             var $search = $context.find('.googleMapSearchWrapper');
             var $map = $context.find('.googleMapSearchNearest');
-            if($this.hasClass('hide')){
+            if($this.hasClass('hidden')){
                 $search.animate({marginLeft:'-500px'},'fast',function (){
                     $map.animate({width:'100%'},'fast');
                     $this.html('&raquo;');
