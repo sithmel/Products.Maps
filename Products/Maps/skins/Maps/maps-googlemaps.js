@@ -429,6 +429,19 @@ var mapsGoogleMaps = (function ($) {
         if (_mapsConfig_google.selectablemaptypes) {
             gmap.addControl(new GMapTypeControl());
         }
+
+        // init the map
+
+        var $zoom_level = gmap.getBoundsZoomLevel($bounds);
+        if ($zoom_level > _mapsConfig_google.maxzoomlevel){
+            $zoom_level = _mapsConfig_google.maxzoomlevel;
+        }
+        gmap.setCenter($center, $zoom_level, _defaultmaptype);
+        // but don't add the places
+//        for (i = 0; i < $locations.length; i++) {
+//            gmap.addOverlay($locations[i].marker);
+//        }
+
         // setting up map - end
 
         // load overlays - start        
