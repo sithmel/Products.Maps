@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2011-02-03 14:43+0000\n"
+"POT-Creation-Date: 2011-03-28 09:47+0000\n"
 "PO-Revision-Date: 2010-05-25 14:00+0000\n"
 "Last-Translator: CommunesPlone.org <support@communesplone.be>\n"
 "Language-Team: \n"

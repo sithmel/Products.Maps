@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2011-02-03 14:43+0000\n"
+"POT-Creation-Date: 2011-03-28 09:47+0000\n"
 "PO-Revision-Date: 2007-04-12 17:21+0000\n"
 "Last-Translator: Florian Schulze <florian.schulze@gmx.net>\n"
 "Language-Team: \n"
@@ -166,7 +166,6 @@ msgstr "Cerca"
 
 #. Default: "Search near to ..."
 #: ./skins/Maps/maps-config.js.pt:15
-#, fuzzy
 msgid "label_search_near_to"
 msgstr "Cerca vicino a ..."
 
