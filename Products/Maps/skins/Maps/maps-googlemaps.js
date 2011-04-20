@@ -436,11 +436,56 @@ var mapsGoogleMaps = (function ($) {
         if ($zoom_level > _mapsConfig_google.maxzoomlevel){
             $zoom_level = _mapsConfig_google.maxzoomlevel;
         }
+
+        var _set_center_and_zoom = function(s){
+            var _getparams = function (q){
+                var value, out = {};
+                if (! q){
+                    return out;
+                }
+                var values = q.split('&');
+                for(var i = 0; i < values.length;i++){
+                    value = values[i].split('=');
+                    out[value[0]] = value[1];
+                }
+                return out;
+            };
+            var query_object = _getparams(s);
+            // example: europe
+            // sw x_sw=34.58498328591662 y_sw=-21.98437213897705
+            // ne x_ne=71.49471253403517  y_ne=43.675782680511475 
+            // ?x_sw=34.58498328591662&y_sw=-21.98437213897705&x_ne=71.49471253403517&y_ne=43.675782680511475
+            if (!query_object['x_sw'] || !query_object['y_sw'] || !query_object['x_ne'] || !query_object['y_ne']){
+                return ;
+            }
+            // get points for zoom and centering
+            var point_sw = new GLatLng(parseFloat(query_object['x_sw']),parseFloat(query_object['y_sw']));
+            var point_ne = new GLatLng(parseFloat(query_object['x_ne']),parseFloat(query_object['y_ne']));
+            var $bounds = new GLatLngBounds(point_sw, point_ne);
+            $zoom_level = gmap.getBoundsZoomLevel($bounds);
+            $center = $bounds.getCenter();
+        };
+
+        //setup zoom map from html
+        _set_center_and_zoom($('#bound_coords').text());
+
+        //setup zoom map from query string
+        _set_center_and_zoom(window.location.search.slice(1));
+
         gmap.setCenter($center, $zoom_level, _defaultmaptype);
-        // but don't add the places
-//        for (i = 0; i < $locations.length; i++) {
-//            gmap.addOverlay($locations[i].marker);
-//        }
+
+        // this could be useful in authoring mode
+        GEvent.addListener(gmap, "dragend", function() {
+            var bounds = gmap.getBounds();
+            var sw = bounds.getSouthWest();
+            var ne = bounds.getNorthEast();
+            $('#bound_coords').text('x_sw=' + sw.lat() + '&y_sw=' + sw.lng() + '&x_ne=' + ne.lat() + '&y_ne=' + ne.lng());
+        });
+
+        //add the places
+        for (i = 0; i < $locations.length; i++) {
+            gmap.addOverlay($locations[i].marker);
+        }
 
         // setting up map - end
 

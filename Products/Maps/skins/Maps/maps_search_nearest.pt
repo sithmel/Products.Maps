@@ -11,7 +11,7 @@
   <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main"
                     define="view context/@@maps_googlemaps_view">
-
+      <div id="bound_coords" tal:content="python: context.getProperty('bounds')" style="display:none">coords</div>
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 
       <h1 class="documentFirstHeading">
