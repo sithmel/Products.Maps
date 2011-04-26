@@ -15,6 +15,11 @@ Changelog
   (http://plone.org/products/maps/issues/32)
   [khink]
 
+- Replace __init__ profile initialization with xml file GS profile setup, so we
+  can add Products.Maps as a dependency in another product's Generic Setup 
+  profile.
+  [khink]
+
 2.1.0 - 2010-09-19
 ------------------
 

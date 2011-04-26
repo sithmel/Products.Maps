@@ -8,6 +8,8 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <include file="profiles.zcml" />
+
   <permission
      id="Products.Maps.AddGeoLocation"
      title="Maps: Add GeoLocation"

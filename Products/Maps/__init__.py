@@ -6,9 +6,7 @@ from Products.CMFCore.DirectoryView import registerDirectory
 from Products.Archetypes.public import listTypes
 from Products.Archetypes.public import process_types
 
-from Products.GenericSetup import EXTENSION
 from Products.GenericSetup import profile_registry
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from Products.Maps import config
 
@@ -31,12 +29,3 @@ def initialize(context):
         extra_constructors = constructors,
         fti = ftis,
     ).initialize(context)
-
-    # Register the extension profile
-    profile_registry.registerProfile('default',
-                                     'Maps',
-                                     'maps',
-                                     'profiles/default',
-                                     'Maps',
-                                     EXTENSION,
-                                     IPloneSiteRoot)

@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="maps">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Products.Maps"
+      directory="profiles/default"
+      description='Extension profile for Products.Maps.'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+</configure>
