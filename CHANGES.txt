@@ -19,6 +19,8 @@ Changelog
   can add Products.Maps as a dependency in another product's Generic Setup 
   profile.
   [khink]
+- Added Dutch translation
+  [kcleong]
 
 2.1.0 - 2010-09-19
 ------------------
