@@ -119,45 +119,4 @@
       permission="cmf.ManagePortal"
       />
 
-  <!-- geolocation -->
-
-  <adapter
-      zcml:condition="installed Products.geolocation"
-      for="Products.ATContentTypes.interface.document.IATDocument"
-      factory=".adapters.GEOLocatedMarker"
-      />
-  <adapter
-      zcml:condition="installed Products.geolocation"
-      for="Products.ATContentTypes.interface.event.IATEvent"
-      factory=".adapters.GEOLocatedMarker"
-      />
-  <adapter
-      zcml:condition="installed Products.geolocation"
-      for="Products.ATContentTypes.interface.link.IATLink"
-      factory=".adapters.GEOLocatedMarker"
-      />
-  <adapter
-      zcml:condition="installed Products.geolocation"
-      for="Products.ATContentTypes.interface.image.IATImage"
-      factory=".adapters.GEOLocatedMarker"
-      />
-  <adapter
-      zcml:condition="installed Products.geolocation"
-      for="Products.ATContentTypes.interface.news.IATNewsItem"
-      factory=".adapters.GEOLocatedMarker"
-      />
-
-  <!-- qPloneGoogleMaps -->
-  <class
-      zcml:condition="installed Products.qPloneGoogleMaps"
-      class=".adapters.qPloneGoogleMapsMarker">
-    <allow interface=".interfaces.marker.IMarker" />
-  </class>
-
-  <adapter
-      zcml:condition="installed Products.qPloneGoogleMaps"
-      for="Products.qPloneGoogleMaps.content.Marker.Marker"
-      factory=".adapters.qPloneGoogleMapsMarker"
-      />
-
 </configure>
