@@ -12,13 +12,7 @@ development:
 - Flexibility for enhancement by using the Zope 3 component architecture
 - Sane fallbacks when Javascript is not available
 - Clean separation of javascript, templates and logic
-- Works on Smart Folders
-
-Additionally Maps has the following features:
-
-- Support for existing markers from qPloneGoogleMaps
-- Support for content which has a location set with the geolocation
-  product
+- Works on Topics
 
 Installation
 ------------
