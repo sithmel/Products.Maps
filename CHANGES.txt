@@ -3,6 +3,11 @@ Changelog
 
 2.1.1 - unreleased
 ------------------
+- Force validator registration before use. Avoids spurious warning.
+  [ggozad]
+
+- Kicked out qPloneGoogleMaps and Products.geolocation
+  [ggozad]
 
 - Fixed broken TestCase.
   [ggozad]
@@ -21,8 +26,8 @@ Changelog
   (http://plone.org/products/maps/issues/32)
   [khink]
 
-- Replace __init__ profile initialization with xml file GS profile setup, so we
-  can add Products.Maps as a dependency in another product's Generic Setup 
+- Replace __init__ profile initialization with xml file GS profile setup, so
+  we can add Products.Maps as a dependency in another product's Generic Setup
   profile.
   [khink]
 

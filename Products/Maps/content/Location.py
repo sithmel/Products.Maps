@@ -7,16 +7,18 @@ try:
 except ImportError:
     # No multilingual support
     from Products.Archetypes.public import *
-from Products.Maps.config import *
 from Products.ATContentTypes.atct import *
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.ATContentTypes.configuration import zconf
+
+from Products.Maps.config import *
+from Products.Maps import validator # Force registration of validator
 from Products.Maps import MapsMessageFactory as _
 
 from Products.Maps.adapters import GeoLocation
 from Products.Maps.field import LocationWidget, LocationField
-from Products.Maps.interfaces import IGeoLocation, ILocation
-from Products.Maps.interfaces import IMarker, IRichMarker, IMap, IMapEnabled
+from Products.Maps.interfaces import ILocation
+from Products.Maps.interfaces import IRichMarker, IMapEnabled
 
 
 LocationSchema = ATContentTypeSchema.copy() + Schema(

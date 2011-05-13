@@ -1,18 +1,16 @@
 from zope.i18nmessageid import MessageFactory
 
-from Products.CMFCore.utils import ContentInit
-from Products.CMFCore.DirectoryView import registerDirectory
-
 from Products.Archetypes.public import listTypes
 from Products.Archetypes.public import process_types
-
-from Products.GenericSetup import profile_registry
+from Products.CMFCore.utils import ContentInit
+from Products.CMFCore.DirectoryView import registerDirectory
 
 from Products.Maps import config
 
 MapsMessageFactory = MessageFactory('maps')
 
 registerDirectory(config.SKINS_DIR, config.GLOBALS)
+
 
 def initialize(context):
 
