@@ -4,6 +4,12 @@ Changelog
 2.1.1 - unreleased
 ------------------
 
+- Fixed broken TestCase.
+  [ggozad]
+
+- Updated control panel actions for Plone 4.
+  [ggozad]
+
 - update ILocation interface. Custom content type must implement getMarkerIcon
   method to successfully support LocationMarker adapter.
   [naro]
@@ -19,6 +25,7 @@ Changelog
   can add Products.Maps as a dependency in another product's Generic Setup 
   profile.
   [khink]
+
 - Added Dutch translation
   [kcleong]
 
