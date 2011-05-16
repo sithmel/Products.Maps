@@ -107,3 +107,13 @@ class MapsConfig(BrowserView):
                                    PROPERTY_DEFAULT_MAPTYPE_FIELD,
                                    "normal")
         return default_maptype
+
+    @property
+    def show_contents(self):
+        if self.properties is None:
+            return True
+        show_contents = getattr(self.properties,
+                                   PROPERTY_SHOW_CONTENTS,
+                                   True)
+        return show_contents
+        

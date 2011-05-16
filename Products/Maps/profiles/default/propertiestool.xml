@@ -30,5 +30,6 @@
   </property>
   <property name="map_default_location" type="string">0.0, 0.0</property>
   <property name="map_default_maptype" type="string">normal</property>
+  <property name="map_show_contents" type="boolean">True</property>
  </object>
 </object>

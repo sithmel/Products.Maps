@@ -6,6 +6,7 @@ from zope.formlib.form import FormFields
 from zope.schema import Choice
 from zope.schema import Tuple
 from zope.schema import TextLine
+from zope.schema import Bool
 
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 
@@ -86,6 +87,16 @@ class IMapsSchema(Interface):
                         required=True,
                        )
 
+    show_contents = Bool(
+                        title=_('label_show_contents',
+                                    default=u"Show contents"),
+                        description=_('help_show_contents',
+                                    default=u"Show items\' contents in map "
+                                             "pop-up when clicked. "
+                                             "Warning: may take up a lot of "
+                                             "room on the map area!"),
+                        default=True,
+                        )
 
 class MapsControlPanelAdapter(SchemaAdapterBase):
 
@@ -132,6 +143,14 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
         self.context._updateProperty(PROPERTY_DEFAULT_LOCATION_FIELD, value)
 
     default_location = property(get_default_location,set_default_location)
+
+    def get_show_contents(self):
+        return getattr(self.context, PROPERTY_SHOW_CONTENTS, True)
+
+    def set_show_contents(self, value):
+        self.context._updateProperty(PROPERTY_SHOW_CONTENTS, value)
+
+    show_contents = property(get_show_contents,set_show_contents)
 
 
 class MapsControlPanel(ControlPanelForm):

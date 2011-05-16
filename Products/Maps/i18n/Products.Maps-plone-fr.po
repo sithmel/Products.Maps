@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Products.Maps\n"
-"POT-Creation-Date: 2010-07-10 13:26+0000\n"
+"POT-Creation-Date: 2011-05-16 12:40+0000\n"
 "PO-Revision-Date: 2007-10-19 19:01+0200\n"
 "Last-Translator: Stéphan Geulette <stephan.geulette@uvcw.be>\n"
 "Language-Team: CommunesPlone i18n <support@communesplone.be>\n"
@@ -65,10 +65,6 @@ msgstr "Vue cartographique"
 #: ../profiles/default/actionicons.xml
 msgid "Maps"
 msgstr ""
-
-#: ../profiles/default/actionicons.xml
-msgid "Maps settings"
-msgstr "Configuration de Maps"
 
 #. Default: "Marker shadow"
 #: ../skins/Maps/shadow50.png.metadata:2
