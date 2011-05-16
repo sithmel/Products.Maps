@@ -10,7 +10,10 @@
 <body>
   <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main"
-                    define="view context/@@maps_googlemaps_view">
+        define="
+          view context/@@maps_googlemaps_view;
+          view_show_contents view/showContents;
+          ">
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -43,7 +46,11 @@
             <div tal:content="marker/description" />
           </dd>
           <dd class="tab"
-              tal:condition="marker/contents | nothing"
+              tal:define="
+                contents marker/contents | nothing;
+                contents python: contents and view_show_contents;
+                "
+              tal:condition="contents"
               tal:repeat="content marker/contents"
               tal:attributes="title content/title">
             <div tal:replace="structure content/text" />

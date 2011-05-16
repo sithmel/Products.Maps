@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2010-07-10 13:16+0000\n"
+"POT-Creation-Date: 2011-05-16 12:40+0000\n"
 "PO-Revision-Date: 2007-01-23 18:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -27,25 +27,25 @@ msgstr ""
 msgid " Validation failed. Longitude not in bounds [-180, 180]. "
 msgstr ""
 
-#: ../content/Location.py:149
+#: ../content/Location.py:151
 msgid "Info"
 msgstr "Info"
 
-#: ../browser/controlpanel.py:46
+#: ../browser/controlpanel.py:47
 msgid "Key"
 msgstr "Nøgle"
 
-#: ../browser/controlpanel.py:140
+#: ../browser/controlpanel.py:159
 msgid "Maps settings"
 msgstr "Kort-indstillinger"
 
 #. Default: "Specify the default coordinates for new locations."
-#: ../browser/controlpanel.py:81
+#: ../browser/controlpanel.py:82
 msgid "help_default_coordinated"
 msgstr "Angiv de koordinater, som nye steder skal tage udgangspunkt i."
 
 #. Default: "Select the default map type initially used on maps."
-#: ../browser/controlpanel.py:71
+#: ../browser/controlpanel.py:72
 msgid "help_default_map_type"
 msgstr "Vælg den kortvisning, der skal vises som udgangspunkt."
 
@@ -55,12 +55,12 @@ msgid "help_geolocation"
 msgstr "Placer stedet ved at indtaste stednavn, koordinator eller placere markøren på kortet."
 
 #. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:53
+#: ../browser/controlpanel.py:54
 msgid "help_google_ajax_search_api_keys"
 msgstr "Tilføj Google AJAX Search API-nøgler. Du skal bruge den URL, som sitet er synligt på. Nøglen bliver brugt til at søge efter koordinator for stednavne."
 
 #. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:40
 msgid "help_google_maps_api_keys"
 msgstr "Tilføj Google Maps API-nøgler. Du skal bruge den URL, som sitet er synligt på."
 
@@ -69,13 +69,18 @@ msgstr "Tilføj Google Maps API-nøgler. Du skal bruge den URL, som sitet er syn
 msgid "help_markericon"
 msgstr "Vælg et ikon, som stedet skal markeres med på kortet"
 
+#. Default: "Show items' contents in map pop-up when clicked. Warning: may take up a lot of room on the map area!"
+#: ../browser/controlpanel.py:93
+msgid "help_show_contents"
+msgstr ""
+
 #. Default: "Default coordinates"
-#: ../browser/controlpanel.py:79
+#: ../browser/controlpanel.py:80
 msgid "label_default_coordinates"
 msgstr "Standard-koordinator"
 
 #. Default: "Default map type"
-#: ../browser/controlpanel.py:69
+#: ../browser/controlpanel.py:70
 msgid "label_default_map_type"
 msgstr "Standard kortvisning"
 
@@ -85,12 +90,12 @@ msgid "label_geolocation"
 msgstr "Placering"
 
 #. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:51
+#: ../browser/controlpanel.py:52
 msgid "label_google_ajax_search_api_keys"
 msgstr "Google AJAX Search API-nøgle"
 
 #. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:37
+#: ../browser/controlpanel.py:38
 msgid "label_google_maps_api_keys"
 msgstr "Google Maps API-nøgle"
 
@@ -100,19 +105,24 @@ msgid "label_markericon"
 msgstr "Ikon"
 
 #. Default: "Satellite images"
-#: ../browser/controlpanel.py:27
+#: ../browser/controlpanel.py:28
 msgid "label_satellite_map"
 msgstr "Satellit-visning"
 
 #. Default: "Satellite images with schematic overlay"
-#: ../browser/controlpanel.py:30
+#: ../browser/controlpanel.py:31
 msgid "label_satellite_schematic_map"
 msgstr "Hybrid (både satellit og vejkort)"
 
 #. Default: "Schematic map"
-#: ../browser/controlpanel.py:24
+#: ../browser/controlpanel.py:25
 msgid "label_schematic_map"
 msgstr "Vejkort"
+
+#. Default: "Show contents"
+#: ../browser/controlpanel.py:91
+msgid "label_show_contents"
+msgstr ""
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15

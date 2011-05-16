@@ -39,6 +39,8 @@ class BaseMapView(BrowserView):
         tag = tag + ' class="marker" />'
         return tag
 
+    def showContents(self):
+        return self.config.show_contents
 
 class DefaultMapView(BaseMapView):
     implements(IMapView)
