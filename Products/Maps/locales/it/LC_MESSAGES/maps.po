@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2011-03-28 09:47+0000\n"
+"POT-Creation-Date: 2011-06-29 13:23+0000\n"
 "PO-Revision-Date: 2007-04-12 17:21+0000\n"
 "Last-Translator: Florian Schulze <florian.schulze@gmx.net>\n"
 "Language-Team: \n"
@@ -74,6 +74,11 @@ msgstr "Seleziona l'icona utilizzata come marker sulla mappa."
 msgid "label_advanced_search"
 msgstr "Avanzate"
 
+#. Default: "City, address"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_city_address"
+msgstr "Città, indirizzo"
+
 #. Default: "Default coordinates"
 #: ../browser/controlpanel.py:79
 msgid "label_default_coordinates"
@@ -119,6 +124,11 @@ msgstr "Chiave delle API di Google (search API)"
 msgid "label_google_maps_api_keys"
 msgstr "Chiave delle API di Google (Google Map API)"
 
+#. Default: "Legend"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_legend"
+msgstr "Legenda"
+
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
 msgid "label_markericon"
@@ -132,7 +142,7 @@ msgstr "Num. massimo risultati"
 #. Default: "My position"
 #: ./skins/Maps/maps-config.js.pt:15
 msgid "label_my_position"
-msgstr "Mia posizione"
+msgstr "Usa la tua posizione"
 
 #. Default: "Places"
 #: ./skins/Maps/maps-config.js.pt:15

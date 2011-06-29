@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2011-03-28 09:47+0000\n"
+"POT-Creation-Date: 2011-06-29 13:23+0000\n"
 "PO-Revision-Date: 2007-05-17 11:12+0100\n"
 "Last-Translator: Thor Arne Johansen <thora@plonesolutions.com>\n"
 "Language-Team: \n"
@@ -75,6 +75,11 @@ msgstr "Velg det ikonet som skal brukes som markør på kartet."
 msgid "label_advanced_search"
 msgstr ""
 
+#. Default: "City, address"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_city_address"
+msgstr ""
+
 #. Default: "Default coordinates"
 #: ../browser/controlpanel.py:79
 msgid "label_default_coordinates"
@@ -119,6 +124,11 @@ msgstr "Google AJAX Search API Nøkler"
 #: ../browser/controlpanel.py:37
 msgid "label_google_maps_api_keys"
 msgstr "Google Maps API Nøkler"
+
+#. Default: "Legend"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "label_legend"
+msgstr ""
 
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon

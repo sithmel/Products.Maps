@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Products.Maps\n"
-"POT-Creation-Date: 2011-03-28 09:47+0000\n"
+"POT-Creation-Date: 2011-06-29 13:23+0000\n"
 "PO-Revision-Date: 2007-10-19 19:01+0200\n"
 "Last-Translator: Stéphan Geulette <stephan.geulette@uvcw.be>\n"
 "Language-Team: CommunesPlone i18n <support@communesplone.be>\n"

@@ -306,7 +306,7 @@ var mapsGoogleMaps = (function ($) {
 
         var $searchbox = (function (){
 
-            var $search = $('<div class="googleMapSearch"><h4 class="label_search">' + _mapsConfig_google.label_search + '</h4><input class="googleMapImHere inputLabel" name="searchtxt" title="' + _mapsConfig_google.label_search_near_to + '" type="text" value=""><input type="submit" value="' + _mapsConfig_google.label_search + '" /></div>').insertBefore($node);
+            var $search = $('<div class="googleMapSearch"><h4 class="label_search">' + _mapsConfig_google.label_search_near_to + '</h4><input class="googleMapImHere inputLabel" name="searchtxt" title="' + _mapsConfig_google.label_city_address + '" type="text" value=""></div>').insertBefore($node);
 
             if (navigator.geolocation) {
                 $('<br />').appendTo($search);
@@ -320,15 +320,17 @@ var mapsGoogleMaps = (function ($) {
                    else{
                        $this.prevAll('[type=text]').attr('disabled','');
                    }
-                });
-                $('<label for="googleMapAskTheBrowser">' + _mapsConfig_google.label_my_position +'</label>').appendTo($search);
+                })
+                .after('<label for="googleMapAskTheBrowser">' + _mapsConfig_google.label_my_position +'</label>');
             }
+            $search.append('<input type="submit" value="' + _mapsConfig_google.label_search + '" />');
             $search.wrap('<div class="googleMapSearchWrapper" />');
             return $search;
             
         }());
+        
 
-        var $advancedsearchtitle = $('<h3><div class="openclosearrow">+</div>' + _mapsConfig_google.label_advanced_search + '</h3>')
+        var $advancedsearchtitle = $('<h3><div class="openclosearrow">+</div>' + _mapsConfig_google.label_legend + '</h3>')
         .appendTo($searchbox)
         .click(function (){
             var $this = $(this);
@@ -345,25 +347,25 @@ var mapsGoogleMaps = (function ($) {
         .appendTo($searchbox)
         .hide();
 
-        (function (){
-            var i;
-            var $ml = $('<div class="googleMapMaxLocation"><h5>' + _mapsConfig_google.label_max_results + '</h5> <select name="maxlocations" class="googleMapSearchMaxLocations"></select></div>')
-            .appendTo($advancedsearch).children('select');
-            var mlocs = ['1','5','10','20'];
-            var def = '5';
-            var $opt;
-            for(i = 0;i < mlocs.length;i++){
-                 $opt = $('<option value="' + mlocs[i] + '">' + mlocs[i] + '</option>').appendTo($ml);
-                 if (mlocs[i] === def){
-                    $opt.attr('selected','selected');
-                 }
-            }
-        }());
+//        (function (){
+//            var i;
+//            var $ml = $('<div class="googleMapMaxLocation"><h5>' + _mapsConfig_google.label_max_results + '</h5> <select name="maxlocations" class="googleMapSearchMaxLocations"></select></div>')
+//            .appendTo($advancedsearch).children('select');
+//            var mlocs = ['1','5','10','20'];
+//            var def = '5';
+//            var $opt;
+//            for(i = 0;i < mlocs.length;i++){
+//                 $opt = $('<option value="' + mlocs[i] + '">' + mlocs[i] + '</option>').appendTo($ml);
+//                 if (mlocs[i] === def){
+//                    $opt.attr('selected','selected');
+//                 }
+//            }
+//        }());
         
         var $legend = (function (){
             var prop;
-            var legend = $('<div class="googleMapLegend"><h5>' + _mapsConfig_google.label_places + '</h5></div>')
-            .appendTo($advancedsearch);
+//            var legend = $('<div class="googleMapLegend"><h5>' + _mapsConfig_google.label_places + '</h5></div>')
+//            .appendTo($advancedsearch);
             // populate legend
             var i = 0;
             for (prop in _markericons){
@@ -373,11 +375,12 @@ var mapsGoogleMaps = (function ($) {
                     }
                     i++;
 
-                    $('<div class="marker"><input checked="checked" name="marker' + i.toString() + '" id="marker' + i.toString() +  '" type="checkbox" value="' + prop + '" /><label for="marker' + i.toString() +  '" ><img src="' + _markericons[prop].image + '" alt="' + prop + '"/>' + prop + '</label></div>')
-                    .appendTo(legend);
+//                    $('<div class="marker"><input checked="checked" name="marker' + i.toString() + '" id="marker' + i.toString() +  '" type="checkbox" value="' + prop + '" /><label for="marker' + i.toString() +  '" ><img src="' + _markericons[prop].image + '" alt="' + prop + '"/>' + prop + '</label></div>')
+                    $('<div class="marker"><img src="' + _markericons[prop].image + '" alt="' + prop + '"/>' + prop + '</div>')
+                    .appendTo($advancedsearch);
                 }
             }
-            return legend;
+            return $advancedsearch;
 
         }());
 
@@ -404,6 +407,7 @@ var mapsGoogleMaps = (function ($) {
             }
             
         });
+
         var $map_node = $('<div />').addClass('googleMapPane').appendTo($node);
         var jqdirections_title = $('<div>' + _mapsConfig_google.label_directions + ': <span>place</span></div>').addClass('googleMapSearchDirsTitle').appendTo($node).hide();
         var jqdirections = $('<div />').addClass('googleMapSearchDirs').appendTo($node);
@@ -490,14 +494,15 @@ var mapsGoogleMaps = (function ($) {
         // setting up map - end
 
         // load overlays - start        
-        var load = function (center, markers, maxlocations, center_title){
+        var load = function (center, center_title){
+            var locations = $locations.slice(0);
             var i;
-            var locations = $.grep($locations,function (loc){
-                if($.inArray(loc.type, markers) !== -1){
-                    return true;
-                }
-                return false;
-            });
+//            var locations = $.grep($locations,function (loc){
+//                if($.inArray(loc.type, markers) !== -1){
+//                    return true;
+//                }
+//                return false;
+//            });
 
             // add to $locations the distance from the center (decorate for sorting):
             $.each(locations,function (){
@@ -514,7 +519,7 @@ var mapsGoogleMaps = (function ($) {
             });
             
             // filter by distance to center
-            var newlocations = locations.slice(0, maxlocations);
+//            var newlocations = locations.slice(0, maxlocations);
             // draw new overlays
             // first get an "I'm here" pointer
             var $data = {
@@ -524,9 +529,9 @@ var mapsGoogleMaps = (function ($) {
             };
             _createMarker($data);
             //newlocations.push($data);
-            newlocations.unshift($data);
+            locations.unshift($data);
             //calculate bounds and center
-            $bounds = _getBounds(newlocations);
+            $bounds = _getBounds(locations);
             var $mapcenter = $bounds.getCenter();
 
             $zoom_level = gmap.getBoundsZoomLevel($bounds);
@@ -536,9 +541,9 @@ var mapsGoogleMaps = (function ($) {
             // add overlays
             gmap.clearOverlays();//empty the map
             jqresults.empty();// empty the results
-            var newlocations_len = newlocations.length;
+            var newlocations_len = locations.length;
             for (i = 0; i < newlocations_len; i++) { 
-                gmap.addOverlay(newlocations[i].marker);
+                gmap.addOverlay(locations[i].marker);
                 // add results
                 (function (l,index){
                     var node = $(l.tabs[0].node);
@@ -628,7 +633,7 @@ var mapsGoogleMaps = (function ($) {
                         return false;
                     });
                     
-                })(newlocations[i],i);
+                })(locations[i],i);
 
             }
             
@@ -644,21 +649,21 @@ var mapsGoogleMaps = (function ($) {
             var geolocation = $this.find('#googleMapAskTheBrowser');
             var getLatLng;
 
-            var markers = (function (){
-                var $inputs = $this.find('.googleMapLegend').find('input:checked');
-                var output = [];
-                $inputs.each(function (){
-                    output.push($(this).val());
-                });
-                return output;
-            }());
+//            var markers = (function (){
+//                var $inputs = $this.find('.googleMapLegend').find('input:checked');
+//                var output = [];
+//                $inputs.each(function (){
+//                    output.push($(this).val());
+//                });
+//                return output;
+//            }());
             
-            var maxlocations = $this.find('.googleMapSearchMaxLocations').val();
+            var maxlocations = 5;
 
             if (geolocation.is(':checked')){
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var myLatlng = new GLatLng(position.coords.latitude, position.coords.longitude);
-                    load(myLatlng, markers, maxlocations, _mapsConfig_google.label_my_position);
+                    load(myLatlng, _mapsConfig_google.label_my_position);
                 });
             }
             else{
@@ -669,7 +674,7 @@ var mapsGoogleMaps = (function ($) {
                         return false;
                     }
                     
-                    load(latlng, markers, maxlocations, searchstring);
+                    load(latlng, searchstring);
                 });
             }
 

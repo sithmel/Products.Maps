@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Products.Maps\n"
-"POT-Creation-Date: 2011-03-28 09:47+0000\n"
+"POT-Creation-Date: 2011-06-29 13:23+0000\n"
 "PO-Revision-Date: 2010-07-10 14:08-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: Spanish <plone-conosur@lists.plone.org>\n"
