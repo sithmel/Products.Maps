@@ -10,7 +10,8 @@
 <body>
   <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main"
-                    define="view context/@@maps_googlemaps_view">
+                    define="view context/@@maps_googlemaps_view;
+                            view_show_contents view/showContents">
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 

@@ -17,3 +17,34 @@
 .googleMapLocation .googleMapPane {
     height: 25em;
 }
+
+
+
+/*.tab*/
+.infowindowTabHandlers{
+    margin-top: -36px;
+    margin-left: 10px;
+}
+
+.infowindowTabHandler{
+    float:left;
+    padding: 0 0.4em;
+    border: 1px solid #ABABAB;
+    background-color: white;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    height:19px;
+}
+.infowindowTabHandler.selected{
+    border-bottom: none;
+    height:20px;
+}
+.tab{
+    clear: both;
+}
+
+.mapSearchBar{
+/*    width: 25em;*/
+    width: 80%;
+}
+

@@ -31,21 +31,21 @@
       <div tal:replace="structure provider:plone.abovecontentbody" />
 
       <div class="googleMapView">
-        <dl metal:define-macro="markers">
-        <tal:markers tal:repeat="marker view/getMarkers">
-          <dt class="title">
+        <ul metal:define-macro="markers">
+        <li tal:repeat="marker view/getMarkers">
+          <div class="title">
             <img src="" tal:replace="structure python:view.iconTagForMarker(marker)" />
             <a href=""
                tal:attributes="href marker/url"
                tal:content="marker/title"> <tal:comment replace="nothing">Title</tal:comment> </a>
-          </dt>
-          <dd class="tab"
+          </div>
+          <div class="tab"
               title="Description"
               tal:condition="marker/description"
               i18n:attributes="title label_description;">
             <div tal:content="marker/description" />
-          </dd>
-          <dd class="tab"
+          </div>
+          <div class="tab"
               tal:define="
                 contents marker/contents | nothing;
                 contents python: contents and view_show_contents;
@@ -55,31 +55,31 @@
               tal:attributes="title content/title">
             <div tal:replace="structure content/text" />
             <div class="visualClear"><!-- --></div>
-          </dd>
-          <dd class="geo">
+          </div>
+          <div class="geo">
             <span class="latitude" tal:content="marker/latitude" />
             <span class="longitude" tal:content="marker/longitude" />
-          </dd>
-          <dd class="layers"
+          </div>
+          <div class="layers"
               tal:condition="marker/layers | nothing">
             <ul>
               <li tal:repeat="layer marker/layers"
                   tal:content="layer"><tal:comment replace="nothing">Layer</tal:comment></li>
             </ul>
-          </dd>
+          </div>
           <tal:block tal:condition="marker/related_items | nothing">
-            <dt i18n:translate="label_related_items">Related Items</dt>
-            <dd>
-              <tal:related tal:repeat="related marker/related_items">
+            <h5 i18n:translate="label_related_items">Related Items</h5>
+            <ul>
+              <li tal:repeat="related marker/related_items">
                 <a href=""
                    tal:attributes="href related/url;
                                    title related/description | nothing"
                    tal:content="related/title" />
-              </tal:related>
-            </dd>
+              </li>
+            </ul>
           </tal:block>
-        </tal:markers>
-        </dl>
+        </li>
+        </ul>
       </div>
 
       <div tal:replace="structure provider:plone.belowcontentbody" />
