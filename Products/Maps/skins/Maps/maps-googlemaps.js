@@ -49,9 +49,9 @@ function initialize_maps() {
                                               parseFloat($geo.find('.longitude').text()));
             };
             var _getLayers = function (){
-                var out = {};
+                var out = [];
                 $node.find('.layers li').each(function (){
-                    out[$(this).text()] = true;
+                    out.push($(this).text());
                 });
                 return out;
             };
@@ -100,6 +100,12 @@ function initialize_maps() {
             google.maps.event.addListener(out.marker, 'click', function (){
                 out.info_window.open(map, out.marker);
             });
+
+            google.maps.event.addListener(out.marker, 'dblclick', function (){
+                map.panTo(out.marker.getPosition());
+            });
+
+
             out.marker.setMap(map);
             return out;
             
@@ -107,13 +113,26 @@ function initialize_maps() {
     
         var _getLocations = function(node, map) {
             var $node = $(node);
-            var $lists = $node.find("li");
+            var $lists = $node.find("li:not(.layers li)");
             var out = [];
 
             $lists.each(function (){
                 out.push(_createMarker($(this), map));
             });
             return out;
+        };
+
+        var _getLayersList = function(locations){
+            var layers = [];
+            $.each(locations,function (){
+                $.each(this.layers, function (){
+                    var s = this.toString();
+                    if ($.inArray(s, layers) === -1){
+                        layers.push(s);
+                    }
+                });
+            });
+            return layers;
         };
         
         var _reverseGeocoding = function (latLng, $search_text){
@@ -160,7 +179,15 @@ function initialize_maps() {
             
             });
         };
-        
+        var _LayerControl = function (layers, $layerControlDiv, map){
+            $.each(layers, function (index, value){
+                var i = 'layer' + index;
+//                $('<div><input type="checkbox" checked="checked" id="' + i +'" value="' + value + '" /><label for="' + i + '">' + value + '</label></div>')
+                $('<div><label for="' + i + '"><input type="checkbox" checked="checked" id="' + i +'" value="' + value + '" />' + value + '</label></div>')
+                .appendTo($layerControlDiv).css('padding','2px');
+            });
+
+        };
         var _initMap = function (index, element){
             $(this).find('ul').hide();
             var _getBounds = function (locations){
@@ -179,7 +206,40 @@ function initialize_maps() {
             var map = new google.maps.Map($map_node.get(0), map_options);
 
             var locations = _getLocations(this, map);
-            // manage layers ????
+            var layers = _getLayersList(locations);
+            // manage layers
+            if (layers.length && locations.length > 1){
+                var $layerControlDiv = $('<div />')
+                .css('background-color', 'white')
+                .css('border-color','#A9BBDF')
+                .css('border-style','solid')
+                .css('border-width','0 1px 1px')
+                .css('box-shadow','2px 2px 3px rgba(0, 0, 0, 0.35)')
+                .css('margin-top','5px');
+                var layerControl = new _LayerControl(layers, $layerControlDiv, map);
+                map.controls[google.maps.ControlPosition.TOP_RIGHT].push($layerControlDiv.get(0));
+                $layerControlDiv.click(function (){
+                    var layersActive = [];
+                    $(this).find('input:checked').each(function (){
+                        layersActive.push($(this).val());
+                    });
+                    $.each(locations, function (){
+                        var visibility = false;
+                        var layers = this.layers;
+                        if (layers.length === 0){
+                            visibility = true;
+                        }
+                        else {
+                            for(var i = 0, len = layersActive.length;i < len;i++){
+                                if ($.inArray(layersActive[i], layers) !== -1){
+                                    visibility = true;
+                                }
+                            }
+                        }
+                        this.marker.setVisible(visibility);
+                    });
+                });
+            }
 
             var bounds = _getBounds(locations);
 
