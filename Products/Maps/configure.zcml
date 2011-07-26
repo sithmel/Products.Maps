@@ -95,6 +95,21 @@
       allowed_interface=".interfaces.map.IMapView"
       />
 
+  <browser:page
+      for="Products.ATContentTypes.interface.IATFolder"
+      name="maps_save_config"
+      class=".browser.map.SaveMapView"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="Products.ATContentTypes.interface.IATTopic"
+      name="maps_save_config"
+      class=".browser.map.SaveMapView"
+      permission="cmf.ModifyPortalContent"
+      />
+
+
   <!-- widgets -->
 
   <view

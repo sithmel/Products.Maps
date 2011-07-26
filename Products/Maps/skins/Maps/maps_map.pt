@@ -14,7 +14,12 @@
           view context/@@maps_googlemaps_view;
           view_show_contents view/showContents;
           ">
-
+      <script type="text/javascript"
+              tal:define="map_setting view/getSettings"
+              tal:content="string:
+    var _maps_saved_settings = $map_setting;
+      ">
+      </script>
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 
       <h1 class="documentFirstHeading">
@@ -80,7 +85,9 @@
           </tal:block>
         </li>
         </ul>
+
       </div>
+
 
       <div tal:replace="structure provider:plone.belowcontentbody" />
 
