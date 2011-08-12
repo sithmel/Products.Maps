@@ -1,6 +1,77 @@
 var mapsOpenLayers = function() {
 
-    function _parseMarkers(markers, result) {
+    function _createMarker(data, map) {
+
+        // WIP
+        var marker_layer = map.getLayersByName('Markers')[0];
+        if (!marker_layer) {
+            marker_layer = new OpenLayers.Layer.Markers("Markers");
+        }
+
+        data['marker'] = new OpenLayers.Marker(data['point']);//, icon.clone());
+
+        data['info_windows'] = [];
+
+        jQuery.each(data['tabs'], function(i, tab) {
+            // not handling tabs yet
+            //var $info_window = new GInfoWindowTab($tab['title'], $tab['node']);
+            //$data['info_windows'].push($info_window);
+        });
+
+        if (data['info_windows'].length > 1) {
+            // not handling tabs yet
+            //_addInfoWindowTabs($data['marker'], $data['info_windows']);
+        }
+        else {
+            var marker = data['marker'];
+
+            marker.removePopup = function() {
+                if (marker.popup != null) {
+                    map.removePopup(marker.popup);
+                    marker.popup = null;
+                }
+            }
+
+            marker.events.register("click", marker, function(evt) {
+                jQuery.each(map.popups, function(x, p) {
+                    map.removePopup(p);
+                });
+                marker.popup = new OpenLayers.Popup.FramedCloud(
+                    lonlat=marker_lonlat,
+                    contentSize=null,
+                    contentHTML=marker_html,
+                    anchor={
+                            // fix for OpenLayers 2.10 positioning bug
+                            size: new OpenLayers.Size(0, 0),
+                            offset: new OpenLayers.Pixel(0, -(size.h/2))
+                        },
+                    closeBox=true,
+                    closeBoxCallback=marker.removePopup
+                )
+                map.addPopup(marker.popup);
+            });
+            marker_layer.addMarker(marker);
+        }
+
+
+
+
+
+
+
+        for (var j=0; j < $data['tabs'].length; j++) {
+            var $tab = $data['tabs'][j];
+            var $info_window = new GInfoWindowTab($tab['title'], $tab['node']);
+            $data['info_windows'].push($info_window);
+        }
+        if ($data['info_windows'].length > 1) {
+            _addInfoWindowTabs($data['marker'], $data['info_windows']);
+        } else {
+            _addInfoWindow($data['marker'], $data['tabs'][0]['node']);
+        }
+    }
+
+    function _parseMarkers(markers, result, map) {
         var result = [];
         var data;
         var first_tab = true;
@@ -40,10 +111,9 @@ var mapsOpenLayers = function() {
                 var lat_node = jQuery('.latitude', node);
                 var long_node = jQuery('longitude', node);
                 if (lat_node.length > 0 && long_node.length > 0) {
-                    data['point'] = new OpenLayers.LonLat(
-                                        parseFloat(long_node.text()),
-                                        parseFloat(lat_node.text())
-                                    )
+                    var lat_value = parseFloat(lat_node.text());
+                    var lon_value = parseFloat(long_node.text());
+                    data['point'] = new OpenLayers.LonLat(transLatLon(lat_value, lon_value, map))
                 }
                 return true;
             };
@@ -84,19 +154,19 @@ var mapsOpenLayers = function() {
         return result;
     }
 
-    function _getLocations($node) {
-        var $lists = jQuery("dl", $node);
-        var $nodes = [];
+    function _getLocations(node, map) {
+        var lists = jQuery("dl", node);
+        var nodes = [];
 
         // we first have to copy all nodes to a list, because some will be
         // removed and looping over the childNodes directly doesn't work then
-        for (var j=0; j < $lists.length; j++) {
-            for (var k=0; k < $lists[j].childNodes.length; k++) {
-                $nodes.push($lists[j].childNodes[k]);
+        for (var j=0; j < lists.length; j++) {
+            for (var k=0; k < lists[j].childNodes.length; k++) {
+                nodes.push(lists[j].childNodes[k]);
             }
-            $lists[j].parentNode.removeChild($lists[j]);
+            lists[j].parentNode.removeChild(lists[j]);
         }
-        return _parseMarkers($nodes);
+        return _parseMarkers(nodes, map);
     };
 
     function transLatLon(lat, lon, map) {
@@ -107,7 +177,6 @@ var mapsOpenLayers = function() {
     }
 
     function _initMap(obj) {
-        var locations = _getLocations(obj);
         /*var $$layers = _getLayers($locations);
         var $bounds = _getBounds($locations);
         var $center = $bounds.getCenter();*/
@@ -126,6 +195,8 @@ var mapsOpenLayers = function() {
         map.addLayers([osm]);
         map.addControl(new OpenLayers.Control.LayerSwitcher());
         map.setCenter(transLatLon(48.9, 10.2, map), 4);
+
+        var locations = _getLocations(obj, map);
 
     };
 
