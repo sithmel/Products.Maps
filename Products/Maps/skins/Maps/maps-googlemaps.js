@@ -1,3 +1,171 @@
+var mapsOpenLayers = function() {
+
+    function _parseMarkers(markers, result) {
+        var result = [];
+        var data;
+        var first_tab = true;
+
+        jQuery.each(markers, function(i, node) {
+            var node = jQuery(node);
+
+            if (node.get(0).nodeType != 1) {
+                return true;
+            };
+
+            if (node.hasClass('title')) {
+                node.remove();
+                if (data) {
+                    //createmarker(data);
+                    result.push(data);
+                };
+                data = {};
+                data['tabs'] = [];
+                var tab = {};
+                data['tabs'].push(tab);
+                var dl = jQuery('<dl>');
+                dl.addClass('mapsMarker');
+                dl.append(node);
+                tab['node'] = dl;
+                first_tab = true;
+                var icon = jQuery('img.marker', node);
+                if (icon.length > 0) {
+                    jQuery(icon.get(0)).remove();
+                    alt = icon.get(0).alt;
+                };
+                return true;
+            };
+
+            if (node.hasClass('geo')) {
+                node.remove();
+                var lat_node = jQuery('.latitude', node);
+                var long_node = jQuery('longitude', node);
+                if (lat_node.length > 0 && long_node.length > 0) {
+                    data['point'] = new OpenLayers.LonLat(
+                                        parseFloat(long_node.text()),
+                                        parseFloat(lat_node.text())
+                                    )
+                }
+                return true;
+            };
+
+            if (node.hasClass('tab')) {
+                node.remove();
+                var tab = {};
+                if (first_tab) {
+                    first_tab = false;
+                    tab = data['tabs'][0];
+                } else {
+                    data['tabs'].push(tab);
+                    var dl = jQuery('<dl>');
+                    dl.addClass('mapsMarker');
+                    tab['node'] = dl;
+                }
+                jQuery(tab['node']).append(node);
+                tab['title'] = node.title;
+                return true;
+            };
+
+            if (node.hasClass('layers')) {
+                node.remove();
+                var nodes = jQuery("li", node);
+                data['layers'] = {};
+                jQuery.each(nodes, function(i, nd) {
+                    data['layers'][nd.text()] = true;
+                });
+                return true;
+            };
+            node.remove();
+            jQuery(data['tabs'][0]['node']).append(node);
+        });
+        if (data) {
+            //_createMarker($data);
+            result.push(data);
+        }
+        return result;
+    }
+
+    function _getLocations($node) {
+        var $lists = jQuery("dl", $node);
+        var $nodes = [];
+
+        // we first have to copy all nodes to a list, because some will be
+        // removed and looping over the childNodes directly doesn't work then
+        for (var j=0; j < $lists.length; j++) {
+            for (var k=0; k < $lists[j].childNodes.length; k++) {
+                $nodes.push($lists[j].childNodes[k]);
+            }
+            $lists[j].parentNode.removeChild($lists[j]);
+        }
+        return _parseMarkers($nodes);
+    };
+
+    function transLatLon(lat, lon, map) {
+        return new OpenLayers.LonLat(lon, lat).transform(
+            new OpenLayers.Projection("EPSG:4326"),
+            map.getProjectionObject()
+        )
+    }
+
+    function _initMap(obj) {
+        var locations = _getLocations(obj);
+        /*var $$layers = _getLayers($locations);
+        var $bounds = _getBounds($locations);
+        var $center = $bounds.getCenter();*/
+        var map_node = jQuery('<div>').addClass('googleMapPane');
+        obj.addClass('googleMapActive');
+        obj.append(map_node);
+
+        var map = new OpenLayers.Map({
+            div: map_node.get(0),
+            projection: new OpenLayers.Projection("EPSG:900913"),
+            units: "m"
+        });
+
+        var osm = new OpenLayers.Layer.OSM();
+
+        map.addLayers([osm]);
+        map.addControl(new OpenLayers.Control.LayerSwitcher());
+        map.setCenter(transLatLon(48.9, 10.2, map), 4);
+
+    };
+
+/*
+        var $zoom_level = $map.getBoundsZoomLevel($bounds);
+        if ($zoom_level > _mapsConfig_google.maxzoomlevel)
+            $zoom_level = _mapsConfig_google.maxzoomlevel;
+        $map.setCenter($center, $zoom_level, _defaultmaptype);
+        $map.addControl(new GLargeMapControl());
+        if (($$layers['enabled_names'].length > 0) && ($locations.length > 1)) {
+            $map.addControl(new _LayerControl($locations, $$layers));
+        }
+        if (_mapsConfig_google.selectablemaptypes) {
+            $map.addControl(new GMapTypeControl());
+        }
+        for (var i=0; i < $locations.length; i++) {
+            $map.addOverlay($locations[i]['marker']);
+        }
+    };
+*/
+    return {
+        init: function() {
+            var maps = jQuery("div.googleMapView");
+            maps.each(function(i, obj) {
+                _initMap(jQuery(obj));
+            });
+
+            var maps = jQuery("div.googleMapEdit");
+            maps.each(function(i, obj) {
+                _initLocationEditMap(jQuery(obj));
+            });
+
+        },
+        loadJS: function(url) {
+            document.write('<'+'script type="text/javascript" src="'+url+'"><'+'/script>');
+        }
+    };
+}();
+
+
 
 // start namespace
 var mapsGoogleMaps = function() {
@@ -499,8 +667,21 @@ var mapsGoogleMaps = function() {
 // end namespace
 }();
 
+
+
+
+//mapsOpenLayers.loadJS("/OpenLayers.js");
+//registerEventListener(window, 'load', mapsOpenLayers.init);
+
+jQuery(document).ready(function() {
+    jQuery.getScript("/OpenLayers.js", mapsOpenLayers.init);
+});
+
+//jQuery(window).bind('load', mapsOpenLayers.init);
+
+/*
 mapsGoogleMaps.loadJS("http://maps.google.com/maps?file=api&v=2&key="+mapsConfig.google.apikey);
 if (mapsConfig.google.ajaxsearchkey) {
     mapsGoogleMaps.loadJS("http://www.google.com/uds/api?file=uds.js&amp;v=1.0&key="+mapsConfig.google.ajaxsearchkey);
 }
-registerEventListener(window, 'load', mapsGoogleMaps.init);
+registerEventListener(window, 'load', mapsGoogleMaps.init);*/
