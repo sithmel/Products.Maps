@@ -274,7 +274,8 @@ var mapsGoogleMaps = (function ($) {
 
             if ($location.layers) {
                 for ($name in $location.layers) {
-                    if ($data.counts[$name] === null) {
+//                    if ($data.counts[$name] === null) {
+                    if (! $data.counts[$name]) {
                         $data.counts[$name] = 1;
                         $data.names.push($name);
                     } else {
