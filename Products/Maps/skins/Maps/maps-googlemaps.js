@@ -2,10 +2,14 @@ var mapsOpenLayers = function() {
 
     function _createMarker(data, map) {
 
+        var size = new OpenLayers.Size(17, 25); //w,h
+        var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+
         // WIP
         var marker_layer = map.getLayersByName('Markers')[0];
         if (!marker_layer) {
             marker_layer = new OpenLayers.Layer.Markers("Markers");
+            map.addLayer(marker_layer);
         }
 
         data['marker'] = new OpenLayers.Marker(data['point']);//, icon.clone());
@@ -24,6 +28,8 @@ var mapsOpenLayers = function() {
         }
         else {
             var marker = data['marker'];
+            var marker_lonlat = marker.lonlat;
+            var marker_html = jQuery(data['tabs'][0]['node']).html();
 
             marker.removePopup = function() {
                 if (marker.popup != null) {
@@ -37,6 +43,7 @@ var mapsOpenLayers = function() {
                     map.removePopup(p);
                 });
                 marker.popup = new OpenLayers.Popup.FramedCloud(
+                    id=null,
                     lonlat=marker_lonlat,
                     contentSize=null,
                     contentHTML=marker_html,
@@ -58,7 +65,7 @@ var mapsOpenLayers = function() {
 
 
 
-
+/*
         for (var j=0; j < $data['tabs'].length; j++) {
             var $tab = $data['tabs'][j];
             var $info_window = new GInfoWindowTab($tab['title'], $tab['node']);
@@ -66,12 +73,14 @@ var mapsOpenLayers = function() {
         }
         if ($data['info_windows'].length > 1) {
             _addInfoWindowTabs($data['marker'], $data['info_windows']);
+        //DONE!:
         } else {
             _addInfoWindow($data['marker'], $data['tabs'][0]['node']);
         }
+*/
     }
 
-    function _parseMarkers(markers, result, map) {
+    function _parseMarkers(markers, map, result) {
         var result = [];
         var data;
         var first_tab = true;
@@ -109,11 +118,11 @@ var mapsOpenLayers = function() {
             if (node.hasClass('geo')) {
                 node.remove();
                 var lat_node = jQuery('.latitude', node);
-                var long_node = jQuery('longitude', node);
+                var long_node = jQuery('.longitude', node);
                 if (lat_node.length > 0 && long_node.length > 0) {
                     var lat_value = parseFloat(lat_node.text());
                     var lon_value = parseFloat(long_node.text());
-                    data['point'] = new OpenLayers.LonLat(transLatLon(lat_value, lon_value, map))
+                    data['point'] = transLatLon(lat_value, lon_value, map);
                 }
                 return true;
             };
@@ -148,7 +157,7 @@ var mapsOpenLayers = function() {
             jQuery(data['tabs'][0]['node']).append(node);
         });
         if (data) {
-            //_createMarker($data);
+            _createMarker(data, map);
             result.push(data);
         }
         return result;
