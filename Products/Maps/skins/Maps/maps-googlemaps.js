@@ -185,6 +185,14 @@ var mapsOpenLayers = function() {
         )
     }
 
+    function getFeatureLatLon(feature) {
+        var feature_clone = feature.clone()
+        return feature_clone.geometry.transform(
+            new OpenLayers.Projection("EPSG:900913"),
+            new OpenLayers.Projection("EPSG:4326")
+        );
+    }
+
     function _initMap(obj) {
         /*var $$layers = _getLayers($locations);
         var $bounds = _getBounds($locations);
@@ -226,6 +234,106 @@ var mapsOpenLayers = function() {
         }
     };
 */
+
+
+    function _initLocationEditMap(node) {
+        var input = jQuery('input', node);
+        if (input.length != 2)
+            return;
+
+        var location = jQuery('<div>').addClass('locationString discreet');
+        var map_node = jQuery('<div>').addClass('googleMapPane');
+        node.addClass('googleMapActive');
+        node.append(map_node);
+        node.append(location);
+
+        map_width = parseInt(node.css('width'));
+        map_height = parseInt(node.css('height'));
+        map_options = {
+            div: map_node.get(0),
+            projection: new OpenLayers.Projection("EPSG:900913"),
+            units: "m"
+        }
+        if (!isNaN(map_width) && !isNaN(map_height)) {
+            map_options['size'] = new OpenLayers.Size(map_width, map_height);
+        }
+
+        var map = new OpenLayers.Map(map_options);
+        var osm = new OpenLayers.Layer.OSM();
+        var vector_layer = new OpenLayers.Layer.Vector("Vector Markers", {
+            styleMap: new OpenLayers.StyleMap({
+                'default': new OpenLayers.Style(OpenLayers.Util.applyDefaults({
+                    externalGraphic: "img/marker.png",
+                    graphicOpacity: 1,
+                    pointRadius: 12
+                }, OpenLayers.Feature.Vector.style["default"]))
+            })
+        });
+
+
+        map.addLayers([osm, vector_layer]);
+        map.addControl(new OpenLayers.Control.LayerSwitcher());
+        map.setCenter(transLatLon(48.9, 10.2, map), 4);
+
+        location.html(input.get(0).value + "," + input.get(1).value);
+        var center = transLatLon(parseFloat(input.get(0).value),
+                                  parseFloat(input.get(1).value), map);
+        map.setCenter(center);//, _mapsConfig_google.initialzoomlevel);
+
+        //$map.setCenter($center, _mapsConfig_google.initialzoomlevel, _defaultmaptype);
+        //$map.addControl(new GLargeMapControl());
+        //if (_mapsConfig_google.selectablemaptypes) {
+        //    $map.addControl(new GMapTypeControl());
+        //}
+
+        var vector_point = new OpenLayers.Geometry.Point(center.lon, center.lat);
+        var marker_feature = new OpenLayers.Feature.Vector(vector_point);
+        vector_layer.addFeatures([marker_feature]);
+
+        function update_feature_location(feature) {
+            latlon = getFeatureLatLon(feature);
+            input.get(0).value = latlon.y;
+            input.get(1).value = latlon.x;
+            location.html(latlon.y + ', ' + latlon.x);
+        }
+
+        drag_feature = new OpenLayers.Control.DragFeature(vector_layer);
+        drag_feature.onComplete = function(feature, pixel) {
+            update_feature_location(feature);
+        }
+
+        map.addControl(drag_feature);
+        drag_feature.activate();
+
+        map.events.register('click', map, function(evt) {
+            var position = this.events.getMousePosition(evt);
+            marker_feature.move(position);
+            update_feature_location(marker_feature);
+        });
+
+
+        /*
+        var $$marker = new GMarker($center, {draggable: true});
+        $map.addOverlay($$marker);
+        GEvent.addListener($$marker, "dragend", function() {
+            var $point = $$marker.getPoint();
+            $input[0].value = $point.lat();
+            $input[1].value = $point.lng();
+            $location.innerHTML = $point.lat() + ", " + $point.lng();
+        });
+        GEvent.addListener($map, "click", function($overlay, $point) {
+            if (!$overlay) {
+                $$marker.setPoint($point);
+                $input[0].value = $point.lat();
+                $input[1].value = $point.lng();
+                $location.innerHTML = $point.lat() + ", " + $point.lng();
+            }
+        });
+        _setupGeocoding($input, $map, $$marker, $location);
+        */
+    };
+
+
     return {
         init: function() {
             var maps = jQuery("div.googleMapView");
