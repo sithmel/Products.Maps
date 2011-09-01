@@ -1,5 +1,8 @@
 var mapsOpenLayers = function() {
 
+    var _mapsConfig = mapsConfig;
+    var _mapsConfig_google = _mapsConfig.google;
+
     function _createMarker(data, map) {
 
         var size = new OpenLayers.Size(17, 25); //w,h
@@ -235,6 +238,115 @@ var mapsOpenLayers = function() {
     };
 */
 
+    function _setupGeocoding(input, map, marker_feature, location) {
+        //var $geocoder = new GClientGeocoder();
+        var query = jQuery('<input type="text">');
+        var search = jQuery('<input type="button">');
+        var form = null;
+        var old_submit = null;
+
+        // search for the form
+        form = input.get(0);
+        do {
+            if (form.tagName) {
+                if (form.tagName.toLowerCase() == 'form') {
+                    break;
+                }
+                if (form.tagName.toLowerCase() == 'body') {
+                    form = null;
+                    break;
+                }
+                form = form.parentNode;
+            }
+        } while (form);
+
+        input.get(0).style.display = "none";
+        input.get(1).style.display = "none";
+        query.attr('value', input.get(0).value + ', ' + input.get(1).value);
+        search.attr('value','Search');
+        search.addClass('searchButton');
+
+        func = function(e) {
+            var address = query.attr('value');
+/*            var _localSearchFunc = function() {
+                var $$place = _localSearch.results[0];
+                if ($$place) {
+                    var $point = new GLatLng($$place.lat, $$place.lng);
+                    $input[0].value = $point.lat();
+                    $input[1].value = $point.lng();
+                    $location.innerHTML = $point.lat() + ", " + $point.lng();
+                    $$marker.setPoint($point);
+                    if ($$place.streetAddress) {
+                        $$marker.openInfoWindowHtml($$place.streetAddress);
+                    } else {
+                        $$marker.openInfoWindowHtml($address);
+                    }
+                    $map.setCenter($point, _mapsConfig_google.initialzoomlevel);
+                } else {
+                    var msg = _mapsConfig_google.locationnotfound;
+                    msg = msg.replace(/\[LOCATION\]/, $address);
+                    alert(msg);
+                }
+            };
+*/
+            var _geoSearchFunc = function(data) {
+                console.log(data);
+                if (!data || data.response.numFound <= 0 || data.responseHeader.status != 0) {
+                    var msg = _mapsConfig_google.locationnotfound;
+                    msg = msg.replace(/\[LOCATION\]/, address);
+                    alert(msg);
+                } else {
+                    var place = data.response.docs[0];
+                    var place_lonlat = transLatLon(place.lat, place.lng, map);
+                    var place_px = map.getLayerPxFromLonLat(place_lonlat);
+                    //var point = new OpenLayers.Pixel(place_px);
+                    console.log(marker_feature);
+                    // .move() is not usefull here since it moves the
+                    // geometry BY the given amount on x and y
+                    marker_feature.move(place_px);
+                    marker_feature.update_feature_location();
+                    input.get(0).value = place.lat;
+                    input.get(1).value = place.lng;
+                    location.html(place.lat + ", " + place.lng);
+                    //$$marker.openInfoWindowHtml($$place.address);
+                    //$map.setCenter($point, _mapsConfig_google.initialzoomlevel);
+                    map.setCenter(place_lonlat);
+                }
+            };
+            //$geocoder.getLocations($address, _geoSearchFunc);
+            var window_location = window.location.pathname;
+            var parent_url = window_location.split('/').slice(0, -1).join('/');
+            var geocode_url = parent_url + '/geocode_string';
+            jQuery.getJSON(geocode_url, {
+                'q': address,
+                'format': 'JSON'
+            }, _geoSearchFunc);
+            // Prevent "You already submitted this form" message
+            var nodes = jQuery('input[type=submit]', form);
+            jQuery.each(nodes, function(i, node) {
+                jQuery(node).removeClass('submitting');
+            })
+            return false;
+        };
+        query.onfocus = function(e) {
+            if (form) {
+                old_submit = form.onsubmit;
+                form.onsubmit = func;
+            }
+        };
+        query.onblur = function(e) {
+            if (form) {
+                form.onsubmit = old_submit;
+            }
+        };
+        search.click(func);
+
+        query.insertBefore(jQuery(input.get(0)).parent());
+        search.insertBefore(jQuery(input.get(0)).parent());
+
+        //input.get(0).parentNode.insertBefore(query, input.get(0));
+        //input.get(0).parentNode.insertBefore(search, input.get(0));
+    };
 
     function _initLocationEditMap(node) {
         var input = jQuery('input', node);
@@ -290,8 +402,8 @@ var mapsOpenLayers = function() {
         var marker_feature = new OpenLayers.Feature.Vector(vector_point);
         vector_layer.addFeatures([marker_feature]);
 
-        function update_feature_location(feature) {
-            latlon = getFeatureLatLon(feature);
+        marker_feature.update_feature_location = function() {
+            latlon = getFeatureLatLon(this);
             input.get(0).value = latlon.y;
             input.get(1).value = latlon.x;
             location.html(latlon.y + ', ' + latlon.x);
@@ -299,7 +411,7 @@ var mapsOpenLayers = function() {
 
         drag_feature = new OpenLayers.Control.DragFeature(vector_layer);
         drag_feature.onComplete = function(feature, pixel) {
-            update_feature_location(feature);
+            feature.update_feature_location();
         }
 
         map.addControl(drag_feature);
@@ -308,7 +420,7 @@ var mapsOpenLayers = function() {
         map.events.register('click', map, function(evt) {
             var position = this.events.getMousePosition(evt);
             marker_feature.move(position);
-            update_feature_location(marker_feature);
+            marker_feature.update_feature_location();
         });
 
 
@@ -331,6 +443,7 @@ var mapsOpenLayers = function() {
         });
         _setupGeocoding($input, $map, $$marker, $location);
         */
+        _setupGeocoding(input, map, marker_feature, location);
     };
 
 

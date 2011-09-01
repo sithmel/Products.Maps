@@ -95,6 +95,13 @@
       allowed_interface=".interfaces.map.IMapView"
       />
 
+  <browser:view
+      for="Products.Maps.interfaces.ILocation"
+      name="geocode_string"
+      class=".browser.map.GeocodeView"
+      permission="zope2.View"
+      />
+
   <!-- widgets -->
 
   <view

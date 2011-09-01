@@ -1,3 +1,5 @@
+import urllib
+import json
 from cgi import escape
 
 from zope.interface import implements
@@ -59,3 +61,17 @@ class FolderMapView(BaseMapView):
         if self.map is None:
             return False
         return True
+
+class GeocodeView(BrowserView):
+    def __call__(self):
+        if not self.request.form:
+            return
+        params = urllib.urlencode(self.request.form)
+        geocoder_url = 'http://services.gisgraphy.com/fulltext/fulltextsearch'
+        query_url = '%s?%s' % (geocoder_url, params)
+        data = json.loads(urllib.urlopen(query_url).read())
+        self.request.RESPONSE.setHeader('Content-Type', 'application/json')
+        self.request.RESPONSE.write(json.dumps(data))
+
+
+
