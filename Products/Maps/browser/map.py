@@ -66,12 +66,36 @@ class GeocodeView(BrowserView):
     def __call__(self):
         if not self.request.form:
             return
-        params = urllib.urlencode(self.request.form)
-        geocoder_url = 'http://services.gisgraphy.com/fulltext/fulltextsearch'
-        query_url = '%s?%s' % (geocoder_url, params)
-        data = json.loads(urllib.urlopen(query_url).read())
+        data = json.loads(urllib.urlopen(self.getQueryURL()).read())
+        response = data.get('response', {}).get('docs', None)
+        if not response:
+            response = data.get('result', None)
         self.request.RESPONSE.setHeader('Content-Type', 'application/json')
-        self.request.RESPONSE.write(json.dumps(data))
+        self.request.RESPONSE.write(json.dumps(response))
 
+    def getQueryURL(self):
+        params = {
+            'format': 'JSON',
+            'from': '1',
+            'to': '10',
+        }
+        query = self.request.form['query']
+        query_split = [self.toFloat(x) for x in query.split(',')]
+        if len(query_split) is 2 and (None not in query_split):
+            params.update({
+                'lat': query_split[0],
+                'lng': query_split[1],
+            })
+            url = 'http://services.gisgraphy.com/street/search'
+        else:
+            params.update({
+                'q': query,
+            })
+            url = 'http://services.gisgraphy.com/fulltext/fulltextsearch'
+        return '%s?%s' % (url, urllib.urlencode(params))
 
-
+    def toFloat(self, str):
+        try:
+            return float(str)
+        except ValueError:
+            return None

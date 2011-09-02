@@ -1,13 +1,38 @@
 var mapsOpenLayers = function() {
 
+    var _size = null;
+    var _offset = null;
+
     var _mapsConfig = mapsConfig;
     var _mapsConfig_google = _mapsConfig.google;
 
+    function _removePopup(map, popup) {
+        map.removePopup(popup);
+    }
+
+    function _clearPopups(map) {
+        jQuery.each(map.popups, function(i, popup) {
+            _removePopup(map, popup);
+        });
+    }
+
+    function _createPopup(lonlat, content, callback) {
+        return new OpenLayers.Popup.FramedCloud(
+            id=null,
+            lonlat=lonlat,
+            contentSize=null,
+            contentHTML=content,
+            anchor={
+                    // fix for OpenLayers 2.10 positioning bug
+                    size: new OpenLayers.Size(0, 0),
+                    offset: new OpenLayers.Pixel(0, -(_size.h/2))
+                },
+            closeBox=true,
+            closeBoxCallback=callback
+        )
+    }
+
     function _createMarker(data, map) {
-
-        var size = new OpenLayers.Size(17, 25); //w,h
-        var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-
         // WIP
         var marker_layer = map.getLayersByName('Markers')[0];
         if (!marker_layer) {
@@ -36,7 +61,7 @@ var mapsOpenLayers = function() {
 
             marker.removePopup = function() {
                 if (marker.popup != null) {
-                    map.removePopup(marker.popup);
+                    _removePopup(map, marker.popup);
                     marker.popup = null;
                 }
             }
@@ -45,19 +70,9 @@ var mapsOpenLayers = function() {
                 jQuery.each(map.popups, function(x, p) {
                     map.removePopup(p);
                 });
-                marker.popup = new OpenLayers.Popup.FramedCloud(
-                    id=null,
-                    lonlat=marker_lonlat,
-                    contentSize=null,
-                    contentHTML=marker_html,
-                    anchor={
-                            // fix for OpenLayers 2.10 positioning bug
-                            size: new OpenLayers.Size(0, 0),
-                            offset: new OpenLayers.Pixel(0, -(size.h/2))
-                        },
-                    closeBox=true,
-                    closeBoxCallback=marker.removePopup
-                )
+                marker.popup = _createPopup(lonlat=marker_lonlat,
+                                            content=marker_html,
+                                            callback=marker.removePopup);
                 map.addPopup(marker.popup);
             });
             marker_layer.addMarker(marker);
@@ -98,7 +113,7 @@ var mapsOpenLayers = function() {
             if (node.hasClass('title')) {
                 node.remove();
                 if (data) {
-                    //createmarker(data);
+                    _createMarker(data, map);
                     result.push(data);
                 };
                 data = {};
@@ -181,6 +196,14 @@ var mapsOpenLayers = function() {
         return _parseMarkers(nodes, map);
     };
 
+    function _getBounds(locations) {
+        var bounds = new OpenLayers.Bounds();
+        jQuery.each(locations, function(i, location) {
+            bounds.extend(location.marker.lonlat);
+        });
+        return bounds;
+    };
+
     function transLatLon(lat, lon, map) {
         return new OpenLayers.LonLat(lon, lat).transform(
             new OpenLayers.Projection("EPSG:4326"),
@@ -197,9 +220,6 @@ var mapsOpenLayers = function() {
     }
 
     function _initMap(obj) {
-        /*var $$layers = _getLayers($locations);
-        var $bounds = _getBounds($locations);
-        var $center = $bounds.getCenter();*/
         var map_node = jQuery('<div>').addClass('googleMapPane');
         obj.addClass('googleMapActive');
         obj.append(map_node);
@@ -214,10 +234,12 @@ var mapsOpenLayers = function() {
 
         map.addLayers([osm]);
         map.addControl(new OpenLayers.Control.LayerSwitcher());
-        map.setCenter(transLatLon(48.9, 10.2, map), 4);
 
         var locations = _getLocations(obj, map);
+        var bounds = _getBounds(locations);
+        var center = bounds.getCenterLonLat();
 
+        map.setCenter(center, 4);
     };
 
 /*
@@ -238,27 +260,14 @@ var mapsOpenLayers = function() {
     };
 */
 
+
     function _setupGeocoding(input, map, marker_feature, location) {
-        //var $geocoder = new GClientGeocoder();
         var query = jQuery('<input type="text">');
         var search = jQuery('<input type="button">');
         var form = null;
         var old_submit = null;
 
-        // search for the form
-        form = input.get(0);
-        do {
-            if (form.tagName) {
-                if (form.tagName.toLowerCase() == 'form') {
-                    break;
-                }
-                if (form.tagName.toLowerCase() == 'body') {
-                    form = null;
-                    break;
-                }
-                form = form.parentNode;
-            }
-        } while (form);
+        form = jQuery('form[name="edit_form"]').get(0);
 
         input.get(0).style.display = "none";
         input.get(1).style.display = "none";
@@ -268,58 +277,37 @@ var mapsOpenLayers = function() {
 
         func = function(e) {
             var address = query.attr('value');
-/*            var _localSearchFunc = function() {
-                var $$place = _localSearch.results[0];
-                if ($$place) {
-                    var $point = new GLatLng($$place.lat, $$place.lng);
-                    $input[0].value = $point.lat();
-                    $input[1].value = $point.lng();
-                    $location.innerHTML = $point.lat() + ", " + $point.lng();
-                    $$marker.setPoint($point);
-                    if ($$place.streetAddress) {
-                        $$marker.openInfoWindowHtml($$place.streetAddress);
-                    } else {
-                        $$marker.openInfoWindowHtml($address);
-                    }
-                    $map.setCenter($point, _mapsConfig_google.initialzoomlevel);
-                } else {
-                    var msg = _mapsConfig_google.locationnotfound;
-                    msg = msg.replace(/\[LOCATION\]/, $address);
-                    alert(msg);
-                }
-            };
-*/
             var _geoSearchFunc = function(data) {
-                console.log(data);
-                if (!data || data.response.numFound <= 0 || data.responseHeader.status != 0) {
+                if (!data || data.length == 0) {
                     var msg = _mapsConfig_google.locationnotfound;
                     msg = msg.replace(/\[LOCATION\]/, address);
                     alert(msg);
                 } else {
-                    var place = data.response.docs[0];
+                    var place = data[0];
                     var place_lonlat = transLatLon(place.lat, place.lng, map);
-                    var place_px = map.getLayerPxFromLonLat(place_lonlat);
-                    //var point = new OpenLayers.Pixel(place_px);
-                    console.log(marker_feature);
-                    // .move() is not usefull here since it moves the
-                    // geometry BY the given amount on x and y
+                    var place_px = map.getPixelFromLonLat(place_lonlat);
                     marker_feature.move(place_px);
                     marker_feature.update_feature_location();
                     input.get(0).value = place.lat;
                     input.get(1).value = place.lng;
                     location.html(place.lat + ", " + place.lng);
-                    //$$marker.openInfoWindowHtml($$place.address);
-                    //$map.setCenter($point, _mapsConfig_google.initialzoomlevel);
-                    map.setCenter(place_lonlat);
+
+                    _clearPopups(map);
+                    var popup = _createPopup(lonlat=place_lonlat,
+                                              content=data[0].name,
+                                              callback=function() {
+                                                  _removePopup(map, popup);
+                                                });
+                    map.addPopup(popup);
+
+                    map.setCenter(place_lonlat, _mapsConfig_google.initialzoomlevel);
                 }
             };
-            //$geocoder.getLocations($address, _geoSearchFunc);
             var window_location = window.location.pathname;
             var parent_url = window_location.split('/').slice(0, -1).join('/');
             var geocode_url = parent_url + '/geocode_string';
             jQuery.getJSON(geocode_url, {
-                'q': address,
-                'format': 'JSON'
+                'query': address,
             }, _geoSearchFunc);
             // Prevent "You already submitted this form" message
             var nodes = jQuery('input[type=submit]', form);
@@ -328,24 +316,21 @@ var mapsOpenLayers = function() {
             })
             return false;
         };
-        query.onfocus = function(e) {
+        query.focus(function() {
             if (form) {
                 old_submit = form.onsubmit;
                 form.onsubmit = func;
             }
-        };
-        query.onblur = function(e) {
+        });
+        query.blur(function() {
             if (form) {
                 form.onsubmit = old_submit;
             }
-        };
+        });
         search.click(func);
 
         query.insertBefore(jQuery(input.get(0)).parent());
         search.insertBefore(jQuery(input.get(0)).parent());
-
-        //input.get(0).parentNode.insertBefore(query, input.get(0));
-        //input.get(0).parentNode.insertBefore(search, input.get(0));
     };
 
     function _initLocationEditMap(node) {
@@ -377,7 +362,9 @@ var mapsOpenLayers = function() {
                 'default': new OpenLayers.Style(OpenLayers.Util.applyDefaults({
                     externalGraphic: "img/marker.png",
                     graphicOpacity: 1,
-                    pointRadius: 12
+                    graphicWidth: _size.w,
+                    graphicHeight: _size.h,
+                    graphicYOffset: -_size.h
                 }, OpenLayers.Feature.Vector.style["default"]))
             })
         });
@@ -390,7 +377,7 @@ var mapsOpenLayers = function() {
         location.html(input.get(0).value + "," + input.get(1).value);
         var center = transLatLon(parseFloat(input.get(0).value),
                                   parseFloat(input.get(1).value), map);
-        map.setCenter(center);//, _mapsConfig_google.initialzoomlevel);
+        map.setCenter(center, _mapsConfig_google.initialzoomlevel);
 
         //$map.setCenter($center, _mapsConfig_google.initialzoomlevel, _defaultmaptype);
         //$map.addControl(new GLargeMapControl());
@@ -414,10 +401,15 @@ var mapsOpenLayers = function() {
             feature.update_feature_location();
         }
 
+        drag_feature.onStart = function(feature, pixel) {
+            _clearPopups(map);
+        }
+
         map.addControl(drag_feature);
         drag_feature.activate();
 
         map.events.register('click', map, function(evt) {
+            _clearPopups(map);
             var position = this.events.getMousePosition(evt);
             marker_feature.move(position);
             marker_feature.update_feature_location();
@@ -449,6 +441,9 @@ var mapsOpenLayers = function() {
 
     return {
         init: function() {
+            _size = new OpenLayers.Size(21, 25); //w,h
+            _offset = new OpenLayers.Pixel(-(_size.w/2), -_size.h);
+
             var maps = jQuery("div.googleMapView");
             maps.each(function(i, obj) {
                 _initMap(jQuery(obj));
