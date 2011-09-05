@@ -1,10 +1,4 @@
 function initialize_maps() {
-    // todo
-
-    // layer
-    // search
-    // zoom
-
     (function ($){
         var _mapsConfig_google = mapsConfig.google;
         var _createMarkerIcons = function (){
@@ -20,6 +14,7 @@ function initialize_maps() {
 
                 out[this.name] = icon;
             });
+
             return out;
         };
         var _createMarkerShadows = function (){
@@ -43,6 +38,13 @@ function initialize_maps() {
         var _all_shadows = _createMarkerShadows();
     
         var _createMarker = function($node, map) {
+            var _getTitle = function (){
+                return $node.find('.title').text().replace(/^\s+|\s+$/g, '');
+            };
+            var _getLink = function (){
+                return $node.find('.title a').attr('href');
+            };
+
             var _getPoint = function (){
                 var $geo = $node.find('.geo');
                 return new google.maps.LatLng(parseFloat($geo.find('.latitude').text()), 
@@ -93,6 +95,8 @@ function initialize_maps() {
             };
 
             var out = {};
+            out.title = _getTitle();
+            out.link = _getLink();
             out.info_window = _getInfoWindow();
             out.marker = _getMarker();
             out.layers = _getLayers();
@@ -185,16 +189,15 @@ function initialize_maps() {
                 if($.inArray(value, layeractive) !== -1){
                     checked = 'checked="checked"';
                 }
-//                $('<div><input type="checkbox" checked="checked" id="' + i +'" value="' + value + '" /><label for="' + i + '">' + value + '</label></div>')
                 $('<div><label for="' + i + '"><input type="checkbox" ' + checked + '" id="' + i +'" value="' + value + '" />' + value + '</label></div>')
-//                .removeattr('checked','')
                 .appendTo($layerControlDiv).css('padding','2px');
             });
 
         };
 
         var _initMap = function (index, element){
-            $(this).find('ul').hide();
+            var $this = $(this);
+            $this.find('ul').hide();
             var _getBounds = function (locations){
                 var out = new google.maps.LatLngBounds();
                 $.each(locations, function (){
@@ -231,7 +234,7 @@ function initialize_maps() {
                 .css('margin-right','5px');
                 var layerControl = new _LayerControl(layers, $layerControlDiv, map, _maps_saved_settings.layers.split('#'));
                 map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push($layerControlDiv.get(0));
-                $layerControlDiv.click(function (){
+                var _update_layers = function (){
                     var layersActive = [];
                     $(this).find('input:checked').each(function (){
                         layersActive.push($(this).val());
@@ -252,7 +255,9 @@ function initialize_maps() {
                         this.marker.setVisible(visibility);
                     });
                     _maps_saved_settings.layers = layersActive.join('#');
-                });
+                };
+                $layerControlDiv.click(_update_layers);
+                _update_layers.apply($layerControlDiv.get(0));
             }
 
             var bounds = _getBounds(locations);
@@ -273,10 +278,7 @@ function initialize_maps() {
                 });
             };
             
-            var _restore_settings = function (){
-                if(_maps_saved_settings.maptype){
-                    map.setMapTypeId(_maps_saved_settings.maptype)
-                }
+            var _restore_zoom = function (){
                 if(_maps_saved_settings.center && _maps_saved_settings.zoom){
                     var c = _maps_saved_settings.center;
                     map.setCenter(new google.maps.LatLng(c[0], c[1]));
@@ -287,15 +289,167 @@ function initialize_maps() {
                 }
 
             };
+            
+            
+            var _restore_type = function (){
+                if(_maps_saved_settings.maptype){
+                    map.setMapTypeId(_maps_saved_settings.maptype)
+                }
 
-            _restore_settings();
+            };
+
+            _restore_zoom();
+            _restore_type();
 
             if($('.portaltype-folder #edit-bar, .portaltype-topic #edit-bar').length){
                 $('<input type="button" value="' + _mapsConfig_google.savemapsettings +'"/>')
                 .click(_save_settings)
                 .insertAfter(this);
             }
+
+            // search doesn't make sense with only one location            
+            if (locations.length <= 1){
+                return;
+            }
+            // map search
+            // 1 - wrap the map
+            $this.wrap('<div class="googleMapWrapper" />');
             
+            var $search = $('\
+<div>\
+    <div class="googleMapSearchBar">Cerca vicino a ...</div>\
+    <div class="googleMapSearch">\
+        <h4 class="label_search">Cerca vicino a ...</h4>\
+        <input type="text" value="" title="Città, indirizzo" name="searchtxt" class="googleMapImHere inputLabel inputLabelActive">\
+        <br>\
+        <input class="searchButton" type="submit" value="Cerca">\
+        <input class="searchButton" type="reset" value="Annulla">\
+        <div class="googleMapSearchResults">\
+        </div>\
+    </div>\
+</div>\
+').insertBefore($this);
+            var $directions = $('<div class="googleMapDirections"></div>').insertAfter($this);
+            var $search_text = $search.find('.googleMapImHere');
+            var $search_button = $search.find(':submit');
+            var $reset_button = $search.find(':reset');
+            var $search_results = $search.find('.googleMapSearchResults');
+            var marker_imhere = new google.maps.Marker({
+                icon: _all_icons['_yah'],
+                shadow:_all_shadows['_yah'],
+                map: map,
+                visible:false
+            });
+
+            var directionsRendererOptions = {};
+            
+            var directionsRenderer = new google.maps.DirectionsRenderer(directionsRendererOptions);            
+
+            $reset_button.click(function (){
+                directionsRenderer.setPanel(null);
+                directionsRenderer.setMap(null);
+                marker_imhere.setVisible(false);
+                $search_text.val('');
+                $search_results.empty();
+                _restore_zoom();
+            });
+
+            var _search_results = function (center){
+                directionsRenderer.setPanel(null);
+                directionsRenderer.setMap(null);
+                marker_imhere.setVisible(true);
+                marker_imhere.setPosition(center);
+                var computeDistanceBetween = google.maps.geometry.spherical.computeDistanceBetween;
+                var visible_locations = $.grep(locations, function (item, index){return item.marker.getVisible()});
+                $.each(visible_locations,function (){
+                    this.distance_from_center = computeDistanceBetween(center,this.marker.getPosition());
+                });
+                visible_locations.sort(function (a,b){
+                    if (a.distance_from_center > b.distance_from_center){
+                        return 1;
+                    }
+                    else {
+                        return -1;
+                    }
+                });
+                $search_results.empty();
+
+                var $i_am_here = $('\
+<div class="googleMapIMHere">\
+    <div><h4><img src="' + marker_imhere.icon.url + '"/> Neareast places</h4>\
+    </div>\
+</div>').appendTo($search_results);
+                
+                var bound = new google.maps.LatLngBounds();
+                $.each(visible_locations.slice(0,5), function (){
+                    var thislocation = this;
+                    bound.extend(thislocation.marker.getPosition());
+                    var $result = $('\
+<div class="googleMapResult">\
+    <div>\
+    <img src="' + thislocation.marker.icon.url + '"/><a href="' + thislocation.link + '">' + thislocation.title + '</a>\
+    </div>\
+    <div class="indication">Indicazioni &raquo;&nbsp;</div>\
+</div>').appendTo($search_results);
+                    $result
+                    .find('.indication')
+                    .click(function (){
+                         $(this).closest('.googleMapResult').addClass('selected').siblings().removeClass('selected');
+                         var dservice = new google.maps.DirectionsService();
+                         var directionRequest = {origin: center,
+                                                 destination:thislocation.marker.getPosition(),
+                                                 travelMode: google.maps.TravelMode.DRIVING};
+                         dservice.route(directionRequest, function (directionResult, directionStatus){
+                             if(! directionStatus === google.maps.DirectionsStatus.OK){
+                                 return ;
+                             }
+                             directionsRenderer.setDirections(directionResult);
+                             directionsRenderer.setPanel($directions.get(0));
+                             directionsRenderer.setMap(map);
+                         });
+                    });
+                    $result
+                    .find('img')
+                    .click(function (){
+                        thislocation.info_window.open(map, thislocation.marker);
+                    });
+                });
+                bound.extend(center);
+                map.fitBounds(bound);
+
+                $i_am_here.click(function (){
+                    directionsRenderer.setPanel(null);
+                    directionsRenderer.setMap(null);
+                    map.fitBounds(bound);
+                    $(this).closest('.googleMapSearchResults').find('.googleMapResult').removeClass('selected');
+                });
+
+            };
+
+            $search.find('.googleMapSearchBar').click(function (){
+                var $this = $(this);
+                var $googleMapSearch = $this.next();
+                if ($this.is('.open')){
+                    $googleMapSearch.animate({'margin-left':'-180px'}, 'fast',  function(){$this.toggleClass('open')});
+                }
+                else {
+                    // try to guess the user position if the input is empty
+                    if (! $search_text.val().length){
+                        if (navigator.geolocation){
+                            navigator.geolocation.getCurrentPosition(function(position) {
+                                var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                                _reverseGeocoding(pos, $search_text);
+                                 _search_results(pos);
+                            });
+                        }
+                    }
+                    $googleMapSearch.animate({'margin-left':'0px'}, 'fast',  function(){$this.toggleClass('open')});
+                }
+            });
+
+            // setting up the geocoder            
+            _setupGeocoder($search_text, $search_button,_search_results);
+
         };
 
 
@@ -370,7 +524,7 @@ function initialize_maps() {
     function loadScript() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://maps.google.com/maps/api/js?sensor=false&callback=initialize_maps";
+        script.src = "https://maps.google.com/maps/api/js?libraries=geometry&sensor=false&callback=initialize_maps";
         document.body.appendChild(script);
     }
       

@@ -83,6 +83,20 @@ class MapsConfig(BrowserView):
                 'infoShadowAnchor': getSizeFromString(parts[7]),
             }
             icons.append(data)
+        #add you are here marker icons
+        
+        you_are_here = {
+            'name': '_yah',
+            'icon': "%s/%s" % (portal_url, 'marker-you-are-here.png'),
+            'iconSize': [20, 34],
+            'iconAnchor': [9, 34],
+            'infoWindowAnchor': [9, 2],
+            'shadow': "%s/%s" % (portal_url, 'shadow-you-are-here.png'),
+            'shadowSize': [37, 34],
+            'infoShadowAnchor': [18, 25],
+        }
+        icons.append(you_are_here)
+
         return icons
 
     @property
