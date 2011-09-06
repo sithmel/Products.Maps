@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2011-05-16 12:40+0000\n"
+"POT-Creation-Date: 2011-09-06 08:17+0000\n"
 "PO-Revision-Date: 2011-05-16 14:45+0000\n"
 "Last-Translator: Kees Hink <hink@gw20e.com>\n"
 "Language-Team: \n"
@@ -38,6 +38,21 @@ msgstr "Sleutel"
 #: ../browser/controlpanel.py:159
 msgid "Maps settings"
 msgstr "Maps instellingen"
+
+#. Default: "Cancel"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "cancel"
+msgstr ""
+
+#. Default: "City, address"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "city_address"
+msgstr ""
+
+#. Default: "Directions"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "directions"
+msgstr ""
 
 #. Default: "Specify the default coordinates for new locations."
 #: ../browser/controlpanel.py:82
@@ -124,8 +139,28 @@ msgstr ""
 msgid "label_show_contents"
 msgstr "Inhoud tonen"
 
+#. Default: "Nearest Places"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "nearest_places"
+msgstr ""
+
+#. Default: "Save map settings"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "save_maps_settings"
+msgstr ""
+
+#. Default: "Search near to ..."
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "search_near_to"
+msgstr ""
+
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
 msgid "text_googlemaps_location_not_found"
 msgstr "De loactie [LOCATION] is niet gevonden."
+
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "updated_maps_settings"
+msgstr ""
 

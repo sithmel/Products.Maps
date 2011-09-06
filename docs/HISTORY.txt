@@ -1,0 +1,12 @@
+Changelog
+=========
+
+3.0.0dev (unreleased)
+-------------------
+
+- Completely refactore js code using Jquery [sithmel]
+- Updated to Google API v.3 (reverse geocoding, streetview ecc.) [sithmel]
+- Added autocompletion for places [sithmel]
+- Fix Layer function (based on keywords) [sithmel]
+- added search to map view [sithmel]
+- Added Italian Translation [sithmel]

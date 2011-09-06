@@ -1,1 +1,3 @@
-- Add "Test API Key button" - how to handle different admin/public domains? (Link to test page)
+- Remove useless properties and tools (Python) NB. the api key is no more necessary
+- add alternative bus/bicycle/foot directions (javascript)
+- progressive ehnancement: hide stuff if javascript is enabled (css)

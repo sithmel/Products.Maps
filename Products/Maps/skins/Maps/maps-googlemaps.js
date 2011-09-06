@@ -10,7 +10,6 @@ function initialize_maps() {
                                                        new Size(parseInt(this.iconSize[0]), parseInt(this.iconSize[1])), //size
                                                        null,
                                                        new Point(parseInt(this.iconAnchor[0]), parseInt(this.iconAnchor[1]))); //origin
-//                                                       new Point(parseInt(this.infoWindowAnchor[0]), parseInt(this.infoWindowAnchor[1]))); //anchor)
 
                 out[this.name] = icon;
             });
@@ -27,7 +26,6 @@ function initialize_maps() {
                                                        new Size(parseInt(this.shadowSize[0]), parseInt(this.shadowSize[1])), //size
                                                        null,
                                                        new Point(parseInt(this.iconAnchor[0]), parseInt(this.iconAnchor[1]))); //origin
-//                                                       new Point(parseInt(this.infoShadowAnchor[0]), parseInt(this.infoShadowAnchor[1]))); //anchor)
 
                 out[this.name] = icon;
             });
@@ -274,7 +272,7 @@ function initialize_maps() {
                 var url = l.protocol + '//' +l.host + l.pathname + '/' + '@@maps_save_config';
                 $.post( url, _maps_saved_settings, function (){
                     $('#kssPortalMessage').show();
-                    $('#kssPortalMessage dd').text(_mapsConfig_google.updatedmapsettings);
+                    $('#kssPortalMessage dd').text(_mapsConfig_google.label_updatedmapsettings);
                 });
             };
             
@@ -302,7 +300,7 @@ function initialize_maps() {
             _restore_type();
 
             if($('.portaltype-folder #edit-bar, .portaltype-topic #edit-bar').length){
-                $('<input type="button" value="' + _mapsConfig_google.savemapsettings +'"/>')
+                $('<input type="button" value="' + _mapsConfig_google.label_savemapsettings +'"/>')
                 .click(_save_settings)
                 .insertAfter(this);
             }
@@ -317,13 +315,13 @@ function initialize_maps() {
             
             var $search = $('\
 <div>\
-    <div class="googleMapSearchBar">Cerca vicino a ...</div>\
+    <div class="googleMapSearchBar">' + _mapsConfig_google.label_searchnearto + '</div>\
     <div class="googleMapSearch">\
-        <h4 class="label_search">Cerca vicino a ...</h4>\
-        <input type="text" value="" title="Città, indirizzo" name="searchtxt" class="googleMapImHere inputLabel inputLabelActive">\
+        <h4 class="label_search">' + _mapsConfig_google.label_searchnearto + '</h4>\
+        <input type="text" value="" placeholder="' + _mapsConfig_google.label_city_address + '" title="' + _mapsConfig_google.label_city_address + '" name="searchtxt" class="googleMapImHere inputLabel inputLabelActive">\
         <br>\
-        <input class="searchButton" type="submit" value="Cerca">\
-        <input class="searchButton" type="reset" value="Annulla">\
+        <input class="searchButton" type="submit" value="' + _mapsConfig_google.label_search + '">\
+        <input class="searchButton" type="reset" value="' + _mapsConfig_google.label_cancel + '">\
         <div class="googleMapSearchResults">\
         </div>\
     </div>\
@@ -376,7 +374,7 @@ function initialize_maps() {
 
                 var $i_am_here = $('\
 <div class="googleMapIMHere">\
-    <div><h4><img src="' + marker_imhere.icon.url + '"/> Neareast places</h4>\
+    <div><h4><img src="' + marker_imhere.icon.url + '"/> ' + _mapsConfig_google.label_nearestplaces + '</h4>\
     </div>\
 </div>').appendTo($search_results);
                 
@@ -389,7 +387,7 @@ function initialize_maps() {
     <div>\
     <img src="' + thislocation.marker.icon.url + '"/><a href="' + thislocation.link + '">' + thislocation.title + '</a>\
     </div>\
-    <div class="indication">Indicazioni &raquo;&nbsp;</div>\
+    <div class="indication">' + _mapsConfig_google.label_directions + ' &raquo;&nbsp;</div>\
 </div>').appendTo($search_results);
                     $result
                     .find('.indication')
@@ -499,7 +497,7 @@ function initialize_maps() {
                 _update_position();
             });
             // setting up geocoding
-            $search_button = $('<input type="button" value="' + _mapsConfig_google.search + '" class="searchButton" />').prependTo($this);
+            $search_button = $('<input type="button" value="' + _mapsConfig_google.label_search + '" class="searchButton" />').prependTo($this);
             $search_text = $('<input type="text" class="mapSearchBar" />').prependTo($this);
 
             _setupGeocoder($search_text, $search_button, function (latLng){
@@ -524,7 +522,7 @@ function initialize_maps() {
     function loadScript() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://maps.google.com/maps/api/js?libraries=geometry&sensor=false&callback=initialize_maps";
+        script.src = "https://maps.google.com/maps/api/js?libraries=geometry&sensor=false&callback=initialize_maps&language=" + mapsConfig.google.language ;
         document.body.appendChild(script);
     }
       

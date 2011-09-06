@@ -11,11 +11,22 @@ var mapsConfig = {
 //    apikey: '<tal:block tal:replace="config/googlemaps_key" />',
 //    ajaxsearchkey: '<tal:block tal:replace="config/googleajaxsearch_key" />',
 //    maxinfowidth: 400,
+    language: '<tal:block tal:replace="python: context.portal_languages.getDefaultLanguage()" />',
+
     locationnotfound: '<tal:block tal:replace="python: here.translate('text_googlemaps_location_not_found', default='The location \'[LOCATION]\' couldn\'t be found.', domain='maps', escape_for_js=True)" />',
 
-    savemapsettings: '<tal:block tal:replace="python: here.translate('save_maps_settings', default='Save map settings', domain='maps', escape_for_js=True)" />',
-    updatedmapsettings: '<tal:block tal:replace="python: here.translate('updated_maps_settings', default='Map settings updated', domain='maps', escape_for_js=True)" />',
-    search: '<tal:block tal:replace="python: here.translate('search', default='Search', domain='Plone', escape_for_js=True)" />',
+    label_savemapsettings: '<tal:block tal:replace="python: here.translate('save_maps_settings', default='Save map settings', domain='maps', escape_for_js=True)" />',
+    label_updatedmapsettings: '<tal:block tal:replace="python: here.translate('updated_maps_settings', default='Map settings updated', domain='maps', escape_for_js=True)" />',
+    label_search: '<tal:block tal:replace="python: here.translate('search', default='Search', domain='Plone', escape_for_js=True)" />',
+
+    label_searchnearto: '<tal:block tal:replace="python: here.translate('search_near_to', default='Search near to ...', domain='maps', escape_for_js=True)" />',
+
+    label_cancel: '<tal:block tal:replace="python: here.translate('cancel', default='Cancel', domain='maps', escape_for_js=True)" />',
+
+    label_nearestplaces: '<tal:block tal:replace="python: here.translate('nearest_places', default='Nearest Places', domain='maps', escape_for_js=True)" />',
+    label_directions: '<tal:block tal:replace="python: here.translate('directions', default='Directions', domain='maps', escape_for_js=True)" />',
+    label_city_address: '<tal:block tal:replace="python: here.translate('city_address', default='City, address', domain='maps', escape_for_js=True)" />',
+
 
 //    selectablemaptypes: true,
 //    defaultmaptype: '<tal:block tal:replace="config/default_maptype" />',
