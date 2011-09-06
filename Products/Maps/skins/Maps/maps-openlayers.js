@@ -40,19 +40,16 @@ var mapsOpenLayers = function() {
     }
 
     function _createPopup(lonlat, content, callback) {
+        var id = contentSize = null;
+        var closeBox = true;
+        var popupAnchor = {
+            // fix for OpenLayers 2.10 positioning bug
+            size: new OpenLayers.Size(0, 0),
+            offset: new OpenLayers.Pixel(0, -(_size.h/2))
+        };
         return new OpenLayers.Popup.FramedCloud(
-            id=null,
-            lonlat=lonlat,
-            contentSize=null,
-            contentHTML=content,
-            anchor={
-                    // fix for OpenLayers 2.10 positioning bug
-                    size: new OpenLayers.Size(0, 0),
-                    offset: new OpenLayers.Pixel(0, -(_size.h/2))
-                },
-            closeBox=true,
-            closeBoxCallback=callback
-        )
+            id, lonlat, contentSize, content, popupAnchor, closeBox, callback
+        );
     }
 
     function _createMarker(data, map) {
@@ -83,9 +80,9 @@ var mapsOpenLayers = function() {
             jQuery.each(map.popups, function(x, p) {
                 map.removePopup(p);
             });
-            marker.popup = _createPopup(lonlat=marker_lonlat,
-                                        content=marker_html,
-                                        callback=marker.removePopup);
+            marker.popup = _createPopup(marker_lonlat,
+                                        marker_html,
+                                        marker.removePopup);
             map.addPopup(marker.popup);
         });
         marker_layer.addMarker(marker);
@@ -273,11 +270,10 @@ var mapsOpenLayers = function() {
                     location.html(place.lat + ", " + place.lng);
 
                     _clearPopups(map);
-                    var popup = _createPopup(lonlat=place_lonlat,
-                                              content=data[0].name,
-                                              callback=function() {
-                                                  _removePopup(map, popup);
-                                                });
+                    var popup_callback = function() {
+                        _removePopup(map, popup);
+                    };
+                    var popup = _createPopup(place_lonlat, data[0].name, popup_callback);
                     map.addPopup(popup);
                     map.setCenter(place_lonlat, _mapsConfig_openlayers.initialzoomlevel);
                 }
@@ -363,7 +359,7 @@ var mapsOpenLayers = function() {
         vector_layer.addFeatures([marker_feature]);
 
         marker_feature.update_feature_location = function() {
-            latlon = getFeatureLatLon(this);
+            var latlon = getFeatureLatLon(this);
             input.get(0).value = latlon.y;
             input.get(1).value = latlon.x;
             location.html(latlon.y + ', ' + latlon.x);

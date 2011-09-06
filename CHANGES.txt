@@ -1,7 +1,12 @@
 Changelog
 =========
 
-2.1.1 - unreleased
+2.1.1-openlayers - unreleased
+-----------------------------
+- migrated functionality to use OpenLayers, OSM and gisgraphy.com for geocoding.
+  [david.batranu]
+
+2.1.1 - 2011-05-13
 ------------------
 - Force validator registration before use. Avoids spurious warning.
   [ggozad]
@@ -18,7 +23,7 @@ Changelog
 - update ILocation interface. Custom content type must implement getMarkerIcon
   method to successfully support LocationMarker adapter.
   [naro]
-  
+
 - added notes about implementation geolocation field to custom content type.
   [naro]
 

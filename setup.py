@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
-version = '2.1.1'
+version = '2.1.1-openlayers'
 
 
 setup(name='Products.Maps',
       version=version,
-      description="A simple, easy to use Plone integration with Google Maps "
-                  "by Jarn AS.",
+      description="A simple, easy to use Plone integration with OpenLayers based "
+                  "on the original Products.Maps by Jarn AS.",
       long_description=open("README.txt").read() + '\n' +
                        open('CHANGES.txt').read(),
       classifiers=[
@@ -14,7 +14,7 @@ setup(name='Products.Maps',
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Programming Language :: Python",
       ],
-      keywords='Google Maps Zope Plone',
+      keywords='OpenLayers Maps OSM Zope Plone',
       author='Florian Schulze',
       author_email='fschulze@jarn.com',
       url='http://pypi.python.org/pypi/Products.Maps',
