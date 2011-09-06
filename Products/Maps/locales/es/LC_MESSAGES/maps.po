@@ -56,16 +56,6 @@ msgstr "Seleccione el tipo de mapa por defecto inicialmente usado en los mapas."
 msgid "help_geolocation"
 msgstr "Usted puede encontrar una dirección o una parte cada uno de estas separadas por una coma (calle y número, ciudad). En algunos casos, el nombre del país también es necesario. También puede introducir las coordenadas de 'latitud' y 'longitud'."
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:53
-msgid "help_google_ajax_search_api_keys"
-msgstr "Agregar las claves del API de Google AJAX Search para la dirección que utilizaran los visitantes para acceder a su sitio. Esta clave se utiliza para buscar lugares que no fueron encontrados con el valor predeterminado de geocodificación de Google Maps. Obtenga las claves en el sitio http://code.google.com/apis/ajaxsearch/signup.html"
-
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:39
-msgid "help_google_maps_api_keys"
-msgstr "Agregar las claves de la API de Google Maps para la dirección que utilizan los visitantes para acceder a su sitio. Obtenga las llaves en el sitio http://www.google.com/apis/maps/signup.html"
-
 #. Default: ""
 #: Content Type:
 #: Location, Field:
@@ -89,16 +79,6 @@ msgstr "Tipo de mapa por defecto"
 #: geolocation
 msgid "label_geolocation"
 msgstr "Ubicación"
-
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:51
-msgid "label_google_ajax_search_api_keys"
-msgstr "Claves del API de Google AJAX Search"
-
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:37
-msgid "label_google_maps_api_keys"
-msgstr "Claves del API de Google Maps"
 
 #. Default: "Marker icon"
 #: Content Type:
@@ -124,6 +104,6 @@ msgstr "Mapa esquemático"
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
-msgid "text_googlemaps_location_not_found"
+msgid "text_openlayers_location_not_found"
 msgstr "La ubicación '[LOCATION]' no pudo ser encontrada."
 

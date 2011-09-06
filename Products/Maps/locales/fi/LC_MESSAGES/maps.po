@@ -56,16 +56,6 @@ msgstr "Valitse oletusarvoisesti käytettävä karttatyyppi."
 msgid "help_geolocation"
 msgstr "Voit asettaa sijainnin antamalla osoitteen osat pilkulla erotettuna (katuosoite, postinumero, kaupunki). Jos haku ei tuota tulosta, lisää varmuudeksi vielä maan nimi. Vaihtoehtoisesti voit myös asettaa sijainnin antamalla sen leveys- ja pituusasteen (latitude, longitude)."
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:53
-msgid "help_google_ajax_search_api_keys"
-msgstr ""
-
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:39
-msgid "help_google_maps_api_keys"
-msgstr ""
-
 #. Default: ""
 #: Content Type:
 #: Location, Field:
@@ -89,16 +79,6 @@ msgstr "Oletuskartta"
 #: geolocation
 msgid "label_geolocation"
 msgstr "Sijainti"
-
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:51
-msgid "label_google_ajax_search_api_keys"
-msgstr "Google AJAX-hakupalvelun rajapinnan käyttöavaimet"
-
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:37
-msgid "label_google_maps_api_keys"
-msgstr "Google Maps -karttapalvelun rajapinnan käyttöavaimet"
 
 #. Default: "Marker icon"
 #: Content Type:
@@ -124,6 +104,6 @@ msgstr "Tiekartta"
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: skins/Maps/maps-config.js.pt:15
-msgid "text_googlemaps_location_not_found"
+msgid "text_openlayers_location_not_found"
 msgstr "Paikkaa '[LOCATION]' ei löydetty."
 

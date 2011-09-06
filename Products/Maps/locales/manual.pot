@@ -37,6 +37,6 @@ msgstr ""
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
-msgid "text_googlemaps_location_not_found"
+msgid "text_openlayers_location_not_found"
 msgstr ""
 

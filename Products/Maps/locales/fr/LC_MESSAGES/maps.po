@@ -54,16 +54,6 @@ msgstr "Sélectionnez le type de vue cartographique utilisée par défaut."
 msgid "help_geolocation"
 msgstr "Vous pouvez rechercher une adresse ou chaque partie est séparée par une virgule (rue numéro, ville).  Dans certains cas, le nom du pays est également nécessaire.  Vous pouvez également entrer des coordonnées 'latitude' et 'longitude'."
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:53
-msgid "help_google_ajax_search_api_keys"
-msgstr "Ajoutez les clés Google AJAX Search API pour la ou les adresse(s) que le visiteur utilisera pour accéder à votre site. Obtenez ces clés sur le site http://code.google.com/apis/ajaxsearch/signup.html"
-
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:39
-msgid "help_google_maps_api_keys"
-msgstr "Ajoutez les clés Google Maps API pour la ou les adresse(s) que le visiteur utilisera pour accéder à votre site. Obtenez ces clés sur le site http://www.google.com/apis/maps/signup.html"
-
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
@@ -83,16 +73,6 @@ msgstr "Type de carte par défaut"
 #: Content Type: Location, Field: geolocation
 msgid "label_geolocation"
 msgstr "Localisation"
-
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:51
-msgid "label_google_ajax_search_api_keys"
-msgstr "Clé Google AJAX Search API"
-
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:37
-msgid "label_google_maps_api_keys"
-msgstr "Clé Google Maps API"
 
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
@@ -116,6 +96,6 @@ msgstr "Carte schématique"
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
-msgid "text_googlemaps_location_not_found"
+msgid "text_openlayers_location_not_found"
 msgstr "L'adresse '[LOCATION]' n'a pas pu être trouvée."
 

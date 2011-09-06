@@ -54,16 +54,6 @@ msgstr "選擇預設使用的地圖類型。"
 msgid "help_geolocation"
 msgstr "可以輸入「台北市忠孝東路」之類的地址來搜尋，也可以輸入經緯度 (24.0, 121.0) 的方式來搜尋。"
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:53
-msgid "help_google_ajax_search_api_keys"
-msgstr "新增 Google AJAX Search API 鍵值。你必須使用網站看得到的客戶端網址，這個鍵值會用來搜尋預設沒找到的位置。"
-
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:39
-msgid "help_google_maps_api_keys"
-msgstr "新增 Google Maps API 鍵值。你必須使用網站看得到的客戶端網址。"
-
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
@@ -83,16 +73,6 @@ msgstr "預設地圖類型"
 #: Content Type: Location, Field: geolocation
 msgid "label_geolocation"
 msgstr "位置"
-
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:51
-msgid "label_google_ajax_search_api_keys"
-msgstr "Google AJAX Search API Keys"
-
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:37
-msgid "label_google_maps_api_keys"
-msgstr "Google Maps API Keys"
 
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
@@ -116,6 +96,6 @@ msgstr "簡明地圖"
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
-msgid "text_googlemaps_location_not_found"
+msgid "text_openlayers_location_not_found"
 msgstr "這個地址 '[LOCATION]' 搜尋不到。"
 

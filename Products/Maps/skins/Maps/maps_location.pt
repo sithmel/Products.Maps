@@ -10,7 +10,7 @@
 <body>
   <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main"
-                    define="view context/@@maps_googlemaps_view">
+                    define="view context/@@maps_openlayers_view">
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -27,7 +27,7 @@
 
       <div tal:replace="structure provider:plone.abovecontentbody" />
 
-      <div class="googleMapView googleMapLocation">
+      <div class="openlayersMapView openlayersMapLocation">
         <dl metal:use-macro="here/maps_map/macros/markers">
         </dl>
       </div>

@@ -7,7 +7,7 @@
 <body>
 
 <metal:view_macro define-macro="view">
-  <div class="googleMapView">
+  <div class="openlayersMapView">
     <dl>
     <dt class="title" tal:content="fieldName"></dt>
     <dd class="geo"
@@ -26,7 +26,7 @@
 <metal:edit_macro define-macro="edit">
     <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
         <metal:fill fill-slot="widget_body">
-          <div class="googleMapEdit"
+          <div class="openlayersMapEdit"
                tal:define="value accessor">
             <input type="text"
                    name=""

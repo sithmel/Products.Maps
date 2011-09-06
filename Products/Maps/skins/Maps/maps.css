@@ -3,17 +3,17 @@
   padding: 0;
 }
 
-.googleMapView.googleMapActive,
-.googleMapPane {
+.openlayersMapView.openlayersMapActive,
+.openlayersMapPane {
     height: 40em;
 }
 
-.googleMapActive.googleMapLocation {
+.openlayersMapActive.openlayersMapLocation {
     float: right;
     width: 50%;
     min-width: 20em;
     height: 25em;
 }
-.googleMapLocation .googleMapPane {
+.openlayersMapLocation .openlayersMapPane {
     height: 25em;
 }

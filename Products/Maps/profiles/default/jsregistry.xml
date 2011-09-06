@@ -2,8 +2,8 @@
 <object name="portal_javascripts" meta_type="JavaScripts Registry">
  <javascript cacheable="True" compression="full" cookable="True"
     enabled="True" id="maps-config.js" inline="False"
-    expression="object/@@maps_googlemaps_enabled_view/enabled | nothing" />
+    expression="object/@@maps_openlayers_enabled_view/enabled | nothing" />
  <javascript cacheable="True" compression="full" cookable="True"
-    enabled="True" id="maps-googlemaps.js" inline="False"
-    expression="object/@@maps_googlemaps_enabled_view/enabled | nothing" />
+    enabled="True" id="maps-openlayers.js" inline="False"
+    expression="object/@@maps_openlayers_enabled_view/enabled | nothing" />
 </object>

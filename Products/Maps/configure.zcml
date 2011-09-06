@@ -49,7 +49,7 @@
 
   <browser:page
       for="Products.Maps.interfaces.IMapEnabled"
-      name="maps_googlemaps_enabled_view"
+      name="maps_openlayers_enabled_view"
       class=".browser.map.DefaultMapView"
       permission="zope.Public"
       allowed_interface=".interfaces.map.IMapEnabledView"
@@ -57,7 +57,7 @@
 
   <browser:page
       for="Products.ATContentTypes.interface.IATTopic"
-      name="maps_googlemaps_enabled_view"
+      name="maps_openlayers_enabled_view"
       class=".browser.map.FolderMapView"
       permission="zope.Public"
       allowed_interface=".interfaces.map.IMapEnabledView"
@@ -65,7 +65,7 @@
 
   <browser:page
       for="Products.ATContentTypes.interface.IATFolder"
-      name="maps_googlemaps_enabled_view"
+      name="maps_openlayers_enabled_view"
       class=".browser.map.FolderMapView"
       permission="zope.Public"
       allowed_interface=".interfaces.map.IMapEnabledView"
@@ -73,7 +73,7 @@
 
   <browser:page
       for="Products.Maps.interfaces.ILocation"
-      name="maps_googlemaps_view"
+      name="maps_openlayers_view"
       class=".browser.map.DefaultMapView"
       permission="zope2.View"
       allowed_interface=".interfaces.map.IMapView"
@@ -81,7 +81,7 @@
 
   <browser:page
       for="Products.ATContentTypes.interface.IATTopic"
-      name="maps_googlemaps_view"
+      name="maps_openlayers_view"
       class=".browser.map.FolderMapView"
       permission="zope2.View"
       allowed_interface=".interfaces.map.IMapView"
@@ -89,7 +89,7 @@
 
   <browser:page
       for="Products.ATContentTypes.interface.IATFolder"
-      name="maps_googlemaps_view"
+      name="maps_openlayers_view"
       class=".browser.map.FolderMapView"
       permission="zope2.View"
       allowed_interface=".interfaces.map.IMapView"
@@ -100,16 +100,6 @@
       name="geocode_string"
       class=".browser.map.GeocodeView"
       permission="zope2.View"
-      />
-
-  <!-- widgets -->
-
-  <view
-      type="zope.publisher.interfaces.browser.IBrowserRequest"
-      for=".interfaces.IGoogleAPIKey"
-      provides="zope.app.form.interfaces.IInputWidget"
-      factory=".browser.widgets.GoogleAPIKey"
-      permission="zope.Public"
       />
 
   <!-- configlet -->

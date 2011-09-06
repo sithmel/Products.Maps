@@ -5,7 +5,7 @@ var mapsOpenLayers = function() {
     var _markericons = null;
 
     var _mapsConfig = mapsConfig;
-    var _mapsConfig_google = _mapsConfig.google;
+    var _mapsConfig_openlayers = _mapsConfig.openlayers;
 
 
     function _createIcon(definition) {
@@ -215,8 +215,8 @@ var mapsOpenLayers = function() {
     }
 
     function _initMap(obj) {
-        var map_node = jQuery('<div>').addClass('googleMapPane');
-        obj.addClass('googleMapActive');
+        var map_node = jQuery('<div>').addClass('openlayersMapPane');
+        obj.addClass('openlayersMapActive');
         obj.append(map_node);
 
         var map = new OpenLayers.Map({
@@ -234,8 +234,8 @@ var mapsOpenLayers = function() {
         var center = bounds.getCenterLonLat();
 
         var zoom_level = map.getZoomForExtent(bounds);
-        if (zoom_level > _mapsConfig_google.maxzoomlevel) {
-            zoom_level = _mapsConfig_google.maxzoomlevel;
+        if (zoom_level > _mapsConfig_openlayers.maxzoomlevel) {
+            zoom_level = _mapsConfig_openlayers.maxzoomlevel;
         }
 
         map.setCenter(center, zoom_level);
@@ -259,7 +259,7 @@ var mapsOpenLayers = function() {
             var address = query.attr('value');
             var _geoSearchFunc = function(data) {
                 if (!data || data.length == 0) {
-                    var msg = _mapsConfig_google.locationnotfound;
+                    var msg = _mapsConfig_openlayers.locationnotfound;
                     msg = msg.replace(/\[LOCATION\]/, address);
                     alert(msg);
                 } else {
@@ -279,7 +279,7 @@ var mapsOpenLayers = function() {
                                                   _removePopup(map, popup);
                                                 });
                     map.addPopup(popup);
-                    map.setCenter(place_lonlat, _mapsConfig_google.initialzoomlevel);
+                    map.setCenter(place_lonlat, _mapsConfig_openlayers.initialzoomlevel);
                 }
             };
             var window_location = window.location.pathname;
@@ -318,8 +318,8 @@ var mapsOpenLayers = function() {
             return;
 
         var location = jQuery('<div>').addClass('locationString discreet');
-        var map_node = jQuery('<div>').addClass('googleMapPane');
-        node.addClass('googleMapActive');
+        var map_node = jQuery('<div>').addClass('openlayersMapPane');
+        node.addClass('openlayersMapActive');
         node.append(map_node);
         node.append(location);
 
@@ -356,7 +356,7 @@ var mapsOpenLayers = function() {
         location.html(input.get(0).value + "," + input.get(1).value);
         var center = transLatLon(parseFloat(input.get(0).value),
                                   parseFloat(input.get(1).value), map);
-        map.setCenter(center, _mapsConfig_google.initialzoomlevel);
+        map.setCenter(center, _mapsConfig_openlayers.initialzoomlevel);
 
         var vector_point = new OpenLayers.Geometry.Point(center.lon, center.lat);
         var marker_feature = new OpenLayers.Feature.Vector(vector_point);
@@ -392,14 +392,14 @@ var mapsOpenLayers = function() {
 
     return {
         init: function() {
-            _initDefaults(_mapsConfig_google);
+            _initDefaults(_mapsConfig_openlayers);
 
-            var maps = jQuery("div.googleMapView");
+            var maps = jQuery("div.openlayersMapView");
             maps.each(function(i, obj) {
                 _initMap(jQuery(obj));
             });
 
-            var maps = jQuery("div.googleMapEdit");
+            var maps = jQuery("div.openlayersMapEdit");
             maps.each(function(i, obj) {
                 _initLocationEditMap(jQuery(obj));
             });

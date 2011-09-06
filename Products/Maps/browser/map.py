@@ -80,7 +80,7 @@ class GeocodeView(BrowserView):
             'to': '10',
         }
         query = self.request.form['query']
-        query_split = [self.toFloat(x) for x in query.split(',')]
+        query_split = [self.toFloat(x.strip()) for x in query.split(',')]
         if len(query_split) is 2 and (None not in query_split):
             params.update({
                 'lat': query_split[0],

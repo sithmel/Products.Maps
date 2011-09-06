@@ -53,16 +53,6 @@ msgstr "Διαλέξτε τον προκαθορισμένο τύπο χάρτη
 msgid "help_geolocation"
 msgstr "Μπορείτε να ψάξετε για μια διεύθυνση της οποίας τα μέρη χωρίζονται με κόμμα (Οδός 123, Πόλη). Ίσως χρειαστεί να εισάγετε και το όνομα της χώρας για να έχετε αποτελέσματα. Μπορείτε επίσης να καθορίσετε συντεταγμένες στη μορφή 'πλάτος, μήκος'"
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:53
-msgid "help_google_ajax_search_api_keys"
-msgstr "Προσθέστε τα κλειδιά από το Google AJAX Search API. Αυτό το κλειδί χρησιμποιείται για να βρεθούν τοποθεσίες που δεν στάθηκε δυνατό να βρεθούν από τα Google Maps."
-
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:39
-msgid "help_google_maps_api_keys"
-msgstr "Προσθέστε τα κλειδιά από το Google Maps API."
-
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
@@ -82,16 +72,6 @@ msgstr "Προκαθορισμένος τύπος χάρτη"
 #: Content Type: Location, Field: geolocation
 msgid "label_geolocation"
 msgstr "Τοποθεσία"
-
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:51
-msgid "label_google_ajax_search_api_keys"
-msgstr "Κλειδιά για Google AJAX Search API"
-
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:37
-msgid "label_google_maps_api_keys"
-msgstr "Κλειδιά για Google Maps API Keys"
 
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
@@ -115,6 +95,6 @@ msgstr "Σχηματικός χάρτης"
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
-msgid "text_googlemaps_location_not_found"
+msgid "text_openlayers_location_not_found"
 msgstr "Η τοποθεσία '[LOCATION]' δέν βρέθηκε."
 

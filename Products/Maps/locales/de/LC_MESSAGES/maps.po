@@ -54,16 +54,6 @@ msgstr "Wählen Sie die Standard-Sicht für Karten aus."
 msgid "help_geolocation"
 msgstr "Sie können nach einer Adresse suchen, wobei die Addressteile durch Komma getrennt sind (Straße 123, 12345 Stadt). Eventuell müssen Sie den Namen des Landes angeben, in dem Sie suchen (Deutschland). Sie können auch Koordinaten in der Form 'Breitengrad, Längengrad' angeben, wobei ein Punkt statt einem Komma für die Abtrennung der Nachkommastellen benutzt werden muss."
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:53
-msgid "help_google_ajax_search_api_keys"
-msgstr ""
-
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:39
-msgid "help_google_maps_api_keys"
-msgstr ""
-
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
@@ -83,16 +73,6 @@ msgstr "Standard-Kartensicht"
 #: Content Type: Location, Field: geolocation
 msgid "label_geolocation"
 msgstr "Ortsangabe"
-
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:51
-msgid "label_google_ajax_search_api_keys"
-msgstr "Google AJAX Search API Schlüssel"
-
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:37
-msgid "label_google_maps_api_keys"
-msgstr "Google Maps API Schlüssel"
 
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
@@ -116,6 +96,6 @@ msgstr "Schematische Karte"
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
-msgid "text_googlemaps_location_not_found"
+msgid "text_openlayers_location_not_found"
 msgstr "Die Adresse '[LOCATION]' konnte nicht gefunden werden."
 

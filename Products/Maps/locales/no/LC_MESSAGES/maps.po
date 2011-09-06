@@ -54,17 +54,6 @@ msgstr "Velg karttypen som benyttes som utgangspunkt for nye kart"
 msgid "help_geolocation"
 msgstr "Du kan søke etter en adresse hvor hver del er skilt med et komma (gate 123, by). Det kan hende du må legge til landsnavnet etter adressen for å få treff. Du kan også oppgi 'lengdegrad, breddegrad' koordinater."
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:53
-#, fuzzy
-msgid "help_google_ajax_search_api_keys"
-msgstr "Legg til Google AJAX Search API nøkler. Du må benytte klientside url'en hvor nettstedet kan nås. Denne nøkkelen brukes for å søke etter lokasjoner som ikke ble funnet med standard geokoding fra Google Maps."
-
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:39
-msgid "help_google_maps_api_keys"
-msgstr "Legg til Google Maps API nøkler. Du må benytte klientside url'en hvor nettstedet kan nås."
-
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
@@ -84,16 +73,6 @@ msgstr "Initiell karttype"
 #: Content Type: Location, Field: geolocation
 msgid "label_geolocation"
 msgstr "Lokasjon"
-
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:51
-msgid "label_google_ajax_search_api_keys"
-msgstr "Google AJAX Search API Nøkler"
-
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:37
-msgid "label_google_maps_api_keys"
-msgstr "Google Maps API Nøkler"
 
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
@@ -117,6 +96,6 @@ msgstr "Skjematisk kart"
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
-msgid "text_googlemaps_location_not_found"
+msgid "text_openlayers_location_not_found"
 msgstr "Fant ikke lokasjonen '[LOCATION]'."
 

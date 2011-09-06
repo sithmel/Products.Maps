@@ -53,16 +53,6 @@ msgstr "初期値となるマップの種類を指定してください。"
 msgid "help_geolocation"
 msgstr "住所を入力して地図を表示することができます（東京都千代田区永田町１−１）。国の名前は住所の後にコンマで区切って追加して検索してください。 又、経度、緯度を入力して地図を表示することもできます。"
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:53
-msgid "help_google_ajax_search_api_keys"
-msgstr "サイトを表示するために使われてているURLによって取得したGoogle AJAX Search API keyを追加してください。Google Mapsのgeocodingでは探すことのできない位置を探すために使います。"
-
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:39
-msgid "help_google_maps_api_keys"
-msgstr "サイトを表示するために使われてているURLによって取得したGoogle Maps API keyを追加してください。（ドメインごとに必要です）"
-
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
@@ -82,16 +72,6 @@ msgstr "基本地図の選択"
 #: Content Type: Location, Field: geolocation
 msgid "label_geolocation"
 msgstr "ロケーション地図"
-
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:51
-msgid "label_google_ajax_search_api_keys"
-msgstr ""
-
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:37
-msgid "label_google_maps_api_keys"
-msgstr ""
 
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
@@ -115,6 +95,6 @@ msgstr "地図"
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
-msgid "text_googlemaps_location_not_found"
+msgid "text_openlayers_location_not_found"
 msgstr "'[LOCATION]'は、見つけられませんでした。"
 

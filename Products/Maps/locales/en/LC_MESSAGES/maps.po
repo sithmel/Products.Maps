@@ -54,16 +54,6 @@ msgstr ""
 msgid "help_geolocation"
 msgstr "You can search for an address were each part is seperated by a comma (street 123, City). You may have to append the country name behind the address to get a result. You can also enter 'latitude, longitude' coordinates."
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:53
-msgid "help_google_ajax_search_api_keys"
-msgstr ""
-
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:39
-msgid "help_google_maps_api_keys"
-msgstr ""
-
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
@@ -83,16 +73,6 @@ msgstr ""
 #: Content Type: Location, Field: geolocation
 msgid "label_geolocation"
 msgstr "Location"
-
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:51
-msgid "label_google_ajax_search_api_keys"
-msgstr ""
-
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:37
-msgid "label_google_maps_api_keys"
-msgstr ""
 
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
@@ -116,6 +96,6 @@ msgstr ""
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
-msgid "text_googlemaps_location_not_found"
+msgid "text_openlayers_location_not_found"
 msgstr "The location '[LOCATION]' couldn't be found."
 
