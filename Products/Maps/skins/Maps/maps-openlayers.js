@@ -1,4 +1,4 @@
-var mapsOpenLayers = function() {
+var mapsOpenLayers = function () {
 
     var _size = null;
     var _offset = null;
@@ -20,14 +20,14 @@ var mapsOpenLayers = function() {
         _size = new OpenLayers.Size(21, 25); //w,h
         _offset = new OpenLayers.Pixel(-(_size.w/2), -_size.h);
 
-        if (_markericons == null) {
+        if (_markericons === null) {
             _markericons = {};
 
             jQuery.each(defaults.markericons, function(i, definition) {
-                _markericons[definition['name']] = _createIcon(definition)
+                _markericons[definition['name']] = _createIcon(definition);
             });
         }
-    };
+    }
 
     function _removePopup(map, popup) {
         map.removePopup(popup);
@@ -47,9 +47,7 @@ var mapsOpenLayers = function() {
             size: new OpenLayers.Size(0, 0),
             offset: new OpenLayers.Pixel(0, -(_size.h/2))
         };
-        return new OpenLayers.Popup.FramedCloud(
-            id, lonlat, contentSize, content, popupAnchor, closeBox, callback
-        );
+        return new OpenLayers.Popup.FramedCloud(id, lonlat, contentSize, content, popupAnchor, closeBox, callback);
     }
 
     function _createMarker(data, map) {
@@ -67,14 +65,14 @@ var mapsOpenLayers = function() {
 
         jQuery.each(data['tabs'], function(i, tab) {
             marker_html += tab['node'].html();
-        })
+        });
 
         marker.removePopup = function() {
-            if (marker.popup != null) {
+            if (marker.popup !== null) {
                 _removePopup(map, marker.popup);
                 marker.popup = null;
             }
-        }
+        };
 
         marker.events.register("click", marker, function(evt) {
             jQuery.each(map.popups, function(x, p) {
@@ -98,14 +96,14 @@ var mapsOpenLayers = function() {
 
             if (node.get(0).nodeType != 1) {
                 return true;
-            };
+            }
 
             if (node.hasClass('title')) {
                 node.remove();
                 if (data) {
                     _createMarker(data, map);
                     result.push(data);
-                };
+                }
                 data = {};
                 data['tabs'] = [];
                 var tab = {};
@@ -121,9 +119,9 @@ var mapsOpenLayers = function() {
                     alt = icon.get(0).alt;
                     icon = _markericons[alt];
                     data['icon'] = icon.clone();
-                };
+                }
                 return true;
-            };
+            }
 
             if (node.hasClass('geo')) {
                 node.remove();
@@ -135,7 +133,7 @@ var mapsOpenLayers = function() {
                     data['point'] = transLatLon(lat_value, lon_value, map);
                 }
                 return true;
-            };
+            }
 
             if (node.hasClass('tab')) {
                 node.remove();
@@ -152,7 +150,7 @@ var mapsOpenLayers = function() {
                 jQuery(tab['node']).append(node);
                 tab['title'] = node.attr('title');
                 return true;
-            };
+            }
 
             if (node.hasClass('layers')) {
                 node.remove();
@@ -162,7 +160,7 @@ var mapsOpenLayers = function() {
                     data['layers'][nd.text()] = true;
                 });
                 return true;
-            };
+            }
             node.remove();
             jQuery(data['tabs'][0]['node']).append(node);
         });
@@ -186,7 +184,7 @@ var mapsOpenLayers = function() {
             lists[j].parentNode.removeChild(lists[j]);
         }
         return _parseMarkers(nodes, map);
-    };
+    }
 
     function _getBounds(locations) {
         var bounds = new OpenLayers.Bounds();
@@ -194,17 +192,17 @@ var mapsOpenLayers = function() {
             bounds.extend(location.marker.lonlat);
         });
         return bounds;
-    };
+    }
 
     function transLatLon(lat, lon, map) {
         return new OpenLayers.LonLat(lon, lat).transform(
             new OpenLayers.Projection("EPSG:4326"),
             map.getProjectionObject()
-        )
+        );
     }
 
     function getFeatureLatLon(feature) {
-        var feature_clone = feature.clone()
+        var feature_clone = feature.clone();
         return feature_clone.geometry.transform(
             new OpenLayers.Projection("EPSG:900913"),
             new OpenLayers.Projection("EPSG:4326")
@@ -236,7 +234,7 @@ var mapsOpenLayers = function() {
         }
 
         map.setCenter(center, zoom_level);
-    };
+    }
 
     function _setupGeocoding(input, map, marker_feature, location) {
         var query = jQuery('<input type="text">');
@@ -255,7 +253,7 @@ var mapsOpenLayers = function() {
         func = function(e) {
             var address = query.attr('value');
             var _geoSearchFunc = function(data) {
-                if (!data || data.length == 0) {
+                if (!data || data.length === 0) {
                     var msg = _mapsConfig_openlayers.locationnotfound;
                     msg = msg.replace(/\[LOCATION\]/, address);
                     alert(msg);
@@ -282,13 +280,13 @@ var mapsOpenLayers = function() {
             var parent_url = window_location.split('/').slice(0, -1).join('/');
             var geocode_url = parent_url + '/geocode_string';
             jQuery.getJSON(geocode_url, {
-                'query': address,
+                'query': address
             }, _geoSearchFunc);
             // Prevent "You already submitted this form" message
             var nodes = jQuery('input[type=submit]', form);
             jQuery.each(nodes, function(i, node) {
                 jQuery(node).removeClass('submitting');
-            })
+            });
             return false;
         };
         query.focus(function() {
@@ -306,12 +304,13 @@ var mapsOpenLayers = function() {
 
         query.insertBefore(jQuery(input.get(0)).parent());
         search.insertBefore(jQuery(input.get(0)).parent());
-    };
+    }
 
     function _initLocationEditMap(node) {
         var input = jQuery('input', node);
-        if (input.length != 2)
+        if (input.length != 2) {
             return;
+        }
 
         var location = jQuery('<div>').addClass('locationString discreet');
         var map_node = jQuery('<div>').addClass('openlayersMapPane');
@@ -325,7 +324,7 @@ var mapsOpenLayers = function() {
             div: map_node.get(0),
             projection: new OpenLayers.Projection("EPSG:900913"),
             units: "m"
-        }
+        };
         if (!isNaN(map_width) && !isNaN(map_height)) {
             map_options['size'] = new OpenLayers.Size(map_width, map_height);
         }
@@ -335,14 +334,15 @@ var mapsOpenLayers = function() {
 
         var map = new OpenLayers.Map(map_options);
         var osm = new OpenLayers.Layer.OSM();
+
         var vector_layer = new OpenLayers.Layer.Vector("Vector Markers", {
             styleMap: new OpenLayers.StyleMap({
                 'default': new OpenLayers.Style(OpenLayers.Util.applyDefaults({
-                    externalGraphic: marker_icon.url,
-                    graphicOpacity: 1,
-                    graphicWidth: marker_icon.size.w,
-                    graphicHeight: marker_icon.size.h,
-                    graphicYOffset: marker_icon.offset.y
+                    'externalGraphic': marker_icon.url,
+                    'graphicOpacity': 1,
+                    'graphicWidth': marker_icon.size.w,
+                    'graphicHeight': marker_icon.size.h,
+                    'graphicYOffset': marker_icon.offset.y
                 }, OpenLayers.Feature.Vector.style["default"]))
             })
         });
@@ -363,16 +363,16 @@ var mapsOpenLayers = function() {
             input.get(0).value = latlon.y;
             input.get(1).value = latlon.x;
             location.html(latlon.y + ', ' + latlon.x);
-        }
+        };
 
         drag_feature = new OpenLayers.Control.DragFeature(vector_layer);
         drag_feature.onComplete = function(feature, pixel) {
             feature.update_feature_location();
-        }
+        };
 
         drag_feature.onStart = function(feature, pixel) {
             _clearPopups(map);
-        }
+        };
 
         map.addControl(drag_feature);
         drag_feature.activate();
@@ -384,7 +384,7 @@ var mapsOpenLayers = function() {
             marker_feature.update_feature_location();
         });
         _setupGeocoding(input, map, marker_feature, location);
-    };
+    }
 
     return {
         init: function() {
@@ -400,14 +400,10 @@ var mapsOpenLayers = function() {
                 _initLocationEditMap(jQuery(obj));
             });
 
-        },
-        loadJS: function(url) {
-            document.write('<'+'script type="text/javascript" src="'+url+'"><'+'/script>');
         }
     };
 }();
 
-
-jQuery(document).ready(function() {
+jQuery(window).load(function() {
     jQuery.getScript("/OpenLayers.js", mapsOpenLayers.init);
 });
