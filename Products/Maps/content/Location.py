@@ -59,14 +59,13 @@ LocationSchema = ATContentTypeSchema.copy() + Schema(
             default_content_type = zconf.ATDocument.default_content_type,
             default_output_type = 'text/x-html-safe',
             allowable_content_types = zconf.ATDocument.allowed_content_types,
-            widget = RichWidget(
+            widget = TextAreaWidget(
                 description = "",
                 description_msgid = "help_body_text",
                 label = "Body Text",
                 label_msgid = "label_body_text",
                 rows = 25,
                 i18n_domain = "plone",
-                allow_file_upload = zconf.ATDocument.allow_document_upload
             ),
         ),
     ), marshall = RFC822Marshaller()
