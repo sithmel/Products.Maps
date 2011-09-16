@@ -25,5 +25,6 @@ setup(name='Products.Maps',
       zip_safe=False,
       install_requires=[
         'setuptools',
+        'collective.geo.openlayers',
       ],
 )
