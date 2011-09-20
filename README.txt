@@ -1,5 +1,5 @@
 A OpenLayers maps solution for Plone
---------------------------------
+------------------------------------
 
 This is a branch of the original Products.Maps which used Google Maps.
 
