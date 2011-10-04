@@ -389,6 +389,7 @@ var mapsOpenLayers = function () {
     return {
         init: function() {
             _initDefaults(_mapsConfig_openlayers);
+            OpenLayers.ImgPath = '/img/';
 
             var maps = jQuery("div.openlayersMapView");
             maps.each(function(i, obj) {
