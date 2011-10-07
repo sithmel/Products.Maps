@@ -6,6 +6,9 @@ Changelog
 - migrated functionality to use OpenLayers, OSM and gisgraphy.com for geocoding.
   [david.batranu]
 
+- removing related items macro usage to avoid duplicate related items due to
+  plone.belowcontentbody.relateditems viewlet [david.batranu]
+
 2.1.1 - 2011-05-13
 ------------------
 - Force validator registration before use. Avoids spurious warning.
