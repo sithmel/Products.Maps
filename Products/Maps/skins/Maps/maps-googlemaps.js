@@ -441,7 +441,9 @@ function initialize_maps() {
                             });
                         }
                     }
-                    $googleMapSearch.animate({'margin-left':'0px'}, 'fast',  function(){$this.toggleClass('open')});
+                    $googleMapSearch.animate({'margin-left':'0px'}, 'fast',  function(){
+                        $this.toggleClass('open').next().hide().show(); // this is a hack for IE7
+                    });
                 }
             });
 
