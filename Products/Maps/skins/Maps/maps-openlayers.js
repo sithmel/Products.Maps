@@ -157,7 +157,7 @@ var mapsOpenLayers = function () {
                 var nodes = jQuery("li", node);
                 data['layers'] = {};
                 jQuery.each(nodes, function(i, nd) {
-                    data['layers'][nd.text()] = true;
+                    data['layers'][jQuery(nd).text()] = true;
                 });
                 return true;
             }
