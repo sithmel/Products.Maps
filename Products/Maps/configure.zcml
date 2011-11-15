@@ -8,6 +8,9 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <!-- To define CMF permissions -->
+  <include package="Products.CMFCore" />
+
   <include file="profiles.zcml" />
 
   <permission

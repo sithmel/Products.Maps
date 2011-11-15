@@ -35,3 +35,6 @@ class IMapView(IMapEnabledView):
 
     def iconTagForMarker(marker):
         """Returns the img tag for the icon of the marker."""
+
+    def showContents():
+        """Return true if the content should be displayed."""
