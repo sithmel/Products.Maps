@@ -5,6 +5,7 @@
       <role name="Manager"/>
       <role name="Owner"/>
       <role name="Contributor"/>
+      <role name="Site Administrator"/>
     </permission>
   </permissions>
 </rolemap>

@@ -7,6 +7,8 @@ Changelog
 - Update for Plone 4.1: include Products.CMFCore to define missing
   permissions. Fix undefined name showContents in default view. [thefunny42]
 
+- Add "Add permission" for Site Administrator too. [thefunny42]
+
 - Add controlpanel option to turn off displaying full item contents in pop-up.
   (http://plone.org/products/maps/issues/34)
   [khink]
