@@ -28,22 +28,23 @@
 
       <div tal:replace="structure provider:plone.abovecontentbody" />
 
-      <div class="googleMapView googleMapLocation">
-        <dl metal:use-macro="here/maps_map/macros/markers">
-        </dl>
+      <div id="content-core">
+          <div class="googleMapView googleMapLocation">
+            <dl metal:use-macro="here/maps_map/macros/markers">
+            </dl>
+          </div>
+
+          <div tal:define="text python: here.getText()"
+               tal:condition="text">
+            <metal:field use-macro="python:here.widget('text', mode='view')" />
+          </div>
+
+          <div metal:use-macro="here/document_relateditems/macros/relatedItems">
+              show related items if they exist
+          </div>
+
+          <div class="visualClear">&nbsp;</div>
       </div>
-
-      <div tal:define="text python: here.getText()"
-           tal:condition="text">
-        <metal:field use-macro="python:here.widget('text', mode='view')" />
-      </div>
-
-      <div metal:use-macro="here/document_relateditems/macros/relatedItems">
-          show related items if they exist
-      </div>
-
-      <div class="visualClear">&nbsp;</div>
-
       <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>

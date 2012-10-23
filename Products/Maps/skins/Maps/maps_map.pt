@@ -35,7 +35,7 @@
 
       <div tal:replace="structure provider:plone.abovecontentbody" />
 
-      <div class="googleMapView">
+      <div id="content-core" class="googleMapView">
         <ul metal:define-macro="markers">
         <li tal:repeat="marker view/getMarkers">
           <div class="title">
