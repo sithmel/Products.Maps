@@ -283,7 +283,13 @@ function initialize_maps() {
                     map.setZoom(_maps_saved_settings.zoom);
                 }  
                 else {
-                    map.fitBounds(bounds);
+                    if (locations.length === 1){
+                        map.setCenter(locations[0].marker.getPosition());
+                        map.setZoom(16);
+                    }
+                    else {
+                        map.fitBounds(bounds);
+                    }
                 }
 
             };
