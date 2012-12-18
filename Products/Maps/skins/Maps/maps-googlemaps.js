@@ -24,7 +24,7 @@ var mapsGoogleMaps = function() {
         function $LayerControl($$locations, $$layers) {
             this._locations = $$locations;
             this._layers = $$layers;
-        };
+        }
         $LayerControl.prototype = new GControl();
 
         $LayerControl.prototype._addLayerButton = function($$container, $$layer) {
@@ -43,7 +43,7 @@ var mapsGoogleMaps = function() {
                         $visible = true;
                     } else {
                         for (var $name in $location['layers']) {
-                            if (layers[$name] == true) {
+                            if (layers[$name] === true) {
                                 $visible = true;
                                 break;
                             }
@@ -88,10 +88,10 @@ var mapsGoogleMaps = function() {
         };
 
         return $LayerControl;
-    };
+    }
 
     function _initDefaults($$defaults) {
-        if (_markericons == null) {
+        if (_markericons === null) {
             _markericons = {};
             for (var j=0; j < $$defaults.markericons.length; j++) {
                 var $definition = $$defaults.markericons[j];
@@ -106,7 +106,7 @@ var mapsGoogleMaps = function() {
                 _markericons[$definition['name']] = $icon;
             }
         }
-        if (_defaultmaptype == null) {
+        if (_defaultmaptype === null) {
             if ($$defaults.defaultmaptype == 'satellite') {
                 _defaultmaptype = G_SATELLITE_MAP;
             } else if ($$defaults.defaultmaptype == 'hybrid') {
@@ -117,7 +117,7 @@ var mapsGoogleMaps = function() {
                 _defaultmaptype = G_NORMAL_MAP;
             }
         }
-    };
+    }
 
     function _addInfoWindow($marker, $node) {
         // this needs to be done in a seperate function to keep the correct
@@ -125,7 +125,7 @@ var mapsGoogleMaps = function() {
         GEvent.addListener($marker, "click", function() {
             $marker.openInfoWindow($node, {maxWidth: _mapsConfig_google.maxinfowidth});
         });
-    };
+    }
 
     function _addInfoWindowTabs($marker, $tabs) {
         // this needs to be done in a seperate function to keep the correct
@@ -133,7 +133,7 @@ var mapsGoogleMaps = function() {
         GEvent.addListener($marker, "click", function() {
             $marker.openInfoWindowTabs($tabs, {maxWidth: _mapsConfig_google.maxinfowidth});
         });
-    };
+    }
 
     function _createMarker($data) {
         $data['marker'] = new GMarker($data['point'], $data['icon']);
@@ -150,7 +150,7 @@ var mapsGoogleMaps = function() {
         }
     };
 
-    function _parseMarkers($markers, $result) {
+    function _parseMarkers($markers) {
         var $result = [];
         var $data;
         var $first_tab = true;
