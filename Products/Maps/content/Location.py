@@ -105,8 +105,7 @@ class Location(ATCTContent):
 
     security.declarePublic("getDefaultLocation")
     def getDefaultLocation(self):
-        config = getMultiAdapter((self, self.REQUEST), name="maps_configuration")
-        return config.default_location
+        return [0,0]
 
 registerType(Location, PROJECTNAME)
 
