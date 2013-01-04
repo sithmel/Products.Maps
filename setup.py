@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from os.path import join
 
 version = '3.0.0dev'
 
@@ -8,7 +9,7 @@ setup(name='Products.Maps',
       description="A simple, easy to use Plone integration with Google Maps "
                   "by Jarn AS.",
       long_description=open("README.txt").read() + '\n' +
-                       open('CHANGES.txt').read(),
+                       open(join('docs','HISTORY.txt')).read(),
       classifiers=[
         "Framework :: Zope2",
         "License :: OSI Approved :: GNU General Public License (GPL)",

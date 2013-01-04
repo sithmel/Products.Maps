@@ -100,3 +100,10 @@
 
 .googleMapSearch .searchButton{
 }
+
+.googleMapView > ul{
+    display: none;
+}
+.no-js .googleMapView > ul{
+    display: block !important;
+}

@@ -1,3 +1,15 @@
 - Remove useless properties and tools (Python) NB. the api key is no more necessary
 - add alternative bus/bicycle/foot directions (javascript)
 - progressive ehnancement: hide stuff if javascript is enabled (css)
+
+    + sistemare maps (ricorda di pulire la custom !!!!)
+      * le keyword (che vengono usate ora) sono interpretate come layer dalla mappa. Tra l'altro restituiscono degli errori.
+* ci sono dei problemi nel salvataggio delle impostazioni della mappa (forse dovuto alle collezioni). In questo modo è impossibile salvare lo zoom della mappa
+
+
+ok* all'interno delle collezioni non mostra il testo!
+
+opzioni mappe:
+- ricerca
+- tipo mappa
+- usa layers

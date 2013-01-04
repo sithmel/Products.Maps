@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2011-09-06 08:17+0000\n"
+"POT-Creation-Date: 2013-01-04 09:15+0000\n"
 "PO-Revision-Date: 2007-01-23 18:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -23,6 +23,11 @@ msgstr ""
 #. Default: "City, address"
 #: ./skins/Maps/maps-config.js.pt:15
 msgid "city_address"
+msgstr ""
+
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "delete_maps_settings"
 msgstr ""
 
 #. Default: "Directions"

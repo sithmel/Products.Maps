@@ -7,7 +7,12 @@ from Products.Five.browser import BrowserView
 
 from Products.Maps.interfaces import IRichMarker, IMap, IMapView
 from Products.Maps.interfaces import IMapEnabled, IMapEnabledView
-import json
+
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
 from zope.annotation.interfaces import IAnnotations
 
 
@@ -44,12 +49,14 @@ class BaseMapView(BrowserView):
     def showContents(self):
         return self.config.show_contents
 
-    def getSettings(self):
+    def getSavedSettings(self):
         annotations = IAnnotations(self.context)
         try:
             return annotations['Products.Maps.map_settings']
         except KeyError:
             return '{}';
+
+
 
 class DefaultMapView(BaseMapView):
     implements(IMapView)
@@ -74,13 +81,16 @@ class FolderMapView(BaseMapView):
 
 class SaveMapView(BrowserView):
     def __call__(self):
-        data = {
-            'maptype': self.request.form['maptype'],
-            'center' : [float(n) for n in self.request.form['center[]']],
-            'zoom' : float(self.request.form['zoom']),
-            'layers' : self.request.form['layers']
-        }
         annotations = IAnnotations(self.context)
-        annotations['Products.Maps.map_settings'] = json.dumps(data)
+        if 'maptype' in  self.request.form:
+            data = {
+                'maptype': self.request.form['maptype'],
+                'center' : [float(n) for n in self.request.form['center[]']],
+                'zoom' : float(self.request.form['zoom']),
+            }
+            annotations['Products.Maps.map_settings'] = json.dumps(data)
+        else:
+            annotations['Products.Maps.map_settings'] = '{}';
+
         return "ok"
 

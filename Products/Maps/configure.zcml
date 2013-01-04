@@ -6,6 +6,10 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="maps">
 
+  <include package="Products.CMFCore" file="permissions.zcml"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
+           zcml:condition="have plone-41" />
+
   <i18n:registerTranslations directory="locales" />
 
   <include file="profiles.zcml" />
@@ -38,6 +42,9 @@
   <adapter factory=".adapters.SmartFolderMap" />
 
   <adapter factory=".adapters.FolderMap" />
+
+  <include file="collection.zcml" zcml:condition="have plone-42"  />
+
 
   <browser:page
       for="*"
@@ -109,16 +116,6 @@
       permission="cmf.ModifyPortalContent"
       />
 
-
-  <!-- widgets -->
-
-  <view
-      type="zope.publisher.interfaces.browser.IBrowserRequest"
-      for=".interfaces.IGoogleAPIKey"
-      provides="zope.app.form.interfaces.IInputWidget"
-      factory=".browser.widgets.GoogleAPIKey"
-      permission="zope.Public"
-      />
 
   <!-- configlet -->
 

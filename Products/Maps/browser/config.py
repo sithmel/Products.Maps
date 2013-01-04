@@ -26,37 +26,14 @@ class MapsConfig(BrowserView):
         portal_props = getToolByName(context, 'portal_properties')
         self.properties = getattr(portal_props, PROPERTY_SHEET, None)
 
-    def _search_key(self, property_id):
+    @property
+    def googlemaps_keys(self):
         if self.properties is None:
-            return None
-        keys_list = getattr(self.properties, property_id, None)
-        if keys_list is None:
-            return None
-        keys = {}
-        for key in keys_list:
-            url, key = key.split('|')
-            url = url.strip()
-            # remove trailing slashes
-            url = url.strip('/')
-            key = key.strip()
-            keys[url] = key
-        portal_url_tool = getToolByName(self.context, 'portal_url')
-        portal_url = portal_url_tool()
-        portal_url = portal_url.split('/')
-        while len(portal_url) > 2:
-            url = '/'.join(portal_url)
-            if keys.has_key(url):
-                return keys[url]
-            portal_url = portal_url[:-1]
-        return None
-
-    @property
-    def googlemaps_key(self):
-        return self._search_key(PROPERTY_GOOGLE_KEYS_FIELD)
-
-    @property
-    def googleajaxsearch_key(self):
-        return self._search_key(PROPERTY_GOOGLE_AJAXSEARCH_KEYS_FIELD)
+            return ""
+        googlemaps_keys = getattr(self.properties,
+                                   PROPERTY_GOOGLE_KEYS_FIELD,
+                                   "")
+        return googlemaps_keys
 
     @property
     def marker_icons(self):
@@ -83,43 +60,30 @@ class MapsConfig(BrowserView):
                 'infoShadowAnchor': getSizeFromString(parts[7]),
             }
             icons.append(data)
-        #add you are here marker icons
-        
-        you_are_here = {
-            'name': '_yah',
-            'icon': "%s/%s" % (portal_url, 'marker-you-are-here.png'),
-            'iconSize': [20, 34],
-            'iconAnchor': [9, 34],
-            'infoWindowAnchor': [9, 2],
-            'shadow': "%s/%s" % (portal_url, 'shadow-you-are-here.png'),
-            'shadowSize': [37, 34],
-            'infoShadowAnchor': [18, 25],
-        }
-        icons.append(you_are_here)
 
         return icons
 
-    @property
-    def default_location(self):
-        if self.properties is None:
-            return (0.0, 0.0)
-        default_location = getattr(self.properties,
-                                   PROPERTY_DEFAULT_LOCATION_FIELD,
-                                   (0.0, 0.0))
-        if isinstance(default_location, basestring):
-            default_location = default_location.split(',')
-        validator = LocationFieldValidator('default_location')
-        if validator(default_location) != 1:
-            return (0.0, 0.0)
-        return default_location
+#    @property
+#    def default_location(self):
+#        if self.properties is None:
+#            return (0.0, 0.0)
+#        default_location = getattr(self.properties,
+#                                   PROPERTY_DEFAULT_LOCATION_FIELD,
+#                                   (0.0, 0.0))
+#        if isinstance(default_location, basestring):
+#            default_location = default_location.split(',')
+#        validator = LocationFieldValidator('default_location')
+#        if validator(default_location) != 1:
+#            return (0.0, 0.0)
+#        return default_location
 
     @property
     def default_maptype(self):
         if self.properties is None:
-            return "normal"
+            return "roadmap"
         default_maptype = getattr(self.properties,
                                    PROPERTY_DEFAULT_MAPTYPE_FIELD,
-                                   "normal")
+                                   "roadmap")
         return default_maptype
 
     @property
@@ -131,3 +95,20 @@ class MapsConfig(BrowserView):
                                    True)
         return show_contents
         
+    @property
+    def layers_active(self):
+        if self.properties is None:
+            return True
+        layers_active = getattr(self.properties,
+                                   PROPERTY_LAYERS_ACTIVE,
+                                   True)
+        return layers_active
+
+    @property
+    def search_active(self):
+        if self.properties is None:
+            return False
+        search_active = getattr(self.properties,
+                                   PROPERTY_SEARCH_ACTIVE,
+                                   False)
+        return search_active

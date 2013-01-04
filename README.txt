@@ -19,24 +19,6 @@ Installation
 
 Maps shows up in the "Add-ons" configuration panel.
 
-To use Google Maps you need an "Google Maps API key from
-Google":http://www.google.com/apis/maps/signup.html.
-
-You can use the "Maps settings" configuration panel to add keys.
-
-You need to use the URL at which your site is normally available from the
-outside (most likely your own domain). You can just use the root of your site
-for the registration and the key will automatically be used for all maps on
-the site. If you have a map on your site which sees much traffic, then you
-may want to register another key for it's URL, so the volume limits from
-Google Maps are spread out a bit.
-
-Two keys are included for testing with the following URLs:
-
-- http://localhost:8080
-- http://testing:8080
-
-
 UK and China address search
 ---------------------------
 

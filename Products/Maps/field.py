@@ -59,14 +59,4 @@ registerField(LocationField,
               description=("Field that can store coordinate information")
 )
 
-# Zope 3
 
-from zope.interface import implements
-from zope.schema import ASCIILine
-
-from Products.Maps.interfaces import IGoogleAPIKey
-
-
-class GoogleAPIKey(ASCIILine):
-    __doc__ = IGoogleAPIKey.__doc__
-    implements(IGoogleAPIKey)

@@ -15,9 +15,10 @@
           view_show_contents view/showContents;
           ">
       <script type="text/javascript"
-              tal:define="map_setting view/getSettings"
+              tal:define="map_setting view/getSavedSettings"
               tal:content="string:
-    var _maps_saved_settings = $map_setting;
+    jQuery.extend(mapsConfig.settings, ${map_setting});
+    mapsConfig.context_url = '${context/absolute_url}';
       ">
       </script>
       <div tal:replace="structure provider:plone.abovecontenttitle" />
@@ -34,6 +35,11 @@
       </p>
 
       <div tal:replace="structure provider:plone.abovecontentbody" />
+
+      <div tal:define="text context/getText | nothing"
+           tal:condition="text">
+        <metal:field use-macro="python:here.widget('text', mode='view')" />
+      </div>
 
       <div class="googleMapView">
         <ul metal:define-macro="markers">

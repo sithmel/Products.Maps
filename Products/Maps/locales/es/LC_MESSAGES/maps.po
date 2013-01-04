@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2011-09-06 08:17+0000\n"
+"POT-Creation-Date: 2013-01-04 09:15+0000\n"
 "PO-Revision-Date: 2010-07-11 00:37-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: Spanish <plone-conosur@lists.plone.org>\n"
@@ -27,15 +27,11 @@ msgstr "Validación fallo. La latitud no esta en los límites [-90, 90]. "
 msgid " Validation failed. Longitude not in bounds [-180, 180]. "
 msgstr "Validación fallo. La longitud no esta en los límites [-180, 180]. "
 
-#: ../content/Location.py:151
+#: ../content/Location.py:152
 msgid "Info"
 msgstr "Información"
 
-#: ../browser/controlpanel.py:47
-msgid "Key"
-msgstr "Clave"
-
-#: ../browser/controlpanel.py:159
+#: ../browser/controlpanel.py:194
 msgid "Maps settings"
 msgstr "Configuración de Mapas"
 
@@ -49,18 +45,18 @@ msgstr ""
 msgid "city_address"
 msgstr ""
 
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "delete_maps_settings"
+msgstr ""
+
 #. Default: "Directions"
 #: ./skins/Maps/maps-config.js.pt:15
 msgid "directions"
 msgstr ""
 
-#. Default: "Specify the default coordinates for new locations."
-#: ../browser/controlpanel.py:82
-msgid "help_default_coordinated"
-msgstr "Especifique las coordenadas por defecto de las nuevas ubicaciones."
-
 #. Default: "Select the default map type initially used on maps."
-#: ../browser/controlpanel.py:72
+#: ../browser/controlpanel.py:82
 msgid "help_default_map_type"
 msgstr "Seleccione el tipo de mapa por defecto inicialmente usado en los mapas."
 
@@ -69,33 +65,31 @@ msgstr "Seleccione el tipo de mapa por defecto inicialmente usado en los mapas."
 msgid "help_geolocation"
 msgstr "Usted puede encontrar una dirección o una parte cada uno de estas separadas por una coma (calle y número, ciudad). En algunos casos, el nombre del país también es necesario. También puede introducir las coordenadas de 'latitud' y 'longitud'."
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:54
-msgid "help_google_ajax_search_api_keys"
-msgstr "Agregar las claves del API de Google AJAX Search para la dirección que utilizaran los visitantes para acceder a su sitio. Esta clave se utiliza para buscar lugares que no fueron encontrados con el valor predeterminado de geocodificación de Google Maps. Obtenga las claves en el sitio http://code.google.com/apis/ajaxsearch/signup.html"
+#. Default: "Add Google Maps API key."
+#: ../browser/controlpanel.py:73
+msgid "help_google_maps_api3_key"
+msgstr ""
 
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:40
-msgid "help_google_maps_api_keys"
-msgstr "Agregar las claves de la API de Google Maps para la dirección que utilizan los visitantes para acceder a su sitio. Obtenga las llaves en el sitio http://www.google.com/apis/maps/signup.html"
+#: ../browser/controlpanel.py:114
+msgid "help_layers_active"
+msgstr ""
 
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
 msgstr "Seleccione el icono que se utilizará para esa ubicación en el mapa."
 
+#: ../browser/controlpanel.py:122
+msgid "help_search_active"
+msgstr ""
+
 #. Default: "Show items' contents in map pop-up when clicked. Warning: may take up a lot of room on the map area!"
-#: ../browser/controlpanel.py:93
+#: ../browser/controlpanel.py:103
 msgid "help_show_contents"
 msgstr ""
 
-#. Default: "Default coordinates"
-#: ../browser/controlpanel.py:80
-msgid "label_default_coordinates"
-msgstr "Coordenadas por defecto"
-
 #. Default: "Default map type"
-#: ../browser/controlpanel.py:70
+#: ../browser/controlpanel.py:80
 msgid "label_default_map_type"
 msgstr "Tipo de mapa por defecto"
 
@@ -104,15 +98,15 @@ msgstr "Tipo de mapa por defecto"
 msgid "label_geolocation"
 msgstr "Ubicación"
 
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:52
-msgid "label_google_ajax_search_api_keys"
-msgstr "Claves del API de Google AJAX Search"
+#. Default: "Google Maps API3 Key"
+#: ../browser/controlpanel.py:71
+msgid "label_google_maps_api3_key"
+msgstr ""
 
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:38
-msgid "label_google_maps_api_keys"
-msgstr "Claves del API de Google Maps"
+#. Default: "Activate layers"
+#: ../browser/controlpanel.py:112
+msgid "label_layers_active"
+msgstr ""
 
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
@@ -120,23 +114,33 @@ msgid "label_markericon"
 msgstr "Marca de icono"
 
 #. Default: "Satellite images"
-#: ../browser/controlpanel.py:28
+#: ../browser/controlpanel.py:27
 msgid "label_satellite_map"
 msgstr "Imágenes satelital"
 
 #. Default: "Satellite images with schematic overlay"
-#: ../browser/controlpanel.py:31
+#: ../browser/controlpanel.py:30
 msgid "label_satellite_schematic_map"
 msgstr "Imágenes de satélite con superposición esquemática"
 
 #. Default: "Schematic map"
-#: ../browser/controlpanel.py:25
+#: ../browser/controlpanel.py:24
 msgid "label_schematic_map"
 msgstr "Mapa esquemático"
 
+#. Default: "Activate search interface"
+#: ../browser/controlpanel.py:120
+msgid "label_search_active"
+msgstr ""
+
 #. Default: "Show contents"
-#: ../browser/controlpanel.py:91
+#: ../browser/controlpanel.py:101
 msgid "label_show_contents"
+msgstr ""
+
+#. Default: "Physical relief tiles for displaying elevation and water features (mountains, rivers, etc.)"
+#: ../browser/controlpanel.py:33
+msgid "label_terrain_map"
 msgstr ""
 
 #. Default: "Nearest Places"

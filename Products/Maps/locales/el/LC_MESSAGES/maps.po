@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2011-09-06 08:17+0000\n"
+"POT-Creation-Date: 2013-01-04 09:15+0000\n"
 "PO-Revision-Date: 2007-04-12 17:21+0000\n"
 "Last-Translator: George Gozadinos <ggozad@qiweb.net>\n"
 "Language-Team: \n"
@@ -26,15 +26,11 @@ msgstr ""
 msgid " Validation failed. Longitude not in bounds [-180, 180]. "
 msgstr ""
 
-#: ../content/Location.py:151
+#: ../content/Location.py:152
 msgid "Info"
 msgstr "Πληροφορία"
 
-#: ../browser/controlpanel.py:47
-msgid "Key"
-msgstr "Κλειδί"
-
-#: ../browser/controlpanel.py:159
+#: ../browser/controlpanel.py:194
 msgid "Maps settings"
 msgstr "Ρυθμίσεις χαρτών"
 
@@ -48,18 +44,18 @@ msgstr ""
 msgid "city_address"
 msgstr ""
 
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "delete_maps_settings"
+msgstr ""
+
 #. Default: "Directions"
 #: ./skins/Maps/maps-config.js.pt:15
 msgid "directions"
 msgstr ""
 
-#. Default: "Specify the default coordinates for new locations."
-#: ../browser/controlpanel.py:82
-msgid "help_default_coordinated"
-msgstr "Καθορίστε τις προκαθορισμένες συντεταγμένες για καινούργιες τοποθεσίες"
-
 #. Default: "Select the default map type initially used on maps."
-#: ../browser/controlpanel.py:72
+#: ../browser/controlpanel.py:82
 msgid "help_default_map_type"
 msgstr "Διαλέξτε τον προκαθορισμένο τύπο χάρτη που θα χρησιμοποιείται αρχικά."
 
@@ -68,33 +64,31 @@ msgstr "Διαλέξτε τον προκαθορισμένο τύπο χάρτη
 msgid "help_geolocation"
 msgstr "Μπορείτε να ψάξετε για μια διεύθυνση της οποίας τα μέρη χωρίζονται με κόμμα (Οδός 123, Πόλη). Ίσως χρειαστεί να εισάγετε και το όνομα της χώρας για να έχετε αποτελέσματα. Μπορείτε επίσης να καθορίσετε συντεταγμένες στη μορφή 'πλάτος, μήκος'"
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:54
-msgid "help_google_ajax_search_api_keys"
-msgstr "Προσθέστε τα κλειδιά από το Google AJAX Search API. Αυτό το κλειδί χρησιμποιείται για να βρεθούν τοποθεσίες που δεν στάθηκε δυνατό να βρεθούν από τα Google Maps."
+#. Default: "Add Google Maps API key."
+#: ../browser/controlpanel.py:73
+msgid "help_google_maps_api3_key"
+msgstr ""
 
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:40
-msgid "help_google_maps_api_keys"
-msgstr "Προσθέστε τα κλειδιά από το Google Maps API."
+#: ../browser/controlpanel.py:114
+msgid "help_layers_active"
+msgstr ""
 
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
 msgstr "Επιλέξτε το εικονίδιο που θα φαίνεται σαν δείκτης στο χάρτη."
 
+#: ../browser/controlpanel.py:122
+msgid "help_search_active"
+msgstr ""
+
 #. Default: "Show items' contents in map pop-up when clicked. Warning: may take up a lot of room on the map area!"
-#: ../browser/controlpanel.py:93
+#: ../browser/controlpanel.py:103
 msgid "help_show_contents"
 msgstr ""
 
-#. Default: "Default coordinates"
-#: ../browser/controlpanel.py:80
-msgid "label_default_coordinates"
-msgstr "Προκαθορισμένες συντεταγμένες"
-
 #. Default: "Default map type"
-#: ../browser/controlpanel.py:70
+#: ../browser/controlpanel.py:80
 msgid "label_default_map_type"
 msgstr "Προκαθορισμένος τύπος χάρτη"
 
@@ -103,15 +97,15 @@ msgstr "Προκαθορισμένος τύπος χάρτη"
 msgid "label_geolocation"
 msgstr "Τοποθεσία"
 
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:52
-msgid "label_google_ajax_search_api_keys"
-msgstr "Κλειδιά για Google AJAX Search API"
+#. Default: "Google Maps API3 Key"
+#: ../browser/controlpanel.py:71
+msgid "label_google_maps_api3_key"
+msgstr ""
 
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:38
-msgid "label_google_maps_api_keys"
-msgstr "Κλειδιά για Google Maps API Keys"
+#. Default: "Activate layers"
+#: ../browser/controlpanel.py:112
+msgid "label_layers_active"
+msgstr ""
 
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
@@ -119,23 +113,33 @@ msgid "label_markericon"
 msgstr "Εικονίδιο δείκτη"
 
 #. Default: "Satellite images"
-#: ../browser/controlpanel.py:28
+#: ../browser/controlpanel.py:27
 msgid "label_satellite_map"
 msgstr "Δορυφορικές εικόνες"
 
 #. Default: "Satellite images with schematic overlay"
-#: ../browser/controlpanel.py:31
+#: ../browser/controlpanel.py:30
 msgid "label_satellite_schematic_map"
 msgstr "Δορυφορικές εικόνες με σχηματική επικάλυψη"
 
 #. Default: "Schematic map"
-#: ../browser/controlpanel.py:25
+#: ../browser/controlpanel.py:24
 msgid "label_schematic_map"
 msgstr "Σχηματικός χάρτης"
 
+#. Default: "Activate search interface"
+#: ../browser/controlpanel.py:120
+msgid "label_search_active"
+msgstr ""
+
 #. Default: "Show contents"
-#: ../browser/controlpanel.py:91
+#: ../browser/controlpanel.py:101
 msgid "label_show_contents"
+msgstr ""
+
+#. Default: "Physical relief tiles for displaying elevation and water features (mountains, rivers, etc.)"
+#: ../browser/controlpanel.py:33
+msgid "label_terrain_map"
 msgstr ""
 
 #. Default: "Nearest Places"
