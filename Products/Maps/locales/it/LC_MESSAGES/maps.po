@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-01-04 09:15+0000\n"
+"POT-Creation-Date: 2013-01-05 20:18+0000\n"
 "PO-Revision-Date: 2007-04-12 17:21+0000\n"
 "Last-Translator: Florian Schulze <florian.schulze@gmx.net>\n"
 "Language-Team: \n"
@@ -27,7 +27,10 @@ msgstr "Validazione fallita. La latitudine deve essere compresa tra -90 e 90"
 msgid " Validation failed. Longitude not in bounds [-180, 180]. "
 msgstr "Validazione fallita. La longitudine deve essere compresa tra -180 e 180"
 
-#: ../content/Location.py:152
+msgid "A content for displaying Google maps in your site"
+msgstr "Un contenuto per visualizzare le mappe di Google nel tuo sito"
+
+#: ../content/Location.py:151
 msgid "Info"
 msgstr "Info"
 

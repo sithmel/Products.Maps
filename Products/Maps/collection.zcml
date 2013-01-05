@@ -30,4 +30,6 @@
       permission="cmf.ModifyPortalContent"
       />
 
+  <adapter factory=".adapters.CollectionMap" />
+
 </configure>
