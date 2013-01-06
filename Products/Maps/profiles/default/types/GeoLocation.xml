@@ -8,7 +8,7 @@
  <property name="content_meta_type">GeoLocation</property>
  <property name="product">Maps</property>
  <property name="factory">addLocation</property>
- <property name="immediate_view">maps_map</property>
+ <property name="immediate_view">maps_location</property>
  <property name="global_allow">True</property>
  <property name="filter_content_types">False</property>
  <property name="allowed_content_types"/>
@@ -18,7 +18,6 @@
   <element value="maps_location"/>
   <element value="maps_map"/>
  </property>
- <property name="default_view_fallback">False</property>
  <alias from="(Default)" to="(dynamic view)"/>
  <alias from="edit" to="atct_edit"/>
  <alias from="sharing" to="@@sharing"/>
