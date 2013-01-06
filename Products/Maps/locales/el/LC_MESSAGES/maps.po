@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-01-06 11:35+0000\n"
+"POT-Creation-Date: 2013-01-06 16:38+0000\n"
 "PO-Revision-Date: 2007-04-12 17:21+0000\n"
 "Last-Translator: George Gozadinos <ggozad@qiweb.net>\n"
 "Language-Team: \n"
@@ -47,8 +47,14 @@ msgstr "Πληροφορία"
 msgid "Location"
 msgstr ""
 
+msgid "Location view"
+msgstr ""
+
 msgid "Magenta Marker"
 msgstr ""
+
+msgid "Map view"
+msgstr "Προβολή χάρτη"
 
 #: ../browser/controlpanel.py:194
 msgid "Maps settings"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-01-06 11:35+0000\n"
+"POT-Creation-Date: 2013-01-06 16:38+0000\n"
 "PO-Revision-Date: 2010-07-11 00:37-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: Spanish <plone-conosur@lists.plone.org>\n"
@@ -48,8 +48,14 @@ msgstr "Información"
 msgid "Location"
 msgstr "Ubicación"
 
+msgid "Location view"
+msgstr "Vista de ubicación"
+
 msgid "Magenta Marker"
 msgstr ""
+
+msgid "Map view"
+msgstr "Vista de Mapa"
 
 #: ../browser/controlpanel.py:194
 msgid "Maps settings"

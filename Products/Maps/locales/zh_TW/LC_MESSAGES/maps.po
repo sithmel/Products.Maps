@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-01-06 11:35+0000\n"
+"POT-Creation-Date: 2013-01-06 16:38+0000\n"
 "PO-Revision-Date: 2009-02-12 17:21+0000\n"
 "Last-Translator: marr <marr.tw@gmail.com>\n"
 "Language-Team: \n"
@@ -48,7 +48,13 @@ msgstr "資訊"
 msgid "Location"
 msgstr ""
 
+msgid "Location view"
+msgstr ""
+
 msgid "Magenta Marker"
+msgstr ""
+
+msgid "Map view"
 msgstr ""
 
 #: ../browser/controlpanel.py:194
