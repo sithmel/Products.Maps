@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-01-06 11:03+0000\n"
+"POT-Creation-Date: 2013-01-06 11:35+0000\n"
 "PO-Revision-Date: 2007-04-12 17:21+0000\n"
 "Last-Translator: Florian Schulze <florian.schulze@gmx.net>\n"
 "Language-Team: \n"
@@ -34,6 +34,12 @@ msgstr "Un contenuto per visualizzare le mappe di Google nel tuo sito"
 msgid "A geographic position that can be shown on a Google map"
 msgstr "Una posizione geografica che può essere visualizzata su una mappa di Google"
 
+msgid "Blue Marker"
+msgstr "Segnaposto Blu"
+
+msgid "Green Marker"
+msgstr "Segnaposto Verde"
+
 #: ../content/Location.py:151
 msgid "Info"
 msgstr "Info"
@@ -42,9 +48,21 @@ msgstr "Info"
 msgid "Location"
 msgstr "Posizione"
 
+msgid "Magenta Marker"
+msgstr "Segnaposto Magenta"
+
 #: ../browser/controlpanel.py:194
 msgid "Maps settings"
 msgstr "Impostazioni mappa"
+
+msgid "Red Marker"
+msgstr "Segnaposto Rosso"
+
+msgid "Yellow Marker"
+msgstr "Segnaposto Giallo"
+
+msgid "_yah"
+msgstr "Segnaposto \"tu sei qui\""
 
 #. Default: "Cancel"
 #: ./skins/Maps/maps-config.js.pt:15
@@ -88,11 +106,11 @@ msgstr "La funzione layer raggruppa per categoria gli oggetti permettendo di far
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
-msgstr "Seleziona l'icona utilizzata come marker sulla mappa."
+msgstr "Seleziona l'icona utilizzata come segnaposto sulla mappa."
 
 #: ../browser/controlpanel.py:122
 msgid "help_search_active"
-msgstr "Attiva una interfaccia per visualizzare gli oggetti più visini ad un determinato luogo."
+msgstr "Attiva una interfaccia per visualizzare gli oggetti più vicini ad un determinato luogo."
 
 #. Default: "Show items' contents in map pop-up when clicked. Warning: may take up a lot of room on the map area!"
 #: ../browser/controlpanel.py:103

@@ -51,7 +51,7 @@ class MapsConfig(BrowserView):
             if parts[0].strip() == "Name":
                 continue
             data = {
-                'name': _(parts[0].strip()),
+                'name': _(parts[0].strip()).encode('utf-8'),
                 'icon': "%s/%s" % (portal_url, parts[1].strip()),
                 'iconSize': getSizeFromString(parts[2]),
                 'iconAnchor': getSizeFromString(parts[3]),
