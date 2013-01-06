@@ -83,7 +83,6 @@
 
       </div>
 
-
       <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>
