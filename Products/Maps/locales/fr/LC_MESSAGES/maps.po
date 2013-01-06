@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-01-05 20:18+0000\n"
+"POT-Creation-Date: 2013-01-06 11:03+0000\n"
 "PO-Revision-Date: 2010-05-25 14:00+0000\n"
 "Last-Translator: CommunesPlone.org <support@communesplone.be>\n"
 "Language-Team: \n"
@@ -30,9 +30,17 @@ msgstr "Echec de validation: la longitude doit être comprise entre -180 et 180.
 msgid "A content for displaying Google maps in your site"
 msgstr ""
 
+#: ../profiles/default/types/GeoLocation.xml
+msgid "A geographic position that can be shown on a Google map"
+msgstr ""
+
 #: ../content/Location.py:151
 msgid "Info"
 msgstr ""
+
+#: ../profiles/default/types/GeoLocation.xml
+msgid "Location"
+msgstr "Localisation"
 
 #: ../browser/controlpanel.py:194
 msgid "Maps settings"

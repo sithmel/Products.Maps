@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-01-05 20:18+0000\n"
+"POT-Creation-Date: 2013-01-06 11:03+0000\n"
 "PO-Revision-Date: 2007-04-12 17:21+0000\n"
 "Last-Translator: Florian Schulze <florian.schulze@gmx.net>\n"
 "Language-Team: \n"
@@ -30,9 +30,17 @@ msgstr "Validazione fallita. La longitudine deve essere compresa tra -180 e 180"
 msgid "A content for displaying Google maps in your site"
 msgstr "Un contenuto per visualizzare le mappe di Google nel tuo sito"
 
+#: ../profiles/default/types/GeoLocation.xml
+msgid "A geographic position that can be shown on a Google map"
+msgstr "Una posizione geografica che può essere visualizzata su una mappa di Google"
+
 #: ../content/Location.py:151
 msgid "Info"
 msgstr "Info"
+
+#: ../profiles/default/types/GeoLocation.xml
+msgid "Location"
+msgstr "Posizione"
 
 #: ../browser/controlpanel.py:194
 msgid "Maps settings"
