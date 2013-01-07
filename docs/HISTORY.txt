@@ -1,6 +1,17 @@
 Changelog
 =========
 
+3.0.0dev (unreleased)
+-------------------
+
+- Completely refactored js code using Jquery [sithmel]
+- Updated to Google API v.3 (reverse geocoding, streetview ecc.) [sithmel]
+- Added autocompletion for places [sithmel]
+- Fixed Layer feature (based on keywords) [sithmel]
+- added search to map view [sithmel]
+- Added Italian Translation [sithmel]
+- added new plone collection compatibility [sithmel]
+
 2.1.2 - Unreleased
 ------------------
 

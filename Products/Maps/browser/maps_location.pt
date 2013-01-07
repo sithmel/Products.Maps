@@ -3,14 +3,15 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="maps">
 
 <head></head>
 
 <body>
   <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main"
-                    define="view context/@@maps_googlemaps_view">
+                    define="view context/@@maps_googlemaps_view;
+                            view_show_contents view/showContents">
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -35,10 +36,6 @@
       <div tal:define="text python: here.getText()"
            tal:condition="text">
         <metal:field use-macro="python:here.widget('text', mode='view')" />
-      </div>
-
-      <div metal:use-macro="here/document_relateditems/macros/relatedItems">
-          show related items if they exist
       </div>
 
       <div class="visualClear">&nbsp;</div>

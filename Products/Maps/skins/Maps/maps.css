@@ -17,3 +17,93 @@
 .googleMapLocation .googleMapPane {
     height: 25em;
 }
+
+
+
+/*.tab*/
+.infowindowTabHandlers{
+    margin-top: -36px;
+    margin-left: 10px;
+}
+
+.infowindowTabHandler{
+    float:left;
+    padding: 0 0.4em;
+    border: 1px solid #ABABAB;
+    background-color: white;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    height:19px;
+}
+.infowindowTabHandler.selected{
+    border-bottom: none;
+    height:20px;
+}
+.tab{
+    clear: both;
+}
+
+.mapSearchBar{
+/*    width: 25em;*/
+    width: 80%;
+}
+
+
+/*search*/
+.googleMapWrapper{
+    overflow:hidden;
+}
+
+.googleMapSearch{
+    width:180px;
+    float:left;
+    margin-left:-180px;
+}
+
+.googleMapSearchBar{
+    height:25px;
+    width:100%;
+    padding-top:4px;
+    padding-left: 25px;
+    background:url(map-arrow-left.png) no-repeat left #CCCCCC;
+}
+.googleMapSearchBar.open{
+    background-image:url(map-arrow-down.png)
+}
+
+.googleMapImHere{
+    margin-top:3px;
+}
+
+.googleMapIMHere{
+    border-bottom: thin solid #CCCCCC;
+    margin: 3px 8px 3px 3px;
+    padding: 3px;
+
+}
+.googleMapResult{
+    padding:3px;
+    margin:3px;
+}
+
+.googleMapResult.selected{
+    background-color:#DDDDDD;
+}
+.googleMapResult .indication{
+    text-align:right;
+   
+}
+
+.label_search{
+    display:none;
+}
+
+.googleMapSearch .searchButton{
+}
+
+.googleMapView > ul{
+    display: none;
+}
+.no-js .googleMapView > ul{
+    display: block !important;
+}

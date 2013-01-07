@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2011-05-16 12:40+0000\n"
+"POT-Creation-Date: 2013-01-06 16:38+0000\n"
 "PO-Revision-Date: 2007-09-30 17:21+0000\n"
 "Last-Translator: Jay Hotta <naotaka@we.care.jp>\n"
 "Language-Team: \n"
@@ -26,25 +26,71 @@ msgstr ""
 msgid " Validation failed. Longitude not in bounds [-180, 180]. "
 msgstr ""
 
+msgid "A content for displaying Google maps in your site"
+msgstr ""
+
+#: ../profiles/default/types/GeoLocation.xml
+msgid "A geographic position that can be shown on a Google map"
+msgstr ""
+
+msgid "Blue Marker"
+msgstr ""
+
+msgid "Green Marker"
+msgstr ""
+
 #: ../content/Location.py:151
 msgid "Info"
 msgstr ""
 
-#: ../browser/controlpanel.py:47
-msgid "Key"
+#: ../profiles/default/types/GeoLocation.xml
+msgid "Location"
 msgstr ""
 
-#: ../browser/controlpanel.py:159
+msgid "Location view"
+msgstr ""
+
+msgid "Magenta Marker"
+msgstr ""
+
+msgid "Map view"
+msgstr ""
+
+#: ../browser/controlpanel.py:194
 msgid "Maps settings"
 msgstr "Maps設定"
 
-#. Default: "Specify the default coordinates for new locations."
-#: ../browser/controlpanel.py:82
-msgid "help_default_coordinated"
-msgstr "地図の基本となる位置情報を指定してください。"
+msgid "Red Marker"
+msgstr ""
+
+msgid "Yellow Marker"
+msgstr ""
+
+msgid "_yah"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "cancel"
+msgstr ""
+
+#. Default: "City, address"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "city_address"
+msgstr ""
+
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "delete_maps_settings"
+msgstr ""
+
+#. Default: "Directions"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "directions"
+msgstr ""
 
 #. Default: "Select the default map type initially used on maps."
-#: ../browser/controlpanel.py:72
+#: ../browser/controlpanel.py:82
 msgid "help_default_map_type"
 msgstr "初期値となるマップの種類を指定してください。"
 
@@ -53,33 +99,31 @@ msgstr "初期値となるマップの種類を指定してください。"
 msgid "help_geolocation"
 msgstr "住所を入力して地図を表示することができます（東京都千代田区永田町１−１）。国の名前は住所の後にコンマで区切って追加して検索してください。 又、経度、緯度を入力して地図を表示することもできます。"
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:54
-msgid "help_google_ajax_search_api_keys"
-msgstr "サイトを表示するために使われてているURLによって取得したGoogle AJAX Search API keyを追加してください。Google Mapsのgeocodingでは探すことのできない位置を探すために使います。"
+#. Default: "Add Google Maps API key."
+#: ../browser/controlpanel.py:73
+msgid "help_google_maps_api3_key"
+msgstr ""
 
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:40
-msgid "help_google_maps_api_keys"
-msgstr "サイトを表示するために使われてているURLによって取得したGoogle Maps API keyを追加してください。（ドメインごとに必要です）"
+#: ../browser/controlpanel.py:114
+msgid "help_layers_active"
+msgstr ""
 
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
 msgstr "地図の中でポイントの位置を示すアイコンを選んでください。"
 
+#: ../browser/controlpanel.py:122
+msgid "help_search_active"
+msgstr ""
+
 #. Default: "Show items' contents in map pop-up when clicked. Warning: may take up a lot of room on the map area!"
-#: ../browser/controlpanel.py:93
+#: ../browser/controlpanel.py:103
 msgid "help_show_contents"
 msgstr ""
 
-#. Default: "Default coordinates"
-#: ../browser/controlpanel.py:80
-msgid "label_default_coordinates"
-msgstr "基本の位置（住所または、経度緯度）"
-
 #. Default: "Default map type"
-#: ../browser/controlpanel.py:70
+#: ../browser/controlpanel.py:80
 msgid "label_default_map_type"
 msgstr "基本地図の選択"
 
@@ -88,14 +132,14 @@ msgstr "基本地図の選択"
 msgid "label_geolocation"
 msgstr "ロケーション地図"
 
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:52
-msgid "label_google_ajax_search_api_keys"
+#. Default: "Google Maps API3 Key"
+#: ../browser/controlpanel.py:71
+msgid "label_google_maps_api3_key"
 msgstr ""
 
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:38
-msgid "label_google_maps_api_keys"
+#. Default: "Activate layers"
+#: ../browser/controlpanel.py:112
+msgid "label_layers_active"
 msgstr ""
 
 #. Default: "Marker icon"
@@ -104,27 +148,57 @@ msgid "label_markericon"
 msgstr "Marker icon（位置アイコン）"
 
 #. Default: "Satellite images"
-#: ../browser/controlpanel.py:28
+#: ../browser/controlpanel.py:27
 msgid "label_satellite_map"
 msgstr "航空写真"
 
 #. Default: "Satellite images with schematic overlay"
-#: ../browser/controlpanel.py:31
+#: ../browser/controlpanel.py:30
 msgid "label_satellite_schematic_map"
 msgstr "地図＋写真"
 
 #. Default: "Schematic map"
-#: ../browser/controlpanel.py:25
+#: ../browser/controlpanel.py:24
 msgid "label_schematic_map"
 msgstr "地図"
 
+#. Default: "Activate search interface"
+#: ../browser/controlpanel.py:120
+msgid "label_search_active"
+msgstr ""
+
 #. Default: "Show contents"
-#: ../browser/controlpanel.py:91
+#: ../browser/controlpanel.py:101
 msgid "label_show_contents"
+msgstr ""
+
+#. Default: "Physical relief tiles for displaying elevation and water features (mountains, rivers, etc.)"
+#: ../browser/controlpanel.py:33
+msgid "label_terrain_map"
+msgstr ""
+
+#. Default: "Nearest Places"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "nearest_places"
+msgstr ""
+
+#. Default: "Save map settings"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "save_maps_settings"
+msgstr ""
+
+#. Default: "Search near to ..."
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "search_near_to"
 msgstr ""
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
 msgid "text_googlemaps_location_not_found"
 msgstr "'[LOCATION]'は、見つけられませんでした。"
+
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "updated_maps_settings"
+msgstr ""
 

@@ -3,7 +3,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="maps">
 
 <head></head>
 
@@ -13,7 +13,13 @@
         tal:define="
           view context/@@maps_googlemaps_view;
           ">
-
+      <script type="text/javascript"
+              tal:define="map_setting view/getSavedSettings"
+              tal:content="string:
+    jQuery.extend(mapsConfig.settings, ${map_setting});
+    mapsConfig.context_url = '${context/absolute_url}';
+      ">
+      </script>
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 
       <h1 class="documentFirstHeading">
@@ -29,22 +35,27 @@
 
       <div tal:replace="structure provider:plone.abovecontentbody" />
 
+      <div tal:define="text context/getText | nothing"
+           tal:condition="text">
+        <metal:field use-macro="python:here.widget('text', mode='view')" />
+      </div>
+
       <div class="googleMapView">
-        <dl metal:define-macro="markers">
-        <tal:markers tal:repeat="marker view/getMarkers">
-          <dt class="title">
+        <ul metal:define-macro="markers">
+        <li tal:repeat="marker view/getMarkers">
+          <div class="title">
             <img src="" tal:replace="structure python:view.iconTagForMarker(marker)" />
             <a href=""
                tal:attributes="href marker/url"
                tal:content="marker/title"> <tal:comment replace="nothing">Title</tal:comment> </a>
-          </dt>
-          <dd class="tab"
+          </div>
+          <div class="tab"
               title="Description"
               tal:condition="marker/description"
               i18n:attributes="title label_description;">
             <div tal:content="marker/description" />
-          </dd>
-          <dd class="tab"
+          </div>
+          <div class="tab"
               tal:define="
                 contents marker/contents | nothing;
                 contents python: contents and view.showContents();
@@ -54,31 +65,21 @@
               tal:attributes="title content/title">
             <div tal:replace="structure content/text" />
             <div class="visualClear"><!-- --></div>
-          </dd>
-          <dd class="geo">
+          </div>
+          <div class="geo">
             <span class="latitude" tal:content="marker/latitude" />
             <span class="longitude" tal:content="marker/longitude" />
-          </dd>
-          <dd class="layers"
+          </div>
+          <div class="layers"
               tal:condition="marker/layers | nothing">
             <ul>
               <li tal:repeat="layer marker/layers"
                   tal:content="layer"><tal:comment replace="nothing">Layer</tal:comment></li>
             </ul>
-          </dd>
-          <tal:block tal:condition="marker/related_items | nothing">
-            <dt i18n:translate="label_related_items">Related Items</dt>
-            <dd>
-              <tal:related tal:repeat="related marker/related_items">
-                <a href=""
-                   tal:attributes="href related/url;
-                                   title related/description | nothing"
-                   tal:content="related/title" />
-              </tal:related>
-            </dd>
-          </tal:block>
-        </tal:markers>
-        </dl>
+          </div>
+        </li>
+        </ul>
+
       </div>
 
       <div tal:replace="structure provider:plone.belowcontentbody" />

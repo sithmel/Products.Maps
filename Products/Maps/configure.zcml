@@ -11,6 +11,7 @@
   <!-- To define CMF permissions -->
   <include package="Products.CMFCore" />
 
+  <include package=".browser" />
   <include file="profiles.zcml" />
 
   <permission
@@ -42,71 +43,7 @@
 
   <adapter factory=".adapters.FolderMap" />
 
-  <browser:page
-      for="*"
-      name="maps_configuration"
-      class=".browser.config.MapsConfig"
-      permission="zope2.View"
-      allowed_interface=".interfaces.config.IMapsConfig"
-      />
-
-  <browser:page
-      for="Products.Maps.interfaces.IMapEnabled"
-      name="maps_googlemaps_enabled_view"
-      class=".browser.map.DefaultMapView"
-      permission="zope.Public"
-      allowed_interface=".interfaces.map.IMapEnabledView"
-      />
-
-  <browser:page
-      for="Products.ATContentTypes.interface.IATTopic"
-      name="maps_googlemaps_enabled_view"
-      class=".browser.map.FolderMapView"
-      permission="zope.Public"
-      allowed_interface=".interfaces.map.IMapEnabledView"
-      />
-
-  <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
-      name="maps_googlemaps_enabled_view"
-      class=".browser.map.FolderMapView"
-      permission="zope.Public"
-      allowed_interface=".interfaces.map.IMapEnabledView"
-      />
-
-  <browser:page
-      for="Products.Maps.interfaces.ILocation"
-      name="maps_googlemaps_view"
-      class=".browser.map.DefaultMapView"
-      permission="zope2.View"
-      allowed_interface=".interfaces.map.IMapView"
-      />
-
-  <browser:page
-      for="Products.ATContentTypes.interface.IATTopic"
-      name="maps_googlemaps_view"
-      class=".browser.map.FolderMapView"
-      permission="zope2.View"
-      allowed_interface=".interfaces.map.IMapView"
-      />
-
-  <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
-      name="maps_googlemaps_view"
-      class=".browser.map.FolderMapView"
-      permission="zope2.View"
-      allowed_interface=".interfaces.map.IMapView"
-      />
-
-  <!-- widgets -->
-
-  <view
-      type="zope.publisher.interfaces.browser.IBrowserRequest"
-      for=".interfaces.IGoogleAPIKey"
-      provides="zope.app.form.interfaces.IInputWidget"
-      factory=".browser.widgets.GoogleAPIKey"
-      permission="zope.Public"
-      />
+  <include file="collection.zcml" zcml:condition="installed plone.app.collection"  />
 
   <!-- configlet -->
 

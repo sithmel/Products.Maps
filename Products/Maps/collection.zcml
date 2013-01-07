@@ -1,0 +1,41 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="maps">
+
+  <browser:page
+      for="plone.app.collection.interfaces.ICollection"
+      name="maps_googlemaps_enabled_view"
+      class=".browser.map.FolderMapView"
+      permission="zope.Public"
+      allowed_interface=".interfaces.map.IMapEnabledView"
+      />
+
+  <browser:page
+      for="plone.app.collection.interfaces.ICollection"
+      name="maps_googlemaps_view"
+      class=".browser.map.FolderMapView"
+      permission="zope2.View"
+      allowed_interface=".interfaces.map.IMapView"
+      />
+
+  <browser:page
+      for="plone.app.collection.interfaces.ICollection"
+      name="maps_save_config"
+      class=".browser.map.SaveMapView"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="plone.app.collection.interfaces.ICollection"
+      name="maps_map"
+      template="browser/maps_map.pt"
+      permission="zope2.View"
+      />   
+
+  <adapter factory=".adapters.CollectionMap" />
+
+</configure>

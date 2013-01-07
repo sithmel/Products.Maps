@@ -1,0 +1,29 @@
+<tal:block define="_dummy python:request.response.setHeader('content-type','text/javascript;;charset=utf-8')" />
+<metal:block i18n:domain="maps"
+             tal:define="portal_state context/@@plone_portal_state">
+
+/*
+ <span tal:omit-tag="" i18n:translate=""><tal:comment replace="nothing">Dummy to get i18ndude working</tal:comment></span>
+*/
+
+mapsConfig.i18n = {
+    language: '<tal:block tal:replace="python: portal_state.language()" />',
+    locationnotfound: '<tal:block tal:replace="python: here.translate('text_googlemaps_location_not_found', default='The location \'[LOCATION]\' couldn\'t be found.', domain='maps', escape_for_js=True)" />',
+
+    label_savemapsettings: '<tal:block tal:replace="python: here.translate('save_maps_settings', default='Save map settings', domain='maps', escape_for_js=True)" />',
+    label_updatedmapsettings: '<tal:block tal:replace="python: here.translate('updated_maps_settings', default='Map settings updated', domain='maps', escape_for_js=True)" />',
+    label_search: '<tal:block tal:replace="python: here.translate('search', default='Search', domain='Plone', escape_for_js=True)" />',
+
+    label_searchnearto: '<tal:block tal:replace="python: here.translate('search_near_to', default='Search near to ...', domain='maps', escape_for_js=True)" />',
+
+    label_cancel: '<tal:block tal:replace="python: here.translate('cancel', default='Cancel', domain='maps', escape_for_js=True)" />',
+
+    label_nearestplaces: '<tal:block tal:replace="python: here.translate('nearest_places', default='Nearest Places', domain='maps', escape_for_js=True)" />',
+    label_directions: '<tal:block tal:replace="python: here.translate('directions', default='Directions', domain='maps', escape_for_js=True)" />',
+    label_city_address: '<tal:block tal:replace="python: here.translate('city_address', default='City, address', domain='maps', escape_for_js=True)" />',
+
+    label_deletemapsettings: '<tal:block tal:replace="python: here.translate('delete_maps_settings', default='Return to default map settings', domain='maps', escape_for_js=True)" />'
+
+};
+
+</metal:block>
