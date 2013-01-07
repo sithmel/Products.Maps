@@ -29,6 +29,13 @@ def registerProperties(portal):
         if not props.hasProperty(prop['name']):
             props.manage_addProperty(prop['name'], prop['value'], prop['type_'])
             logger.info("Added missing %s property" % prop['name'])
+        if prop['type_']=='lines':
+            map_markers = list(getattr(props,prop['name'], []))
+            for p in prop['value']:
+                if p not in map_markers:
+                    map_markers.append(p)
+                    logger.info("Inner value missing for property %s. Adding it." % prop['name'])
+                props.manage_changeProperties(**{prop['name'] : map_markers})
         else:
             logger.info("Property %s found. Skipping" % prop['name'])
 
