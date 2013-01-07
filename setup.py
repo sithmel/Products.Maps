@@ -12,6 +12,8 @@ setup(name='Products.Maps',
       classifiers=[
         "Framework :: Zope2",
         "Framework :: Plone",
+        "Framework :: Plone :: 3.3",
+        "Framework :: Plone :: 4.0",
         "Framework :: Plone :: 4.1",
         "Framework :: Plone :: 4.2",
         "Framework :: Plone :: 4.3",
