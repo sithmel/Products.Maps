@@ -19,22 +19,6 @@ Installation
 
 Maps shows up in the "Add-ons" configuration panel.
 
-UK and China address search
----------------------------
-
-The default Google Maps geocoding (search for coordinates by address) doesn't
-work everywhere. As of May 2007 it doesn't work in the UK and China for
-example.
-
-We have added a workaround for this. To activate this workaround feature
-you'll have to add a key for Google AJAX Search to enable search for those
-regions.
-
-To use the Google AJAX Search fallback, you need an "Google AJAX Search API
-key from Google":http://code.google.com/apis/ajaxsearch/signup.html.
-
-The same rules as for the map key apply, see above.
-
 Implementing custom content with map field
 ------------------------------------------
 
@@ -80,7 +64,7 @@ Add following snippet to custom content view/template::
 Dependencies
 ------------
 
-- Plone 4.x
+- Plone 3.3 / 4.x
 
 
 Credits
@@ -94,18 +78,16 @@ Parts are based on:
 - "qPloneGoogleMaps":http://projects.quintagroup.com/products/wiki/qPloneGoogleMaps
 - "geolocation":http://svn.quintagroup.com/products/geolocation/
 
-
-Development sponsored by
-------------------------
+Development originally sponsored by
+-----------------------------------
 
 The "Student Services of Bergen, Norway":http://sib.no
 
 "University of Oxford":http://medsci.ox.ac.uk (Medical Sciences Division)
 
+Contributors for version 3.0
+----------------------------
 
-A Jarn AS product
------------------
+Maurizio Lupo @sithmel - maurizio.lupo@redomino.com
+Luca Fabbri   @keul    - luca@keul.it
 
-"http://www.jarn.com":http://www.jarn.com
-
-"info@jarn.com":mailto:info@jarn.com

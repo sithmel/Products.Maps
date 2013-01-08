@@ -11,6 +11,8 @@ Changelog
 - added search to map view [sithmel]
 - Added Italian Translation [sithmel]
 - added new plone collection compatibility [sithmel]
+- new control panel [sithmel]
+- various bugfixes and compatibility tests [keul]
 
 2.1.2 - Unreleased
 ------------------

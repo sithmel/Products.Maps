@@ -5,8 +5,7 @@ version = '3.0dev'
 
 setup(name='Products.Maps',
       version=version,
-      description="A simple, easy to use Plone integration with Google Maps "
-                  "by Jarn AS.",
+      description="A simple, easy to use Plone integration with Google Maps",
       long_description=open("README.txt").read() + '\n' +
                        open(join('docs','HISTORY.txt')).read(),
       classifiers=[
