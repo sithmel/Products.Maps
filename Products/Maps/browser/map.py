@@ -83,9 +83,11 @@ class SaveMapView(BrowserView):
     def __call__(self):
         annotations = IAnnotations(self.context)
         if 'maptype' in  self.request.form:
+            center = self.request.form.get('center') or self.request.form.get('center[]')
+
             data = {
                 'maptype': self.request.form['maptype'],
-                'center' : [float(n) for n in self.request.form['center[]']],
+                'center' : [float(n) for n in center],
                 'zoom' : float(self.request.form['zoom']),
             }
             annotations['Products.Maps.map_settings'] = json.dumps(data)
