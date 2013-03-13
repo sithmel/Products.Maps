@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from os.path import join
 
-version = '3.1'
+version = '3.2.dev0'
 
 setup(name='Products.Maps',
       version=version,
