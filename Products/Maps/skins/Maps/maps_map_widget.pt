@@ -7,20 +7,10 @@
 <body>
 
 <metal:view_macro define-macro="view">
-  <div class="googleMapView">
-    <dl>
-    <dt class="title" tal:content="fieldName"></dt>
-    <dd class="geo"
-         tal:define="result python:field.getEditAccessor(here)();
-                     latitude python: result[0];
-                     longitude python: result[1]"
-         tal:condition="accessor"
-         i18n:domain="maps">
-      <span class="latitude" tal:content="latitude" />
-      <span class="longitude" tal:content="longitude" />
-    </dd>
-    </dl>
-  </div>
+      <div class="googleMapView googleMapLocation" tal:define="view nocall:context/@@maps_googlemaps_enabled_view">
+        <dl metal:use-macro="here/maps_map/macros/markers">
+        </dl>
+      </div>
 </metal:view_macro>
 
 <metal:edit_macro define-macro="edit">

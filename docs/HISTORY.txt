@@ -4,7 +4,8 @@ Changelog
 3.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- fix on location widget when used as archetype field [sithmel]
+- fix on save maps layout buttons (Plone3 only) [sithmel]
 
 
 3.0 (2013-01-25)

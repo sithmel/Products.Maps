@@ -411,6 +411,7 @@ var _searchForm = function($this, locations, map, marker_imhere){
 var initViewMap = function (){
     var $this = $(this).addClass('googleMapActive'),
         $map_node = $('<div class="googleMapPane" />').appendTo($this),
+        $savelayout = $('#maps-save-layout'),
         map_options, map, locations, layers;
 
     $this.find('ul').hide();
@@ -478,7 +479,7 @@ var initViewMap = function (){
 
     // save settings
 
-    if($('.portaltype-folder #edit-bar, .portaltype-topic #edit-bar').length){
+    if($savelayout.length){
 
         $('<input type="button" value="' + w.mapsConfig.i18n.label_deletemapsettings +'"/>')
         .click(function (){
@@ -490,7 +491,7 @@ var initViewMap = function (){
                 w.location = w.location;
             });
         })
-        .insertAfter($this);
+        .appendTo($savelayout);
 
         $('<input type="button" value="' + w.mapsConfig.i18n.label_savemapsettings +'"/>')
         .click(function (){
@@ -506,7 +507,7 @@ var initViewMap = function (){
                 $('#kssPortalMessage dd').text(w.mapsConfig.i18n.label_updatedmapsettings);
             });
         })
-        .insertAfter($this);
+        .appendTo($savelayout);
     }
 
     // search doesn't make sense with only one location            

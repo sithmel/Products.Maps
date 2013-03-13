@@ -12,6 +12,7 @@
     <tal:main-macro metal:define-macro="main"
         tal:define="
           view context/@@maps_googlemaps_view;
+          checkPermission nocall: context/portal_membership/checkPermission;
           ">
       <script type="text/javascript"
               tal:define="map_setting view/getSavedSettings"
@@ -81,9 +82,9 @@
         </ul>
 
       </div>
-
+      <div tal:condition="python:checkPermission('Modify Portal Content', context)" 
+           id="maps-save-layout"></div>
       <div tal:replace="structure provider:plone.belowcontentbody" />
-
     </tal:main-macro>
   </metal:main>
 </body>
