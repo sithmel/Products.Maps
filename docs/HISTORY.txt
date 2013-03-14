@@ -1,13 +1,7 @@
 Changelog
 =========
 
-3.2 (unreleased)
-----------------
-
-- Nothing changed yet.
-
-
-3.1 (2013-03-13)
+3.1 (unreleased)
 ----------------
 
 - fix on location widget when used as archetype field [sithmel]
