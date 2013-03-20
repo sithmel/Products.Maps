@@ -15,6 +15,7 @@ var _createLocation = function($node) {
         info_window: (function (){
             var $wrapper = $('<div/>'),
                 $tabs, $handlers;
+            $node.find('.title').clone().appendTo($wrapper);
             $node.find('.tab').clone().appendTo($wrapper);
         
             $tabs = $wrapper.find('.tab');
@@ -45,8 +46,9 @@ var _createLocation = function($node) {
                 $geo = $node.find('.geo'),
                 position = new google.maps.LatLng(parseFloat($geo.find('.latitude').text()), 
                                                   parseFloat($geo.find('.longitude').text()));
-
+            var marker_title = $node.find('.title a').text();
             return new google.maps.Marker({
+                title: marker_title,
                 icon: _all_icons[icon_name],
                 shadow:_all_shadows[icon_name],
                 position: position
