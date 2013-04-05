@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.3 (unreleased)
+3.3 (2013-04-05)
 ----------------
 
 - Store map objects in window.activeMaps to allow end-develops access
