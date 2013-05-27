@@ -9,7 +9,7 @@
 var mapsConfig = {
     settings: {
         layersactive: null,
-        center: null,
+        center: [<tal:block tal:replace="config/default_location" />],
         zoom: null,
         maptype: '<tal:block tal:replace="config/default_maptype" />'
     },

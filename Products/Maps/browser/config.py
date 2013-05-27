@@ -64,19 +64,19 @@ class MapsConfig(BrowserView):
 
         return icons
 
-#    @property
-#    def default_location(self):
-#        if self.properties is None:
-#            return (0.0, 0.0)
-#        default_location = getattr(self.properties,
-#                                   PROPERTY_DEFAULT_LOCATION_FIELD,
-#                                   (0.0, 0.0))
+    @property
+    def default_location(self):
+        if self.properties is None:
+            return '0.0, 0.0'
+        default_location = getattr(self.properties,
+                                   PROPERTY_DEFAULT_LOCATION_FIELD,
+                                   '0.0, 0.0')
 #        if isinstance(default_location, basestring):
 #            default_location = default_location.split(',')
-#        validator = LocationFieldValidator('default_location')
-#        if validator(default_location) != 1:
-#            return (0.0, 0.0)
-#        return default_location
+        validator = LocationFieldValidator('default_location')
+        if validator(default_location) != 1:
+            return '0.0, 0.0'
+        return default_location
 
     @property
     def default_maptype(self):

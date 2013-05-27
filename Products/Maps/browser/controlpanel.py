@@ -86,16 +86,16 @@ class IMapsSchema(Interface):
                         vocabulary=DEFAULT_MAPTYPE_CHOICES,
                       )
 
-#    default_location = TextLine(
-#                        title=_('label_default_coordinates',
-#                                default=u'Default coordinates'),
-#                        description=_('help_default_coordinated',
-#                                      default=u"Specify the default "
-#                                               "coordinates for new "
-#                                               "locations."),
-#                        default=u'0.0, 0.0',
-#                        required=True,
-#                       )
+    default_location = TextLine(
+                        title=_('label_default_coordinates',
+                                default=u'Default coordinates'),
+                        description=_('help_default_coordinated',
+                                      default=u"Specify the default "
+                                               "coordinates for new "
+                                               "locations."),
+                        default=u'0.0, 0.0',
+                        required=True,
+                       )
 
     show_contents = Bool(
                         title=_('label_show_contents',
@@ -154,15 +154,15 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
 
     default_maptype = property(get_default_maptype,set_default_maptype)
 
-#    def get_default_location(self):
-#        return getattr(self.context,
-#                       PROPERTY_DEFAULT_LOCATION_FIELD,
-#                       "0.0, 0.0")
+    def get_default_location(self):
+        return getattr(self.context,
+                       PROPERTY_DEFAULT_LOCATION_FIELD,
+                       "0.0, 0.0")
 
-#    def set_default_location(self, value):
-#        self.context._updateProperty(PROPERTY_DEFAULT_LOCATION_FIELD, value)
+    def set_default_location(self, value):
+        self.context._updateProperty(PROPERTY_DEFAULT_LOCATION_FIELD, value)
 
-#    default_location = property(get_default_location,set_default_location)
+    default_location = property(get_default_location,set_default_location)
 
     def get_show_contents(self):
         return getattr(self.context, PROPERTY_SHOW_CONTENTS, True)

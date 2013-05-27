@@ -16,6 +16,7 @@ _PROPERTIES = [
                 ]),
     dict(name='map_google_api3_keys', type_='string', value=''),
     dict(name='map_default_maptype', type_='string', value='roadmap'),
+    dict(name='map_default_location', type_='string', value='0.0 0.0'),
     dict(name='map_show_contents', type_='boolean', value=True),
     dict(name='map_layers_active', type_='boolean', value=True),
     dict(name='map_search_active', type_='boolean', value=False),

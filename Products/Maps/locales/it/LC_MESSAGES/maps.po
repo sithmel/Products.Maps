@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-01-06 16:38+0000\n"
+"POT-Creation-Date: 2013-05-27 14:39+0000\n"
 "PO-Revision-Date: 2007-04-12 17:21+0000\n"
 "Last-Translator: Florian Schulze <florian.schulze@gmx.net>\n"
 "Language-Team: \n"
@@ -90,6 +90,11 @@ msgstr "Ritorna alle impostazioni di default"
 msgid "directions"
 msgstr "Indicazioni"
 
+#. Default: "Specify the default coordinates for new locations."
+#: ../browser/controlpanel.py:92
+msgid "help_default_coordinated"
+msgstr "Specifica le coordinate di default per le nuove posizioni"
+
 #. Default: "Select the default map type initially used on maps."
 #: ../browser/controlpanel.py:82
 msgid "help_default_map_type"
@@ -123,10 +128,20 @@ msgstr "Attiva una interfaccia per visualizzare gli oggetti più vicini ad un de
 msgid "help_show_contents"
 msgstr "Mostra il testo dell'oggetto nella mappa"
 
+#. Default: "Default coordinates"
+#: ../browser/controlpanel.py:90
+msgid "label_default_coordinates"
+msgstr "Coordinate di default"
+
 #. Default: "Default map type"
 #: ../browser/controlpanel.py:80
 msgid "label_default_map_type"
 msgstr "Tipo di mappa di default"
+
+#. Default: "Description"
+#: ../browser/maps_map.pt:53
+msgid "label_description"
+msgstr ""
 
 #. Default: "Location"
 #: Content Type: Location, Field: geolocation

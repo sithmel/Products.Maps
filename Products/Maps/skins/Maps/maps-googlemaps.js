@@ -226,7 +226,12 @@ var _set_zoom = function (map, locations){
         map.setZoom(w.mapsConfig.settings.zoom);
     }
     else {
-        if (locations.length === 1){
+        if (locations.length === 0){
+            var c = w.mapsConfig.settings.center;
+            map.setCenter(new google.maps.LatLng(c[0], c[1]));
+            map.setZoom(6);
+        }
+        else if (locations.length === 1){
             map.setCenter(locations[0].marker.getPosition());
             map.setZoom(16);
         }
