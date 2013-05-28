@@ -71,8 +71,6 @@ class MapsConfig(BrowserView):
         default_location = getattr(self.properties,
                                    PROPERTY_DEFAULT_LOCATION_FIELD,
                                    '0.0, 0.0')
-#        if isinstance(default_location, basestring):
-#            default_location = default_location.split(',')
         validator = LocationFieldValidator('default_location')
         if validator(default_location) != 1:
             return '0.0, 0.0'
@@ -106,6 +104,15 @@ class MapsConfig(BrowserView):
         return layers_active
 
     @property
+    def layers_use_radio(self):
+        if self.properties is None:
+            return 'false'
+        layers_use_radio = getattr(self.properties,
+                                   PROPERTY_LAYERS_USE_RADIO,
+                                   False)
+        return str(layers_use_radio).lower()
+
+    @property
     def search_active(self):
         if self.properties is None:
             return False
@@ -113,3 +120,14 @@ class MapsConfig(BrowserView):
                                    PROPERTY_SEARCH_ACTIVE,
                                    False)
         return search_active
+
+    @property
+    def change_urls(self):
+        if self.properties is None:
+            return 'false'
+        change_urls = getattr(self.properties,
+                                   PROPERTY_CHANGE_URLS,
+                                   False)
+
+        return str(change_urls).lower()
+        

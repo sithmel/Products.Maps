@@ -15,8 +15,10 @@ var mapsConfig = {
     },
     googlemaps_keys: '<tal:block tal:replace="config/googlemaps_keys" />',
     layers_active: '<tal:block tal:replace="config/layers_active" />',
+    layers_use_radio: <tal:block tal:replace="config/layers_use_radio" />, 
     search_active: '<tal:block tal:replace="config/search_active" />',
-    markericons: <tal:block tal:replace="structure config/marker_icons" />
+    markericons: <tal:block tal:replace="structure config/marker_icons" />,
+    change_urls: <tal:block tal:replace="config/change_urls" />
 };
 
 </metal:block>

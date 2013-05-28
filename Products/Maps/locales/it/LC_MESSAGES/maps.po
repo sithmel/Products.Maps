@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-05-27 14:39+0000\n"
+"POT-Creation-Date: 2013-05-28 14:56+0000\n"
 "PO-Revision-Date: 2007-04-12 17:21+0000\n"
 "Last-Translator: Florian Schulze <florian.schulze@gmx.net>\n"
 "Language-Team: \n"
@@ -40,7 +40,7 @@ msgstr "Segnaposto Blu"
 msgid "Green Marker"
 msgstr "Segnaposto Verde"
 
-#: ../content/Location.py:151
+#: ../content/Location.py:153
 msgid "Info"
 msgstr "Info"
 
@@ -57,7 +57,7 @@ msgstr "Segnaposto Magenta"
 msgid "Map view"
 msgstr "Vista mappa"
 
-#: ../browser/controlpanel.py:194
+#: ../browser/controlpanel.py:228
 msgid "Maps settings"
 msgstr "Impostazioni mappa"
 
@@ -90,6 +90,11 @@ msgstr "Ritorna alle impostazioni di default"
 msgid "directions"
 msgstr "Indicazioni"
 
+#. Default: "If you move and zoom a map, the URL will be changed accordingly (and it can be bookmarked)"
+#: ../browser/controlpanel.py:138
+msgid "help_change_urls"
+msgstr "Se muovi o ingrandisci la mappa, le modifiche saranno memorizzate nell'URL (potrà essere usato come segnalibro)"
+
 #. Default: "Specify the default coordinates for new locations."
 #: ../browser/controlpanel.py:92
 msgid "help_default_coordinated"
@@ -114,12 +119,17 @@ msgstr "La chiave è facoltativa, controllare le specifiche di Google"
 msgid "help_layers_active"
 msgstr "La funzione layer raggruppa per categoria gli oggetti permettendo di farli apparire/sparire usando una checkbox."
 
+#. Default: "Select only one layer in maps"
+#: ../browser/controlpanel.py:122
+msgid "help_layers_use_radio"
+msgstr "Usa dei radio button per selezionare il layer"
+
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
 msgstr "Seleziona l'icona utilizzata come segnaposto sulla mappa."
 
-#: ../browser/controlpanel.py:122
+#: ../browser/controlpanel.py:130
 msgid "help_search_active"
 msgstr "Attiva una interfaccia per visualizzare gli oggetti più vicini ad un determinato luogo."
 
@@ -127,6 +137,11 @@ msgstr "Attiva una interfaccia per visualizzare gli oggetti più vicini ad un de
 #: ../browser/controlpanel.py:103
 msgid "help_show_contents"
 msgstr "Mostra il testo dell'oggetto nella mappa"
+
+#. Default: "Change urls"
+#: ../browser/controlpanel.py:136
+msgid "label_change_urls"
+msgstr "Modifiche nell'URL"
 
 #. Default: "Default coordinates"
 #: ../browser/controlpanel.py:90
@@ -158,6 +173,11 @@ msgstr "Chiave di Google Map (versione 3)"
 msgid "label_layers_active"
 msgstr "Attiva la funzione layer"
 
+#. Default: "Use radio buttons for layers"
+#: ../browser/controlpanel.py:120
+msgid "label_layers_use_radio"
+msgstr "Usa i radio button"
+
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
 msgid "label_markericon"
@@ -179,7 +199,7 @@ msgid "label_schematic_map"
 msgstr "Mappa"
 
 #. Default: "Activate search interface"
-#: ../browser/controlpanel.py:120
+#: ../browser/controlpanel.py:128
 msgid "label_search_active"
 msgstr "Attiva la funzione di ricerca"
 

@@ -4,7 +4,11 @@ Changelog
 3.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Added back default location [sithmel]
+- Removed some inline styling for better customization [sithmel]
+- when you changed layers the search was not updated (fixed) [sithmel]
+- now you can optionally use radio button for selecting layers [sithmel]
+- you can optionally track zoom/position in the URL [sithmel]
 
 
 3.3 (2013-04-05)

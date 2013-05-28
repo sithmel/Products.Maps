@@ -116,11 +116,27 @@ class IMapsSchema(Interface):
                         default=True,
                         )
 
+    layers_use_radio = Bool(
+                        title=_('label_layers_use_radio',
+                                    default=u"Use radio buttons for layers"),
+                        description=_('help_layers_use_radio',
+                                    default=u"Select only one layer in maps"),
+                        default=False,
+                        )
+
     search_active = Bool(
                         title=_('label_search_active',
                                     default=u"Activate search interface"),
                         description=_('help_search_active',
                                     default=u""),
+                        default=False,
+                        )
+
+    change_urls   = Bool(
+                        title=_('label_change_urls',
+                                    default=u"Change urls"),
+                        description=_('help_change_urls',
+                                    default=u"If you move and zoom a map, the URL will be changed accordingly (and it can be bookmarked)"),
                         default=False,
                         )
 
@@ -180,6 +196,16 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
 
     layers_active = property(get_layers_active,set_layers_active)
 
+
+    def get_layers_use_radio(self):
+        return getattr(self.context, PROPERTY_LAYERS_USE_RADIO, False)
+
+    def set_layers_use_radio(self, value):
+        self.context._updateProperty(PROPERTY_LAYERS_USE_RADIO, value)
+
+    layers_use_radio = property(get_layers_use_radio,set_layers_use_radio)
+
+
     def get_search_active(self):
         return getattr(self.context, PROPERTY_SEARCH_ACTIVE, False)
 
@@ -187,6 +213,14 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
         self.context._updateProperty(PROPERTY_SEARCH_ACTIVE, value)
 
     search_active = property(get_search_active,set_search_active)
+
+    def get_change_urls(self):
+        return getattr(self.context, PROPERTY_CHANGE_URLS, False)
+
+    def set_change_urls(self, value):
+        self.context._updateProperty(PROPERTY_CHANGE_URLS, value)
+
+    change_urls = property(get_change_urls,set_change_urls)
 
 class MapsControlPanel(ControlPanelForm):
 

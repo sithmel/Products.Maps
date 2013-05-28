@@ -19,7 +19,9 @@ _PROPERTIES = [
     dict(name='map_default_location', type_='string', value='0.0 0.0'),
     dict(name='map_show_contents', type_='boolean', value=True),
     dict(name='map_layers_active', type_='boolean', value=True),
+    dict(name='map_layers_use_radio', type_='boolean', value=False),
     dict(name='map_search_active', type_='boolean', value=False),
+    dict(name='map_change_urls', type_='boolean', value=False),
 ]
 
 def registerProperties(portal):

@@ -149,6 +149,7 @@ var _setupGeocoder = function ($search_text, $search_button, callback){
         }
     });
     $search_button.click(function (){
+        $('.googleMapWrapper').addClass('searching');
         geocoder.geocode( {'address': $search_text.val() }, function(results, status) {
             if(status === google.maps.GeocoderStatus.OK && results[0]){
                 $search_text.val(results[0].formatted_address);
@@ -163,15 +164,10 @@ var _setupGeocoder = function ($search_text, $search_button, callback){
     add the layer control to a map
 */
 
-var _addLayerControl = function (layers, map, locations){
+var _addLayerControl = function (layers, map, locations, layers_use_radio){
     var layeractive = layers,
-        $layerControlDiv = $('<div />')
-        .css('background-color', 'white')
-        .css('border-color','#A9BBDF')
-        .css('border-style','solid')
-        .css('border-width','0 1px 1px')
-        .css('box-shadow','2px 2px 3px rgba(0, 0, 0, 0.35)')
-        .css('margin-right','5px'),
+        $layerControlWrapper = $('.maps-layers-control-wrapper'),
+        $layerControlDiv = $('<div class="maps-layers-control"><div class="maps-layers-header"></div></div>'),
     _update_layers = function (){
         var layersActive = [];
         $(this).find('input:checked').each(function (){
@@ -193,17 +189,33 @@ var _addLayerControl = function (layers, map, locations){
             }
             this.marker.setVisible(visibility);
         });
+        // search is open (relaunching search)
+        if($('.googleMapWrapper').is('.searching')){
+            $('.searchButton.search').click();
+        }
     };
 
     // add and initialize the layers
     $.each(layers, function (index, value){
-        var i = 'layer' + index;
+        var $lc, ck, i = 'layer' + index;
 
-        $('<div><label for="' + i + '"><input type="checkbox" checked="checked" id="' + i +'" value="' + value + '" />' + value + '</label></div>')
-        .appendTo($layerControlDiv).css('padding','2px');
+        if (layers_use_radio){
+            ck = (index === 0) && 'checked="checked"' || '';
+            $lc = $('<div class="maps-layer"><label for="' + i + '"><input ' + ck + ' type="radio" name="layer" id="' + i +'" value="' + value + '" />' + value + '</label></div>')
+        }
+        else {
+            $lc = $('<div class="maps-layer"><label for="' + i + '"><input type="checkbox" checked="checked" id="' + i +'" value="' + value + '" />' + value + '</label></div>');
+        }
+        
+        $lc.appendTo($layerControlDiv);
     });
 
-    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push($layerControlDiv.get(0));
+    if ($layerControlWrapper.length){
+        $layerControlDiv.append($layerControlWrapper);
+    }
+    else {
+        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push($layerControlDiv.get(0));
+    }
 
     $layerControlDiv.click(_update_layers);
 
@@ -268,7 +280,7 @@ var _searchForm = function($this, locations, map, marker_imhere){
 '<h4 class="label_search">' + w.mapsConfig.i18n.label_searchnearto + '</h4>',
 '<input type="text" value="" placeholder="' + w.mapsConfig.i18n.label_city_address + '" title="' + w.mapsConfig.i18n.label_city_address + '" name="searchtxt" class="googleMapImHere inputLabel inputLabelActive">',
 '<br>',
-'<input class="searchButton" type="submit" value="' + w.mapsConfig.i18n.label_search + '">',
+'<input class="searchButton search" type="submit" value="' + w.mapsConfig.i18n.label_search + '">',
 '<input class="searchButton" type="reset" value="' + w.mapsConfig.i18n.label_cancel + '">',
 '<div class="googleMapSearchResults">',
 '</div>',
@@ -290,6 +302,7 @@ var _searchForm = function($this, locations, map, marker_imhere){
 
     // reset the map
     $reset_button.click(function (){
+        $('.googleMapWrapper').removeClass('searching');
         directionsRenderer.setPanel(null);
         directionsRenderer.setMap(null);
         marker_imhere.setVisible(false);
@@ -386,27 +399,46 @@ var _searchForm = function($this, locations, map, marker_imhere){
     // open/close the search bar
     $search.find('.googleMapSearchBar').click(function (){
         var $this = $(this),
-            $googleMapSearch = $this.next();
-        if ($this.is('.open')){
-            $googleMapSearch.animate({'margin-left':'-180px'}, 'fast',  function(){
-                $this.toggleClass('open');
-            });
-        }
-        else {
+            $wrapper = $this.closest('.googleMapWrapper');
+        $wrapper.toggleClass('open-search');
+//        $this.toggleClass('open');
+
+        if ($wrapper.is('.open-search')){
             // try to guess the user position if the input is empty
             if (! $search_text.val().length){
                 if (navigator.geolocation){
                     navigator.geolocation.getCurrentPosition(function(position) {
                         var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                        $('.googleMapWrapper').addClass('searching');
                         _reverseGeocoding(pos, $search_text);
                          _search_results(pos);
                     });
                 }
             }
-            $googleMapSearch.animate({'margin-left':'0px'}, 'fast',  function(){
-                $this.toggleClass('open').next().hide().show(); // this is a hack for IE7
-            });
         }
+
+//            $googleMapSearch = $this.next();
+
+//        if ($this.is('.open')){
+//            $googleMapSearch.animate({'margin-left':'-180px'}, 'fast',  function(){
+//                $this.toggleClass('open');
+//            });
+//        }
+//        else {
+//            // try to guess the user position if the input is empty
+//            if (! $search_text.val().length){
+//                if (navigator.geolocation){
+//                    navigator.geolocation.getCurrentPosition(function(position) {
+//                        var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+//                        _reverseGeocoding(pos, $search_text);
+//                         _search_results(pos);
+//                    });
+//                }
+//            }
+//            $googleMapSearch.animate({'margin-left':'0px'}, 'fast',  function(){
+//                $this.toggleClass('open').next().hide().show(); // this is a hack for IE7
+//            });
+//        }
     });
 
     // setting up the geocoder
@@ -478,11 +510,14 @@ var initViewMap = function (){
     locations = _createLocations($this, map);
     layers = _getLayersList(locations);
 
-    _set_zoom(map, locations);
+    // if change_urls is activated I don't set zoom here
+    if (!window.location.hash.length || !mapsConfig.change_urls){
+        _set_zoom(map, locations);
+    }
 
     // manage layers
     if (w.mapsConfig.layers_active.toLowerCase() === 'true' && layers.length && locations.length > 1){
-        _addLayerControl(layers, map, locations);
+        _addLayerControl(layers, map, locations, w.mapsConfig.layers_use_radio);
     }
 
     // save settings
@@ -585,7 +620,7 @@ var initEditMap = function (){
     });
 
     // setting up geocoding
-    $search_button = $('<input type="button" value="' + w.mapsConfig.i18n.label_search + '" class="searchButton" />').prependTo($this);
+    $search_button = $('<input type="button" value="' + w.mapsConfig.i18n.label_search + '" class="searchButton search" />').prependTo($this);
     $search_text = $('<input type="text" class="mapSearchBar" />').prependTo($this);
 
     _setupGeocoder($search_text, $search_button, function (latLng){
@@ -619,7 +654,7 @@ var _loadgmap = function(){
 /*
 map: view mode
 */
-$.fn.productsMapView = function (){
+$.fn.productsMapView = function (callback){
 
     if (!this.length){
         return this;
@@ -628,6 +663,7 @@ $.fn.productsMapView = function (){
     w.initialize_maps = (function ($node){
         return function (){
             $node.each(initViewMap);
+            callback();
         };
     }(this));
 
@@ -654,11 +690,64 @@ $.fn.productsMapEdit = function (){
     return this;
 };
 
+var follow_map_link = function(){
+    var map = w.activeMaps[0],
+        updateCron;
+
+    var change_url = function (){
+        clearTimeout(updateCron);
+        updateCron = setTimeout(function (){
+            var latLng = map.getCenter(),
+                zoom = map.getZoom();
+            window.location.hash = 'latlng=' + latLng.toUrlValue() + '&zoom=' + zoom;
+        }, 400);
+    };
+    
+
+    google.maps.event.addListener(map, 'center_changed', function() {
+        change_url();
+    });
+
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+        change_url();
+    });
+
+    // read coordinates from url
+    var re_latlng = /latlng=([^&]*)/,
+        re_zoom = /zoom=([^&]*)/;
+
+    var readcoord = function (s){
+        
+        var ll = re_latlng.exec(s),
+            z = re_zoom.exec(s),
+            latlng;
+            
+        if (ll && z){
+            latlng = ll[1].split(',');
+            map.setCenter(new google.maps.LatLng(parseFloat(latlng[0]), parseFloat(latlng[1])));
+            map.setZoom(parseInt(z[1], 10));
+        }
+    
+    };
+
+    readcoord(window.location.hash);
+     
+};
+
+
 // start!
 $(document).ready(function() {
     w.activeMaps = [];
-    $('.googleMapView').productsMapView();
+   
     $('.googleMapEdit').productsMapEdit();
+
+    $('.googleMapView').productsMapView(function (){
+        if (mapsConfig.change_urls){
+            follow_map_link();
+        }
+
+    });
+    
 });
 
 }(jQuery, window));

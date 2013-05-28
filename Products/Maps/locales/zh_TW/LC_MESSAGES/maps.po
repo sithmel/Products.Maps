@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-05-27 14:39+0000\n"
+"POT-Creation-Date: 2013-05-28 14:56+0000\n"
 "PO-Revision-Date: 2009-02-12 17:21+0000\n"
 "Last-Translator: marr <marr.tw@gmail.com>\n"
 "Language-Team: \n"
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Green Marker"
 msgstr ""
 
-#: ../content/Location.py:151
+#: ../content/Location.py:153
 msgid "Info"
 msgstr "資訊"
 
@@ -57,7 +57,7 @@ msgstr ""
 msgid "Map view"
 msgstr ""
 
-#: ../browser/controlpanel.py:194
+#: ../browser/controlpanel.py:228
 msgid "Maps settings"
 msgstr "地圖設定"
 
@@ -90,6 +90,11 @@ msgstr ""
 msgid "directions"
 msgstr ""
 
+#. Default: "If you move and zoom a map, the URL will be changed accordingly (and it can be bookmarked)"
+#: ../browser/controlpanel.py:138
+msgid "help_change_urls"
+msgstr ""
+
 #. Default: "Specify the default coordinates for new locations."
 #: ../browser/controlpanel.py:92
 msgid "help_default_coordinated"
@@ -114,18 +119,28 @@ msgstr ""
 msgid "help_layers_active"
 msgstr ""
 
+#. Default: "Select only one layer in maps"
+#: ../browser/controlpanel.py:122
+msgid "help_layers_use_radio"
+msgstr ""
+
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
 msgstr "依類別選定標示圖案。"
 
-#: ../browser/controlpanel.py:122
+#: ../browser/controlpanel.py:130
 msgid "help_search_active"
 msgstr ""
 
 #. Default: "Show items' contents in map pop-up when clicked. Warning: may take up a lot of room on the map area!"
 #: ../browser/controlpanel.py:103
 msgid "help_show_contents"
+msgstr ""
+
+#. Default: "Change urls"
+#: ../browser/controlpanel.py:136
+msgid "label_change_urls"
 msgstr ""
 
 #. Default: "Default coordinates"
@@ -158,6 +173,11 @@ msgstr ""
 msgid "label_layers_active"
 msgstr ""
 
+#. Default: "Use radio buttons for layers"
+#: ../browser/controlpanel.py:120
+msgid "label_layers_use_radio"
+msgstr ""
+
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
 msgid "label_markericon"
@@ -179,7 +199,7 @@ msgid "label_schematic_map"
 msgstr "簡明地圖"
 
 #. Default: "Activate search interface"
-#: ../browser/controlpanel.py:120
+#: ../browser/controlpanel.py:128
 msgid "label_search_active"
 msgstr ""
 
