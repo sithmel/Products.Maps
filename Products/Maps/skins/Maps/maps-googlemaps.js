@@ -279,6 +279,7 @@ var _searchForm = function($this, locations, map, marker_imhere){
 '<div class="googleMapSearch">',
 '<h4 class="label_search">' + w.mapsConfig.i18n.label_searchnearto + '</h4>',
 '<input type="text" value="" placeholder="' + w.mapsConfig.i18n.label_city_address + '" title="' + w.mapsConfig.i18n.label_city_address + '" name="searchtxt" class="googleMapImHere inputLabel inputLabelActive">',
+'<button class="usegeolocation">&bull;</button>',
 '<br>',
 '<input class="searchButton search" type="submit" value="' + w.mapsConfig.i18n.label_search + '">',
 '<input class="searchButton" type="reset" value="' + w.mapsConfig.i18n.label_cancel + '">',
@@ -401,46 +402,23 @@ var _searchForm = function($this, locations, map, marker_imhere){
         var $this = $(this),
             $wrapper = $this.closest('.googleMapWrapper');
         $wrapper.toggleClass('open-search');
-//        $this.toggleClass('open');
 
-        if ($wrapper.is('.open-search')){
-            // try to guess the user position if the input is empty
-            if (! $search_text.val().length){
-                if (navigator.geolocation){
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                        var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                        $('.googleMapWrapper').addClass('searching');
-                        _reverseGeocoding(pos, $search_text);
-                         _search_results(pos);
-                    });
-                }
-            }
-        }
-
-//            $googleMapSearch = $this.next();
-
-//        if ($this.is('.open')){
-//            $googleMapSearch.animate({'margin-left':'-180px'}, 'fast',  function(){
-//                $this.toggleClass('open');
-//            });
-//        }
-//        else {
-//            // try to guess the user position if the input is empty
-//            if (! $search_text.val().length){
-//                if (navigator.geolocation){
-//                    navigator.geolocation.getCurrentPosition(function(position) {
-//                        var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-//                        _reverseGeocoding(pos, $search_text);
-//                         _search_results(pos);
-//                    });
-//                }
-//            }
-//            $googleMapSearch.animate({'margin-left':'0px'}, 'fast',  function(){
-//                $this.toggleClass('open').next().hide().show(); // this is a hack for IE7
-//            });
-//        }
     });
 
+    if (navigator.geolocation){
+        $search.find('.usegeolocation').click(function (){
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                $('.googleMapWrapper').addClass('searching');
+                _reverseGeocoding(pos, $search_text);
+                 _search_results(pos);
+            });
+
+        });
+    }
+    else {
+        $search.find('.usegeolocation').hide();
+    }
     // setting up the geocoder
     _setupGeocoder($search_text, $search_button,_search_results);
 
