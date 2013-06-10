@@ -126,7 +126,10 @@ class LocationMarker(GeoLocation):
 
     @property
     def layers(self):
-        return self.context.Subject()
+        try:
+            return self.context.getValidMapLayers()
+        except AttributeError:
+            return self.context.Subject()
 
     @property
     def icon(self):

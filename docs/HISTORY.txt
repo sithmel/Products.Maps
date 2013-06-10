@@ -10,7 +10,8 @@ Changelog
 - now you can optionally use radio button for selecting layers [sithmel]
 - you can optionally track zoom/position in the URL [sithmel]
 - added details in search results [sithmel]
-
+- now layers can be customized using the getValidLayers script
+  (inside a skin layer) [sithmel]
 
 3.3 (2013-04-05)
 ----------------
