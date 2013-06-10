@@ -12,6 +12,7 @@ var _createLocation = function($node) {
     return {
         title: $node.find('.title').text().replace(/^\s+|\s+$/g, ''),
         link: $node.find('.title a').attr('href'),
+        searchResultDescription: $node.find('.search-result-description').html() || '',
         info_window: (function (){
             var $wrapper = $('<div/>'),
                 $tabs, $handlers;
@@ -357,6 +358,7 @@ var _searchForm = function($this, locations, map, marker_imhere){
 '<div>',
 '<img src="' + thislocation.marker.icon.url + '"/><a href="' + thislocation.link + '">' + thislocation.title + '</a>',
 '</div>',
+'<div class="description">' + thislocation.searchResultDescription + '</div>',
 '<div class="indication">' + w.mapsConfig.i18n.label_directions + ' &raquo;&nbsp;</div>',
 '</div>'].join('')).appendTo($search_results);
             $result

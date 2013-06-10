@@ -78,6 +78,12 @@
                   tal:content="layer"><tal:comment replace="nothing">Layer</tal:comment></li>
             </ul>
           </div>
+          <div class="search-result-description"
+              title="Description"
+              tal:condition="marker/description"
+              i18n:attributes="title label_description;">
+            <div tal:content="marker/description" />
+          </div>
         </li>
         </ul>
 
