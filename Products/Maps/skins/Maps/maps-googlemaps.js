@@ -276,17 +276,20 @@ var _searchForm = function($this, locations, map, marker_imhere){
 
     $search = $([
 '<div>',
-'<div class="googleMapSearchBar">' + w.mapsConfig.i18n.label_searchnearto + '</div>',
-'<div class="googleMapSearch">',
-'<h4 class="label_search">' + w.mapsConfig.i18n.label_searchnearto + '</h4>',
-'<input type="text" value="" placeholder="' + w.mapsConfig.i18n.label_city_address + '" title="' + w.mapsConfig.i18n.label_city_address + '" name="searchtxt" class="googleMapImHere inputLabel inputLabelActive">',
-'<button class="usegeolocation">&bull;</button>',
-'<br>',
-'<input class="searchButton search" type="submit" value="' + w.mapsConfig.i18n.label_search + '">',
-'<input class="searchButton" type="reset" value="' + w.mapsConfig.i18n.label_cancel + '">',
-'<div class="googleMapSearchResults">',
-'</div>',
-'</div>',
+'  <div class="googleMapSearchBar">' + w.mapsConfig.i18n.label_searchnearto + '</div>',
+'  <div class="googleMapSearch">',
+'    <h4 class="label_search">' + w.mapsConfig.i18n.label_searchnearto + '</h4>',
+'    <div class="googleMapImHereContainer">',
+'      <input type="text" value="" placeholder="' + w.mapsConfig.i18n.label_city_address + '" title="' + w.mapsConfig.i18n.label_city_address + '" name="searchtxt" class="googleMapImHere inputLabel inputLabelActive">',
+'      <div class="usegeolocation"></div>',
+'    </div>',
+'    <div>',
+'      <input class="searchButton search" type="submit" value="' + w.mapsConfig.i18n.label_search + '">',
+'      <input class="searchButton" type="reset" value="' + w.mapsConfig.i18n.label_cancel + '">',
+'    </div>',
+'    <div class="googleMapSearchResults">',
+'    </div>',
+'  </div>',
 '</div>'
 ].join('')).insertBefore($this);
 
