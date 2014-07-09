@@ -1,12 +1,14 @@
 from zope.interface import implements
 from zope.component import adapts, getMultiAdapter
 
+from AccessControl import Unauthorized
 from AccessControl import ClassSecurityInfo
 try:
     from Products.LinguaPlone.public import *
 except ImportError:
     # No multilingual support
     from Products.Archetypes.public import *
+from Products.CMFPlone.utils import base_hasattr
 from Products.ATContentTypes.atct import *
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.ATContentTypes.configuration import zconf
@@ -139,9 +141,33 @@ class LocationMarker(GeoLocation):
     def url(self):
         return self.context.absolute_url()
 
+    def computeRelatedItems(self):
+        # BBB: re-implementation of the old computeRelatedItems CMF python script.
+        # We can do it better
+        context = self.context
+        if base_hasattr(context, 'getRelatedItems'):
+            outgoing = context.getRelatedItems()
+            incoming = []
+            # if you want to show up the items which point to this one, too, then use the
+            # line below
+            #incoming = context.getBRefs('relatesTo') 
+            res = []
+            mtool = context.portal_membership
+
+            in_out = outgoing+incoming
+            for d in range(len(in_out)):
+                try:
+                    obj = in_out[d]
+                except Unauthorized:
+                    continue
+                if obj not in res:
+                    if mtool.checkPermission('View', obj):
+                        res.append(obj)
+            return res
+
     @property
     def related_items(self):
-        related = self.context.computeRelatedItems()
+        related = self.computeRelatedItems()
         result = []
         for obj in related:
             result.append({'title': obj.Title(),
