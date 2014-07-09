@@ -12,6 +12,9 @@ Changelog
 - added details in search results [sithmel]
 - now layers can be customized using the getValidLayers script
   (inside a skin layer) [sithmel]
+- Fixed Plone 4.3 compatibility bug: ``computeRelatedItems`` has been
+  removed from Plone [keul]
+- Added uninstall profile (properties are kept) [keul]
 
 3.3 (2013-04-05)
 ----------------

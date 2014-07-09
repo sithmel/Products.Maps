@@ -11,6 +11,14 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Products.Maps: uninstall"
+      directory="profiles/uninstall"
+      description="Uninstall Products.Maps"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
   <genericsetup:importStep
       name="Products.Maps.various"
       title="Products.Maps: miscellaneous import steps"
