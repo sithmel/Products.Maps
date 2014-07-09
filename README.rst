@@ -88,6 +88,6 @@ The "Student Services of Bergen, Norway":http://sib.no
 Contributors for version 3.0
 ----------------------------
 
-Maurizio Lupo @sithmel - maurizio.lupo@redomino.com
-Luca Fabbri   @keul    - luca@keul.it
+* Maurizio Lupo @sithmel - maurizio.lupo@redomino.com
+* Luca Fabbri   @keul    - luca@keul.it
 
