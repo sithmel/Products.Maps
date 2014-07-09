@@ -32,8 +32,8 @@ class MapsConfig(BrowserView):
         if self.properties is None:
             return ""
         googlemaps_keys = getattr(self.properties,
-                                   PROPERTY_GOOGLE_KEYS_FIELD,
-                                   "")
+                                  PROPERTY_GOOGLE_KEYS_FIELD,
+                                  "")
         return googlemaps_keys
 
     @property
