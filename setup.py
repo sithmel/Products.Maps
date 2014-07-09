@@ -6,8 +6,8 @@ version = '3.4.dev0'
 setup(name='Products.Maps',
       version=version,
       description="A simple, easy to use Plone integration with Google Maps",
-      long_description=open("README.txt").read() + '\n' +
-                       open(join('docs','HISTORY.txt')).read(),
+      long_description=open("README.rst").read() + '\n' +
+                       open(join('docs','HISTORY.rst')).read(),
       classifiers=[
         "Framework :: Zope2",
         "Framework :: Plone",
