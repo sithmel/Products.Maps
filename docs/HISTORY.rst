@@ -16,6 +16,8 @@ Changelog
   removed from Plone [keul]
 - Added uninstall profile (properties are kept) [keul]
 - Fixed tests dependencies, adding PloneTestCase [keul]
+- Provacy: do not display map, but fallback to a simple URL to GMaps
+  is a cookie ``maps-optout`` is valued ``true `` [keul]
 
 3.3 (2013-04-05)
 ----------------
