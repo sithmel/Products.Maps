@@ -10,9 +10,9 @@ development:
     - Set the view of the folder to Map
     - It figures out how to center and zoom the map automatically
 - Flexibility for enhancement by using the Zope 3 component architecture
-- Sane fallbacks when Javascript is not available
-- Clean separation of javascript, templates and logic
-- Works on Topics
+- Sane fallbacks when JavaScript is not available
+- Clean separation of JavaScript, templates and logic
+- Works on collections
 
 Installation
 ------------
@@ -74,16 +74,16 @@ Created by Florian Schulze for Jarn AS in 2007.
 
 Parts are based on:
 
-- "ATGoogleMaps":http://takanory.net/plone/develop/atgooglemaps
-- "qPloneGoogleMaps":http://projects.quintagroup.com/products/wiki/qPloneGoogleMaps
-- "geolocation":http://svn.quintagroup.com/products/geolocation/
+- "ATGoogleMaps": http://takanory.net/plone/develop/atgooglemaps
+- "qPloneGoogleMaps": http://projects.quintagroup.com/products/wiki/qPloneGoogleMaps
+- "geolocation": http://svn.quintagroup.com/products/geolocation/
 
 Development originally sponsored by
 -----------------------------------
 
-The "Student Services of Bergen, Norway":http://sib.no
+The "Student Services of Bergen, Norway": http://sib.no
 
-"University of Oxford":http://medsci.ox.ac.uk (Medical Sciences Division)
+"University of Oxford": http://medsci.ox.ac.uk (Medical Sciences Division)
 
 Contributors for version 3.0
 ----------------------------
