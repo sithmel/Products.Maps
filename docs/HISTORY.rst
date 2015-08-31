@@ -15,6 +15,7 @@ Changelog
 - Fixed Plone 4.3 compatibility bug: ``computeRelatedItems`` has been
   removed from Plone [keul]
 - Added uninstall profile (properties are kept) [keul]
+- Fixed tests dependencies, adding PloneTestCase [keul]
 
 3.3 (2013-04-05)
 ----------------
