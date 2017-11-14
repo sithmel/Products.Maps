@@ -1,6 +1,12 @@
 Changelog
 =========
 
+4.0 (unreleased)
+----------------
+
+- Add compatibility with Plone 5.
+  [davisagli]
+
 3.4 (unreleased)
 ----------------
 
