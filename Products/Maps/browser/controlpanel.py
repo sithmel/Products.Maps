@@ -1,7 +1,10 @@
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.CMFPlone.interfaces import IBundleRegistry
+from Products.CMFPlone.resources.browser.cook import cookWhenChangingSettings
 from Products.Maps import MapsMessageFactory as _
 from Products.Maps.config import *
+from plone.autoform.form import AutoExtensibleForm
 from z3c.form import form
 from zope.component import adapts
 from zope.interface import implements
@@ -184,14 +187,17 @@ class MapsControlPanelAdapter(object):
     change_urls = property(get_change_urls,set_change_urls)
 
 
-class MapsControlPanel(form.EditForm):
+class MapsControlPanel(AutoExtensibleForm, form.EditForm):
     schema = IMapsSchema
     label = _(u"Maps settings")
     description = None
 
     def applyChanges(self, data):
-        super(MapsControlPanel, self).applyChanges()
+        super(MapsControlPanel, self).applyChanges(data)
 
         # This ensures the change is reflected on the served javascripts
-        jstool = getToolByName(self.context, 'portal_javascripts')
-        jstool.cookResources()
+        registry = getToolByName(self.context, 'portal_registry')
+        bundles = registry.collectionOfInterface(
+            IBundleRegistry, prefix="plone.bundles", check=False)
+        bundle = bundles['Products-Maps']
+        cookWhenChangingSettings(self.context, bundle)

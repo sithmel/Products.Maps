@@ -4,7 +4,7 @@ Changelog
 4.0 (unreleased)
 ----------------
 
-- Add compatibility with Plone 5.
+- Add compatibility with Plone 5, remove compatibility with Plone 4.
   [davisagli]
 
 3.4 (unreleased)

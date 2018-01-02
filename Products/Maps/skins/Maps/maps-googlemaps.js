@@ -124,31 +124,11 @@ var _reverseGeocoding = function (latLng, $search_text){
 };
 
 /*
-    set up the location autocomplete
+    set up the location search
 */
 
 var _setupGeocoder = function ($search_text, $search_button, callback){
     var geocoder = new google.maps.Geocoder();
-    $search_text.autocomplete({
-        delay: 500,
-        //This bit uses the geocoder to fetch address values
-        source: function(request, response) {
-            geocoder.geocode( {'address': request.term }, function(results, status) {
-                response($.map(results, function(item) {
-                    return {
-                        label:  item.formatted_address,
-                        value: item.formatted_address,
-                        latitude: item.geometry.location.lat(),
-                        longitude: item.geometry.location.lng()
-                    };
-                }));
-            });
-        },
-        //This bit is executed upon selection of an address
-        select: function(event, ui) {
-            callback(new google.maps.LatLng(ui.item.latitude, ui.item.longitude));
-        }
-    });
     $search_button.click(function (){
         $('.googleMapWrapper').addClass('searching');
         geocoder.geocode( {'address': $search_text.val() }, function(results, status) {
