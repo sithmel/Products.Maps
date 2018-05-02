@@ -33,21 +33,21 @@ class SmartFolderMap(BaseMap):
     adapts(IATTopic)
 
     def _getItems(self):
-        return self.context.queryCatalog()
+        return self.context.queryCatalog(b_size=0)
 
 if ICollection:
     class CollectionMap(BaseMap):
         adapts(ICollection)
-    
+
         def _getItems(self):
-            return self.context.queryCatalog()
+            return self.context.queryCatalog(b_size=0)
 
 
 class FolderMap(BaseMap):
     adapts(IATFolder)
 
     def _getItems(self):
-        return self.context.getFolderContents()
+        return self.context.getFolderContents(b_size=0)
 
 
 class GeoLocation(object):
