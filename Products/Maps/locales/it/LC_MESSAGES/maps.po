@@ -1,0 +1,244 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Maps\n"
+"POT-Creation-Date: 2015-08-31 10:32+0000\n"
+"PO-Revision-Date: 2007-04-12 17:21+0000\n"
+"Last-Translator: Florian Schulze <florian.schulze@gmx.net>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: maps\n"
+"X-Is-Fallback-For: it-it it-ch\n"
+
+#: ../validator.py:34
+msgid " Validation failed. Coordinates must be an decimal numbers. "
+msgstr "Validazione fallita. Le coordinate devono essere un numero decimale"
+
+#: ../validator.py:36
+msgid " Validation failed. Latitude not in bounds [-90, 90]. "
+msgstr "Validazione fallita. La latitudine deve essere compresa tra -90 e 90"
+
+#: ../validator.py:38
+msgid " Validation failed. Longitude not in bounds [-180, 180]. "
+msgstr "Validazione fallita. La longitudine deve essere compresa tra -180 e 180"
+
+msgid "A content for displaying Google maps in your site"
+msgstr "Un contenuto per visualizzare le mappe di Google nel tuo sito"
+
+#: ../profiles/default/types/GeoLocation.xml
+msgid "A geographic position that can be shown on a Google map"
+msgstr "Una posizione geografica che può essere visualizzata su una mappa di Google"
+
+msgid "Blue Marker"
+msgstr "Segnaposto Blu"
+
+msgid "Green Marker"
+msgstr "Segnaposto Verde"
+
+#: ../content/Location.py:182
+msgid "Info"
+msgstr "Info"
+
+#: ../profiles/default/types/GeoLocation.xml
+msgid "Location"
+msgstr "Posizione"
+
+msgid "Location view"
+msgstr "Vista posizione"
+
+msgid "Magenta Marker"
+msgstr "Segnaposto Magenta"
+
+msgid "Map view"
+msgstr "Vista mappa"
+
+#: ../browser/controlpanel.py:228
+msgid "Maps settings"
+msgstr "Impostazioni mappa"
+
+msgid "Red Marker"
+msgstr "Segnaposto Rosso"
+
+msgid "Yellow Marker"
+msgstr "Segnaposto Giallo"
+
+msgid "_yah"
+msgstr "Segnaposto \"tu sei qui\""
+
+#. Default: "Cancel"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "cancel"
+msgstr "Annulla"
+
+#. Default: "City, address"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "city_address"
+msgstr "Città, indirizzo"
+
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "delete_maps_settings"
+msgstr "Ritorna alle impostazioni di default"
+
+#. Default: "Directions"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "directions"
+msgstr "Indicazioni"
+
+#. Default: "If you move and zoom a map, the URL will be changed accordingly (and it can be bookmarked)"
+#: ../browser/controlpanel.py:138
+msgid "help_change_urls"
+msgstr "Se muovi o ingrandisci la mappa, le modifiche saranno memorizzate nell'URL (potrà essere usato come segnalibro)"
+
+#. Default: "Specify the default coordinates for new locations."
+#: ../browser/controlpanel.py:92
+msgid "help_default_coordinated"
+msgstr "Specifica le coordinate di default per le nuove posizioni"
+
+#. Default: "Select the default map type initially used on maps."
+#: ../browser/controlpanel.py:82
+msgid "help_default_map_type"
+msgstr "Seleziona il tipo di mappa di default"
+
+#. Default: ""
+#: Content Type: Location, Field: geolocation
+msgid "help_geolocation"
+msgstr "Puoi cercare un indirizzo, Potrebbe essere necessario aggiungere il nome della nazione e la città. Puoi  anche immettere la latitudine e longitudine."
+
+#. Default: "Add Google Maps API key."
+#: ../browser/controlpanel.py:73
+msgid "help_google_maps_api3_key"
+msgstr "La chiave è facoltativa, controllare le specifiche di Google"
+
+#: ../browser/controlpanel.py:114
+msgid "help_layers_active"
+msgstr "La funzione layer raggruppa per categoria gli oggetti permettendo di farli apparire/sparire usando una checkbox."
+
+#. Default: "Select only one layer in maps"
+#: ../browser/controlpanel.py:122
+msgid "help_layers_use_radio"
+msgstr "Usa dei radio button per selezionare il layer"
+
+#. Default: ""
+#: Content Type: Location, Field: markerIcon
+msgid "help_markericon"
+msgstr "Seleziona l'icona utilizzata come segnaposto sulla mappa."
+
+#: ../browser/controlpanel.py:130
+msgid "help_search_active"
+msgstr "Attiva una interfaccia per visualizzare gli oggetti più vicini ad un determinato luogo."
+
+#. Default: "Show items' contents in map pop-up when clicked. Warning: may take up a lot of room on the map area!"
+#: ../browser/controlpanel.py:103
+msgid "help_show_contents"
+msgstr "Mostra il testo dell'oggetto nella mappa"
+
+#. Default: "Change urls"
+#: ../browser/controlpanel.py:136
+msgid "label_change_urls"
+msgstr "Modifiche nell'URL"
+
+#. Default: "Default coordinates"
+#: ../browser/controlpanel.py:90
+msgid "label_default_coordinates"
+msgstr "Coordinate di default"
+
+#. Default: "Default map type"
+#: ../browser/controlpanel.py:80
+msgid "label_default_map_type"
+msgstr "Tipo di mappa di default"
+
+#. Default: "Description"
+#: ../browser/maps_map.pt:53
+msgid "label_description"
+msgstr "Descrizione"
+
+#. Default: "Location"
+#: Content Type: Location, Field: geolocation
+msgid "label_geolocation"
+msgstr "Luogo"
+
+#. Default: "Google Maps API3 Key"
+#: ../browser/controlpanel.py:71
+msgid "label_google_maps_api3_key"
+msgstr "Chiave di Google Map (versione 3)"
+
+#. Default: "Activate layers"
+#: ../browser/controlpanel.py:112
+msgid "label_layers_active"
+msgstr "Attiva la funzione layer"
+
+#. Default: "Use radio buttons for layers"
+#: ../browser/controlpanel.py:120
+msgid "label_layers_use_radio"
+msgstr "Usa i radio button"
+
+#. Default: "Marker icon"
+#: Content Type: Location, Field: markerIcon
+msgid "label_markericon"
+msgstr "Icona Segnaposto"
+
+#. Default: "The map is not displayed due to privacy settings. You can access the maps externally here:"
+msgid "label_privacy_blocked"
+msgstr "La mappa non è visualizzata per le impostazioni sulla privacy. Puoi accedere alla mappa da qui:"
+
+#. Default: "Satellite images"
+#: ../browser/controlpanel.py:27
+msgid "label_satellite_map"
+msgstr "Immagini satellitari"
+
+#. Default: "Satellite images with schematic overlay"
+#: ../browser/controlpanel.py:30
+msgid "label_satellite_schematic_map"
+msgstr "Immagini satellitari con mappa"
+
+#. Default: "Schematic map"
+#: ../browser/controlpanel.py:24
+msgid "label_schematic_map"
+msgstr "Mappa"
+
+#. Default: "Activate search interface"
+#: ../browser/controlpanel.py:128
+msgid "label_search_active"
+msgstr "Attiva la funzione di ricerca"
+
+#. Default: "Show contents"
+#: ../browser/controlpanel.py:101
+msgid "label_show_contents"
+msgstr "Mostra il contenuto nella mappa"
+
+#. Default: "Physical relief tiles for displaying elevation and water features (mountains, rivers, etc.)"
+#: ../browser/controlpanel.py:33
+msgid "label_terrain_map"
+msgstr "Mappa del terreno"
+
+#. Default: "Nearest Places"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "nearest_places"
+msgstr "Luoghi più vicini"
+
+#. Default: "Save map settings"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "save_maps_settings"
+msgstr "Salva le impostazioni della mappa"
+
+#. Default: "Search near to ..."
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "search_near_to"
+msgstr "Cerca vicino a ..."
+
+#. Default: "The location '[LOCATION]' couldn't be found."
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "text_googlemaps_location_not_found"
+msgstr "The location '[LOCATION]' couldn't be found."
+
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "updated_maps_settings"
+msgstr "Impostazioni della mappa aggiornate"
+

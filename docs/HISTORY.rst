@@ -1,6 +1,53 @@
 Changelog
 =========
 
+3.4 (unreleased)
+----------------
+
+- Where the catalog is queried, we were inheriting implicit batch size limitations that are not useful in this context. Fixed. [smcmahon]
+- Added back default location [sithmel]
+- Removed some inline styling for better customization [sithmel]
+- when you changed layers the search was not updated (fixed) [sithmel]
+- now you can optionally use radio button for selecting layers [sithmel]
+- you can optionally track zoom/position in the URL [sithmel]
+- added details in search results [sithmel]
+- now layers can be customized using the getValidLayers script
+  (inside a skin layer) [sithmel]
+- Fixed Plone 4.3 compatibility bug: ``computeRelatedItems`` has been
+  removed from Plone [keul]
+- Added uninstall profile (properties are kept) [keul]
+- Fixed tests dependencies, adding PloneTestCase [keul]
+- Provacy: do not display map, but fallback to a simple URL to GMaps
+  is a cookie ``maps-optout`` is valued ``true `` [keul]
+
+3.3 (2013-04-05)
+----------------
+
+- Store map objects in window.activeMaps to allow end-develops access
+  [StevenLooman]
+- added title in popup window [giacomos]
+
+
+3.2 (2013-03-14)
+----------------
+
+- fix on location widget when used as archetype field [sithmel]
+- fix on save maps layout buttons (Plone3 only) [sithmel]
+
+
+3.0 (2013-01-25)
+----------------
+
+- Completely refactored js code using Jquery [sithmel]
+- Updated to Google API v.3 (reverse geocoding, streetview ecc.) [sithmel]
+- Added autocompletion for places [sithmel]
+- Fixed Layer feature (based on keywords) [sithmel]
+- added search to map view [sithmel]
+- Added Italian Translation [sithmel]
+- added new plone collection compatibility [sithmel]
+- new control panel [sithmel]
+- various bugfixes and compatibility tests [keul]
+
 2.1.2 - Unreleased
 ------------------
 

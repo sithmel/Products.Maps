@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+
+ <javascript id="jquery-ui-autocomplete.js" remove="True" />
+
+ <javascript id="maps-config.js" remove="True" />
+
+ <javascript id="maps-i18n.js" remove="True" />
+
+ <javascript id="maps-googlemaps.js" remove="True" />
+ 
+</object>

@@ -17,3 +17,137 @@
 .googleMapLocation .googleMapPane {
     height: 25em;
 }
+
+
+
+/*.tab*/
+.infowindowTabHandlers{
+    margin-top: -36px;
+    margin-left: 10px;
+}
+
+.infowindowTabHandler{
+    float:left;
+    padding: 0 0.4em;
+    border: 1px solid #ABABAB;
+    background-color: white;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    height:19px;
+}
+.infowindowTabHandler.selected{
+    border-bottom: none;
+    height:20px;
+}
+.tab{
+    clear: both;
+}
+
+.mapSearchBar{
+/*    width: 25em;*/
+    width: 80%;
+}
+
+
+/*search*/
+.googleMapWrapper{
+    overflow:hidden;
+}
+
+.googleMapSearch{
+    width:180px;
+    float:left;
+    margin-left:-180px;
+    position: relative;
+}
+
+.googleMapSearchBar{
+    height:25px;
+    width:100%;
+    padding-top:4px;
+    padding-left: 25px;
+    background:url(map-arrow-left.png) no-repeat left #CCCCCC;
+}
+.open-search .googleMapSearchBar{
+    background-image:url(map-arrow-down.png)
+}
+
+.googleMapSearch{
+    margin-left: -180px;
+    -moz-transition: margin-left 0.4s;
+    -webkit-transition: margin-left 0.4s;
+    -o-transition: margin-left 0.4s;
+    transition: margin-left 0.4s;
+}
+
+.open-search  .googleMapSearch{
+    margin-left: 0px;
+}
+
+.googleMapImHere{
+/*    margin: 3px 8px 3px 3px;*/
+    padding: 3px 1.5em 3px 3px;
+/*    width: 30em;*/
+    border: 1px solid #333;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.googleMapResult{
+    padding:3px;
+    margin:3px;
+}
+
+.googleMapResult.selected{
+    background-color:#DDDDDD;
+}
+.googleMapResult .indication{
+    text-align:right;
+   
+}
+
+.label_search{
+    display:none;
+}
+
+.googleMapSearch .searchButton{
+}
+
+.googleMapView > ul{
+    display: none;
+}
+.no-js .googleMapView > ul{
+    display: block !important;
+}
+
+
+/*
+layers
+*/
+.maps-layers-control{
+    background-color: white;
+    border-color: #A9BBDF;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+    margin-right: 5px;
+}
+
+.maps-layer{
+    padding: 2px;
+}
+
+.usegeolocation{
+    background-image:url('geolocation.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 2px;
+    right: 0;
+}
+

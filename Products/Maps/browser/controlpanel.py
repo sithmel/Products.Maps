@@ -18,10 +18,9 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from Products.Maps import MapsMessageFactory as _
 from Products.Maps.config import *
-from Products.Maps.field import GoogleAPIKey
 
 DEFAULT_MAPTYPE_CHOICES = SimpleVocabulary((
-    SimpleTerm('normal', 'normal',
+    SimpleTerm('roadmap', 'roadmap',
                _('label_schematic_map',
                  default=u"Schematic map")),
     SimpleTerm('satellite', 'satellite',
@@ -30,40 +29,51 @@ DEFAULT_MAPTYPE_CHOICES = SimpleVocabulary((
     SimpleTerm('hybrid', 'hybrid',
                _('label_satellite_schematic_map',
                  default=u"Satellite images with schematic overlay")),
+    SimpleTerm('terrain', 'terrain',
+               _('label_terrain_map',
+                 default=u"Physical relief tiles for displaying elevation and water features (mountains, rivers, etc.)"))
 ))
 
-
 class IMapsSchema(Interface):
-    googlemaps_keys = Tuple(
-                        title=_('label_google_maps_api_keys',
-                                default=u'Google Maps API Keys'),
-                        description=_('help_google_maps_api_keys',
-                                      default=u"Add Google Maps API keys. "
-                                               "You have to use the client "
-                                               "side url at which your site "
-                                               "is visible."),
-                        unique=True,
-                        value_type=GoogleAPIKey(
-                            title=_(u'Key'),
-                        ),
-                      )
+#    googlemaps_keys = Tuple(
+#                        title=_('label_google_maps_api_keys',
+#                                default=u'Google Maps API Keys'),
+#                        description=_('help_google_maps_api_keys',
+#                                      default=u"Add Google Maps API keys. "
+#                                               "You have to use the client "
+#                                               "side url at which your site "
+#                                               "is visible."),
+#                        unique=True,
+#                        value_type=GoogleAPIKey(
+#                            title=_(u'Key'),
+#                        ),
+#                      )
 
-    googleajaxsearch_keys = Tuple(
-                        title=_('label_google_ajax_search_api_keys',
-                                default=u'Google AJAX Search API Keys'),
-                        description=_('help_google_ajax_search_api_keys',
-                                      default=u"Add Google AJAX Search API "
-                                               "keys. You have to use the "
-                                               "client side url at which "
-                                               "your site is visible. This "
-                                               "key is used to search for "
-                                               "locations which weren't "
-                                               "found with the default "
-                                               "geocoding from Google Maps."),
-                        unique=True,
-                        value_type=GoogleAPIKey(
-                            title=_(u'Key'),
-                        ),
+#    googleajaxsearch_keys = Tuple(
+#                        title=_('label_google_ajax_search_api_keys',
+#                                default=u'Google AJAX Search API Keys'),
+#                        description=_('help_google_ajax_search_api_keys',
+#                                      default=u"Add Google AJAX Search API "
+#                                               "keys. You have to use the "
+#                                               "client side url at which "
+#                                               "your site is visible. This "
+#                                               "key is used to search for "
+#                                               "locations which weren't "
+#                                               "found with the default "
+#                                               "geocoding from Google Maps."),
+#                        unique=True,
+#                        value_type=GoogleAPIKey(
+#                            title=_(u'Key'),
+#                        ),
+#                      )
+
+    googlemaps_keys = TextLine(
+                        title=_('label_google_maps_api3_key',
+                                default=u'Google Maps API3 Key'),
+                        description=_('help_google_maps_api3_key',
+                                      default=u"Add Google Maps API key."),
+                        required=False,
+                        default=u'',
                       )
 
     default_maptype = Choice(
@@ -98,6 +108,38 @@ class IMapsSchema(Interface):
                         default=True,
                         )
 
+    layers_active = Bool(
+                        title=_('label_layers_active',
+                                    default=u"Activate layers"),
+                        description=_('help_layers_active',
+                                    default=u""),
+                        default=True,
+                        )
+
+    layers_use_radio = Bool(
+                        title=_('label_layers_use_radio',
+                                    default=u"Use radio buttons for layers"),
+                        description=_('help_layers_use_radio',
+                                    default=u"Select only one layer in maps"),
+                        default=False,
+                        )
+
+    search_active = Bool(
+                        title=_('label_search_active',
+                                    default=u"Activate search interface"),
+                        description=_('help_search_active',
+                                    default=u""),
+                        default=False,
+                        )
+
+    change_urls   = Bool(
+                        title=_('label_change_urls',
+                                    default=u"Change urls"),
+                        description=_('help_change_urls',
+                                    default=u"If you move and zoom a map, the URL will be changed accordingly (and it can be bookmarked)"),
+                        default=False,
+                        )
+
 class MapsControlPanelAdapter(SchemaAdapterBase):
 
     adapts(IPloneSiteRoot)
@@ -109,25 +151,19 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
         self.context = properties.maps_properties
 
     def get_googlemaps_keys(self):
-        return getattr(self.context, PROPERTY_GOOGLE_KEYS_FIELD, '')
+        return getattr(self.context,
+                       PROPERTY_GOOGLE_KEYS_FIELD,
+                       "")
 
     def set_googlemaps_keys(self, value):
         self.context._updateProperty(PROPERTY_GOOGLE_KEYS_FIELD, value)
 
-    googlemaps_keys = property(get_googlemaps_keys, set_googlemaps_keys)
-
-    def get_googleajaxsearch_keys(self):
-        return getattr(self.context, PROPERTY_GOOGLE_AJAXSEARCH_KEYS_FIELD, '')
-
-    def set_googleajaxsearch_keys(self, value):
-        self.context._updateProperty(PROPERTY_GOOGLE_AJAXSEARCH_KEYS_FIELD, value)
-
-    googleajaxsearch_keys = property(get_googleajaxsearch_keys, set_googleajaxsearch_keys)
+    googlemaps_keys = property(get_googlemaps_keys,set_googlemaps_keys)
 
     def get_default_maptype(self):
         return getattr(self.context,
                        PROPERTY_DEFAULT_MAPTYPE_FIELD,
-                       "normal")
+                       "roadmap")
 
     def set_default_maptype(self, value):
         self.context._updateProperty(PROPERTY_DEFAULT_MAPTYPE_FIELD, value)
@@ -152,6 +188,39 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
 
     show_contents = property(get_show_contents,set_show_contents)
 
+    def get_layers_active(self):
+        return getattr(self.context, PROPERTY_LAYERS_ACTIVE, True)
+
+    def set_layers_active(self, value):
+        self.context._updateProperty(PROPERTY_LAYERS_ACTIVE, value)
+
+    layers_active = property(get_layers_active,set_layers_active)
+
+
+    def get_layers_use_radio(self):
+        return getattr(self.context, PROPERTY_LAYERS_USE_RADIO, False)
+
+    def set_layers_use_radio(self, value):
+        self.context._updateProperty(PROPERTY_LAYERS_USE_RADIO, value)
+
+    layers_use_radio = property(get_layers_use_radio,set_layers_use_radio)
+
+
+    def get_search_active(self):
+        return getattr(self.context, PROPERTY_SEARCH_ACTIVE, False)
+
+    def set_search_active(self, value):
+        self.context._updateProperty(PROPERTY_SEARCH_ACTIVE, value)
+
+    search_active = property(get_search_active,set_search_active)
+
+    def get_change_urls(self):
+        return getattr(self.context, PROPERTY_CHANGE_URLS, False)
+
+    def set_change_urls(self, value):
+        self.context._updateProperty(PROPERTY_CHANGE_URLS, value)
+
+    change_urls = property(get_change_urls,set_change_urls)
 
 class MapsControlPanel(ControlPanelForm):
 

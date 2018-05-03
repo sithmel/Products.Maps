@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2011-05-16 12:40+0000\n"
+"POT-Creation-Date: 2015-08-31 10:32+0000\n"
 "PO-Revision-Date: 2007-05-17 11:12+0100\n"
 "Last-Translator: Thor Arne Johansen <thora@plonesolutions.com>\n"
 "Language-Team: \n"
@@ -27,25 +27,81 @@ msgstr ""
 msgid " Validation failed. Longitude not in bounds [-180, 180]. "
 msgstr ""
 
-#: ../content/Location.py:151
+msgid "A content for displaying Google maps in your site"
+msgstr ""
+
+#: ../profiles/default/types/GeoLocation.xml
+msgid "A geographic position that can be shown on a Google map"
+msgstr ""
+
+msgid "Blue Marker"
+msgstr ""
+
+msgid "Green Marker"
+msgstr ""
+
+#: ../content/Location.py:182
 msgid "Info"
 msgstr "Informasjon"
 
-#: ../browser/controlpanel.py:47
-msgid "Key"
-msgstr "Nøkkel"
+#: ../profiles/default/types/GeoLocation.xml
+msgid "Location"
+msgstr ""
 
-#: ../browser/controlpanel.py:159
+msgid "Location view"
+msgstr ""
+
+msgid "Magenta Marker"
+msgstr ""
+
+msgid "Map view"
+msgstr ""
+
+#: ../browser/controlpanel.py:228
 msgid "Maps settings"
 msgstr "Maps instillinger "
 
+msgid "Red Marker"
+msgstr ""
+
+msgid "Yellow Marker"
+msgstr ""
+
+msgid "_yah"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "cancel"
+msgstr ""
+
+#. Default: "City, address"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "city_address"
+msgstr ""
+
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "delete_maps_settings"
+msgstr ""
+
+#. Default: "Directions"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "directions"
+msgstr ""
+
+#. Default: "If you move and zoom a map, the URL will be changed accordingly (and it can be bookmarked)"
+#: ../browser/controlpanel.py:138
+msgid "help_change_urls"
+msgstr ""
+
 #. Default: "Specify the default coordinates for new locations."
-#: ../browser/controlpanel.py:82
+#: ../browser/controlpanel.py:92
 msgid "help_default_coordinated"
-msgstr "Spesifiser de initielle koordinatene for nye lokasjoner"
+msgstr ""
 
 #. Default: "Select the default map type initially used on maps."
-#: ../browser/controlpanel.py:72
+#: ../browser/controlpanel.py:82
 msgid "help_default_map_type"
 msgstr "Velg karttypen som benyttes som utgangspunkt for nye kart"
 
@@ -54,79 +110,135 @@ msgstr "Velg karttypen som benyttes som utgangspunkt for nye kart"
 msgid "help_geolocation"
 msgstr "Du kan søke etter en adresse hvor hver del er skilt med et komma (gate 123, by). Det kan hende du må legge til landsnavnet etter adressen for å få treff. Du kan også oppgi 'lengdegrad, breddegrad' koordinater."
 
-#. Default: "Add Google AJAX Search API keys. You have to use the client side url at which your site is visible. This key is used to search for locations which weren't found with the default geocoding from Google Maps."
-#: ../browser/controlpanel.py:54
-#, fuzzy
-msgid "help_google_ajax_search_api_keys"
-msgstr "Legg til Google AJAX Search API nøkler. Du må benytte klientside url'en hvor nettstedet kan nås. Denne nøkkelen brukes for å søke etter lokasjoner som ikke ble funnet med standard geokoding fra Google Maps."
+#. Default: "Add Google Maps API key."
+#: ../browser/controlpanel.py:73
+msgid "help_google_maps_api3_key"
+msgstr ""
 
-#. Default: "Add Google Maps API keys. You have to use the client side url at which your site is visible."
-#: ../browser/controlpanel.py:40
-msgid "help_google_maps_api_keys"
-msgstr "Legg til Google Maps API nøkler. Du må benytte klientside url'en hvor nettstedet kan nås."
+#: ../browser/controlpanel.py:114
+msgid "help_layers_active"
+msgstr ""
+
+#. Default: "Select only one layer in maps"
+#: ../browser/controlpanel.py:122
+msgid "help_layers_use_radio"
+msgstr ""
 
 #. Default: ""
 #: Content Type: Location, Field: markerIcon
 msgid "help_markericon"
 msgstr "Velg det ikonet som skal brukes som markør på kartet."
 
+#: ../browser/controlpanel.py:130
+msgid "help_search_active"
+msgstr ""
+
 #. Default: "Show items' contents in map pop-up when clicked. Warning: may take up a lot of room on the map area!"
-#: ../browser/controlpanel.py:93
+#: ../browser/controlpanel.py:103
 msgid "help_show_contents"
 msgstr ""
 
+#. Default: "Change urls"
+#: ../browser/controlpanel.py:136
+msgid "label_change_urls"
+msgstr ""
+
 #. Default: "Default coordinates"
-#: ../browser/controlpanel.py:80
+#: ../browser/controlpanel.py:90
 msgid "label_default_coordinates"
-msgstr "Initielle koordinater"
+msgstr ""
 
 #. Default: "Default map type"
-#: ../browser/controlpanel.py:70
+#: ../browser/controlpanel.py:80
 msgid "label_default_map_type"
 msgstr "Initiell karttype"
+
+#. Default: "Description"
+#: ../browser/maps_map.pt:53
+msgid "label_description"
+msgstr ""
 
 #. Default: "Location"
 #: Content Type: Location, Field: geolocation
 msgid "label_geolocation"
 msgstr "Lokasjon"
 
-#. Default: "Google AJAX Search API Keys"
-#: ../browser/controlpanel.py:52
-msgid "label_google_ajax_search_api_keys"
-msgstr "Google AJAX Search API Nøkler"
+#. Default: "Google Maps API3 Key"
+#: ../browser/controlpanel.py:71
+msgid "label_google_maps_api3_key"
+msgstr ""
 
-#. Default: "Google Maps API Keys"
-#: ../browser/controlpanel.py:38
-msgid "label_google_maps_api_keys"
-msgstr "Google Maps API Nøkler"
+#. Default: "Activate layers"
+#: ../browser/controlpanel.py:112
+msgid "label_layers_active"
+msgstr ""
+
+#. Default: "Use radio buttons for layers"
+#: ../browser/controlpanel.py:120
+msgid "label_layers_use_radio"
+msgstr ""
 
 #. Default: "Marker icon"
 #: Content Type: Location, Field: markerIcon
 msgid "label_markericon"
 msgstr "Markørikon"
 
+#. Default: "The map is not displayed due to privacy settings. You can access the maps externally here:"
+msgid "label_privacy_blocked"
+msgstr ""
+
 #. Default: "Satellite images"
-#: ../browser/controlpanel.py:28
+#: ../browser/controlpanel.py:27
 msgid "label_satellite_map"
 msgstr "Satellittbilder"
 
 #. Default: "Satellite images with schematic overlay"
-#: ../browser/controlpanel.py:31
+#: ../browser/controlpanel.py:30
 msgid "label_satellite_schematic_map"
 msgstr "Satellittbilder med skjematisk overlagring"
 
 #. Default: "Schematic map"
-#: ../browser/controlpanel.py:25
+#: ../browser/controlpanel.py:24
 msgid "label_schematic_map"
 msgstr "Skjematisk kart"
 
+#. Default: "Activate search interface"
+#: ../browser/controlpanel.py:128
+msgid "label_search_active"
+msgstr ""
+
 #. Default: "Show contents"
-#: ../browser/controlpanel.py:91
+#: ../browser/controlpanel.py:101
 msgid "label_show_contents"
+msgstr ""
+
+#. Default: "Physical relief tiles for displaying elevation and water features (mountains, rivers, etc.)"
+#: ../browser/controlpanel.py:33
+msgid "label_terrain_map"
+msgstr ""
+
+#. Default: "Nearest Places"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "nearest_places"
+msgstr ""
+
+#. Default: "Save map settings"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "save_maps_settings"
+msgstr ""
+
+#. Default: "Search near to ..."
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "search_near_to"
 msgstr ""
 
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
 msgid "text_googlemaps_location_not_found"
 msgstr "Fant ikke lokasjonen '[LOCATION]'."
+
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "updated_maps_settings"
+msgstr ""
 

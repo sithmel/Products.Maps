@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2011-05-16 12:40+0000\n"
+"POT-Creation-Date: 2015-08-31 10:32+0000\n"
 "PO-Revision-Date: 2007-01-23 18:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,6 +14,53 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: maps\n"
+
+msgid "A content for displaying Google maps in your site"
+msgstr ""
+
+msgid "Blue Marker"
+msgstr ""
+
+msgid "Green Marker"
+msgstr ""
+
+msgid "Location view"
+msgstr ""
+
+msgid "Magenta Marker"
+msgstr ""
+
+msgid "Map view"
+msgstr ""
+
+msgid "Red Marker"
+msgstr ""
+
+msgid "Yellow Marker"
+msgstr ""
+
+msgid "_yah"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "cancel"
+msgstr ""
+
+#. Default: "City, address"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "city_address"
+msgstr ""
+
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "delete_maps_settings"
+msgstr ""
+
+#. Default: "Directions"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "directions"
+msgstr ""
 
 #. Default: ""
 #: Content Type: Location, Field: geolocation
@@ -35,8 +82,32 @@ msgstr ""
 msgid "label_markericon"
 msgstr ""
 
+#. Default: "The map is not displayed due to privacy settings. You can access the maps externally here:"
+msgid "label_privacy_blocked"
+msgstr ""
+
+#. Default: "Nearest Places"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "nearest_places"
+msgstr ""
+
+#. Default: "Save map settings"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "save_maps_settings"
+msgstr ""
+
+#. Default: "Search near to ..."
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "search_near_to"
+msgstr ""
+
 #. Default: "The location '[LOCATION]' couldn't be found."
 #: ./skins/Maps/maps-config.js.pt:15
 msgid "text_googlemaps_location_not_found"
+msgstr ""
+
+#. Default: "Map settings updated"
+#: ./skins/Maps/maps-config.js.pt:15
+msgid "updated_maps_settings"
 msgstr ""
 
