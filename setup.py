@@ -3,6 +3,8 @@ from os.path import join
 
 version = '4.0.dev0'
 
+tests_require = ['Products.PloneTestCase']
+
 setup(name='Products.Maps',
       version=version,
       description="A simple, easy to use Plone integration with Google Maps",
@@ -31,4 +33,8 @@ setup(name='Products.Maps',
       install_requires=[
         'setuptools',
       ],
+      tests_require=tests_require,
+      extras_require={
+          'test': tests_require,
+      },
 )
