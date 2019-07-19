@@ -36,18 +36,12 @@
    />
 
   <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
-      name="maps_map"
-      template="maps_map.pt"
-      permission="zope2.View"
-      />
-  <browser:page
-      for="Products.ATContentTypes.interface.IATTopic"
-      name="maps_map"
-      template="maps_map.pt"
-      permission="zope2.View"
-      />   
-
+    for="Products.Maps.interfaces.ILocation"
+    name="maps_googlemaps_view"
+    class=".map.DefaultMapView"
+    permission="zope2.View"
+    allowed_interface="..interfaces.map.IMapView"
+    />
 
   <browser:page
       for="*"
@@ -57,6 +51,7 @@
       allowed_interface="..interfaces.config.IMapsConfig"
       />
 
+
   <browser:page
       for="Products.Maps.interfaces.IMapEnabled"
       name="maps_googlemaps_enabled_view"
@@ -65,59 +60,65 @@
       allowed_interface="..interfaces.map.IMapEnabledView"
       />
 
-  <browser:page
-      for="Products.ATContentTypes.interface.IATTopic"
-      name="maps_googlemaps_enabled_view"
-      class=".map.FolderMapView"
-      permission="zope.Public"
-      allowed_interface="..interfaces.map.IMapEnabledView"
-      />
+  <configure zcml:condition="installed Products.ATContentTypes">
+    <browser:page
+        for="Products.ATContentTypes.interface.IATFolder"
+        name="maps_map"
+        template="maps_map.pt"
+        permission="zope2.View"
+        />
+    <browser:page
+        for="Products.ATContentTypes.interface.IATTopic"
+        name="maps_map"
+        template="maps_map.pt"
+        permission="zope2.View"
+        />
 
-  <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
-      name="maps_googlemaps_enabled_view"
-      class=".map.FolderMapView"
-      permission="zope.Public"
-      allowed_interface="..interfaces.map.IMapEnabledView"
-      />
+    <browser:page
+        for="Products.ATContentTypes.interface.IATTopic"
+        name="maps_googlemaps_enabled_view"
+        class=".map.FolderMapView"
+        permission="zope.Public"
+        allowed_interface="..interfaces.map.IMapEnabledView"
+        />
 
-  <browser:page
-      for="Products.Maps.interfaces.ILocation"
-      name="maps_googlemaps_view"
-      class=".map.DefaultMapView"
-      permission="zope2.View"
-      allowed_interface="..interfaces.map.IMapView"
-      />
+    <browser:page
+        for="Products.ATContentTypes.interface.IATFolder"
+        name="maps_googlemaps_enabled_view"
+        class=".map.FolderMapView"
+        permission="zope.Public"
+        allowed_interface="..interfaces.map.IMapEnabledView"
+        />
 
-  <browser:page
-      for="Products.ATContentTypes.interface.IATTopic"
-      name="maps_googlemaps_view"
-      class=".map.FolderMapView"
-      permission="zope2.View"
-      allowed_interface="..interfaces.map.IMapView"
-      />
+    <browser:page
+        for="Products.ATContentTypes.interface.IATTopic"
+        name="maps_googlemaps_view"
+        class=".map.FolderMapView"
+        permission="zope2.View"
+        allowed_interface="..interfaces.map.IMapView"
+        />
 
-  <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
-      name="maps_googlemaps_view"
-      class=".map.FolderMapView"
-      permission="zope2.View"
-      allowed_interface="..interfaces.map.IMapView"
-      />
+    <browser:page
+        for="Products.ATContentTypes.interface.IATFolder"
+        name="maps_googlemaps_view"
+        class=".map.FolderMapView"
+        permission="zope2.View"
+        allowed_interface="..interfaces.map.IMapView"
+        />
 
-  <browser:page
-      for="Products.ATContentTypes.interface.IATFolder"
-      name="maps_save_config"
-      class=".map.SaveMapView"
-      permission="cmf.ModifyPortalContent"
-      />
+    <browser:page
+        for="Products.ATContentTypes.interface.IATFolder"
+        name="maps_save_config"
+        class=".map.SaveMapView"
+        permission="cmf.ModifyPortalContent"
+        />
 
-  <browser:page
-      for="Products.ATContentTypes.interface.IATTopic"
-      name="maps_save_config"
-      class=".map.SaveMapView"
-      permission="cmf.ModifyPortalContent"
-      />
-
+    <browser:page
+        for="Products.ATContentTypes.interface.IATTopic"
+        name="maps_save_config"
+        class=".map.SaveMapView"
+        permission="cmf.ModifyPortalContent"
+        />
+  </configure>
 
 </configure>

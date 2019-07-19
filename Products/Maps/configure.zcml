@@ -25,34 +25,37 @@
     <allow interface=".interfaces.marker.IRichMarker" />
   </class>
 
-  <adapter
-      factory=".content.Location.LocationMarker"
-      provides=".interfaces.marker.IRichMarker"
-      />
+  <configure zcml:condition="installed Products.Archetypes">
 
-  <class class=".content.Location.LocationMarker">
-    <allow interface=".interfaces.marker.IRichMarker" />
-  </class>
+    <adapter
+        factory=".content.Location.LocationMarker"
+        provides=".interfaces.marker.IRichMarker"
+        />
 
+    <class class=".content.Location.LocationMarker">
+      <allow interface=".interfaces.marker.IRichMarker" />
+    </class>
+
+    <adapter factory=".at_adapters.SmartFolderMap" />
+
+    <adapter factory=".at_adapters.FolderMap" />
+
+  </configure>
   <adapter
       for=".interfaces.ILocation"
       factory=".adapters.ContextMap"
       />
 
-  <adapter factory=".adapters.SmartFolderMap" />
 
-  <adapter factory=".adapters.FolderMap" />
 
   <include file="collection.zcml" zcml:condition="installed plone.app.collection"  />
 
   <!-- configlet -->
 
   <adapter
-      zcml:condition="installed plone.app.controlpanel"
       factory=".browser.controlpanel.MapsControlPanelAdapter" />
 
   <browser:page
-      zcml:condition="installed plone.app.controlpanel"
       name="maps-controlpanel"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       class=".browser.controlpanel.MapsControlPanel"

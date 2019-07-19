@@ -1,18 +1,18 @@
-from zope.interface import implements
-from zope.component import adapts
+from zope.interface import implementer
+from zope.component import adapter
 
 from Products.Maps.interfaces import IGeoLocation, IMarker, IRichMarker, IMap
 
 from Products.CMFPlone.utils import base_hasattr
-from Products.ATContentTypes.interface import IATTopic, IATFolder
 
 try:
     from plone.app.collection.interfaces import ICollection
 except ImportError:
     ICollection = None
 
+
+@implementer(IMap)
 class BaseMap(object):
-    implements(IMap)
 
     def __init__(self, context):
         self.context = context
@@ -29,29 +29,16 @@ class BaseMap(object):
         return results
 
 
-class SmartFolderMap(BaseMap):
-    adapts(IATTopic)
-
-    def _getItems(self):
-        return self.context.queryCatalog()
-
 if ICollection:
+    @adapter(ICollection)
     class CollectionMap(BaseMap):
-        adapts(ICollection)
     
         def _getItems(self):
             return self.context.queryCatalog()
 
 
-class FolderMap(BaseMap):
-    adapts(IATFolder)
-
-    def _getItems(self):
-        return self.context.getFolderContents()
-
-
+@implementer(IGeoLocation)
 class GeoLocation(object):
-    implements(IGeoLocation)
 
     def __init__(self, context):
         self.context = context
@@ -67,8 +54,8 @@ class GeoLocation(object):
         return location[1]
 
 
+@implementer(IMap)
 class ContextMap(object):
-    implements(IMap)
 
     def __init__(self, context):
         self.context = context
@@ -77,9 +64,9 @@ class ContextMap(object):
         yield IGeoLocation(self.context)
 
 
+@implementer(IRichMarker)
+@adapter(IMarker)
 class RichMarker(object):
-    implements(IRichMarker)
-    adapts(IMarker)
 
     def __init__(self, context):
         self.context = context

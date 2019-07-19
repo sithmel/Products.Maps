@@ -6,8 +6,8 @@ from Products.Maps import MapsMessageFactory as _
 from Products.Maps.config import *
 from plone.autoform.form import AutoExtensibleForm
 from z3c.form import form
-from zope.component import adapts
-from zope.interface import implements
+from zope.component import adapter
+from zope.interface import implementer
 from zope.interface import Interface
 from zope.schema import Bool
 from zope.schema import Choice
@@ -106,9 +106,9 @@ class IMapsSchema(Interface):
                         )
 
 
+@implementer(IMapsSchema)
+@adapter(IPloneSiteRoot)
 class MapsControlPanelAdapter(object):
-    adapts(IPloneSiteRoot)
-    implements(IMapsSchema)
 
     def __init__(self, context):
         properties = getToolByName(context, 'portal_properties')
