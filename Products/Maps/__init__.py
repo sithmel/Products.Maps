@@ -22,8 +22,8 @@ registerDirectory(config.SKINS_DIR, config.GLOBALS)
 def initialize(context):
 
     if HAVE_ARCHETYPES:
-        from Products.Maps import content
-        content # pyflakes
+        from Products.Maps.content import Location
+        Location # pyflakes
 
         content_types, constructors, ftis = process_types(
             listTypes(config.PROJECTNAME), config.PROJECTNAME)

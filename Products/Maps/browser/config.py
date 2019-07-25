@@ -10,6 +10,7 @@ from Products.CMFCore.utils import getToolByName
 
 from Products.Maps import MapsMessageFactory as _
 
+import six
 
 def getSizeFromString(s):
     values = s.split(",")
@@ -47,11 +48,13 @@ class MapsConfig(BrowserView):
         portal_url = portal_url_tool()
         icons = []
         for icon in icons_list:
+            if isinstance(icon, six.binary_type):
+                icon = icon.decode('utf-8')
             parts = icon.split("|")
             if parts[0].strip() == "Name":
                 continue
             data = {
-                'name': _(parts[0].strip()).encode('utf-8'),
+                'name': parts[0].strip(),
                 'icon': "%s/%s" % (portal_url, parts[1].strip()),
                 'iconSize': getSizeFromString(parts[2]),
                 'iconAnchor': getSizeFromString(parts[3]),

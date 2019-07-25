@@ -31,7 +31,8 @@ setup(name='Products.Maps',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-        'setuptools',
+          'setuptools',
+          'six',
       ],
       tests_require=tests_require,
       extras_require={

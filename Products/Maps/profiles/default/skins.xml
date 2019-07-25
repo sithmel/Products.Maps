@@ -2,7 +2,7 @@
 <object name="portal_skins" meta_type="Plone Skins Tool">
   <object name="Maps"
           meta_type="Filesystem Directory View"
-          directory="Maps/skins/Maps"/>
+          directory="Products.Maps:skins/Maps"/>
   <skin-path name="*">
     <layer name="Maps" insert-after="custom"/>
   </skin-path>

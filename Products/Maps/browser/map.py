@@ -81,7 +81,7 @@ class FolderMapView(BaseMapView):
 class SaveMapView(BrowserView):
     def __call__(self):
         annotations = IAnnotations(self.context)
-        if 'maptype' in  self.request.form:
+        if 'maptype' in self.request.form:
             center = self.request.form.get('center') or self.request.form.get('center[]')
 
             data = {

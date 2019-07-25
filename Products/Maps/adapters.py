@@ -5,10 +5,8 @@ from Products.Maps.interfaces import IGeoLocation, IMarker, IRichMarker, IMap
 
 from Products.CMFPlone.utils import base_hasattr
 
-try:
-    from plone.app.collection.interfaces import ICollection
-except ImportError:
-    ICollection = None
+from plone.app.contenttypes.interfaces import ICollection
+from plone.app.contenttypes.interfaces import IFolder
 
 
 @implementer(IMap)
@@ -29,12 +27,18 @@ class BaseMap(object):
         return results
 
 
-if ICollection:
-    @adapter(ICollection)
-    class CollectionMap(BaseMap):
-    
-        def _getItems(self):
-            return self.context.queryCatalog()
+@adapter(ICollection)
+class CollectionMap(BaseMap):
+
+    def _getItems(self):
+        return self.context.queryCatalog()
+
+
+@adapter(IFolder)
+class FolderMap(BaseMap):
+
+    def _getItems(self):
+        return self.context.getFolderContents()
 
 
 @implementer(IGeoLocation)
@@ -45,13 +49,11 @@ class GeoLocation(object):
 
     @property
     def latitude(self):
-        location = self.context.getRawGeolocation()
-        return location[0]
+        return self.context.geolocation.latitude
 
     @property
     def longitude(self):
-        location = self.context.getRawGeolocation()
-        return location[1]
+        return self.context.geolocation.longitude
 
 
 @implementer(IMap)

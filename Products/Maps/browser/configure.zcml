@@ -8,13 +8,13 @@
   <include package="plone.app.contentmenu" />
 
   <browser:page
-      for="..interfaces.ILocation"
+      for="..interfaces.IDXLocation"
       name="maps_map"
       template="maps_map.pt"
       permission="zope2.View"
       />   
   <browser:page
-      for="..interfaces.ILocation"
+      for="..interfaces.IDXLocation"
       name="maps_location"
       template="maps_location.pt"
       permission="zope2.View"
@@ -36,7 +36,7 @@
    />
 
   <browser:page
-    for="Products.Maps.interfaces.ILocation"
+    for="Products.Maps.interfaces.IDXLocation"
     name="maps_googlemaps_view"
     class=".map.DefaultMapView"
     permission="zope2.View"
@@ -120,5 +120,65 @@
         permission="cmf.ModifyPortalContent"
         />
   </configure>
+
+  <browser:page
+      for="plone.app.contenttypes.interfaces.IFolder"
+      name="maps_map"
+      template="maps_map.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="plone.app.contenttypes.interfaces.ICollection"
+      name="maps_map"
+      template="maps_map.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="plone.app.contenttypes.interfaces.ICollection"
+      name="maps_googlemaps_enabled_view"
+      class=".map.FolderMapView"
+      permission="zope.Public"
+      allowed_interface="..interfaces.map.IMapEnabledView"
+      />
+
+  <browser:page
+      for="plone.app.contenttypes.interfaces.IFolder"
+      name="maps_googlemaps_enabled_view"
+      class=".map.FolderMapView"
+      permission="zope.Public"
+      allowed_interface="..interfaces.map.IMapEnabledView"
+      />
+
+  <browser:page
+      for="plone.app.contenttypes.interfaces.ICollection"
+      name="maps_googlemaps_view"
+      class=".map.FolderMapView"
+      permission="zope2.View"
+      allowed_interface="..interfaces.map.IMapView"
+      />
+
+  <browser:page
+      for="plone.app.contenttypes.interfaces.IFolder"
+      name="maps_googlemaps_view"
+      class=".map.FolderMapView"
+      permission="zope2.View"
+      allowed_interface="..interfaces.map.IMapView"
+      />
+
+  <browser:page
+      for="plone.app.contenttypes.interfaces.IFolder"
+      name="maps_save_config"
+      class=".map.SaveMapView"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="plone.app.contenttypes.interfaces.ICollection"
+      name="maps_save_config"
+      class=".map.SaveMapView"
+      permission="cmf.ModifyPortalContent"
+      />
 
 </configure>
