@@ -63,4 +63,11 @@
       permission="cmf.ManagePortal"
       />
 
+  <browser:page
+    name="migrate_locations"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".migration.MigrateLocations"
+    permission="cmf.ManagePortal"
+    />
+
 </configure>
