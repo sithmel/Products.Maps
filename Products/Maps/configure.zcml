@@ -64,6 +64,7 @@
       />
 
   <browser:page
+    zcml:condition="installed Products.contentmigration"
     name="migrate_locations"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     class=".migration.MigrateLocations"
