@@ -48,7 +48,7 @@ class MapsConfig(BrowserView):
         portal_url = portal_url_tool()
         icons = []
         for icon in icons_list:
-            if isinstance(icon, six.binary_type):
+            if six.PY3 and isinstance(icon, six.binary_type):
                 icon = icon.decode('utf-8')
             parts = icon.split("|")
             if parts[0].strip() == "Name":
