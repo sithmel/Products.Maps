@@ -12,6 +12,7 @@
   <include package="Products.CMFCore" />
 
   <include package=".browser" />
+  <include package=".behaviors" />
   <include file="profiles.zcml" />
 
   <permission

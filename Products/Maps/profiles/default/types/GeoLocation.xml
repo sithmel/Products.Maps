@@ -26,9 +26,9 @@
   <!-- Schema, class and security -->
   <property name="add_permission">Products.Maps.AddGeoLocation</property>
   <property name="klass">Products.Maps.content.dx_location.Location</property>
-  <property name="model_file"></property>
+  <property name="model_file">Products.Maps.content.schema:location.xml</property>
   <property name="model_source"></property>
-  <property name="schema">collective.maplocbehavior.mappable.IMappable</property>
+  <property name="schema"></property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
@@ -42,6 +42,7 @@
     <element value="plone.versioning" />
     <element value="plone.tableofcontents" />
     <element value="plone.locking" />
+    <element value="Products.Maps.behaviors.mappable.IMappable" />
   </property>
 
   <!-- View information -->
@@ -51,7 +52,7 @@
   <property name="immediate_view">view</property>
   <property name="view_methods">
     <element value="maps_location"/>
-    <element value="maps_maps"/>
+    <element value="maps_map"/>
   </property>
 
   <!-- Method aliases -->

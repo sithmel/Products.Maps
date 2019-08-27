@@ -4,7 +4,7 @@
 
 from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import SITE_OWNER_PASSWORD
-from plone.testing.zope import Browser
+from plone.testing._z2_testbrowser import Browser
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import IBundleRegistry
 from Products.Maps.tests import MapsTestCase

@@ -21,8 +21,6 @@ class Maps(PloneSandboxLayer):
         self.loadZCML(package=plone.app.contenttypes)
         import plone.formwidget.geolocation
         self.loadZCML(package=plone.formwidget.geolocation)
-        import collective.maplocbehavior
-        self.loadZCML(package=collective.maplocbehavior)
         import Products.Maps
         self.loadZCML(package=Products.Maps)
 

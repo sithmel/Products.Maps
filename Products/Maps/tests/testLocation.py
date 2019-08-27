@@ -1,8 +1,8 @@
 #
 # MapsTestCase Skeleton
 #
-from collective.maplocbehavior.mappable import defaultLocation
-from collective.maplocbehavior.mappable import getMarkerIconVocab
+from Products.Maps.behaviors.mappable import defaultLocation
+from Products.Maps.behaviors.mappable import getMarkerIconVocab
 from plone.app.textfield.value import RichTextValue
 from Products.Maps.tests import MapsTestCase
 
