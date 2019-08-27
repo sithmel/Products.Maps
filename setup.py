@@ -33,7 +33,6 @@ setup(name='Products.Maps',
       install_requires=[
           'setuptools',
           'six',
-          'collective.maplocbehavior',
           'plone.formwidget.geolocation',
       ],
       tests_require=tests_require,
