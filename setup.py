@@ -3,6 +3,9 @@ from os.path import join
 
 version = '4.0.dev0'
 
+tests_require=['zope.testing',
+               'Products.PloneTestCase']
+
 setup(name='Products.Maps',
       version=version,
       description="A simple, easy to use Plone integration with Google Maps",
@@ -23,12 +26,16 @@ setup(name='Products.Maps',
       keywords='Google Maps Zope Plone',
       author='Florian Schulze',
       author_email='fschulze@jarn.com',
+      maintainer='Luca Fabbri',
+      maintainer_email='luca@keul.it',
       url='http://plone.org/products/maps',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],
       include_package_data=True,
       zip_safe=False,
+      tests_require=tests_require,
+      extras_require=dict(test=tests_require),
       install_requires=[
           'setuptools',
           'six',

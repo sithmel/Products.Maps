@@ -704,6 +704,21 @@ $(document).ready(function() {
    
     $('.googleMapEdit').productsMapEdit();
 
+    // Privacy settings
+    var $googleMapView = $('.googleMapView');
+    if ($googleMapView.length>0
+            && ('; ' + document.cookie).split('; maps-optout=').pop().split(';').shift().indexOf('true')>-1) {
+        var $privacyNode = $('<p>' + mapsConfig.i18n.label_privacy_blocked + '</p>'),
+            lat = $googleMapView.find('.geo span[class="latitude"]').text(),
+            lng = $googleMapView.find('.geo span[class="longitude"]').text();
+        $privacyNode.append(' <a href="https://www.google.com/maps/@' + lat +  ',' + lng + ',13z" target="_blank">' +
+                'https://www.google.com/maps/@' + lat +  ',' + lng + ',13z' +
+                '</a>');
+        $($googleMapView).prepend($privacyNode);
+        return;
+    }
+    // Privacy settings - end
+
     $('.googleMapView').productsMapView(function (){
         if (mapsConfig.change_urls){
             follow_map_link();

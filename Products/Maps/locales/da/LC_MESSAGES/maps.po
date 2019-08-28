@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-05-28 14:56+0000\n"
+"POT-Creation-Date: 2015-08-31 10:32+0000\n"
 "PO-Revision-Date: 2007-01-23 18:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Green Marker"
 msgstr ""
 
-#: ../content/Location.py:153
+#: ../content/Location.py:182
 msgid "Info"
 msgstr "Info"
 
@@ -182,6 +182,10 @@ msgstr ""
 #: Content Type: Location, Field: markerIcon
 msgid "label_markericon"
 msgstr "Ikon"
+
+#. Default: "The map is not displayed due to privacy settings. You can access the maps externally here:"
+msgid "label_privacy_blocked"
+msgstr ""
 
 #. Default: "Satellite images"
 #: ../browser/controlpanel.py:27

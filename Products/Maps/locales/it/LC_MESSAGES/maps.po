@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Maps\n"
-"POT-Creation-Date: 2013-05-28 14:56+0000\n"
+"POT-Creation-Date: 2015-08-31 10:32+0000\n"
 "PO-Revision-Date: 2007-04-12 17:21+0000\n"
 "Last-Translator: Florian Schulze <florian.schulze@gmx.net>\n"
 "Language-Team: \n"
@@ -40,7 +40,7 @@ msgstr "Segnaposto Blu"
 msgid "Green Marker"
 msgstr "Segnaposto Verde"
 
-#: ../content/Location.py:153
+#: ../content/Location.py:182
 msgid "Info"
 msgstr "Info"
 
@@ -156,7 +156,7 @@ msgstr "Tipo di mappa di default"
 #. Default: "Description"
 #: ../browser/maps_map.pt:53
 msgid "label_description"
-msgstr ""
+msgstr "Descrizione"
 
 #. Default: "Location"
 #: Content Type: Location, Field: geolocation
@@ -182,6 +182,10 @@ msgstr "Usa i radio button"
 #: Content Type: Location, Field: markerIcon
 msgid "label_markericon"
 msgstr "Icona Segnaposto"
+
+#. Default: "The map is not displayed due to privacy settings. You can access the maps externally here:"
+msgid "label_privacy_blocked"
+msgstr "La mappa non è visualizzata per le impostazioni sulla privacy. Puoi accedere alla mappa da qui:"
 
 #. Default: "Satellite images"
 #: ../browser/controlpanel.py:27

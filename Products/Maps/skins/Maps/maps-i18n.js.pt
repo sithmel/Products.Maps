@@ -22,7 +22,9 @@ mapsConfig.i18n = {
     label_directions: '<tal:block tal:replace="python: here.translate('directions', default='Directions', domain='maps', escape_for_js=True)" />',
     label_city_address: '<tal:block tal:replace="python: here.translate('city_address', default='City, address', domain='maps', escape_for_js=True)" />',
 
-    label_deletemapsettings: '<tal:block tal:replace="python: here.translate('delete_maps_settings', default='Return to default map settings', domain='maps', escape_for_js=True)" />'
+    label_deletemapsettings: '<tal:block tal:replace="python: here.translate('delete_maps_settings', default='Return to default map settings', domain='maps', escape_for_js=True)" />',
+
+    label_privacy_blocked: '<tal:block tal:replace="python: here.translate('label_privacy_blocked', default='The map is not displayed due to privacy settings. You can access the maps externally here:', domain='maps', escape_for_js=True)" />'
 
 };
 
