@@ -78,7 +78,7 @@ class IMappableMarker(Interface):
 
 def context_property(name):
     def getter(self):
-        return getattr(self.context, name)
+        return getattr(self.context, name, None)
 
     def setter(self, value):
         setattr(self.context, name, value)
@@ -101,7 +101,7 @@ class Mappable(object):
 
     geolocation = context_property('geolocation')
 
-    icon = context_property('map_icon')
+    icon = context_property('icon')
 
 
 @implementer(IMarker)
@@ -135,7 +135,7 @@ class Marker(object):
 
     @property
     def icon(self):
-        return self.context.map_icon
+        return self.context.icon
 
     @property
     def url(self):
