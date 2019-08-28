@@ -3,8 +3,21 @@ from os.path import join
 
 version = '4.0.dev0'
 
-tests_require=['zope.testing',
-               'Products.PloneTestCase']
+tests_require=[
+      'cssselect',
+      'lxml',
+      'mock',
+      'plone.api >=1.8.5',
+      'plone.app.robotframework',
+      'plone.app.testing [robot]',
+      'plone.browserlayer',
+      'plone.cachepurging',
+      'plone.testing',
+      'robotsuite',
+      'testfixtures',
+      'transaction',
+      'tzlocal',
+]
 
 setup(name='Products.Maps',
       version=version,
@@ -41,21 +54,4 @@ setup(name='Products.Maps',
           'six',
           'plone.formwidget.geolocation',
       ],
-      extras_require={
-          'test': [
-              'cssselect',
-              'lxml',
-              'mock',
-              'plone.api >=1.8.5',
-              'plone.app.robotframework',
-              'plone.app.testing [robot]',
-              'plone.browserlayer',
-              'plone.cachepurging',
-              'plone.testing',
-              'robotsuite',
-              'testfixtures',
-              'transaction',
-              'tzlocal',
-          ],
-      },
 )
