@@ -14,3 +14,5 @@ PROPERTY_SEARCH_ACTIVE = 'map_search_active'
 PROPERTY_GOOGLE_KEYS_FIELD = 'map_google_api3_keys'
 PROPERTY_LAYERS_USE_RADIO = 'map_layers_use_radio'
 PROPERTY_CHANGE_URLS = 'map_change_urls'
+
+TEST_FOLDER_ID = 'test-folder'

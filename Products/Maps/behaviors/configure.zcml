@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="Products.Maps">
+
+    <include package="plone.behavior" file="meta.zcml" />
+
+    <plone:behavior
+        title="Mappable"
+        description="Makes content type mappable"
+        provides=".mappable.IMappable"
+        factory=".mappable.Mappable"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        marker=".mappable.IMappableMarker"
+        />
+
+    <adapter factory=".mappable.Marker" />
+
+    <browser:page
+      for=".mappable.IMappableMarker"
+      name="maps_googlemaps_enabled_view"
+      class=".mappable.MapView"
+      permission="zope.Public"
+      allowed_interface="Products.Maps.interfaces.map.IMapEnabledView"
+      />
+
+</configure>

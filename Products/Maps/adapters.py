@@ -1,18 +1,16 @@
-from zope.interface import implements
-from zope.component import adapts
+from zope.interface import implementer
+from zope.component import adapter
 
 from Products.Maps.interfaces import IGeoLocation, IMarker, IRichMarker, IMap
 
 from Products.CMFPlone.utils import base_hasattr
-from Products.ATContentTypes.interface import IATTopic, IATFolder
 
-try:
-    from plone.app.collection.interfaces import ICollection
-except ImportError:
-    ICollection = None
+from plone.app.contenttypes.interfaces import ICollection
+from plone.app.contenttypes.interfaces import IFolder
 
+
+@implementer(IMap)
 class BaseMap(object):
-    implements(IMap)
 
     def __init__(self, context):
         self.context = context
@@ -29,46 +27,37 @@ class BaseMap(object):
         return results
 
 
-class SmartFolderMap(BaseMap):
-    adapts(IATTopic)
+@adapter(ICollection)
+class CollectionMap(BaseMap):
 
     def _getItems(self):
         return self.context.queryCatalog()
 
-if ICollection:
-    class CollectionMap(BaseMap):
-        adapts(ICollection)
-    
-        def _getItems(self):
-            return self.context.queryCatalog()
 
-
+@adapter(IFolder)
 class FolderMap(BaseMap):
-    adapts(IATFolder)
 
     def _getItems(self):
         return self.context.getFolderContents()
 
 
+@implementer(IGeoLocation)
 class GeoLocation(object):
-    implements(IGeoLocation)
 
     def __init__(self, context):
         self.context = context
 
     @property
     def latitude(self):
-        location = self.context.getRawGeolocation()
-        return location[0]
+        return self.context.geolocation.latitude
 
     @property
     def longitude(self):
-        location = self.context.getRawGeolocation()
-        return location[1]
+        return self.context.geolocation.longitude
 
 
+@implementer(IMap)
 class ContextMap(object):
-    implements(IMap)
 
     def __init__(self, context):
         self.context = context
@@ -77,9 +66,9 @@ class ContextMap(object):
         yield IGeoLocation(self.context)
 
 
+@implementer(IRichMarker)
+@adapter(IMarker)
 class RichMarker(object):
-    implements(IRichMarker)
-    adapts(IMarker)
 
     def __init__(self, context):
         self.context = context

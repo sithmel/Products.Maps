@@ -1,6 +1,18 @@
 Changelog
 =========
 
+4.0 (unreleased)
+----------------
+
+- Merge the collective.maplocbehavior product here
+  [frapell]
+
+- Add Python 3 / Plone 5.2 support
+  [enfold-josh, frapell]
+
+- Add compatibility with Plone 5, remove compatibility with Plone 4.
+  [davisagli]
+
 3.4 (unreleased)
 ----------------
 

@@ -9,3 +9,7 @@ class ILocation(Interface):
             in maps_properties/map_markers property. 
             Method should return 'Red Marker' for example.
         """
+
+
+class IDXLocation(Interface):
+    """ Interface for content with a 'geolocation' field. """

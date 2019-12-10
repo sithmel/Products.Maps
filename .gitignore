@@ -6,4 +6,12 @@ bin/
 develop-eggs/
 parts/
 Products/Maps/locales/rebuild_i18n.log
+.mr.developer.cfg
+include/
+lib/
+output
+pip-selfcheck.json
+pyvenv.cfg
+share/
+var/
 

@@ -1,10 +1,23 @@
 from setuptools import setup, find_packages
 from os.path import join
 
-version = '3.4.dev0'
+version = '4.0.dev0'
 
-tests_require=['zope.testing',
-               'Products.PloneTestCase']
+tests_require=[
+      'cssselect',
+      'lxml',
+      'mock',
+      'plone.api >=1.8.5',
+      'plone.app.robotframework',
+      'plone.app.testing [robot]',
+      'plone.browserlayer',
+      'plone.cachepurging',
+      'plone.testing',
+      'robotsuite',
+      'testfixtures',
+      'transaction',
+      'tzlocal',
+]
 
 setup(name='Products.Maps',
       version=version,
@@ -13,14 +26,15 @@ setup(name='Products.Maps',
                        open(join('docs','HISTORY.rst')).read(),
       classifiers=[
         "Framework :: Zope2",
-        "Framework :: Plone",
-        "Framework :: Plone :: 3.3",
-        "Framework :: Plone :: 4.0",
-        "Framework :: Plone :: 4.1",
-        "Framework :: Plone :: 4.2",
-        "Framework :: Plone :: 4.3",
-        "License :: OSI Approved :: GNU General Public License (GPL)",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.7",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Framework :: Plone",
+        "Framework :: Plone :: 5.0",
+        "Framework :: Plone :: 5.1",
+        "Framework :: Plone :: 5.2",
+        "License :: OSI Approved :: GNU General Public License (GPL)",
       ],
       keywords='Google Maps Zope Plone',
       author='Florian Schulze',
@@ -36,6 +50,8 @@ setup(name='Products.Maps',
       tests_require=tests_require,
       extras_require=dict(test=tests_require),
       install_requires=[
-        'setuptools',
+          'setuptools',
+          'six',
+          'plone.formwidget.geolocation',
       ],
 )
