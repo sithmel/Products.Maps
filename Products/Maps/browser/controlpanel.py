@@ -1,23 +1,19 @@
-from zope.interface import Interface
-from zope.component import adapts
-from zope.interface import implements
-from zope.formlib.form import FormFields
-
-from zope.schema import Choice
-from zope.schema import Tuple
-from zope.schema import TextLine
-from zope.schema import Bool
-
-from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
-
-from plone.app.controlpanel.form import ControlPanelForm
-
 from Products.CMFCore.utils import getToolByName
-from Products.CMFDefault.formlib.schema import SchemaAdapterBase
 from Products.CMFPlone.interfaces import IPloneSiteRoot
-
+from Products.CMFPlone.interfaces import IBundleRegistry
+from Products.CMFPlone.resources.browser.cook import cookWhenChangingSettings
 from Products.Maps import MapsMessageFactory as _
 from Products.Maps.config import *
+from plone.autoform.form import AutoExtensibleForm
+from z3c.form import form
+from zope.component import adapter
+from zope.interface import implementer
+from zope.interface import Interface
+from zope.schema import Bool
+from zope.schema import Choice
+from zope.schema import TextLine
+from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
+
 
 DEFAULT_MAPTYPE_CHOICES = SimpleVocabulary((
     SimpleTerm('roadmap', 'roadmap',
@@ -34,39 +30,8 @@ DEFAULT_MAPTYPE_CHOICES = SimpleVocabulary((
                  default=u"Physical relief tiles for displaying elevation and water features (mountains, rivers, etc.)"))
 ))
 
+
 class IMapsSchema(Interface):
-#    googlemaps_keys = Tuple(
-#                        title=_('label_google_maps_api_keys',
-#                                default=u'Google Maps API Keys'),
-#                        description=_('help_google_maps_api_keys',
-#                                      default=u"Add Google Maps API keys. "
-#                                               "You have to use the client "
-#                                               "side url at which your site "
-#                                               "is visible."),
-#                        unique=True,
-#                        value_type=GoogleAPIKey(
-#                            title=_(u'Key'),
-#                        ),
-#                      )
-
-#    googleajaxsearch_keys = Tuple(
-#                        title=_('label_google_ajax_search_api_keys',
-#                                default=u'Google AJAX Search API Keys'),
-#                        description=_('help_google_ajax_search_api_keys',
-#                                      default=u"Add Google AJAX Search API "
-#                                               "keys. You have to use the "
-#                                               "client side url at which "
-#                                               "your site is visible. This "
-#                                               "key is used to search for "
-#                                               "locations which weren't "
-#                                               "found with the default "
-#                                               "geocoding from Google Maps."),
-#                        unique=True,
-#                        value_type=GoogleAPIKey(
-#                            title=_(u'Key'),
-#                        ),
-#                      )
-
     googlemaps_keys = TextLine(
                         title=_('label_google_maps_api3_key',
                                 default=u'Google Maps API3 Key'),
@@ -140,13 +105,12 @@ class IMapsSchema(Interface):
                         default=False,
                         )
 
-class MapsControlPanelAdapter(SchemaAdapterBase):
 
-    adapts(IPloneSiteRoot)
-    implements(IMapsSchema)
+@implementer(IMapsSchema)
+@adapter(IPloneSiteRoot)
+class MapsControlPanelAdapter(object):
 
     def __init__(self, context):
-        super(MapsControlPanelAdapter, self).__init__(context)
         properties = getToolByName(context, 'portal_properties')
         self.context = properties.maps_properties
 
@@ -222,13 +186,18 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
 
     change_urls = property(get_change_urls,set_change_urls)
 
-class MapsControlPanel(ControlPanelForm):
 
-    form_fields = FormFields(IMapsSchema)
-    label = _("Maps settings")
+class MapsControlPanel(AutoExtensibleForm, form.EditForm):
+    schema = IMapsSchema
+    label = _(u"Maps settings")
     description = None
-    form_name = _("Maps settings")
-    def _on_save(self, data):
+
+    def applyChanges(self, data):
+        super(MapsControlPanel, self).applyChanges(data)
+
         # This ensures the change is reflected on the served javascripts
-        jstool = getToolByName(self.context, 'portal_javascripts')
-        jstool.cookResources()
+        registry = getToolByName(self.context, 'portal_registry')
+        bundles = registry.collectionOfInterface(
+            IBundleRegistry, prefix="plone.bundles", check=False)
+        bundle = bundles['Products-Maps']
+        cookWhenChangingSettings(self.context, bundle)

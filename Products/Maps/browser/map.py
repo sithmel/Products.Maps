@@ -1,7 +1,7 @@
 from cgi import escape
 
-from zope.interface import implements
-from zope.component import adapts, getMultiAdapter
+from zope.interface import implementer
+from zope.component import adapter, getMultiAdapter
 
 from Products.Five.browser import BrowserView
 
@@ -57,10 +57,9 @@ class BaseMapView(BrowserView):
             return '{}';
 
 
-
+@implementer(IMapView)
+@adapter(IMapEnabled)
 class DefaultMapView(BaseMapView):
-    implements(IMapView)
-    adapts(IMapEnabled)
 
     @property
     def enabled(self):
@@ -69,8 +68,8 @@ class DefaultMapView(BaseMapView):
         return True
 
 
+@implementer(IMapView)
 class FolderMapView(BaseMapView):
-    implements(IMapView)
 
     @property
     def enabled(self):
@@ -82,7 +81,7 @@ class FolderMapView(BaseMapView):
 class SaveMapView(BrowserView):
     def __call__(self):
         annotations = IAnnotations(self.context)
-        if 'maptype' in  self.request.form:
+        if 'maptype' in self.request.form:
             center = self.request.form.get('center') or self.request.form.get('center[]')
 
             data = {

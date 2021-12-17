@@ -1,16 +1,26 @@
-from Products.PloneTestCase import PloneTestCase
-from Testing import ZopeTestCase
 
-# Make the boring stuff load quietly
-ZopeTestCase.installProduct('Maps')
-
-EXTENSION_PROFILES=['Products.Maps:default']
-
-PloneTestCase.setupPloneSite(extension_profiles=EXTENSION_PROFILES)
+import unittest
+from plone.app.testing import login
+from plone.app.testing import SITE_OWNER_NAME
+from Products.Maps.config import TEST_FOLDER_ID
+from Products.Maps.testing import MAPS_FUNCTIONAL_TESTING
+from Products.Maps.testing import MAPS_INTEGRATION_TESTING
 
 
-class MapsTestCase(PloneTestCase.PloneTestCase):
-    pass
+class BaseTestCase(unittest.TestCase):
 
-class MapsFunctionalTestCase(PloneTestCase.FunctionalTestCase):
-    pass
+    def setUp(self):
+        self.app = self.layer['app']
+        self.portal = self.layer['portal']
+        login(self.portal, SITE_OWNER_NAME)
+        self.folder = self.portal[TEST_FOLDER_ID]
+
+
+class MapsTestCase(BaseTestCase):
+
+    layer = MAPS_INTEGRATION_TESTING
+
+
+class MapsFunctionalTestCase(BaseTestCase):
+
+    layer = MAPS_FUNCTIONAL_TESTING

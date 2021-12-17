@@ -12,6 +12,7 @@
   <include package="Products.CMFCore" />
 
   <include package=".browser" />
+  <include package=".behaviors" />
   <include file="profiles.zcml" />
 
   <permission
@@ -26,37 +27,49 @@
   </class>
 
   <adapter
-      factory=".content.Location.LocationMarker"
+      factory=".content.dx_location.LocationMarker"
       provides=".interfaces.marker.IRichMarker"
       />
 
-  <class class=".content.Location.LocationMarker">
+  <class class=".content.dx_location.LocationMarker">
     <allow interface=".interfaces.marker.IRichMarker" />
   </class>
 
   <adapter
-      for=".interfaces.ILocation"
+      for=".interfaces.IDXLocation"
       factory=".adapters.ContextMap"
       />
 
-  <adapter factory=".adapters.SmartFolderMap" />
-
   <adapter factory=".adapters.FolderMap" />
+
+  <adapter factory=".adapters.CollectionMap" />
+
+  <configure zcml:condition="installed Products.ATContentTypes">
+    <adapter factory=".at_adapters.SmartFolderMap" />
+
+    <adapter factory=".at_adapters.FolderMap" />
+  </configure>
 
   <include file="collection.zcml" zcml:condition="installed plone.app.collection"  />
 
   <!-- configlet -->
 
   <adapter
-      zcml:condition="installed plone.app.controlpanel"
       factory=".browser.controlpanel.MapsControlPanelAdapter" />
 
   <browser:page
-      zcml:condition="installed plone.app.controlpanel"
       name="maps-controlpanel"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       class=".browser.controlpanel.MapsControlPanel"
       permission="cmf.ManagePortal"
       />
+
+  <browser:page
+    zcml:condition="installed Products.contentmigration"
+    name="migrate_locations"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".migration.MigrateLocations"
+    permission="cmf.ManagePortal"
+    />
 
 </configure>

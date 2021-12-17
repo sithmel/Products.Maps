@@ -1,5 +1,5 @@
-from zope.interface import implements
-from zope.component import adapts, getMultiAdapter
+from zope.interface import implementer
+from zope.component import adapter, getMultiAdapter
 
 from AccessControl import Unauthorized
 from AccessControl import ClassSecurityInfo
@@ -17,7 +17,6 @@ from Products.Maps.config import *
 from Products.Maps import validator # Force registration of validator
 from Products.Maps import MapsMessageFactory as _
 
-from Products.Maps.adapters import GeoLocation
 from Products.Maps.field import LocationWidget, LocationField
 from Products.Maps.interfaces import ILocation
 from Products.Maps.interfaces import IRichMarker, IMapEnabled
@@ -76,11 +75,10 @@ LocationSchema = ATContentTypeSchema.copy() + Schema(
 finalizeATCTSchema(LocationSchema)
 
 
+@implementer(IMapEnabled, ILocation)
 class Location(ATCTContent):
     """Location content type.
     """
-
-    implements(IMapEnabled, ILocation)
 
     schema = LocationSchema
 
@@ -112,72 +110,3 @@ class Location(ATCTContent):
         #return [0,0]
 
 registerType(Location, PROJECTNAME)
-
-
-class LocationMarker(GeoLocation):
-    implements(IRichMarker)
-    adapts(ILocation)
-
-    @property
-    def title(self):
-        return self.context.Title()
-
-    @property
-    def description(self):
-        return self.context.Description()
-
-    @property
-    def layers(self):
-        try:
-            return self.context.getValidMapLayers()
-        except AttributeError:
-            return self.context.Subject()
-
-    @property
-    def icon(self):
-        return self.context.getMarkerIcon()
-
-    @property
-    def url(self):
-        return self.context.absolute_url()
-
-    def computeRelatedItems(self):
-        # BBB: re-implementation of the old computeRelatedItems CMF python script.
-        # We can do it better
-        context = self.context
-        if base_hasattr(context, 'getRelatedItems'):
-            outgoing = context.getRelatedItems()
-            incoming = []
-            # if you want to show up the items which point to this one, too, then use the
-            # line below
-            #incoming = context.getBRefs('relatesTo') 
-            res = []
-            mtool = context.portal_membership
-
-            in_out = outgoing+incoming
-            for d in range(len(in_out)):
-                try:
-                    obj = in_out[d]
-                except Unauthorized:
-                    continue
-                if obj not in res:
-                    if mtool.checkPermission('View', obj):
-                        res.append(obj)
-            return res
-
-    @property
-    def related_items(self):
-        related = self.computeRelatedItems()
-        result = []
-        for obj in related:
-            result.append({'title': obj.Title(),
-                           'url': obj.absolute_url(),
-                           'description': obj.Description()})
-        return tuple(result)
-
-    @property
-    def contents(self):
-        text = self.context.getText(mimetype="text/plain").strip()
-        if text:
-            return ({'title': _("Info"),
-                     'text': self.context.getText()},)

@@ -1,14 +1,16 @@
-from zope.interface import implements
+from zope.interface import implementer
 
 from Products.Five.browser import BrowserView
 
 from Products.Maps.config import *
 from Products.Maps.interfaces import IMapsConfig
-from Products.Maps.validator import LocationFieldValidator
+from Products.Maps.utils import validate_location
 
 from Products.CMFCore.utils import getToolByName
 
 from Products.Maps import MapsMessageFactory as _
+
+import six
 
 def getSizeFromString(s):
     values = s.split(",")
@@ -16,9 +18,8 @@ def getSizeFromString(s):
     return [int(values[0]), int(values[1])]
 
 
+@implementer(IMapsConfig)
 class MapsConfig(BrowserView):
-
-    implements(IMapsConfig)
 
     def __init__(self, context, request):
         """ init view """
@@ -47,11 +48,13 @@ class MapsConfig(BrowserView):
         portal_url = portal_url_tool()
         icons = []
         for icon in icons_list:
+            if six.PY3 and isinstance(icon, six.binary_type):
+                icon = icon.decode('utf-8')
             parts = icon.split("|")
             if parts[0].strip() == "Name":
                 continue
             data = {
-                'name': _(parts[0].strip()).encode('utf-8'),
+                'name': parts[0].strip(),
                 'icon': "%s/%s" % (portal_url, parts[1].strip()),
                 'iconSize': getSizeFromString(parts[2]),
                 'iconAnchor': getSizeFromString(parts[3]),
@@ -71,8 +74,7 @@ class MapsConfig(BrowserView):
         default_location = getattr(self.properties,
                                    PROPERTY_DEFAULT_LOCATION_FIELD,
                                    '0.0, 0.0')
-        validator = LocationFieldValidator('default_location')
-        if validator(default_location) != 1:
+        if validate_location(default_location) != 1:
             return '0.0, 0.0'
         return default_location
 
@@ -130,4 +132,3 @@ class MapsConfig(BrowserView):
                                    False)
 
         return str(change_urls).lower()
-        
